@@ -1,5 +1,6 @@
 package net.scnetwork.bus.service;
 
+import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -9,6 +10,8 @@ import javax.jws.WebService;
 
 @WebService(endpointInterface = "net.scnetwork.bus.service.IXmlFunction")
 public class XmlFunction implements IXmlFunction{
+    private Dispatcher dispatcher = new Dispatcher();
+
     @Override
     public Response getXml(@WebParam final Request request) {
         if (null == request){
@@ -24,8 +27,7 @@ public class XmlFunction implements IXmlFunction{
                 if (null == data){
                     return XmlUtils.getError(StatusEnum.FORMAT_ERROR);
                 } else {
-                    //TODO: передача на маршрутизатор
-                    return XmlUtils.getError(StatusEnum.OK);
+                    return dispatcher.soapXmlDispatcher(data);
                 }
             }
         }
@@ -33,6 +35,6 @@ public class XmlFunction implements IXmlFunction{
 
     @Override
     public ResponseJs getJson(@WebParam RequestJs request) {
-        return null;
+        return dispatcher.soapJsDispatcher(request.getData());
     }
 }
