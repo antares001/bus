@@ -14,7 +14,11 @@ import javax.websocket.server.PathParam;
 @RestController
 public class Pay {
     @RequestMapping("/rest/xml/pay/{service}")
-    public Response payXml(@PathParam("service") ServiceEnum service){
+    public Response payXml(@PathParam("service") String service){
+        switch (service){
+            default:
+                break;
+        }
         return XmlUtils.getError(StatusEnum.NULL);
     }
 
