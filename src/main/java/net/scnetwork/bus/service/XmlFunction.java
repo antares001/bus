@@ -3,6 +3,7 @@ package net.scnetwork.bus.service;
 import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
 import javax.jws.WebParam;
@@ -35,6 +36,20 @@ public class XmlFunction implements IXmlFunction{
 
     @Override
     public ResponseJs getJson(@WebParam RequestJs request) {
-        return dispatcher.soapJsDispatcher(request.getData());
+        if(null == request){
+            return JsonUtils.getError(StatusEnum.NULL);
+        } else {
+            AuthJs auth = request.getAuth();
+            if (null == auth){
+                return JsonUtils.getError(StatusEnum.NOT_AUTH);
+            } else {
+                DataJs data = request.getData();
+                if (null == data){
+                    return JsonUtils.getError(StatusEnum.FORMAT_ERROR);
+                } else {
+                    return dispatcher.soapJsDispatcher(data);
+                }
+            }
+        }
     }
 }
