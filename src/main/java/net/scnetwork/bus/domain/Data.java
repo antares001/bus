@@ -20,6 +20,9 @@ public class Data {
     @XmlAttribute
     private String description;
 
+    @XmlAttribute
+    private String account;
+
     public StatusEnum getStatus() {
         return status;
     }
@@ -42,5 +45,13 @@ public class Data {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

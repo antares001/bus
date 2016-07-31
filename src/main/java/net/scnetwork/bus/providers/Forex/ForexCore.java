@@ -7,10 +7,24 @@ import net.scnetwork.bus.domain.ResponseJs;
 
 public class ForexCore {
     public Response processingXml(Data data){
-        return null;
+        Response result = new Response();
+
+        String account = data.getAccount();
+
+        Data rData = new Data();
+        result.setData(rData);
+
+        return result;
     }
 
     public ResponseJs processing(DataJs data){
-        return null;
+        ResponseJs result = new ResponseJs();
+
+        String account = data.getAccount();
+
+        DataJs rData = new DataJs();
+        result.setData(rData);
+
+        return result;
     }
 }
