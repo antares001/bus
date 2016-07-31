@@ -3,7 +3,8 @@ package net.scnetwork.bus.enums;
 public enum ServiceEnum {
     ARTOSIS("artosis"),
     IDC("idc"),
-    LEADER("leader");
+    LEADER("leader"),
+    FOREX("fix");
 
     private String name;
 
