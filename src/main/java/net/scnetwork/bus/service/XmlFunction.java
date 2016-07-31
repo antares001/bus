@@ -28,7 +28,7 @@ public class XmlFunction implements IXmlFunction{
                 if (null == data){
                     return XmlUtils.getError(StatusEnum.FORMAT_ERROR);
                 } else {
-                    return dispatcher.soapXmlDispatcher(data);
+                    return dispatcher.soapXmlDispatcher(data, auth.getService().getValue());
                 }
             }
         }
@@ -47,7 +47,7 @@ public class XmlFunction implements IXmlFunction{
                 if (null == data){
                     return JsonUtils.getError(StatusEnum.FORMAT_ERROR);
                 } else {
-                    return dispatcher.soapJsDispatcher(data);
+                    return dispatcher.soapJsDispatcher(data, auth.getService());
                 }
             }
         }
