@@ -5,7 +5,10 @@ public enum ServiceEnum {
     IDC("idc"),
     LEADER("leader"),
     FOREX("fix"),
-    QIWI("qiwi");
+    QIWI("qiwi"),
+    MTS("mts"),
+    BEELINE("beeline"),
+    MEGAFON("megafon");
 
     private String name;
 
