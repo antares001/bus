@@ -24,6 +24,14 @@ public class GetInfo {
         data.setAccount(account);
         data.setOperation(service);
         switch (service){
+            case ARTOSIS:
+                break;
+            case IDC:
+                break;
+            case LEADER:
+                break;
+            case QIWI:
+                break;
             case FOREX:
                 ForexCore fix = new ForexCore();
                 return fix.processingXml(data);
@@ -39,6 +47,14 @@ public class GetInfo {
         DataJs data = new DataJs();
         data.setAccount(account);
         switch (service){
+            case ARTOSIS:
+                break;
+            case IDC:
+                break;
+            case LEADER:
+                break;
+            case QIWI:
+                break;
             case FOREX:
                 ForexCore fix = new ForexCore();
                 return fix.processing(data);
