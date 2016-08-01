@@ -38,6 +38,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlUrls>
+                        <wsdlUrl>${basedir}/src/main/resources/wsdl/qiwi.wsdl</wsdlUrl>
+                    </wsdlUrls>
+                    <packageName>net.scnetwork.bus.clients.qiwi</packageName>
+                    <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                    <destDir>${basedir}/target/jaxws</destDir>
+                    <sei/>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
