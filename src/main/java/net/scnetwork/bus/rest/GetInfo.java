@@ -1,29 +1,55 @@
 package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
-import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.utils.XmlUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.enums.ServiceEnum;
+import net.scnetwork.bus.providers.Forex.ForexCore;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 public class GetInfo {
     private Dispatcher dispatcher = new Dispatcher();
 
-    @RequestMapping("/rest/get/echo")
+    @RequestMapping(value = "/rest/get/echo", method = RequestMethod.GET)
     public String echoGet(){
         return "test running";
     }
 
-    @RequestMapping("/rest/getXml")
-    public Response restGetXml(){
+    @RequestMapping("/rest/getXml/{service}")
+    public Response restGetXml(@PathVariable(value = "service") ServiceEnum service,
+                               @RequestParam(value = "account") String account){
+        Data data = new Data();
+        data.setAccount(account);
+        data.setOperation(service);
+        switch (service){
+            case FOREX:
+                ForexCore fix = new ForexCore();
+                return fix.processingXml(data);
+            default:
+                break;
+        }
         return dispatcher.restXmlDispatcher("");
     }
 
-    @RequestMapping("/rest/getJson")
-    public ResponseJs restGetJson(){
+    @RequestMapping(value = "/rest/getJson/{service}", method = RequestMethod.GET)
+    public ResponseJs restGetJson(@PathVariable(value = "service") ServiceEnum service,
+                                  @RequestParam(value = "account") String account){
+        DataJs data = new DataJs();
+        data.setAccount(account);
+        switch (service){
+            case FOREX:
+                ForexCore fix = new ForexCore();
+                return fix.processing(data);
+            default:
+                break;
+        }
         return dispatcher.restJsDispatcher("");
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+        dataBinder.registerCustomEditor(ServiceEnum.class, new ServiceConverter());
     }
 }
