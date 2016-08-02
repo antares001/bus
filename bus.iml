@@ -46,6 +46,10 @@
     <orderEntry type="library" name="Maven: org.quickfixj:quickfixj-core:1.6.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.mina:mina-core:2.0.13" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
+    <orderEntry type="library" name="Maven: com.yandex.java:ym-java-epr-sdk:2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp:okhttp:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path:2.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:asm:1.0.2" level="project" />
