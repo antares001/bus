@@ -30,7 +30,7 @@ public class GetInfo {
                                @RequestParam(value = "account") String account){
         Data data = new Data();
         data.setAccount(account);
-        data.setOperation(service);
+        data.setService(service);
         switch (service){
             case ARTOSIS:
                 ArtosisCore artosis = new ArtosisCore();

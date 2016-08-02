@@ -17,6 +17,9 @@ public class Data {
     @XmlAttribute(name = "status")
     private StatusEnum status;
 
+    @XmlAttribute(name = "service")
+    private ServiceEnum service;
+
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
@@ -38,6 +41,14 @@ public class Data {
 
     public void setStatus(StatusEnum status) {
         this.status = status;
+    }
+
+    public ServiceEnum getService() {
+        return service;
+    }
+
+    public void setService(ServiceEnum service) {
+        this.service = service;
     }
 
     public OperationEnum getOperation() {
