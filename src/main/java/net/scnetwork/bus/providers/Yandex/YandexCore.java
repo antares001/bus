@@ -1,10 +1,12 @@
 package net.scnetwork.bus.providers.Yandex;
 
 import com.yandex.money.api.YandexMoney;
+import com.yandex.money.api.net.MethodRequest;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.enums.operation.YandexOperation;
 import net.scnetwork.bus.providers.IProviders;
 
 import java.security.Permission;
@@ -18,7 +20,11 @@ public class YandexCore implements IProviders{
     public Response processingXml(Data data) {
         YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
 
-        Collection<Permission> scope = new LinkedList<>();
+        YandexOperation operation = data.getYandexOperation();
+        switch (operation){
+            default:
+                break;
+        }
 
         return null;
     }
