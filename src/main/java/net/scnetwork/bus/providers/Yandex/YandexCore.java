@@ -22,6 +22,22 @@ public class YandexCore implements IProviders{
 
         YandexOperation operation = data.getYandexOperation();
         switch (operation){
+            case ACCOUNT_INFO:
+                break;
+            case OPERATION_HISTORY:
+                break;
+            case OPERATION_DETAILS:
+                break;
+            case INCOMING_TRANSFERS:
+                break;
+            case PAYMENT:
+                break;
+            case PAYMENT_SHOP:
+                break;
+            case PAYMENT_P2P:
+                break;
+            case MONEY_SOURCE:
+                break;
             default:
                 break;
         }
