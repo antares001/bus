@@ -34,7 +34,7 @@ public class GetInfo {
             default:
                 break;
         }
-        return dispatcher.restXmlDispatcher("");
+        return dispatcher.restXmlDispatcher("-");
     }
 
     @RequestMapping(value = "/rest/getJson/{service}", method = RequestMethod.GET)
