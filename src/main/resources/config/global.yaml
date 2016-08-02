@@ -1,4 +1,8 @@
 modules:
   artosis: no
+  idc: no
+  yandex: no
+  qiwi: no
+  leader: no
 
 dao: oracle-pool
