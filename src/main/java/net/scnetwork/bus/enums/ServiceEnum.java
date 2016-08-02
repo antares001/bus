@@ -4,7 +4,11 @@ public enum ServiceEnum {
     ARTOSIS("artosis"),
     IDC("idc"),
     LEADER("leader"),
-    FOREX("fix");
+    FOREX("fix"),
+    QIWI("qiwi"),
+    MTS("mts"),
+    BEELINE("beeline"),
+    MEGAFON("megafon");
 
     private String name;
 
