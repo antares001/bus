@@ -8,7 +8,8 @@ public enum ServiceEnum {
     QIWI("qiwi"),
     MTS("mts"),
     BEELINE("beeline"),
-    MEGAFON("megafon");
+    MEGAFON("megafon"),
+    YANDEX("yandex");
 
     private String name;
 

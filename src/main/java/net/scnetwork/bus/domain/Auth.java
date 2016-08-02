@@ -1,43 +1,42 @@
 package net.scnetwork.bus.domain;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import net.scnetwork.bus.enums.ServiceEnum;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Auth")
 public class Auth {
-    @XmlElement
-    private Login login;
+    @XmlAttribute(name = "login")
+    private String login;
 
-    @XmlElement
-    private Pass pass;
+    @XmlAttribute(name = "pass")
+    private String pass;
 
-    @XmlElement
-    private Service service;
+    @XmlAttribute(name = "service")
+    private ServiceEnum service;
 
-    public Login getLogin() {
+    public String getLogin() {
         return login;
     }
 
-    public void setLogin(Login login) {
+    public void setLogin(String login) {
         this.login = login;
     }
 
-    public Pass getPass() {
+    public String getPass() {
         return pass;
     }
 
-    public void setPass(Pass pass) {
+    public void setPass(String pass) {
         this.pass = pass;
     }
 
-    public Service getService() {
+    public ServiceEnum getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(ServiceEnum service) {
         this.service = service;
     }
 }

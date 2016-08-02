@@ -28,7 +28,7 @@ public class XmlFunction implements IXmlFunction{
                 if (null == data){
                     return XmlUtils.getError(StatusEnum.FORMAT_ERROR);
                 } else {
-                    return dispatcher.soapXmlDispatcher(data, auth.getService().getValue());
+                    return dispatcher.soapXmlDispatcher(data, auth.getService());
                 }
             }
         }

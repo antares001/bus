@@ -25,9 +25,17 @@ public class Pay {
                 break;
             case IDC:
                 break;
+            case MTS:
+                break;
+            case BEELINE:
+                break;
+            case MEGAFON:
+                break;
             case FOREX:
                 break;
             case QIWI:
+                break;
+            case YANDEX:
                 break;
             default:
                 break;
@@ -47,9 +55,17 @@ public class Pay {
                 break;
             case IDC:
                 break;
+            case MTS:
+                break;
+            case BEELINE:
+                break;
+            case MEGAFON:
+                break;
             case FOREX:
                 break;
             case QIWI:
+                break;
+            case YANDEX:
                 break;
             default:
                 break;
