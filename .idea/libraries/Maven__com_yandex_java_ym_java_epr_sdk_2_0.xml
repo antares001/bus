@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.yandex.java:ym-java-epr-sdk:2.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yandex/java/ym-java-epr-sdk/2.0/ym-java-epr-sdk-2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yandex/java/ym-java-epr-sdk/2.0/ym-java-epr-sdk-2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yandex/java/ym-java-epr-sdk/2.0/ym-java-epr-sdk-2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
