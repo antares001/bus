@@ -1,4 +1,4 @@
-package net.scnetwork.bus.handlers;
+package net.scnetwork.bus.clients.mina.handlers;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;

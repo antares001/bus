@@ -1,6 +1,6 @@
 package net.scnetwork.bus;
 
-import net.scnetwork.bus.handlers.IsoHandler;
+import net.scnetwork.bus.clients.mina.handlers.IsoHandler;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
