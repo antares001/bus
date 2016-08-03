@@ -7,7 +7,7 @@ import org.yaml.snakeyaml.constructor.SafeConstructor;
 import java.io.*;
 
 public class ConfigBus {
-    private static final String FILENAME = "roseources://config/global.yaml";
+    private static final String FILENAME = "resources://config/global.yaml";
     private static Iterable<Object> instance;
 
     private ConfigBus(){}
