@@ -11,8 +11,8 @@ public class Modules {
     private boolean artosis;
     private boolean idc;
     private Yandex yandex;
-    private boolean qiwi;
-    private boolean leader;
+    private Qiwi qiwi;
+    private Leader leader;
 
     public Modules(){}
 
@@ -40,19 +40,19 @@ public class Modules {
         this.yandex = yandex;
     }
 
-    public boolean isQiwi() {
+    public Qiwi getQiwi() {
         return qiwi;
     }
 
-    public void setQiwi(boolean qiwi) {
+    public void setQiwi(Qiwi qiwi) {
         this.qiwi = qiwi;
     }
 
-    public boolean isLeader() {
+    public Leader getLeader() {
         return leader;
     }
 
-    public void setLeader(boolean leader) {
+    public void setLeader(Leader leader) {
         this.leader = leader;
     }
 
