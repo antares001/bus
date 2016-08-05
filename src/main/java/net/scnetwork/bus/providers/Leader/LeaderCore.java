@@ -1,5 +1,6 @@
 package net.scnetwork.bus.providers.Leader;
 
+import net.scnetwork.bus.config.modules.Leader;
 import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
@@ -13,11 +14,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LeaderCore implements IProviders{
     @Autowired
-    private Modules modules;
+    private Leader leader;
 
     @Override
     public Response processingXml(Data data) {
-        if (modules.isLeader()) {
+        if (leader.isUse()) {
+            switch (leader.getUseEnum()){
+                case LOCAL:
+                    break;
+                case REMOTE:
+                    break;
+                case NONE:
+                    break;
+                default:
+                    break;
+            }
             return null;
         } else {
             return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
@@ -26,7 +37,17 @@ public class LeaderCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (modules.isLeader()) {
+        if (leader.isUse()) {
+            switch (leader.getUseEnum()){
+                case LOCAL:
+                    break;
+                case REMOTE:
+                    break;
+                case NONE:
+                    break;
+                default:
+                    break;
+            }
             return null;
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);

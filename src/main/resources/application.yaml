@@ -9,6 +9,9 @@ modules:
       use: yes
       service: local
       url: none
-  leader: no
+  leader:
+      use: yes
+      service: local
+      url: none
 
 dao: oracle-pool
