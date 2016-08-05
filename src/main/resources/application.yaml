@@ -5,7 +5,10 @@ modules:
       use: yes
       service: local
       url: none
-  qiwi: no
+  qiwi:
+      use: yes
+      service: local
+      url: none
   leader: no
 
 dao: oracle-pool

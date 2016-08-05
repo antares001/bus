@@ -7,32 +7,38 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "yandex")
-public class Yandex implements IModules{
+@ConfigurationProperties(prefix = "qiwi")
+public class Qiwi implements IModules{
     private boolean use;
     private UseEnum useEnum;
     private String url;
 
+    @Override
     public boolean isUse() {
         return use;
     }
 
+    @Override
     public void setUse(boolean use) {
         this.use = use;
     }
 
+    @Override
     public UseEnum getUseEnum() {
         return useEnum;
     }
 
+    @Override
     public void setUseEnum(UseEnum useEnum) {
         this.useEnum = useEnum;
     }
 
+    @Override
     public String getUrl() {
         return url;
     }
 
+    @Override
     public void setUrl(String url) {
         this.url = url;
     }

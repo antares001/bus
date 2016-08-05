@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.Qiwi;
 
-import net.scnetwork.bus.config.modules.Modules;
+import net.scnetwork.bus.config.modules.Qiwi;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
@@ -13,11 +13,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class QiwiCore implements IProviders{
     @Autowired
-    private Modules modules;
+    private Qiwi qiwi;
 
     @Override
     public Response processingXml(Data data) {
-        if (modules.isQiwi()) {
+        if (qiwi.isUse()) {
+            switch (qiwi.getUseEnum()){
+                case LOCAL:
+                    break;
+                case REMOTE:
+                    break;
+                case NONE:
+                    break;
+                default:
+                    break;
+            }
             return null;
         } else {
             return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
@@ -26,7 +36,17 @@ public class QiwiCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (modules.isQiwi()) {
+        if (qiwi.isUse()) {
+            switch (qiwi.getUseEnum()){
+                case LOCAL:
+                    break;
+                case REMOTE:
+                    break;
+                case NONE:
+                    break;
+                default:
+                    break;
+            }
             return null;
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
