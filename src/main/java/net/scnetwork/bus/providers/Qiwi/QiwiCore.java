@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.Qiwi;
 
-import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;

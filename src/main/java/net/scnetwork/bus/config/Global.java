@@ -1,5 +1,6 @@
 package net.scnetwork.bus.config;
 
+import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.enums.DaoEnums;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
