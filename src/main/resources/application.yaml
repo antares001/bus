@@ -1,7 +1,10 @@
 modules:
   artosis: no
   idc: no
-  yandex: no
+  yandex:
+      use: yes
+      service: local
+      url: none
   qiwi: no
   leader: no
 

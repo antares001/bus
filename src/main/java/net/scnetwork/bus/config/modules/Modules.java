@@ -1,4 +1,4 @@
-package net.scnetwork.bus.config;
+package net.scnetwork.bus.config.modules;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class Modules {
     private boolean artosis;
     private boolean idc;
-    private boolean yandex;
+    private Yandex yandex;
     private boolean qiwi;
     private boolean leader;
 
@@ -32,11 +32,11 @@ public class Modules {
         this.idc = idc;
     }
 
-    public boolean isYandex() {
+    public Yandex getYandex() {
         return yandex;
     }
 
-    public void setYandex(boolean yandex) {
+    public void setYandex(Yandex yandex) {
         this.yandex = yandex;
     }
 
@@ -60,7 +60,7 @@ public class Modules {
         return "Modules:" +
                 "{artosis:" + artosis + "}," +
                 "{idc:" + idc + "}," +
-                "{yandex:" + yandex + "}," +
+                "{yandex:" + yandex.toString() + "}," +
                 "{qiwi:" + qiwi + "}," +
                 "{leader:" + leader + "}";
     }
