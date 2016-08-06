@@ -5,7 +5,7 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.providers.Artosis.ArtosisCore;
+import net.scnetwork.bus.providers.Bpay.BPayCore;
 import net.scnetwork.bus.providers.Beeline.BeelineCore;
 import net.scnetwork.bus.providers.Forex.ForexCore;
 import net.scnetwork.bus.providers.Idc.IdcCore;
@@ -19,7 +19,7 @@ public class Dispatcher {
     public Response soapXmlDispatcher(Data data, ServiceEnum service){
         switch (service){
             case ARTOSIS:
-                ArtosisCore artosis = new ArtosisCore();
+                BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
             case IDC:
                 IdcCore idc = new IdcCore();
@@ -54,7 +54,7 @@ public class Dispatcher {
     public ResponseJs soapJsDispatcher(DataJs data, ServiceEnum service){
         switch (service){
             case ARTOSIS:
-                ArtosisCore artosis = new ArtosisCore();
+                BPayCore artosis = new BPayCore();
                 return artosis.processing(data);
             case IDC:
                 IdcCore idc = new IdcCore();

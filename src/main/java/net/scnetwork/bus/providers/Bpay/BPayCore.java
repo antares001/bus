@@ -1,28 +1,28 @@
-package net.scnetwork.bus.providers.Artosis;
+package net.scnetwork.bus.providers.Bpay;
 
-import net.scnetwork.bus.config.modules.Artosis;
+import net.scnetwork.bus.config.modules.BPay;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.enums.operation.ArtosisOperation;
+import net.scnetwork.bus.enums.operation.BPayOperation;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ArtosisCore implements IProviders{
+public class BPayCore implements IProviders{
     @Autowired
-    private Artosis artosis;
+    private BPay BPay;
 
     @Override
     public Response processingXml(Data data) {
-        if (artosis.isUse()) {
-            switch (artosis.getUseEnum()){
+        if (BPay.isUse()) {
+            switch (BPay.getUseEnum()){
                 case LOCAL:
-                    String point = artosis.getPoint();
-                    ArtosisOperation operation = data.getArtosisOperation();
+                    String point = BPay.getPoint();
+                    BPayOperation operation = data.getBPayOperation();
                     switch (operation){
                         case BILL:
                             break;
@@ -37,7 +37,7 @@ public class ArtosisCore implements IProviders{
                     }
                     break;
                 case REMOTE:
-                    String microservice = artosis.getUrl();
+                    String microservice = BPay.getUrl();
                     break;
                 case NONE:
                     break;
@@ -52,13 +52,13 @@ public class ArtosisCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (artosis.isUse()) {
-            switch (artosis.getUseEnum()){
+        if (BPay.isUse()) {
+            switch (BPay.getUseEnum()){
                 case LOCAL:
-                    String point = artosis.getPoint();
+                    String point = BPay.getPoint();
                     break;
                 case REMOTE:
-                    String microservice = artosis.getUrl();
+                    String microservice = BPay.getUrl();
                     break;
                 case NONE:
                     break;
