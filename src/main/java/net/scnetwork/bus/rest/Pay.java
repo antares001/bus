@@ -19,7 +19,7 @@ public class Pay {
                            @RequestParam(value = "currency") int currency,
                            @RequestParam(value = "newdata", required = false) String newData){
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 break;
             case LEADER:
                 break;
@@ -49,7 +49,7 @@ public class Pay {
                             @RequestParam(value = "currency") int currency,
                             @RequestParam(value = "newdata", required = false) String newData){
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 break;
             case LEADER:
                 break;

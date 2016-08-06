@@ -18,7 +18,7 @@ import net.scnetwork.bus.providers.Yandex.YandexCore;
 public class Dispatcher {
     public Response soapXmlDispatcher(Data data, ServiceEnum service){
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
             case IDC:
@@ -53,7 +53,7 @@ public class Dispatcher {
 
     public ResponseJs soapJsDispatcher(DataJs data, ServiceEnum service){
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 BPayCore artosis = new BPayCore();
                 return artosis.processing(data);
             case IDC:

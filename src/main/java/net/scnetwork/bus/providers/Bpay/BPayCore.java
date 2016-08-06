@@ -23,71 +23,75 @@ public class BPayCore implements IProviders{
 
     @Override
     public Response processingXml(Data data) {
-        if (bPay.isUse()) {
-            switch (bPay.getUseEnum()){
-                case LOCAL:
-                    String point = bPay.getPoint();
-                    BPayOptions options = data.getbPayOptions();
+        if (null != bPay) {
+            if (bPay.isUse()) {
+                switch (bPay.getUseEnum()) {
+                    case LOCAL:
+                        String point = bPay.getPoint();
+                        BPayOptions options = data.getbPayOptions();
 
-                    Payment payment = new Payment();
-                    switch (options.getOperation()){
-                        case BILL:
-                            payment.setType("1.2");
-                            payment.setMerchantId(bPay.getMerchantId());
-                            payment.setAmount(options.getAmount());
-                            payment.setDescription(options.getDescription());
-                            payment.setMethod(options.getMethod());
-                            payment.setOrderId(options.getOrder());
-                            payment.setSuccessUrl("");
-                            payment.setFailUrl("");
-                            payment.setCallbackUrl("");
-                            payment.setLang(BPayLang.RU);
-                            payment.setAdvanced1(" ");
-                            payment.setAdvanced2(" ");
-                            payment.setIstest(1);
-                            payment.setGetUrl(0);
-                            break;
-                        case CALLBACK:
-                            payment.setType("1.2");
-                            payment.setOrderId(options.getOrder());
-                            payment.setAmount(options.getAmount());
-                            payment.setValute(options.getCurrency());
-                            break;
-                        case PAY:
-                            break;
-                        case INFO:
-                            break;
-                        default:
-                            break;
-                    }
-                    try {
-                        JAXBContext context = JAXBContext.newInstance(Payment.class);
-                        Marshaller marshaller = context.createMarshaller();
-                        marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+                        Payment payment = new Payment();
+                        switch (options.getOperation()) {
+                            case BILL:
+                                payment.setType("1.2");
+                                payment.setMerchantId(bPay.getMerchantId());
+                                payment.setAmount(options.getAmount());
+                                payment.setDescription(options.getDescription());
+                                payment.setMethod(options.getMethod());
+                                payment.setOrderId(options.getOrder());
+                                payment.setSuccessUrl("");
+                                payment.setFailUrl("");
+                                payment.setCallbackUrl("");
+                                payment.setLang(BPayLang.RU);
+                                payment.setAdvanced1(" ");
+                                payment.setAdvanced2(" ");
+                                payment.setIstest(1);
+                                payment.setGetUrl(0);
+                                break;
+                            case CALLBACK:
+                                payment.setType("1.2");
+                                payment.setOrderId(options.getOrder());
+                                payment.setAmount(options.getAmount());
+                                payment.setValute(options.getCurrency());
+                                break;
+                            case PAY:
+                                break;
+                            case INFO:
+                                break;
+                            default:
+                                break;
+                        }
+                        try {
+                            JAXBContext context = JAXBContext.newInstance(Payment.class);
+                            Marshaller marshaller = context.createMarshaller();
+                            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
 
-                        StringWriter sw = new StringWriter();
-                        marshaller.marshal(payment, sw);
-                        String xml = sw.toString();
+                            StringWriter sw = new StringWriter();
+                            marshaller.marshal(payment, sw);
+                            String xml = sw.toString();
 
-                        String xmlData = Base64.getEncoder().encodeToString(xml.getBytes("UTF-8"));
+                            String xmlData = Base64.getEncoder().encodeToString(xml.getBytes("UTF-8"));
 
-                        MessageDigest md = MessageDigest.getInstance("MD5");
-                        //TODO: make md5(md5(xmlData) + md5(signature))
-                    } catch (JAXBException | UnsupportedEncodingException | NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case REMOTE:
-                    String microservice = bPay.getUrl();
-                    break;
-                case NONE:
-                    break;
-                default:
-                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                            MessageDigest md = MessageDigest.getInstance("MD5");
+                            //TODO: make md5(md5(xmlData) + md5(signature))
+                        } catch (JAXBException | UnsupportedEncodingException | NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case REMOTE:
+                        String microservice = bPay.getUrl();
+                        break;
+                    case NONE:
+                        break;
+                    default:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+                return XmlUtils.getError(StatusEnum.NULL);
+            } else {
+                return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
             }
-            return null;
         } else {
-            return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
+            return XmlUtils.getError(StatusEnum.NULL);
         }
     }
 

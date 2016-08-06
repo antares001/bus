@@ -1,6 +1,8 @@
 package net.scnetwork.bus;
 
+import net.scnetwork.bus.config.modules.BPay;
 import net.scnetwork.bus.service.XmlFunction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

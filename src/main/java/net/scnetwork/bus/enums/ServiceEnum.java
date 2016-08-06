@@ -1,7 +1,7 @@
 package net.scnetwork.bus.enums;
 
 public enum ServiceEnum {
-    ARTOSIS("artosis"),
+    BPAY("bpay"),
     IDC("idc"),
     LEADER("leader"),
     FOREX("fix"),

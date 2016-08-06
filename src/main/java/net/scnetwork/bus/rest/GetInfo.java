@@ -25,14 +25,14 @@ public class GetInfo {
         return "test running";
     }
 
-    @RequestMapping("/rest/getXml/{service}")
+    @RequestMapping("/rest/getXml/{service}/{account}")
     public Response restGetXml(@PathVariable(value = "service") ServiceEnum service,
-                               @RequestParam(value = "account") String account){
+                               @PathVariable(value = "account") String account){
         Data data = new Data();
         data.setAccount(account);
         data.setService(service);
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
             case IDC:
@@ -71,7 +71,7 @@ public class GetInfo {
         DataJs data = new DataJs();
         data.setAccount(account);
         switch (service){
-            case ARTOSIS:
+            case BPAY:
                 BPayCore artosis = new BPayCore();
                 return artosis.processing(data);
             case IDC:
