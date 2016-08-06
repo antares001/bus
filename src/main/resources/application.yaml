@@ -4,6 +4,8 @@ modules:
       service: remote
       url: none
       point: none
+      merchantId: none
+      signature: none
   idc:
       use: no
       service: local
