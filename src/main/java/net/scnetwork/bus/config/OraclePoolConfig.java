@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "idc")
+@ConfigurationProperties(prefix = "oracle-pool")
 public class OraclePoolConfig {
     private String jdbcUrl;
     private String username;
