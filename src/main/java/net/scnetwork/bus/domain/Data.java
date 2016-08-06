@@ -3,8 +3,6 @@ package net.scnetwork.bus.domain;
 import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.enums.operation.BPayOperation;
-import net.scnetwork.bus.enums.operation.YandexOperation;
 
 import javax.xml.bind.annotation.*;
 import java.util.Date;
@@ -21,8 +19,8 @@ public class Data {
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
-    @XmlAttribute(name = "yandex_operation")
-    private YandexOperation yandexOperation;
+    @XmlElement(name = "yandex")
+    private YandexOptions yandexOptions;
 
     @XmlAttribute(name = "description")
     private String description;
@@ -72,12 +70,12 @@ public class Data {
         this.bPayOptions = bPayOptions;
     }
 
-    public YandexOperation getYandexOperation() {
-        return yandexOperation;
+    public YandexOptions getYandexOptions() {
+        return yandexOptions;
     }
 
-    public void setYandexOperation(YandexOperation yandexOperation) {
-        this.yandexOperation = yandexOperation;
+    public void setYandexOptions(YandexOptions yandexOptions) {
+        this.yandexOptions = yandexOptions;
     }
 
     public void setDescription(String description) {
