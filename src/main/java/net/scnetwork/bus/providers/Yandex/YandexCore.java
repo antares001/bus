@@ -2,10 +2,7 @@ package net.scnetwork.bus.providers.Yandex;
 
 import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.modules.Yandex;
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.operation.YandexOperation;
 import net.scnetwork.bus.providers.IProviders;
@@ -26,8 +23,8 @@ public class YandexCore implements IProviders{
                 case LOCAL:
                     YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
 
-                    YandexOperation operation = data.getYandexOperation();
-                    switch (operation) {
+                    YandexOptions options = data.getYandexOptions();
+                    switch (options.getOperation()) {
                         case ACCOUNT_INFO:
                             break;
                         case OPERATION_HISTORY:
