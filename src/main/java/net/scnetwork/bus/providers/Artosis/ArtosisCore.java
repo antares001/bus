@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.Artosis;
 
-import net.scnetwork.bus.config.modules.Modules;
+import net.scnetwork.bus.config.modules.Artosis;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
@@ -13,11 +13,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ArtosisCore implements IProviders{
     @Autowired
-    private Modules modules;
+    private Artosis artosis;
 
     @Override
     public Response processingXml(Data data) {
-        if (modules.isArtosis()) {
+        if (artosis.isUse()) {
+            switch (artosis.getUseEnum()){
+                case LOCAL:
+                    String point = artosis.getPoint();
+                    break;
+                case REMOTE:
+                    String microservice = artosis.getUrl();
+                    break;
+                case NONE:
+                    break;
+                default:
+                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
             return null;
         } else {
             return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
@@ -26,7 +38,19 @@ public class ArtosisCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (modules.isArtosis()) {
+        if (artosis.isUse()) {
+            switch (artosis.getUseEnum()){
+                case LOCAL:
+                    String point = artosis.getPoint();
+                    break;
+                case REMOTE:
+                    String microservice = artosis.getUrl();
+                    break;
+                case NONE:
+                    break;
+                default:
+                    JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
             return null;
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);

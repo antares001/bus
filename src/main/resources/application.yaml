@@ -1,5 +1,9 @@
 modules:
-  artosis: no
+  artosis:
+      use: yes
+      service: remote
+      url: none
+      point: none
   idc:
       use: no
       service: local
