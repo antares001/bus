@@ -48,6 +48,10 @@ public class BPayCore implements IProviders{
                             payment.setGetUrl(0);
                             break;
                         case CALLBACK:
+                            payment.setType("1.2");
+                            payment.setOrderId(options.getOrder());
+                            payment.setAmount(options.getAmount());
+                            payment.setValute(options.getCurrency());
                             break;
                         case PAY:
                             break;
