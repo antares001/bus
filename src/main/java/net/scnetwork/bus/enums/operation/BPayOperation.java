@@ -1,6 +1,6 @@
 package net.scnetwork.bus.enums.operation;
 
-public enum ArtosisOperation {
+public enum BPayOperation {
     BILL("bill"),
     CALLBACK("callback"),
     PAY("pay"),
@@ -8,7 +8,7 @@ public enum ArtosisOperation {
 
     private String name;
 
-    ArtosisOperation(String name){
+    BPayOperation(String name){
         this.name = name;
     }
 

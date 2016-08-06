@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "idc")
-public class Artosis implements IModules{
+@ConfigurationProperties(prefix = "bpay")
+public class BPay implements IModules{
     private boolean use;
     private UseEnum useEnum;
     private String url;

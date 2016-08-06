@@ -3,7 +3,7 @@ package net.scnetwork.bus.rest;
 import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.providers.Artosis.ArtosisCore;
+import net.scnetwork.bus.providers.Bpay.BPayCore;
 import net.scnetwork.bus.providers.Beeline.BeelineCore;
 import net.scnetwork.bus.providers.Forex.ForexCore;
 import net.scnetwork.bus.providers.Idc.IdcCore;
@@ -33,7 +33,7 @@ public class GetInfo {
         data.setService(service);
         switch (service){
             case ARTOSIS:
-                ArtosisCore artosis = new ArtosisCore();
+                BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
             case IDC:
                 IdcCore idc = new IdcCore();
@@ -72,7 +72,7 @@ public class GetInfo {
         data.setAccount(account);
         switch (service){
             case ARTOSIS:
-                ArtosisCore artosis = new ArtosisCore();
+                BPayCore artosis = new BPayCore();
                 return artosis.processing(data);
             case IDC:
                 IdcCore idc = new IdcCore();
