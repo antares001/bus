@@ -24,6 +24,9 @@ public class BPayOptions {
     @XmlAttribute(name = "order")
     private String order;
 
+    @XmlAttribute
+    private int currency;
+
     public BPayOperation getOperation() {
         return operation;
     }
@@ -62,5 +65,13 @@ public class BPayOptions {
 
     public void setOrder(String order) {
         this.order = order;
+    }
+
+    public int getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(int currency) {
+        this.currency = currency;
     }
 }

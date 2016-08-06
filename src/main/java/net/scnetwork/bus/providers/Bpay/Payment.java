@@ -51,6 +51,9 @@ public class Payment {
     @XmlElement(name = "getUrl")
     private int getUrl;
 
+    @XmlElement(name = "valute")
+    private int valute;
+
     public String getType() {
         return type;
     }
@@ -161,5 +164,13 @@ public class Payment {
 
     public void setIstest(int istest) {
         this.istest = istest;
+    }
+
+    public int getValute() {
+        return valute;
+    }
+
+    public void setValute(int valute) {
+        this.valute = valute;
     }
 }
