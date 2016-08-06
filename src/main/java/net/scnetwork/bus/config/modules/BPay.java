@@ -13,6 +13,8 @@ public class BPay implements IModules{
     private UseEnum useEnum;
     private String url;
     private String point;
+    private String merchantId;
+    private String signature;
 
     @Override
     public boolean isUse() {
@@ -50,5 +52,21 @@ public class BPay implements IModules{
 
     public void setPoint(String point) {
         this.point = point;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 }

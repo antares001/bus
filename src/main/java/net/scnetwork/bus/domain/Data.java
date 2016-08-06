@@ -6,10 +6,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.operation.BPayOperation;
 import net.scnetwork.bus.enums.operation.YandexOperation;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -24,9 +21,6 @@ public class Data {
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
-    @XmlAttribute(name = "artosis_operation")
-    private BPayOperation bPayOperation;
-
     @XmlAttribute(name = "yandex_operation")
     private YandexOperation yandexOperation;
 
@@ -38,6 +32,9 @@ public class Data {
 
     @XmlAttribute(name = "date")
     private Date date;
+
+    @XmlElement(name = "bpay")
+    private BPayOptions bPayOptions;
 
     public StatusEnum getStatus() {
         return status;
@@ -67,12 +64,12 @@ public class Data {
         return description;
     }
 
-    public BPayOperation getBPayOperation() {
-        return bPayOperation;
+    public BPayOptions getbPayOptions() {
+        return bPayOptions;
     }
 
-    public void setBPayOperation(BPayOperation bPayOperation) {
-        this.bPayOperation = bPayOperation;
+    public void setbPayOptions(BPayOptions bPayOptions) {
+        this.bPayOptions = bPayOptions;
     }
 
     public YandexOperation getYandexOperation() {
