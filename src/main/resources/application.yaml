@@ -24,3 +24,13 @@ modules:
       point: none
 
 dao: oracle-pool
+
+oracle-pool:
+      jdbcUrl: none
+      username: user
+      password: password
+      minLimit: 5
+      maxLimit: 50
+      initialLimit: 5
+      connectionTimeout: 30
+      validateConnection: true
