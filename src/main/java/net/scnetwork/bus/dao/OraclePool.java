@@ -1,38 +1,35 @@
 package net.scnetwork.bus.dao;
 
+import net.scnetwork.bus.config.OraclePoolConfig;
 import oracle.jdbc.pool.OracleDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
 public class OraclePool {
+    @Autowired
+    private static OraclePoolConfig poolConfig;
+
     private static OracleDataSource ods = null;
 
-    private static final String JDBC_URL = "";
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
     private static final String CACHE_NAME = "BUS";
-    private static final String MIN_LIMIT = "";
-    private static final String MAX_LIMIT = "";
-    private static final String INITIAL_LIMIT = "";
-    private static final String CONNECTION_TIMEOUT = "";
-    private static final String VALIDATE_CONNECTION = "";
 
     static {
         try {
             ods = new OracleDataSource();
-            ods.setURL(JDBC_URL);
-            ods.setUser(USERNAME);
-            ods.setPassword(PASSWORD);
+            ods.setURL(poolConfig.getJdbcUrl());
+            ods.setUser(poolConfig.getUsername());
+            ods.setPassword(poolConfig.getPassword());
             ods.setConnectionCachingEnabled(true);
             ods.setConnectionCacheName(CACHE_NAME);
             Properties cacheProperties = new Properties();
-            cacheProperties.setProperty("MinLimit", MIN_LIMIT);
-            cacheProperties.setProperty("MaxLimit", MAX_LIMIT);
-            cacheProperties.setProperty("InitialLimit", INITIAL_LIMIT);
-            cacheProperties.setProperty("ConnectionWaitTimeout", CONNECTION_TIMEOUT);
-            cacheProperties.setProperty("ValidateConnection", VALIDATE_CONNECTION);
+            cacheProperties.setProperty("MinLimit", String.valueOf(poolConfig.getMaxLimit()));
+            cacheProperties.setProperty("MaxLimit", String.valueOf(poolConfig.getMinLimit()));
+            cacheProperties.setProperty("InitialLimit", String.valueOf(poolConfig.getInitialLimit()));
+            cacheProperties.setProperty("ConnectionWaitTimeout", String.valueOf(poolConfig.getConnectionTimeout()));
+            cacheProperties.setProperty("ValidateConnection", String.valueOf(poolConfig.isValidateConnection()));
 
             ods.setConnectionCacheProperties(cacheProperties);
         } catch (SQLException e) {

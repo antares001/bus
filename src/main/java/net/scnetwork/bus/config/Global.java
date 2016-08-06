@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class Global {
     private Modules modules;
     private DaoEnums dao;
+    private OraclePoolConfig oraclePoolConfig;
 
     public Modules getModules() {
         return modules;
@@ -27,5 +28,13 @@ public class Global {
 
     public void setDao(DaoEnums dao) {
         this.dao = dao;
+    }
+
+    public OraclePoolConfig getOraclePoolConfig() {
+        return oraclePoolConfig;
+    }
+
+    public void setOraclePoolConfig(OraclePoolConfig oraclePoolConfig) {
+        this.oraclePoolConfig = oraclePoolConfig;
     }
 }
