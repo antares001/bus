@@ -6,6 +6,7 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.operation.ArtosisOperation;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -21,6 +22,19 @@ public class ArtosisCore implements IProviders{
             switch (artosis.getUseEnum()){
                 case LOCAL:
                     String point = artosis.getPoint();
+                    ArtosisOperation operation = data.getArtosisOperation();
+                    switch (operation){
+                        case BILL:
+                            break;
+                        case CALLBACK:
+                            break;
+                        case PAY:
+                            break;
+                        case INFO:
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case REMOTE:
                     String microservice = artosis.getUrl();

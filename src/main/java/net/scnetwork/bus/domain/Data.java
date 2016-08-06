@@ -3,6 +3,7 @@ package net.scnetwork.bus.domain;
 import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.operation.ArtosisOperation;
 import net.scnetwork.bus.enums.operation.YandexOperation;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,6 +23,9 @@ public class Data {
 
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
+
+    @XmlAttribute(name = "artosis_operation")
+    private ArtosisOperation artosisOperation;
 
     @XmlAttribute(name = "yandex_operation")
     private YandexOperation yandexOperation;
@@ -61,6 +65,14 @@ public class Data {
 
     public String getDescription() {
         return description;
+    }
+
+    public ArtosisOperation getArtosisOperation() {
+        return artosisOperation;
+    }
+
+    public void setArtosisOperation(ArtosisOperation artosisOperation) {
+        this.artosisOperation = artosisOperation;
     }
 
     public YandexOperation getYandexOperation() {
