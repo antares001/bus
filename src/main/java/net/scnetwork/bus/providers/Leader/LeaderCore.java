@@ -1,7 +1,6 @@
 package net.scnetwork.bus.providers.Leader;
 
 import net.scnetwork.bus.config.modules.Leader;
-import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
@@ -21,13 +20,15 @@ public class LeaderCore implements IProviders{
         if (leader.isUse()) {
             switch (leader.getUseEnum()){
                 case LOCAL:
+                    String point = leader.getPoint();
                     break;
                 case REMOTE:
+                    String microserviceUrl = leader.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {
@@ -40,13 +41,15 @@ public class LeaderCore implements IProviders{
         if (leader.isUse()) {
             switch (leader.getUseEnum()){
                 case LOCAL:
+                    String point = leader.getPoint();
                     break;
                 case REMOTE:
+                    String microserviceUrl = leader.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {

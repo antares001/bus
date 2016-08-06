@@ -1,7 +1,6 @@
 package net.scnetwork.bus.providers.Yandex;
 
 import com.yandex.money.api.YandexMoney;
-import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.config.modules.Yandex;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
@@ -50,11 +49,12 @@ public class YandexCore implements IProviders{
                     }
                     break;
                 case REMOTE:
+                    String microservice = yandex.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {
@@ -69,11 +69,12 @@ public class YandexCore implements IProviders{
                 case LOCAL:
                     break;
                 case REMOTE:
+                    String microservice = yandex.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {

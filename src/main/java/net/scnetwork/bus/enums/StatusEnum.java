@@ -5,7 +5,8 @@ public enum StatusEnum {
     FORMAT_ERROR("format_error"),
     NOT_AUTH("not_auth"),
     NULL("request_is_null"),
-    NOT_SUPPORT("service_is_not_support");
+    NOT_SUPPORT("service_is_not_support"),
+    ERROR_CONFIG("config_error");
 
     private String name;
 

@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "leader")
-public class Leader implements IModules{
+@ConfigurationProperties(prefix = "idc")
+public class Idc implements IModules{
     private boolean use;
     private UseEnum useEnum;
     private String url;

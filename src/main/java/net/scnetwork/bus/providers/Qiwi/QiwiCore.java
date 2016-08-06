@@ -22,11 +22,12 @@ public class QiwiCore implements IProviders{
                 case LOCAL:
                     break;
                 case REMOTE:
+                    String microservice = qiwi.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {
@@ -41,11 +42,12 @@ public class QiwiCore implements IProviders{
                 case LOCAL:
                     break;
                 case REMOTE:
+                    String microservice = qiwi.getUrl();
                     break;
                 case NONE:
                     break;
                 default:
-                    break;
+                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
             }
             return null;
         } else {

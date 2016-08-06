@@ -1,6 +1,10 @@
 modules:
   artosis: no
-  idc: no
+  idc:
+      use: no
+      service: local
+      url: none
+      point: none
   yandex:
       use: yes
       service: local
@@ -13,5 +17,6 @@ modules:
       use: yes
       service: local
       url: none
+      point: none
 
 dao: oracle-pool

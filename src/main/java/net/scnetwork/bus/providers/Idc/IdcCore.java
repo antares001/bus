@@ -1,5 +1,6 @@
 package net.scnetwork.bus.providers.Idc;
 
+import net.scnetwork.bus.config.modules.Idc;
 import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
@@ -13,11 +14,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class IdcCore implements IProviders{
     @Autowired
-    private Modules modules;
+    private Idc idc;
 
     @Override
     public Response processingXml(Data data) {
-        if (modules.isIdc()) {
+        if (idc.isUse()) {
+            switch (idc.getUseEnum()){
+                case LOCAL:
+                    String point = idc.getPoint();
+                    break;
+                case REMOTE:
+                    String microservice = idc.getUrl();
+                    break;
+                case NONE:
+                    break;
+                default:
+                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
             return null;
         } else {
             return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
@@ -26,7 +39,19 @@ public class IdcCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (modules.isIdc()) {
+        if (idc.isUse()) {
+            switch (idc.getUseEnum()){
+                case LOCAL:
+                    String point = idc.getPoint();
+                    break;
+                case REMOTE:
+                    String microservice = idc.getUrl();
+                    break;
+                case NONE:
+                    break;
+                default:
+                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
             return null;
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
