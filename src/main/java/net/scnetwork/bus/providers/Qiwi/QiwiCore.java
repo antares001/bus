@@ -6,6 +6,7 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -18,7 +19,7 @@ public class QiwiCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         if (qiwi.isUse()) {
-            switch (qiwi.getUseEnum()){
+            switch (UseEnum.valueOf(qiwi.getService())){
                 case LOCAL:
                     break;
                 case REMOTE:
@@ -38,7 +39,7 @@ public class QiwiCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data) {
         if (qiwi.isUse()) {
-            switch (qiwi.getUseEnum()){
+            switch (UseEnum.valueOf(qiwi.getService())){
                 case LOCAL:
                     break;
                 case REMOTE:

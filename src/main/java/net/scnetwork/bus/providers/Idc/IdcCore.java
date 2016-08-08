@@ -1,12 +1,12 @@
 package net.scnetwork.bus.providers.Idc;
 
 import net.scnetwork.bus.config.modules.Idc;
-import net.scnetwork.bus.config.modules.Modules;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -19,7 +19,7 @@ public class IdcCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         if (idc.isUse()) {
-            switch (idc.getUseEnum()){
+            switch (UseEnum.valueOf(idc.getService())){
                 case LOCAL:
                     String point = idc.getPoint();
                     break;
@@ -40,7 +40,7 @@ public class IdcCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data) {
         if (idc.isUse()) {
-            switch (idc.getUseEnum()){
+            switch (UseEnum.valueOf(idc.getService())){
                 case LOCAL:
                     String point = idc.getPoint();
                     break;

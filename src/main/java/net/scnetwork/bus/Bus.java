@@ -27,6 +27,6 @@ public class Bus implements CommandLineRunner{
     public void run(String... strings) throws Exception {
         Endpoint.publish(global.getEndpoint(), new XmlFunction());
         Config.setInstance(global);
-        log.info(global.toString());
+        log.info(global.getModules().getBpay().getService());
     }
 }

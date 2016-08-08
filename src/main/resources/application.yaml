@@ -2,27 +2,27 @@ endpoint: http://127.0.0.1:8090/soap
 modules:
   bpay:
       use: yes
-      service: remote
+      service: REMOTE
       url: none
       point: none
       merchantId: none
       signature: none
   idc:
       use: no
-      service: local
+      service: LOCAL
       url: none
       point: none
   yandex:
       use: yes
-      service: local
+      service: LOCAL
       url: none
   qiwi:
       use: yes
-      service: local
+      service: LOCAL
       url: none
   leader:
       use: yes
-      service: local
+      service: LOCAL
       url: none
       point: none
 

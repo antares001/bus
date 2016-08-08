@@ -1,16 +1,14 @@
 package net.scnetwork.bus.config.modules;
 
-import net.scnetwork.bus.enums.UseEnum;
-
 public interface IModules {
 
     boolean isUse();
 
     void setUse(boolean use);
 
-    UseEnum getUseEnum();
+    String getService();
 
-    void setUseEnum(UseEnum useEnum);
+    void setService(String service);
 
     String getUrl();
 

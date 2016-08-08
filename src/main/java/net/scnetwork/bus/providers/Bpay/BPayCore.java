@@ -4,6 +4,7 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.BPay;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -24,7 +25,7 @@ public class BPayCore implements IProviders{
     public Response processingXml(Data data) {
         if (null != bPay) {
             if (bPay.isUse()) {
-                switch (bPay.getUseEnum()) {
+                switch (UseEnum.valueOf(bPay.getService())) {
                     case LOCAL:
                         String point = bPay.getPoint();
                         BPayOptions options = data.getbPayOptions();
@@ -85,7 +86,7 @@ public class BPayCore implements IProviders{
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
-                return XmlUtils.getError(StatusEnum.NULL);
+                return XmlUtils.getError(StatusEnum.OK);
             } else {
                 return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
             }
@@ -97,7 +98,7 @@ public class BPayCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data) {
         if (bPay.isUse()) {
-            switch (bPay.getUseEnum()){
+            switch (UseEnum.valueOf(bPay.getService())){
                 case LOCAL:
                     String point = bPay.getPoint();
                     break;
@@ -114,4 +115,5 @@ public class BPayCore implements IProviders{
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
         }
     }
+
 }

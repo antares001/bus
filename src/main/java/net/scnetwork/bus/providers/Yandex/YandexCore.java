@@ -4,7 +4,7 @@ import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.modules.Yandex;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.enums.operation.YandexOperation;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -19,7 +19,7 @@ public class YandexCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         if (yandex.isUse()) {
-            switch (yandex.getUseEnum()){
+            switch (UseEnum.valueOf(yandex.getService())){
                 case LOCAL:
                     YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
 
@@ -62,7 +62,7 @@ public class YandexCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data) {
         if (yandex.isUse()) {
-            switch (yandex.getUseEnum()){
+            switch (UseEnum.valueOf(yandex.getService())){
                 case LOCAL:
                     break;
                 case REMOTE:

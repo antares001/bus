@@ -20,6 +20,13 @@ import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
 public class Dispatcher {
+
+    /**
+     * Формирование ответа в виде xml
+     * @param data входящие данные
+     * @param service тип сервиса
+     * @return ответ
+     */
     public Response soapXmlDispatcher(Data data, ServiceEnum service){
         IProviders providers;
         switch (service){
@@ -56,6 +63,12 @@ public class Dispatcher {
         return providers.processingXml(data);
     }
 
+    /**
+     * Формирование ответа в формате json
+     * @param data входящие данные
+     * @param service тип сервиса
+     * @return ответ
+     */
     public ResponseJs soapJsDispatcher(DataJs data, ServiceEnum service){
         IProviders providers;
         switch (service){
@@ -71,8 +84,20 @@ public class Dispatcher {
             case QIWI:
                 providers = new QiwiCore();
                 break;
+            case LEADER:
+                providers = new LeaderCore();
+                break;
             case FOREX:
                 providers = new ForexCore();
+                break;
+            case BEELINE:
+                providers = new BeelineCore();
+                break;
+            case MEGAFON:
+                providers = new MegafonCore();
+                break;
+            case YANDEX:
+                providers = new YandexCore();
                 break;
             default:
                 return JsonUtils.getError(StatusEnum.FORMAT_ERROR);

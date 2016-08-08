@@ -1,6 +1,5 @@
 package net.scnetwork.bus.config.modules;
 
-import net.scnetwork.bus.enums.UseEnum;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "qiwi")
 public class Qiwi implements IModules{
     private boolean use;
-    private UseEnum useEnum;
+    private String service;
     private String url;
 
     @Override
@@ -24,13 +23,13 @@ public class Qiwi implements IModules{
     }
 
     @Override
-    public UseEnum getUseEnum() {
-        return useEnum;
+    public String getService() {
+        return service;
     }
 
     @Override
-    public void setUseEnum(UseEnum useEnum) {
-        this.useEnum = useEnum;
+    public void setService(String useEnum) {
+        this.service = service;
     }
 
     @Override

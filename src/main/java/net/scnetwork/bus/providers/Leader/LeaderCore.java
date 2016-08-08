@@ -6,6 +6,7 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -18,7 +19,7 @@ public class LeaderCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         if (leader.isUse()) {
-            switch (leader.getUseEnum()){
+            switch (UseEnum.valueOf(leader.getService())){
                 case LOCAL:
                     String point = leader.getPoint();
                     break;
@@ -39,7 +40,7 @@ public class LeaderCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data) {
         if (leader.isUse()) {
-            switch (leader.getUseEnum()){
+            switch (UseEnum.valueOf(leader.getService())){
                 case LOCAL:
                     String point = leader.getPoint();
                     break;
