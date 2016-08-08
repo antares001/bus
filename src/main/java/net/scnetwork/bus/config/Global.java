@@ -10,9 +10,18 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 @ConfigurationProperties
 public class Global {
+    private String endpoint;
     private Modules modules;
     private DaoEnums dao;
     private OraclePoolConfig oraclePoolConfig;
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+    }
 
     public Modules getModules() {
         return modules;
@@ -36,5 +45,11 @@ public class Global {
 
     public void setOraclePoolConfig(OraclePoolConfig oraclePoolConfig) {
         this.oraclePoolConfig = oraclePoolConfig;
+    }
+
+    public String toString(){
+        return endpoint + " <=> " +
+                modules.toString() + "<=>" +
+                dao.toString();
     }
 }

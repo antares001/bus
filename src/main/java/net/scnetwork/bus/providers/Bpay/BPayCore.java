@@ -1,12 +1,12 @@
 package net.scnetwork.bus.providers.Bpay;
 
+import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.BPay;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,8 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class BPayCore implements IProviders{
-    @Autowired
-    private BPay bPay;
+    private BPay bPay = Config.getInstance().getModules().getBpay();
 
     @Override
     public Response processingXml(Data data) {

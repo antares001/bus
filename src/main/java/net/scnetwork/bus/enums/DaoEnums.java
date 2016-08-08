@@ -14,4 +14,8 @@ public enum DaoEnums {
     public String getName() {
         return name;
     }
+
+    public String toString(){
+        return this.getName();
+    }
 }

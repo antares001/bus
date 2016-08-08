@@ -5,73 +5,79 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.Bpay.BPayCore;
 import net.scnetwork.bus.providers.Beeline.BeelineCore;
 import net.scnetwork.bus.providers.Forex.ForexCore;
+import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.Idc.IdcCore;
 import net.scnetwork.bus.providers.Leader.LeaderCore;
 import net.scnetwork.bus.providers.Megafon.MegafonCore;
 import net.scnetwork.bus.providers.Mts.MtsCore;
 import net.scnetwork.bus.providers.Qiwi.QiwiCore;
 import net.scnetwork.bus.providers.Yandex.YandexCore;
+import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.XmlUtils;
 
 public class Dispatcher {
     public Response soapXmlDispatcher(Data data, ServiceEnum service){
+        IProviders providers;
         switch (service){
             case BPAY:
-                BPayCore artosis = new BPayCore();
-                return artosis.processingXml(data);
-            case IDC:
-                IdcCore idc = new IdcCore();
-                return idc.processingXml(data);
-            case MTS:
-                MtsCore mts = new MtsCore();
-                return mts.processingXml(data);
-            case BEELINE:
-                BeelineCore beeline = new BeelineCore();
-                return beeline.processingXml(data);
-            case MEGAFON:
-                MegafonCore megafon = new MegafonCore();
-                return megafon.processingXml(data);
-            case LEADER:
-                LeaderCore leader = new LeaderCore();
-                return leader.processingXml(data);
-            case QIWI:
-                QiwiCore qiwi = new QiwiCore();
-                return qiwi.processingXml(data);
-            case FOREX:
-                ForexCore fix = new ForexCore();
-                return fix.processingXml(data);
-            case YANDEX:
-                YandexCore yandex = new YandexCore();
-                return yandex.processingXml(data);
-            default:
+                providers = new BPayCore();
                 break;
+            case IDC:
+                providers = new IdcCore();
+                break;
+            case MTS:
+                providers = new MtsCore();
+                break;
+            case BEELINE:
+                providers = new BeelineCore();
+                break;
+            case MEGAFON:
+                providers = new MegafonCore();
+                break;
+            case LEADER:
+                providers = new LeaderCore();
+                break;
+            case QIWI:
+                providers = new QiwiCore();
+                break;
+            case FOREX:
+                providers = new ForexCore();
+                break;
+            case YANDEX:
+                providers = new YandexCore();
+                break;
+            default:
+                return XmlUtils.getError(StatusEnum.FORMAT_ERROR);
         }
-        return null;
+        return providers.processingXml(data);
     }
 
     public ResponseJs soapJsDispatcher(DataJs data, ServiceEnum service){
+        IProviders providers;
         switch (service){
             case BPAY:
-                BPayCore artosis = new BPayCore();
-                return artosis.processing(data);
-            case IDC:
-                IdcCore idc = new IdcCore();
-                return idc.processing(data);
-            case MTS:
-                MtsCore mts = new MtsCore();
-                return mts.processing(data);
-            case QIWI:
-                QiwiCore qiwi = new QiwiCore();
-                return qiwi.processing(data);
-            case FOREX:
-                ForexCore fix = new ForexCore();
-                return fix.processing(data);
-            default:
+                providers = new BPayCore();
                 break;
+            case IDC:
+                providers = new IdcCore();
+                break;
+            case MTS:
+                providers = new MtsCore();
+                break;
+            case QIWI:
+                providers = new QiwiCore();
+                break;
+            case FOREX:
+                providers = new ForexCore();
+                break;
+            default:
+                return JsonUtils.getError(StatusEnum.FORMAT_ERROR);
         }
-        return null;
+        return providers.processing(data);
     }
 
     public Response restXmlDispatcher(String request){

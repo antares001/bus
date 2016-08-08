@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "modules")
 public class Modules {
-    private boolean artosis;
+    private BPay bpay;
     private boolean idc;
     private Yandex yandex;
     private Qiwi qiwi;
@@ -16,12 +16,12 @@ public class Modules {
 
     public Modules(){}
 
-    public boolean isArtosis() {
-        return artosis;
+    public BPay getBpay() {
+        return bpay;
     }
 
-    public void setArtosis(boolean artosis) {
-        this.artosis = artosis;
+    public void setBpay(BPay bpay) {
+        this.bpay = bpay;
     }
 
     public boolean isIdc() {
@@ -58,7 +58,7 @@ public class Modules {
 
     public String toString(){
         return "Modules:" +
-                "{artosis:" + artosis + "}," +
+                "{bpay:" + bpay.toString() + "}," +
                 "{idc:" + idc + "}," +
                 "{yandex:" + yandex.toString() + "}," +
                 "{qiwi:" + qiwi + "}," +
