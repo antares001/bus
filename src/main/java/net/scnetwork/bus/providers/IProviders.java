@@ -8,4 +8,10 @@ import net.scnetwork.bus.domain.ResponseJs;
 public interface IProviders {
     Response processingXml(Data data);
     ResponseJs processing(DataJs data);
+
+    Response localProcessingXml(Data data);
+    ResponseJs localProcessingJson(DataJs data);
+
+    Response remoteProcessingXml(Data data);
+    ResponseJs remoteProcessingJson(DataJs data);
 }

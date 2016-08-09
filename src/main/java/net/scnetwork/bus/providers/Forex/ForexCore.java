@@ -5,8 +5,9 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
-import java.util.Date;
 import net.scnetwork.bus.providers.IProviders;
+
+import java.util.Date;
 
 public class ForexCore implements IProviders{
     @Override
@@ -35,5 +36,25 @@ public class ForexCore implements IProviders{
         result.setData(rData);
 
         return result;
+    }
+
+    @Override
+    public Response localProcessingXml(Data data) {
+        return null;
+    }
+
+    @Override
+    public ResponseJs localProcessingJson(DataJs data) {
+        return null;
+    }
+
+    @Override
+    public Response remoteProcessingXml(Data data) {
+        return null;
+    }
+
+    @Override
+    public ResponseJs remoteProcessingJson(DataJs data) {
+        return null;
     }
 }

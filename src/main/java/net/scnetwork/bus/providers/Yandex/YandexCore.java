@@ -1,6 +1,7 @@
 package net.scnetwork.bus.providers.Yandex;
 
 import com.yandex.money.api.YandexMoney;
+import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.Yandex;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
@@ -8,11 +9,9 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class YandexCore implements IProviders{
-    @Autowired
-    private Yandex yandex;
+    private Yandex yandex = Config.getInstance().getModules().getYandex();
 
     private static final String CLIENT_ID = "";
 
@@ -77,5 +76,25 @@ public class YandexCore implements IProviders{
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
         }
+    }
+
+    @Override
+    public Response localProcessingXml(Data data) {
+        return null;
+    }
+
+    @Override
+    public ResponseJs localProcessingJson(DataJs data) {
+        return null;
+    }
+
+    @Override
+    public Response remoteProcessingXml(Data data) {
+        return null;
+    }
+
+    @Override
+    public ResponseJs remoteProcessingJson(DataJs data) {
+        return null;
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "modules")
 public class Modules {
     private BPay bpay;
-    private boolean idc;
+    private Idc idc;
     private Yandex yandex;
     private Qiwi qiwi;
     private Leader leader;
@@ -24,11 +24,11 @@ public class Modules {
         this.bpay = bpay;
     }
 
-    public boolean isIdc() {
+    public Idc getIdc() {
         return idc;
     }
 
-    public void setIdc(boolean idc) {
+    public void setIdc(Idc idc) {
         this.idc = idc;
     }
 
