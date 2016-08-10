@@ -14,6 +14,7 @@ public class Global {
     private Modules modules;
     private DaoEnums dao;
     private OraclePoolConfig oraclePoolConfig;
+    private LogConfig logConfig;
 
     public String getEndpoint() {
         return endpoint;
@@ -45,6 +46,14 @@ public class Global {
 
     public void setOraclePoolConfig(OraclePoolConfig oraclePoolConfig) {
         this.oraclePoolConfig = oraclePoolConfig;
+    }
+
+    public LogConfig getLogConfig() {
+        return logConfig;
+    }
+
+    public void setLogConfig(LogConfig logConfig) {
+        this.logConfig = logConfig;
     }
 
     public String toString(){

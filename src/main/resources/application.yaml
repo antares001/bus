@@ -37,3 +37,6 @@ oracle-pool:
       initialLimit: 5
       connectionTimeout: 30
       validateConnection: true
+
+log:
+      type: LOCAL
