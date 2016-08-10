@@ -78,6 +78,16 @@
             <version>2.0.13</version>
         </dependency>
         <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-core</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.taskadapter</groupId>
+            <artifactId>redmine-java-api</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
@@ -96,7 +106,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <executions>
@@ -115,7 +125,7 @@
                     <destDir>${basedir}/target/jaxws</destDir>
                     <sei/>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
     <repositories>
@@ -129,6 +139,10 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/libs-milestone/</url>
         </repository>
     </repositories>
 </project>
