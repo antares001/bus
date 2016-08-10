@@ -96,7 +96,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <executions>
@@ -108,14 +108,14 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                        <wsdlUrl>${basedir}/src/main/resources/wsdl/qiwi.wsdl</wsdlUrl>
+                        <wsdlUrl>http://fias.nalog.ru/WebServices/Public/DownloadService.asmx?WSDL</wsdlUrl>
                     </wsdlUrls>
-                    <packageName>net.scnetwork.bus.clients.qiwi</packageName>
+                    <packageName>net.scnetwork.bus.clients.fias</packageName>
                     <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
                     <destDir>${basedir}/target/jaxws</destDir>
                     <sei/>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
     <repositories>

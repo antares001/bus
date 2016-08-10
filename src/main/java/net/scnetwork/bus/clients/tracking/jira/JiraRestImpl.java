@@ -2,5 +2,14 @@ package net.scnetwork.bus.clients.tracking.jira;
 
 import net.scnetwork.bus.clients.tracking.ITracking;
 
-public class JiraRestImpl implements ITracking{
+public class JiraRestImpl extends JiraCommon implements ITracking{
+    @Override
+    public void getInfo() {
+
+    }
+
+    @Override
+    public void setInfo() {
+
+    }
 }
