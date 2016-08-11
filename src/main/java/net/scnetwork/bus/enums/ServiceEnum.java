@@ -9,7 +9,8 @@ public enum ServiceEnum {
     MTS("mts"),
     BEELINE("beeline"),
     MEGAFON("megafon"),
-    YANDEX("yandex");
+    YANDEX("yandex"),
+    FIAS("fias");
 
     private String name;
 
