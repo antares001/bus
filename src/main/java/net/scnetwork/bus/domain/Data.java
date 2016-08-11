@@ -22,6 +22,9 @@ public class Data {
     @XmlElement(name = "yandex")
     private YandexOptions yandexOptions;
 
+    @XmlElement(name = "fias")
+    private FiasOptions fiasOptions;
+
     @XmlAttribute(name = "description")
     private String description;
 
@@ -68,6 +71,14 @@ public class Data {
 
     public void setbPayOptions(BPayOptions bPayOptions) {
         this.bPayOptions = bPayOptions;
+    }
+
+    public FiasOptions getFiasOptions() {
+        return fiasOptions;
+    }
+
+    public void setFiasOptions(FiasOptions fiasOptions) {
+        this.fiasOptions = fiasOptions;
     }
 
     public YandexOptions getYandexOptions() {
