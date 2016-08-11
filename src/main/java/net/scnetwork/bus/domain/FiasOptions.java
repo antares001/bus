@@ -13,11 +13,22 @@ public class FiasOptions {
     @XmlAttribute
     private FiasOperation fiasOperation;
 
+    @XmlAttribute
+    private FiasFormatEnum formatEnum;
+
     public FiasOperation getFiasOperation() {
         return fiasOperation;
     }
 
     public void setFiasOperation(FiasOperation fiasOperation) {
         this.fiasOperation = fiasOperation;
+    }
+
+    public FiasFormatEnum getFormatEnum() {
+        return formatEnum;
+    }
+
+    public void setFormatEnum(FiasFormatEnum formatEnum) {
+        this.formatEnum = formatEnum;
     }
 }
