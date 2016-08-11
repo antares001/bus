@@ -16,11 +16,17 @@ public class Data {
     @XmlAttribute(name = "service")
     private ServiceEnum service;
 
+    @XmlAttribute
+    private String result;
+
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
     @XmlElement(name = "yandex")
     private YandexOptions yandexOptions;
+
+    @XmlElement(name = "fias")
+    private FiasOptions fiasOptions;
 
     @XmlAttribute(name = "description")
     private String description;
@@ -50,6 +56,14 @@ public class Data {
         this.service = service;
     }
 
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
     public OperationEnum getOperation() {
         return operation;
     }
@@ -68,6 +82,14 @@ public class Data {
 
     public void setbPayOptions(BPayOptions bPayOptions) {
         this.bPayOptions = bPayOptions;
+    }
+
+    public FiasOptions getFiasOptions() {
+        return fiasOptions;
+    }
+
+    public void setFiasOptions(FiasOptions fiasOptions) {
+        this.fiasOptions = fiasOptions;
     }
 
     public YandexOptions getYandexOptions() {
