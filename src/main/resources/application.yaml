@@ -25,6 +25,11 @@ modules:
       service: LOCAL
       url: none
       point: none
+  fias:
+      use: yes
+      service: LOCAL
+      url: none
+      format: DBF
 
 dao: oracle-pool
 
