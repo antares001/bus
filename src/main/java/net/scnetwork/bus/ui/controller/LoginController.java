@@ -1,10 +1,11 @@
 package net.scnetwork.bus.ui.controller;
 
+import com.ejt.vaadin.loginform.DefaultVerticalLoginForm;
+import com.ejt.vaadin.loginform.LoginForm;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
@@ -16,6 +17,8 @@ public class LoginController extends UI{
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        setContent(new Button("Click", e -> Notification.show("hello")));
+        DefaultVerticalLoginForm loginForm = new DefaultVerticalLoginForm();
+        loginForm.addLoginListener((LoginForm.LoginListener) loginEvent -> Notification.show("hello"));
+        setContent(loginForm);
     }
 }
