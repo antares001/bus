@@ -102,11 +102,11 @@
             <artifactId>spring-vaadin-security</artifactId>
             <version>0.0.5.RELEASE</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.vaadin.addons</groupId>
             <artifactId>loginform</artifactId>
             <version>0.6.2</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
