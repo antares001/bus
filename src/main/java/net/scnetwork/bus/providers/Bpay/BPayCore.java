@@ -7,6 +7,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 import javax.xml.bind.JAXBContext;
@@ -105,7 +106,7 @@ public class BPayCore implements IProviders{
             MessageDigest md = MessageDigest.getInstance("MD5");
             //TODO: make md5(md5(xmlData) + md5(signature))
         } catch (JAXBException | UnsupportedEncodingException | NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            LogBus.writeLog(e);
         }
         return null;
     }
