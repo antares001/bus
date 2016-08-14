@@ -20,10 +20,13 @@ import net.scnetwork.bus.providers.Yandex.YandexCore;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
+/**
+ * Класс-маршрутизатор вызовов
+ */
 public class Dispatcher {
 
     /**
-     * Формирование ответа в виде xml
+     * Формирование soap ответа в виде xml
      * @param data входящие данные
      * @param service тип сервиса
      * @return ответ
@@ -68,7 +71,7 @@ public class Dispatcher {
     }
 
     /**
-     * Формирование ответа в формате json
+     * Формирование soap ответа в формате json
      * @param data входящие данные
      * @param service тип сервиса
      * @return ответ
@@ -112,11 +115,29 @@ public class Dispatcher {
         return providers.processing(data);
     }
 
+    /**
+     * Формирование rest ответа в виде xml
+     * @param request входящие данные
+     * @return ответ
+     */
     public Response restXmlDispatcher(String request){
-        return null;
+        Response response = new Response();
+        Data data = new Data();
+        data.setResult(request);
+        response.setData(data);
+        return response;
     }
 
+    /**
+     * Формирование rest ответа в формате json
+     * @param request входящие данные
+     * @return ответ
+     */
     public ResponseJs restJsDispatcher(String request){
-        return null;
+        ResponseJs response = new ResponseJs();
+        DataJs data = new DataJs();
+        data.setOperation(request);
+        response.setData(data);
+        return response;
     }
 }
