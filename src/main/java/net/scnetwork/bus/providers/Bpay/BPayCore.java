@@ -112,19 +112,16 @@ public class BPayCore implements IProviders{
 
     @Override
     public ResponseJs localProcessingJson(DataJs data) {
-        String point = bPay.getPoint();
         return null;
     }
 
     @Override
     public Response remoteProcessingXml(Data data) {
-        String microservice = bPay.getUrl();
         return null;
     }
 
     @Override
     public ResponseJs remoteProcessingJson(DataJs data) {
-        String microservice = bPay.getUrl();
         return null;
     }
 
