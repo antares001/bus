@@ -13,12 +13,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.xml.ws.Endpoint;
 
 @SpringBootApplication
+/**
+ * Класс запуска приложения
+ */
 public class Bus implements CommandLineRunner{
     @Autowired
     private Global global;
 
     private static final Logger log = LoggerFactory.getLogger(Bus.class);
 
+    /**
+     * Точка запуска приложения spring boot
+     * @param arg входящие параметры
+     */
     public static void main(String... arg){
         SpringApplication.run(Bus.class, arg);
     }

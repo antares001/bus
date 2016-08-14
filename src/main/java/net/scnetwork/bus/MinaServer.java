@@ -16,10 +16,16 @@ import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
 @Component
+/**
+ * Класс запуска сервера платежных систем
+ */
 public class MinaServer {
     private static final int PORT = 9123;
 
     @PostConstruct
+    /**
+     * Запуск сервиса
+     */
     public void init(){
         IoAcceptor acceptor = new NioSocketAcceptor();
 
