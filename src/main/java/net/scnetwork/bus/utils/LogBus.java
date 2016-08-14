@@ -17,10 +17,10 @@ public class LogBus {
 
     public void error(){}
 
-    public static void writeLog(String message){
+    public static void writeLog(Exception message){
         switch (LogEnums.valueOf(logConfig.getType())){
             case LOCAL:
-                logger.info(message);
+                logger.info(message.toString());
                 break;
             case POSTGRESQL:
                 break;
