@@ -1,16 +1,12 @@
-package net.scnetwork.bus.providers.Jpos;
+package net.scnetwork.bus.providers.megafon;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Jpos;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 
-public class JposCore implements IProviders{
-    private static final Jpos jpos = Config.getInstance().getModules().getJpos();
-
+public class MegafonCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         return null;

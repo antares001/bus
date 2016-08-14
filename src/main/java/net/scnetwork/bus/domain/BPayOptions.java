@@ -1,7 +1,7 @@
 package net.scnetwork.bus.domain;
 
 import net.scnetwork.bus.enums.operation.BPayOperation;
-import net.scnetwork.bus.providers.Bpay.BPayMethod;
+import net.scnetwork.bus.providers.bpay.BPayMethod;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;

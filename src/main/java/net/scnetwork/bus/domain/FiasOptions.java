@@ -1,6 +1,6 @@
 package net.scnetwork.bus.domain;
 
-import net.scnetwork.bus.providers.Fias.FiasOperation;
+import net.scnetwork.bus.providers.fias.FiasOperation;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

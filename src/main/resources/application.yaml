@@ -34,6 +34,8 @@ modules:
       use: yes
       service: BOTH
       url: none
+      port: 9123
+      bufferSize: 2048
 
 dao: oracle-pool
 

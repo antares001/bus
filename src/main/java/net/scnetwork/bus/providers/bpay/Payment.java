@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Bpay;
+package net.scnetwork.bus.providers.bpay;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

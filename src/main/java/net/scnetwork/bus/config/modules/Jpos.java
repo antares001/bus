@@ -6,11 +6,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "idc")
+@ConfigurationProperties(prefix = "jpos")
 public class Jpos implements IModules{
     private boolean use;
     private String service;
     private String url;
+    private int port;
+    private int bufferSize;
 
     @Override
     public boolean isUse() {
@@ -40,5 +42,21 @@ public class Jpos implements IModules{
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public int getBufferSize() {
+        return bufferSize;
+    }
+
+    public void setBufferSize(int bufferSize) {
+        this.bufferSize = bufferSize;
     }
 }

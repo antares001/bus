@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Fias;
+package net.scnetwork.bus.providers.fias;
 
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
