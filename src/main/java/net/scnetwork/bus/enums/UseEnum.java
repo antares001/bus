@@ -1,5 +1,8 @@
 package net.scnetwork.bus.enums;
 
+/**
+ * Тип обработки сервисов
+ */
 public enum UseEnum {
     LOCAL("local"),
     REMOTE("remote"),

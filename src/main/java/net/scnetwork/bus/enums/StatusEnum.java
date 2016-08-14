@@ -1,5 +1,8 @@
 package net.scnetwork.bus.enums;
 
+/**
+ * Типы статусов ответов
+ */
 public enum StatusEnum {
     OK("ok"),
     FORMAT_ERROR("format_error"),
