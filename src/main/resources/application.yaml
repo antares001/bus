@@ -30,6 +30,10 @@ modules:
       service: LOCAL
       url: none
       format: DBF
+  jpos:
+      use: yes
+      service: BOTH
+      url: none
 
 dao: oracle-pool
 

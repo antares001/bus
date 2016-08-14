@@ -13,6 +13,7 @@ public class Modules {
     private Yandex yandex;
     private Qiwi qiwi;
     private Leader leader;
+    private Jpos jpos;
 
     public Modules(){}
 
@@ -56,12 +57,21 @@ public class Modules {
         this.leader = leader;
     }
 
+    public Jpos getJpos() {
+        return jpos;
+    }
+
+    public void setJpos(Jpos jpos) {
+        this.jpos = jpos;
+    }
+
     public String toString(){
         return "Modules:" +
                 "{bpay:" + bpay.toString() + "}," +
                 "{idc:" + idc + "}," +
                 "{yandex:" + yandex.toString() + "}," +
                 "{qiwi:" + qiwi + "}," +
-                "{leader:" + leader + "}";
+                "{leader:" + leader + "}" +
+                "{jpos:" + jpos + "}";
     }
 }
