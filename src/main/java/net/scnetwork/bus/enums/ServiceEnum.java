@@ -1,5 +1,8 @@
 package net.scnetwork.bus.enums;
 
+/**
+ * Типы сервисов
+ */
 public enum ServiceEnum {
     BPAY("bpay"),
     IDC("idc"),

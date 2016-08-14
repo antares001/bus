@@ -1,5 +1,8 @@
 package net.scnetwork.bus.enums;
 
+/**
+ * Типы подключения к БД
+ */
 public enum DaoEnums {
     ORACLE("oracle"),
     ORACLE_POOL("oracle_pool"),
