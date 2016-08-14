@@ -36,6 +36,14 @@ modules:
       url: none
       port: 9123
       bufferSize: 2048
+  mstercard:
+      use: no
+      service: no
+      url: no
+  visa:
+      use: no
+      service: no
+      url: no
 
 dao: oracle-pool
 

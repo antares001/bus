@@ -1,12 +1,12 @@
 
 package net.scnetwork.bus.clients.fias;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -61,7 +61,7 @@ public class ArrayOfDownloadFileInfo {
      */
     public List<DownloadFileInfo> getDownloadFileInfo() {
         if (downloadFileInfo == null) {
-            downloadFileInfo = new ArrayList<DownloadFileInfo>();
+            downloadFileInfo = new ArrayList<>();
         }
         return this.downloadFileInfo;
     }
