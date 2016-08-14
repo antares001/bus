@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Fias;
+package net.scnetwork.bus.providers.fias;
 
 public enum FiasOperation {
     GET_URL;

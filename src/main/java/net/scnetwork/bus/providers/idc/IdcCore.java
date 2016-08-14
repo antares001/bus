@@ -1,51 +1,29 @@
-package net.scnetwork.bus.providers.Yandex;
+package net.scnetwork.bus.providers.idc;
 
-import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Yandex;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.config.modules.Idc;
+import net.scnetwork.bus.domain.Data;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
-public class YandexCore implements IProviders{
-    private Yandex yandex = Config.getInstance().getModules().getYandex();
-
-    private static final String CLIENT_ID = "";
+public class IdcCore implements IProviders{
+    private Idc idc = Config.getInstance().getModules().getIdc();
 
     @Override
     public Response processingXml(Data data) {
-        if (yandex.isUse()) {
-            switch (UseEnum.valueOf(yandex.getService())){
+        if (idc.isUse()) {
+            switch (UseEnum.valueOf(idc.getService())){
                 case LOCAL:
-                    YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
-
-                    YandexOptions options = data.getYandexOptions();
-                    switch (options.getOperation()) {
-                        case ACCOUNT_INFO:
-                            break;
-                        case OPERATION_HISTORY:
-                            break;
-                        case OPERATION_DETAILS:
-                            break;
-                        case INCOMING_TRANSFERS:
-                            break;
-                        case PAYMENT:
-                            break;
-                        case PAYMENT_SHOP:
-                            break;
-                        case PAYMENT_P2P:
-                            break;
-                        case MONEY_SOURCE:
-                            break;
-                        default:
-                            break;
-                    }
+                    String point = idc.getPoint();
                     break;
                 case REMOTE:
-                    String microservice = yandex.getUrl();
+                    String microservice = idc.getUrl();
                     break;
                 case NONE:
                     break;
@@ -60,12 +38,13 @@ public class YandexCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (yandex.isUse()) {
-            switch (UseEnum.valueOf(yandex.getService())){
+        if (idc.isUse()) {
+            switch (UseEnum.valueOf(idc.getService())){
                 case LOCAL:
+                    String point = idc.getPoint();
                     break;
                 case REMOTE:
-                    String microservice = yandex.getUrl();
+                    String microservice = idc.getUrl();
                     break;
                 case NONE:
                     break;

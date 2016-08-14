@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Forex;
+package net.scnetwork.bus.providers.forex;
 
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;

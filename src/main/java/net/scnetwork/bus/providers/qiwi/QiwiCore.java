@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Qiwi;
+package net.scnetwork.bus.providers.qiwi;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.Qiwi;

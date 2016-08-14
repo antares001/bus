@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Bpay;
+package net.scnetwork.bus.providers.bpay;
 
 public enum BPayMethod {
     BPAY("bpay"),

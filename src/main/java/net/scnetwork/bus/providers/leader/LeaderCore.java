@@ -1,7 +1,7 @@
-package net.scnetwork.bus.providers.Idc;
+package net.scnetwork.bus.providers.leader;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Idc;
+import net.scnetwork.bus.config.modules.Leader;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
@@ -12,18 +12,18 @@ import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
-public class IdcCore implements IProviders{
-    private Idc idc = Config.getInstance().getModules().getIdc();
+public class LeaderCore implements IProviders{
+    private Leader leader = Config.getInstance().getModules().getLeader();
 
     @Override
     public Response processingXml(Data data) {
-        if (idc.isUse()) {
-            switch (UseEnum.valueOf(idc.getService())){
+        if (leader.isUse()) {
+            switch (UseEnum.valueOf(leader.getService())){
                 case LOCAL:
-                    String point = idc.getPoint();
+                    String point = leader.getPoint();
                     break;
                 case REMOTE:
-                    String microservice = idc.getUrl();
+                    String microserviceUrl = leader.getUrl();
                     break;
                 case NONE:
                     break;
@@ -38,13 +38,13 @@ public class IdcCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (idc.isUse()) {
-            switch (UseEnum.valueOf(idc.getService())){
+        if (leader.isUse()) {
+            switch (UseEnum.valueOf(leader.getService())){
                 case LOCAL:
-                    String point = idc.getPoint();
+                    String point = leader.getPoint();
                     break;
                 case REMOTE:
-                    String microservice = idc.getUrl();
+                    String microserviceUrl = leader.getUrl();
                     break;
                 case NONE:
                     break;

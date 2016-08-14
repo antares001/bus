@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Bpay;
+package net.scnetwork.bus.providers.bpay;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.BPay;

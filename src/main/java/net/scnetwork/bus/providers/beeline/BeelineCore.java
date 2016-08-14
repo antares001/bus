@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.Mts;
+package net.scnetwork.bus.providers.beeline;
 
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
@@ -6,7 +6,7 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 
-public class MtsCore implements IProviders{
+public class BeelineCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         return null;

@@ -1,29 +1,51 @@
-package net.scnetwork.bus.providers.Leader;
+package net.scnetwork.bus.providers.yandex;
 
+import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Leader;
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.config.modules.Yandex;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
-public class LeaderCore implements IProviders{
-    private Leader leader = Config.getInstance().getModules().getLeader();
+public class YandexCore implements IProviders{
+    private Yandex yandex = Config.getInstance().getModules().getYandex();
+
+    private static final String CLIENT_ID = "";
 
     @Override
     public Response processingXml(Data data) {
-        if (leader.isUse()) {
-            switch (UseEnum.valueOf(leader.getService())){
+        if (yandex.isUse()) {
+            switch (UseEnum.valueOf(yandex.getService())){
                 case LOCAL:
-                    String point = leader.getPoint();
+                    YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
+
+                    YandexOptions options = data.getYandexOptions();
+                    switch (options.getOperation()) {
+                        case ACCOUNT_INFO:
+                            break;
+                        case OPERATION_HISTORY:
+                            break;
+                        case OPERATION_DETAILS:
+                            break;
+                        case INCOMING_TRANSFERS:
+                            break;
+                        case PAYMENT:
+                            break;
+                        case PAYMENT_SHOP:
+                            break;
+                        case PAYMENT_P2P:
+                            break;
+                        case MONEY_SOURCE:
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case REMOTE:
-                    String microserviceUrl = leader.getUrl();
+                    String microservice = yandex.getUrl();
                     break;
                 case NONE:
                     break;
@@ -38,13 +60,12 @@ public class LeaderCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (leader.isUse()) {
-            switch (UseEnum.valueOf(leader.getService())){
+        if (yandex.isUse()) {
+            switch (UseEnum.valueOf(yandex.getService())){
                 case LOCAL:
-                    String point = leader.getPoint();
                     break;
                 case REMOTE:
-                    String microserviceUrl = leader.getUrl();
+                    String microservice = yandex.getUrl();
                     break;
                 case NONE:
                     break;
