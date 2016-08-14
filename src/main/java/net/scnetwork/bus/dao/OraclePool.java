@@ -1,6 +1,7 @@
 package net.scnetwork.bus.dao;
 
 import net.scnetwork.bus.config.OraclePoolConfig;
+import net.scnetwork.bus.utils.LogBus;
 import oracle.jdbc.pool.OracleDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +23,7 @@ public class OraclePool {
             ods.setURL(poolConfig.getJdbcUrl());
             ods.setUser(poolConfig.getUsername());
             ods.setPassword(poolConfig.getPassword());
-            ods.setConnectionCachingEnabled(true);
+            ods.setConnectionCachingEnabled(poolConfig.isCacheEnabled());
             ods.setConnectionCacheName(CACHE_NAME);
             Properties cacheProperties = new Properties();
             cacheProperties.setProperty("MinLimit", String.valueOf(poolConfig.getMaxLimit()));
@@ -33,7 +34,7 @@ public class OraclePool {
 
             ods.setConnectionCacheProperties(cacheProperties);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LogBus.writeLog(e);
         }
     }
 
@@ -45,16 +46,6 @@ public class OraclePool {
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException {
-        return getConnection("env.unspecified");
-    }
-
-    /**
-     * Подключение к базе данных Oracle.
-     * @param env переменная окружения.
-     * @return экземпляр класса Connection - подключение к базе данных Oracle.
-     * @throws SQLException
-     */
-    public static Connection getConnection(String env) throws SQLException{
         if(ods == null){
             throw new SQLException("OracleDataSource is null.");
         }

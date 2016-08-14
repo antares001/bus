@@ -1,6 +1,7 @@
 package net.scnetwork.bus.ui;
 
 
+import net.scnetwork.bus.utils.LogBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,7 +23,11 @@ public class SecurityUI extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+    public void configureGlobal(AuthenticationManagerBuilder auth){
+        try {
+            auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+        } catch (Exception e) {
+            LogBus.writeLog(e);
+        }
     }
 }

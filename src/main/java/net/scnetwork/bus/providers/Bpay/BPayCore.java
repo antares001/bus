@@ -71,26 +71,12 @@ public class BPayCore implements IProviders{
 
     @Override
     public Response localProcessingXml(Data data) {
-        String point = bPay.getPoint();
         BPayOptions options = data.getbPayOptions();
 
         Payment payment = new Payment();
         switch (options.getOperation()) {
             case BILL:
-                payment.setType("1.2");
-                payment.setMerchantId(bPay.getMerchantId());
-                payment.setAmount(options.getAmount());
-                payment.setDescription(options.getDescription());
-                payment.setMethod(options.getMethod());
-                payment.setOrderId(options.getOrder());
-                payment.setSuccessUrl("");
-                payment.setFailUrl("");
-                payment.setCallbackUrl("");
-                payment.setLang(BPayLang.RU);
-                payment.setAdvanced1(" ");
-                payment.setAdvanced2(" ");
-                payment.setIstest(1);
-                payment.setGetUrl(0);
+                payment = createInfo(bPay, options);
                 break;
             case CALLBACK:
                 payment.setType("1.2");
@@ -142,4 +128,23 @@ public class BPayCore implements IProviders{
         return null;
     }
 
+    private Payment createInfo(BPay bPay, BPayOptions options){
+        Payment payment = new Payment();
+        payment.setType("1.2");
+        payment.setMerchantId(bPay.getMerchantId());
+        payment.setAmount(options.getAmount());
+        payment.setDescription(options.getDescription());
+        payment.setMethod(options.getMethod());
+        payment.setOrderId(options.getOrder());
+        payment.setSuccessUrl("");
+        payment.setFailUrl("");
+        payment.setCallbackUrl("");
+        payment.setLang(BPayLang.RU);
+        payment.setAdvanced1(" ");
+        payment.setAdvanced2(" ");
+        payment.setIstest(1);
+        payment.setGetUrl(0);
+
+        return payment;
+    }
 }

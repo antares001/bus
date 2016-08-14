@@ -16,6 +16,7 @@ public class OraclePoolConfig {
     private int initialLimit;
     private int connectionTimeout;
     private boolean validateConnection;
+    private boolean cacheEnabled;
 
     public String getJdbcUrl() {
         return jdbcUrl;
@@ -79,5 +80,13 @@ public class OraclePoolConfig {
 
     public void setValidateConnection(boolean validateConnection) {
         this.validateConnection = validateConnection;
+    }
+
+    public boolean isCacheEnabled() {
+        return cacheEnabled;
+    }
+
+    public void setCacheEnabled(boolean cacheEnabled) {
+        this.cacheEnabled = cacheEnabled;
     }
 }
