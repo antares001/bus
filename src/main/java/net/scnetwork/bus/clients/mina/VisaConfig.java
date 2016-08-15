@@ -5,6 +5,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Конфигурация для сервиса Visa
+ */
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "visa")
