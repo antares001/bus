@@ -4,6 +4,9 @@ import net.scnetwork.bus.enums.ServiceEnum;
 
 import javax.xml.bind.annotation.*;
 
+/**
+ * Авторизационный модуль запроса (Request) XML
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Auth")
 public class Auth {

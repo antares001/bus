@@ -24,22 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _CheckBill_QNAME = new QName("http://server.ishop.mw.ru/", "checkBill");
-    private final static QName _CreateBill_QNAME = new QName("http://server.ishop.mw.ru/", "createBill");
-    private final static QName _CreateBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillResponse");
-    private final static QName _CancelBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillResponse");
-    private final static QName _CreateBillCcyResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillCcyResponse");
-    private final static QName _CreateBillExtResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillExtResponse");
-    private final static QName _GetBillListResponse_QNAME = new QName("http://server.ishop.mw.ru/", "getBillListResponse");
-    private final static QName _GetBillList_QNAME = new QName("http://server.ishop.mw.ru/", "getBillList");
-    private final static QName _CancelBillPayedAmountResponse_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillPayedAmountResponse");
-    private final static QName _CreateBillExt_QNAME = new QName("http://server.ishop.mw.ru/", "createBillExt");
-    private final static QName _CheckBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "checkBillResponse");
-    private final static QName _CheckRefund_QNAME = new QName("http://server.ishop.mw.ru/", "checkRefund");
-    private final static QName _CheckRefundResponse_QNAME = new QName("http://server.ishop.mw.ru/", "checkRefundResponse");
-    private final static QName _CancelBillPayedAmount_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillPayedAmount");
-    private final static QName _CreateBillCcy_QNAME = new QName("http://server.ishop.mw.ru/", "createBillCcy");
-    private final static QName _CancelBill_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBill");
+    private final  QName _CheckBill_QNAME = new QName("http://server.ishop.mw.ru/", "checkBill");
+    private final  QName _CreateBill_QNAME = new QName("http://server.ishop.mw.ru/", "createBill");
+    private final  QName _CreateBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillResponse");
+    private final  QName _CancelBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillResponse");
+    private final  QName _CreateBillCcyResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillCcyResponse");
+    private final  QName _CreateBillExtResponse_QNAME = new QName("http://server.ishop.mw.ru/", "createBillExtResponse");
+    private final  QName _GetBillListResponse_QNAME = new QName("http://server.ishop.mw.ru/", "getBillListResponse");
+    private final  QName _GetBillList_QNAME = new QName("http://server.ishop.mw.ru/", "getBillList");
+    private final  QName _CancelBillPayedAmountResponse_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillPayedAmountResponse");
+    private final  QName _CreateBillExt_QNAME = new QName("http://server.ishop.mw.ru/", "createBillExt");
+    private final  QName _CheckBillResponse_QNAME = new QName("http://server.ishop.mw.ru/", "checkBillResponse");
+    private final  QName _CheckRefund_QNAME = new QName("http://server.ishop.mw.ru/", "checkRefund");
+    private final  QName _CheckRefundResponse_QNAME = new QName("http://server.ishop.mw.ru/", "checkRefundResponse");
+    private final  QName _CancelBillPayedAmount_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBillPayedAmount");
+    private final  QName _CreateBillCcy_QNAME = new QName("http://server.ishop.mw.ru/", "createBillCcy");
+    private final  QName _CancelBill_QNAME = new QName("http://server.ishop.mw.ru/", "cancelBill");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.scnetwork.bus.clients.qiwi

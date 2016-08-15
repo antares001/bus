@@ -12,6 +12,9 @@ import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
+/**
+ * Обработка сервиса Лидер
+ */
 public class LeaderCore implements IProviders{
     private Leader leader = Config.getInstance().getModules().getLeader();
 

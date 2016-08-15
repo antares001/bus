@@ -8,6 +8,9 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 
+/**
+ * Обработка сервиса JPOS
+ */
 public class JposCore implements IProviders{
     private static final Jpos jpos = Config.getInstance().getModules().getJpos();
 

@@ -9,6 +9,9 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.XmlUtils;
 
+/**
+ * Обработка сервиса FIAS
+ */
 public class FiasCore implements IProviders{
     private DownloadServiceSoap serviceSoap;
 

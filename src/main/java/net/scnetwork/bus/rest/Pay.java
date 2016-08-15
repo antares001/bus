@@ -8,11 +8,21 @@ import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.math.BigDecimal;
 
+/**
+ * Обработка запросов оплаты по протоколу REST
+ */
 @RestController
 public class Pay {
+    /**
+     * Формирование XML ответа на запрос оплаты
+     * @param service сервис
+     * @param sum сумма
+     * @param currency валюта
+     * @param newData новые данные (опционально)
+     * @return XML ответ
+     */
     @RequestMapping(value = "/rest/xml/pay/{service}", method = RequestMethod.POST)
     public Response payXml(@PathVariable(value = "service") ServiceEnum service,
                            @RequestParam(value = "sum") BigDecimal sum,
@@ -20,29 +30,28 @@ public class Pay {
                            @RequestParam(value = "newdata", required = false) String newData){
         switch (service){
             case BPAY:
-                break;
             case LEADER:
-                break;
             case IDC:
-                break;
             case MTS:
-                break;
             case BEELINE:
-                break;
             case MEGAFON:
-                break;
             case FOREX:
-                break;
             case QIWI:
-                break;
             case YANDEX:
-                break;
             default:
                 break;
         }
         return XmlUtils.getError(StatusEnum.NULL);
     }
 
+    /**
+     * Формирование ответа JSON запроса на оплату
+     * @param service сервис
+     * @param sum сумма
+     * @param currency валюта
+     * @param newData новые данные (опционально)
+     * @return JSON ответ
+     */
     @RequestMapping(value = "/rest/js/pay/{service}", method = RequestMethod.POST)
     public ResponseJs payJs(@PathVariable(value = "service") ServiceEnum service,
                             @RequestParam(value = "sum") BigDecimal sum,
@@ -50,23 +59,14 @@ public class Pay {
                             @RequestParam(value = "newdata", required = false) String newData){
         switch (service){
             case BPAY:
-                break;
             case LEADER:
-                break;
             case IDC:
-                break;
             case MTS:
-                break;
             case BEELINE:
-                break;
             case MEGAFON:
-                break;
             case FOREX:
-                break;
             case QIWI:
-                break;
             case YANDEX:
-                break;
             default:
                 break;
         }

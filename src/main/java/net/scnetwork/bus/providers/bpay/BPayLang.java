@@ -1,5 +1,8 @@
 package net.scnetwork.bus.providers.bpay;
 
+/**
+ * Перечень языков для BPay
+ */
 public enum BPayLang {
     EN("en"),
     RU("ru"),
