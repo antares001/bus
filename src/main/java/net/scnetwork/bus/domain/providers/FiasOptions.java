@@ -1,5 +1,6 @@
-package net.scnetwork.bus.domain;
+package net.scnetwork.bus.domain.providers;
 
+import net.scnetwork.bus.domain.FiasFormatEnum;
 import net.scnetwork.bus.providers.fias.FiasOperation;
 
 import javax.xml.bind.annotation.XmlAccessType;

@@ -121,11 +121,7 @@ public class Dispatcher {
      * @return ответ
      */
     public Response restXmlDispatcher(String request){
-        Response response = new Response();
-        Data data = new Data();
-        data.setResult(request);
-        response.setData(data);
-        return response;
+        return new Response();
     }
 
     /**

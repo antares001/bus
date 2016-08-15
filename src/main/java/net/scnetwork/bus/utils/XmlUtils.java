@@ -1,6 +1,7 @@
 package net.scnetwork.bus.utils;
 
 import net.scnetwork.bus.domain.Data;
+import net.scnetwork.bus.domain.DataResponse.DataRespError;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.enums.StatusEnum;
 
@@ -9,9 +10,7 @@ public class XmlUtils {
         Response response = new Response();
         response.setType(0);
 
-        Data data = new Data();
-        data.setStatus(status);
-        data.setDescription(status.getName());
+        Data data = new DataRespError(status);
         response.setData(data);
 
         return response;

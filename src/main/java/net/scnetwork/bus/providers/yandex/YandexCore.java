@@ -4,6 +4,8 @@ import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.Yandex;
 import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataRequest.DataReqYandex;
+import net.scnetwork.bus.domain.providers.YandexOptions;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
@@ -21,8 +23,7 @@ public class YandexCore implements IProviders{
             switch (UseEnum.valueOf(yandex.getService())){
                 case LOCAL:
                     YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
-
-                    YandexOptions options = data.getYandexOptions();
+                    YandexOptions options =((DataReqYandex) data).getYandexOptions();
                     switch (options.getOperation()) {
                         case ACCOUNT_INFO:
                             break;

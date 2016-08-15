@@ -2,7 +2,12 @@ package net.scnetwork.bus.providers.bpay;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.modules.BPay;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.Data;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest.DataReqBpay;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.providers.BPayOptions;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
@@ -72,7 +77,7 @@ public class BPayCore implements IProviders{
 
     @Override
     public Response localProcessingXml(Data data) {
-        BPayOptions options = data.getbPayOptions();
+        BPayOptions options = ((DataReqBpay) data).getbPayOptions();
 
         Payment payment = new Payment();
         switch (options.getOperation()) {

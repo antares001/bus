@@ -2,6 +2,7 @@ package net.scnetwork.bus.providers.forex;
 
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataResponse.DataRespForex;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
@@ -16,8 +17,7 @@ public class ForexCore implements IProviders{
 
         String account = data.getAccount();
 
-        Data rData = new Data();
-        rData.setDate(new Date());
+        Data rData = new DataRespForex();
         rData.setStatus(StatusEnum.OK);
         result.setData(rData);
 

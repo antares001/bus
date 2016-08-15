@@ -4,12 +4,15 @@ import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class Data {
+public abstract class Data {
     @XmlAttribute(name = "status")
     private StatusEnum status;
 
@@ -22,12 +25,6 @@ public class Data {
     @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
-    @XmlElement(name = "yandex")
-    private YandexOptions yandexOptions;
-
-    @XmlElement(name = "fias")
-    private FiasOptions fiasOptions;
-
     @XmlAttribute(name = "description")
     private String description;
 
@@ -36,9 +33,6 @@ public class Data {
 
     @XmlAttribute(name = "date")
     private Date date;
-
-    @XmlElement(name = "bpay")
-    private BPayOptions bPayOptions;
 
     public StatusEnum getStatus() {
         return status;
@@ -74,30 +68,6 @@ public class Data {
 
     public String getDescription() {
         return description;
-    }
-
-    public BPayOptions getbPayOptions() {
-        return bPayOptions;
-    }
-
-    public void setbPayOptions(BPayOptions bPayOptions) {
-        this.bPayOptions = bPayOptions;
-    }
-
-    public FiasOptions getFiasOptions() {
-        return fiasOptions;
-    }
-
-    public void setFiasOptions(FiasOptions fiasOptions) {
-        this.fiasOptions = fiasOptions;
-    }
-
-    public YandexOptions getYandexOptions() {
-        return yandexOptions;
-    }
-
-    public void setYandexOptions(YandexOptions yandexOptions) {
-        this.yandexOptions = yandexOptions;
     }
 
     public void setDescription(String description) {

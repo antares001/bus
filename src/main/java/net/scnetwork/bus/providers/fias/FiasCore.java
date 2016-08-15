@@ -4,6 +4,9 @@ import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
 import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataRequest.DataReqFias;
+import net.scnetwork.bus.domain.DataResponse.DataRespFias;
+import net.scnetwork.bus.domain.providers.FiasOptions;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
@@ -19,7 +22,7 @@ public class FiasCore implements IProviders{
 
     @Override
     public Response processingXml(Data data) {
-        FiasOptions options = data.getFiasOptions();
+        FiasOptions options = ((DataReqFias) data).getFiasOptions();
         if (null != options){
             FiasOperation operation = options.getFiasOperation();
             if (null != operation){
@@ -28,7 +31,7 @@ public class FiasCore implements IProviders{
                         DownloadFileInfo fileInfo = serviceSoap.getLastDownloadFileInfo();
                         if (null != fileInfo){
                             Response response = new Response();
-                            Data dataResponse = new Data();
+                            Data dataResponse = new DataRespFias();
                             dataResponse.setStatus(StatusEnum.OK);
                             dataResponse.setService(ServiceEnum.FIAS);
                             switch (options.getFormatEnum()){

@@ -1,4 +1,4 @@
-package net.scnetwork.bus.domain;
+package net.scnetwork.bus.domain.providers;
 
 import net.scnetwork.bus.enums.operation.BPayOperation;
 import net.scnetwork.bus.providers.bpay.BPayMethod;

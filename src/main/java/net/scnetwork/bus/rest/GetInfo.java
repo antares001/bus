@@ -2,6 +2,7 @@ package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataResponse.*;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.providers.bpay.BPayCore;
 import net.scnetwork.bus.providers.beeline.BeelineCore;
@@ -28,35 +29,42 @@ public class GetInfo {
     @RequestMapping("/rest/getXml/{service}/{account}")
     public Response restGetXml(@PathVariable(value = "service") ServiceEnum service,
                                @PathVariable(value = "account") String account){
-        Data data = new Data();
-        data.setAccount(account);
-        data.setService(service);
+        Data data;
         switch (service){
             case BPAY:
+                data = new DataRespBpay();
                 BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
             case IDC:
+                data = new DataRespIdc();
                 IdcCore idc = new IdcCore();
                 return idc.processingXml(data);
             case LEADER:
+                data = new DataRespLeader();
                 LeaderCore leader = new LeaderCore();
                 return leader.processingXml(data);
             case MTS:
+                data = new DataRespMts();
                 MtsCore mts = new MtsCore();
                 return mts.processingXml(data);
             case BEELINE:
+                data = new DataRespBeeline();
                 BeelineCore beeline = new BeelineCore();
                 return beeline.processingXml(data);
             case MEGAFON:
+                data = new DataRespMegafon();
                 MegafonCore megafon = new MegafonCore();
                 return megafon.processingXml(data);
             case FOREX:
+                data = new DataRespForex();
                 ForexCore fix = new ForexCore();
                 return fix.processingXml(data);
             case QIWI:
+                data = new DataRespQiwi();
                 QiwiCore qiwi = new QiwiCore();
                 return qiwi.processingXml(data);
             case YANDEX:
+                data = new DataRespYandex();
                 YandexCore yandex = new YandexCore();
                 return yandex.processingXml(data);
             default:
