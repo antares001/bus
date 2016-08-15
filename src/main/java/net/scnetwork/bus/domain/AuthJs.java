@@ -2,6 +2,9 @@ package net.scnetwork.bus.domain;
 
 import net.scnetwork.bus.enums.ServiceEnum;
 
+/**
+ * Авторизационный модуль запроса (Request) JSON
+ */
 public class AuthJs {
     private String login;
     private String password;

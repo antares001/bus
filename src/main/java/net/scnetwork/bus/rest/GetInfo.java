@@ -16,7 +16,9 @@ import net.scnetwork.bus.providers.yandex.YandexCore;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Обработка запросов на получение состояния по протоколу REST
+ */
 @RestController
 public class GetInfo {
     private Dispatcher dispatcher = new Dispatcher();
@@ -26,6 +28,12 @@ public class GetInfo {
         return "test running";
     }
 
+    /**
+     * Формирование XML по запросу состояния
+     * @param service сервис
+     * @param account лицевой счет
+     * @return XML ответ
+     */
     @RequestMapping("/rest/getXml/{service}/{account}")
     public Response restGetXml(@PathVariable(value = "service") ServiceEnum service,
                                @PathVariable(value = "account") String account){
@@ -73,6 +81,12 @@ public class GetInfo {
         return dispatcher.restXmlDispatcher("");
     }
 
+    /**
+     * Формирование JSON на запрос состояния
+     * @param service сервис
+     * @param account лицевой счет
+     * @return JSON ответ
+     */
     @RequestMapping(value = "/rest/getJson/{service}", method = RequestMethod.GET)
     public ResponseJs restGetJson(@PathVariable(value = "service") ServiceEnum service,
                                   @RequestParam(value = "account") String account){
@@ -112,6 +126,10 @@ public class GetInfo {
         return dispatcher.restJsDispatcher("");
     }
 
+    /**
+     * Подключение enum к REST
+     * @param dataBinder переменная связывания
+     */
     @InitBinder
     public void initBinder(WebDataBinder dataBinder){
         dataBinder.registerCustomEditor(ServiceEnum.class, new ServiceConverter());

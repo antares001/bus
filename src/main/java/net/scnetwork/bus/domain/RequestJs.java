@@ -1,5 +1,8 @@
 package net.scnetwork.bus.domain;
 
+/**
+ * Запрос JSON
+ */
 public class RequestJs {
     private int type;
     private AuthJs auth;

@@ -6,6 +6,9 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 
+/**
+ * Обработка сервиса МТС
+ */
 public class MtsCore implements IProviders{
     @Override
     public Response processingXml(Data data) {

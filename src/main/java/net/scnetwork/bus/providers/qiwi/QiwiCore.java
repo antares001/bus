@@ -12,6 +12,9 @@ import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
+/**
+ * Обработка сервиса Qiwi
+ */
 public class QiwiCore implements IProviders{
     private Qiwi qiwi = Config.getInstance().getModules().getQiwi();
 
@@ -20,16 +23,11 @@ public class QiwiCore implements IProviders{
         if (qiwi.isUse()) {
             switch (UseEnum.valueOf(qiwi.getService())){
                 case LOCAL:
-                    break;
                 case REMOTE:
-                    String microservice = qiwi.getUrl();
-                    break;
                 case NONE:
-                    break;
                 default:
                     return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
             }
-            return null;
         } else {
             return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
         }
@@ -40,16 +38,11 @@ public class QiwiCore implements IProviders{
         if (qiwi.isUse()) {
             switch (UseEnum.valueOf(qiwi.getService())){
                 case LOCAL:
-                    break;
                 case REMOTE:
-                    String microservice = qiwi.getUrl();
-                    break;
                 case NONE:
-                    break;
                 default:
                     return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
             }
-            return null;
         } else {
             return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
         }

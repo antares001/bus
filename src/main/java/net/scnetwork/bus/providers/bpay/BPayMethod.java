@@ -1,5 +1,8 @@
 package net.scnetwork.bus.providers.bpay;
 
+/**
+ * Перечень методов для BPay
+ */
 public enum BPayMethod {
     BPAY("bpay"),
     CARD("card"),

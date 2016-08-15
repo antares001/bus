@@ -1,5 +1,8 @@
 package net.scnetwork.bus.domain;
 
+/**
+ * Ответ JSON
+ */
 public class ResponseJs {
     private int type;
     private DataJs data;

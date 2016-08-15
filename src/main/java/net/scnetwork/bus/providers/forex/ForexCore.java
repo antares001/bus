@@ -10,6 +10,9 @@ import net.scnetwork.bus.providers.IProviders;
 
 import java.util.Date;
 
+/**
+ * Обработка сервиса FOREX
+ */
 public class ForexCore implements IProviders{
     @Override
     public Response processingXml(Data data){

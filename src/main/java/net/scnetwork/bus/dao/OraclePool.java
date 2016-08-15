@@ -1,17 +1,19 @@
 package net.scnetwork.bus.dao;
 
+import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.OraclePoolConfig;
 import net.scnetwork.bus.utils.LogBus;
 import oracle.jdbc.pool.OracleDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Настройка пула подключений Oracle
+ */
 public class OraclePool {
-    @Autowired
-    private static OraclePoolConfig poolConfig;
+    private static OraclePoolConfig poolConfig = Config.getInstance().getOraclePoolConfig();
 
     private static OracleDataSource ods = null;
 

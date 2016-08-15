@@ -2,6 +2,9 @@ package net.scnetwork.bus.domain;
 
 import javax.xml.bind.annotation.*;
 
+/**
+ * Запрос XML
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Request")
 public class Request {

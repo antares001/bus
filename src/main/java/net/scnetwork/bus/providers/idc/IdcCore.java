@@ -12,6 +12,9 @@ import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 
+/**
+ * Обработка сервиса IDC
+ */
 public class IdcCore implements IProviders{
     private Idc idc = Config.getInstance().getModules().getIdc();
 

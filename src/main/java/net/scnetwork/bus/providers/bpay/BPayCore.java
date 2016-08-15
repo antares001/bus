@@ -24,6 +24,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
+/**
+ * Обработка запросов сервиса BPay
+ */
 public class BPayCore implements IProviders{
     private BPay bPay = Config.getInstance().getModules().getBpay();
 
