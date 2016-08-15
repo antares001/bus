@@ -4,6 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Конфигурация для пула подключений Oracle
+ */
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "oracle-pool")

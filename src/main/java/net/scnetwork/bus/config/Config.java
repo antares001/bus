@@ -1,5 +1,8 @@
 package net.scnetwork.bus.config;
 
+/**
+ * Singleton для хранения конфигурации
+ */
 public class Config {
     private static Global global;
 
