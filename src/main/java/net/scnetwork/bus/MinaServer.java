@@ -2,7 +2,7 @@ package net.scnetwork.bus;
 
 import net.scnetwork.bus.clients.mina.handlers.IsoHandler;
 import net.scnetwork.bus.config.Global;
-import net.scnetwork.bus.config.modules.Jpos;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.utils.LogBus;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;

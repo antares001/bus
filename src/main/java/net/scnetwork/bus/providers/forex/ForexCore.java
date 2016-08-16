@@ -2,7 +2,7 @@ package net.scnetwork.bus.providers.forex;
 
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.DataResponse.DataRespForex;
+import net.scnetwork.bus.providers.forex.domain.DataRespForex;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;

@@ -1,19 +1,12 @@
-package net.scnetwork.bus.providers.jpos;
+package net.scnetwork.bus.providers.print;
 
-import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
-import net.scnetwork.bus.providers.jpos.config.Jpos;
 
-/**
- * Обработка сервиса JPOS
- */
-public class JposCore implements IProviders{
-    private static final Jpos jpos = Config.getInstance().getModules().getJpos();
-
+public class PrintCore implements IProviders{
     @Override
     public Response processingXml(Data data) {
         return null;

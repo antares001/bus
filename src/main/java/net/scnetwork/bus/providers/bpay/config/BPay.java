@@ -1,4 +1,4 @@
-package net.scnetwork.bus.clients.mina;
+package net.scnetwork.bus.providers.bpay.config;
 
 import net.scnetwork.bus.config.IModules;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -6,15 +6,18 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация для сервиса Mastercard
+ * Конфигурация сервиса BPay
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "mastercard")
-public class MasterCardConfig implements IModules{
+@ConfigurationProperties(prefix = "bpay")
+public class BPay implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private String point;
+    private String merchantId;
+    private String signature;
 
     @Override
     public boolean isUse() {
@@ -44,5 +47,29 @@ public class MasterCardConfig implements IModules{
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
+
+    public String getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(String merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 }

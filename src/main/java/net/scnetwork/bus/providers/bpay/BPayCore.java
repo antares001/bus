@@ -1,16 +1,16 @@
 package net.scnetwork.bus.providers.bpay;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.BPay;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.DataRequest.DataReqBpay;
+import net.scnetwork.bus.providers.bpay.domain.DataReqBpay;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
-import net.scnetwork.bus.domain.providers.BPayOptions;
+import net.scnetwork.bus.providers.bpay.domain.BPayOptions;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
