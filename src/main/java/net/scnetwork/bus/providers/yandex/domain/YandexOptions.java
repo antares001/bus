@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.yandex.domain;
 
-import net.scnetwork.bus.enums.operation.YandexOperation;
+import net.scnetwork.bus.providers.yandex.enums.YandexOperation;
 
 public class YandexOptions {
     private YandexOperation operation;

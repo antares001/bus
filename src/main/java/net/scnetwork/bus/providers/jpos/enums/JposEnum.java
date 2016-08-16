@@ -1,4 +1,4 @@
-package net.scnetwork.bus.enums;
+package net.scnetwork.bus.providers.jpos.enums;
 
 /**
  * Типы сервиса платежных систем

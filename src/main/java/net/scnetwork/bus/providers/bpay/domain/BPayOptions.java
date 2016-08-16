@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.bpay.domain;
 
-import net.scnetwork.bus.enums.operation.BPayOperation;
+import net.scnetwork.bus.providers.bpay.enums.BPayOperation;
 import net.scnetwork.bus.providers.bpay.BPayMethod;
 
 import javax.xml.bind.annotation.*;

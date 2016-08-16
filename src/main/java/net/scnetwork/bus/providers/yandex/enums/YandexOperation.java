@@ -1,4 +1,4 @@
-package net.scnetwork.bus.enums.operation;
+package net.scnetwork.bus.providers.yandex.enums;
 
 public enum YandexOperation {
     ACCOUNT_INFO("account_info"),

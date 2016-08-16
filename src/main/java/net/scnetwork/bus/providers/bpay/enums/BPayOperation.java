@@ -1,4 +1,4 @@
-package net.scnetwork.bus.enums.operation;
+package net.scnetwork.bus.providers.bpay.enums;
 
 public enum BPayOperation {
     BILL("bill"),
