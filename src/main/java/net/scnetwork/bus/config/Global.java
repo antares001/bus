@@ -15,6 +15,7 @@ public class Global {
     private DaoEnums dao;
     private OraclePoolConfig oraclePoolConfig;
     private LogConfig logConfig;
+    private boolean gui;
 
     public String getEndpoint() {
         return endpoint;
@@ -54,6 +55,14 @@ public class Global {
 
     public void setLogConfig(LogConfig logConfig) {
         this.logConfig = logConfig;
+    }
+
+    public boolean isGui() {
+        return gui;
+    }
+
+    public void setGui(boolean gui) {
+        this.gui = gui;
     }
 
     public String toString(){
