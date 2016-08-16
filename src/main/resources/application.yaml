@@ -64,3 +64,4 @@ oracle-pool:
 
 log:
       type: LOCAL
+gui: true
