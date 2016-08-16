@@ -8,6 +8,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+/**
+ * Формирование секции XML Data для сервиса Beeline
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataRespBeeline extends Data {
