@@ -1,6 +1,6 @@
 package net.scnetwork.bus.clients.mina;
 
-import net.scnetwork.bus.config.modules.IModules;
+import net.scnetwork.bus.config.IModules;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

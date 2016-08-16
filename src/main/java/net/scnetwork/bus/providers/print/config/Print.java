@@ -1,17 +1,14 @@
-package net.scnetwork.bus.clients.mina;
+package net.scnetwork.bus.providers.print.config;
 
 import net.scnetwork.bus.config.IModules;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Конфигурация для сервиса Mastercard
- */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "mastercard")
-public class MasterCardConfig implements IModules{
+@ConfigurationProperties(prefix = "print")
+public class Print implements IModules {
     private boolean use;
     private String service;
     private String url;

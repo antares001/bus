@@ -2,17 +2,25 @@ package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.*;
-import net.scnetwork.bus.domain.DataResponse.*;
 import net.scnetwork.bus.enums.ServiceEnum;
+import net.scnetwork.bus.providers.beeline.domain.DataRespBeeline;
 import net.scnetwork.bus.providers.bpay.BPayCore;
 import net.scnetwork.bus.providers.beeline.BeelineCore;
+import net.scnetwork.bus.providers.bpay.domain.DataRespBpay;
 import net.scnetwork.bus.providers.forex.ForexCore;
+import net.scnetwork.bus.providers.forex.domain.DataRespForex;
 import net.scnetwork.bus.providers.idc.IdcCore;
+import net.scnetwork.bus.providers.idc.domain.DataRespIdc;
 import net.scnetwork.bus.providers.leader.LeaderCore;
+import net.scnetwork.bus.providers.leader.domain.DataRespLeader;
 import net.scnetwork.bus.providers.megafon.MegafonCore;
+import net.scnetwork.bus.providers.megafon.domain.DataRespMegafon;
 import net.scnetwork.bus.providers.mts.MtsCore;
+import net.scnetwork.bus.providers.mts.domain.DataRespMts;
 import net.scnetwork.bus.providers.qiwi.QiwiCore;
+import net.scnetwork.bus.providers.qiwi.domain.DataRespQiwi;
 import net.scnetwork.bus.providers.yandex.YandexCore;
+import net.scnetwork.bus.providers.yandex.domain.DataRespYandex;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 

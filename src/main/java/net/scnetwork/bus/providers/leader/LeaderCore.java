@@ -1,7 +1,6 @@
 package net.scnetwork.bus.providers.leader;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Leader;
 import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
@@ -9,6 +8,7 @@ import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 

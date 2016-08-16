@@ -2,13 +2,13 @@ package net.scnetwork.bus.providers.yandex;
 
 import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.modules.Yandex;
 import net.scnetwork.bus.domain.*;
-import net.scnetwork.bus.domain.DataRequest.DataReqYandex;
-import net.scnetwork.bus.domain.providers.YandexOptions;
+import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
+import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.XmlUtils;
 

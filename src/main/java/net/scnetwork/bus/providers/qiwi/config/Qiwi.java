@@ -1,4 +1,4 @@
-package net.scnetwork.bus.clients.mina;
+package net.scnetwork.bus.providers.qiwi.config;
 
 import net.scnetwork.bus.config.IModules;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -6,12 +6,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация для сервиса Mastercard
+ * Конфигурация сервиса QIWI
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "mastercard")
-public class MasterCardConfig implements IModules{
+@ConfigurationProperties(prefix = "qiwi")
+public class Qiwi implements IModules {
     private boolean use;
     private String service;
     private String url;
@@ -32,7 +32,7 @@ public class MasterCardConfig implements IModules{
     }
 
     @Override
-    public void setService(String service) {
+    public void setService(String useEnum) {
         this.service = service;
     }
 
