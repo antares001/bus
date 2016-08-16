@@ -20,9 +20,7 @@ import java.util.logging.Logger;
  * 
  */
 @WebServiceClient(name = "DownloadService", targetNamespace = "http://fias.nalog.ru/WebServices/Public/DownloadService.asmx", wsdlLocation = "http://fias.nalog.ru/WebServices/Public/DownloadService.asmx?WSDL")
-public class DownloadService
-    extends Service
-{
+public class DownloadService extends Service {
 
     private final static URL DOWNLOADSERVICE_WSDL_LOCATION;
     private final static Logger logger = Logger.getLogger(net.scnetwork.bus.clients.fias.DownloadService.class.getName());
@@ -40,10 +38,18 @@ public class DownloadService
         DOWNLOADSERVICE_WSDL_LOCATION = url;
     }
 
+    /**
+     * Конструктор
+     * @param wsdlLocation wsdl
+     * @param serviceName имя
+     */
     public DownloadService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
+    /**
+     * Конструктор по умолчанию
+     */
     public DownloadService() {
         super(DOWNLOADSERVICE_WSDL_LOCATION, new QName("http://fias.nalog.ru/WebServices/Public/DownloadService.asmx", "DownloadService"));
     }

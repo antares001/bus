@@ -6,6 +6,9 @@ import net.scnetwork.bus.providers.bpay.BPayMethod;
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 
+/**
+ * Формирование секции bpay XML
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "bpay")
 public class BPayOptions {

@@ -18,8 +18,6 @@ public class ForexCore implements IProviders{
     public Response processingXml(Data data){
         Response result = new Response();
 
-        String account = data.getAccount();
-
         Data rData = new DataRespForex();
         rData.setStatus(StatusEnum.OK);
         result.setData(rData);
@@ -30,8 +28,6 @@ public class ForexCore implements IProviders{
     @Override
     public ResponseJs processing(DataJs data){
         ResponseJs result = new ResponseJs();
-
-        String account = data.getAccount();
 
         DataJs rData = new DataJs();
         rData.setDate(new Date());
