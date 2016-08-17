@@ -10,6 +10,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+/**
+ * Секция Data XML для запроса и ответа
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public abstract class Data {
@@ -19,7 +22,7 @@ public abstract class Data {
     @XmlAttribute(name = "service")
     private ServiceEnum service;
 
-    @XmlAttribute
+    @XmlAttribute(name = "result")
     private String result;
 
     @XmlAttribute(name = "operation")

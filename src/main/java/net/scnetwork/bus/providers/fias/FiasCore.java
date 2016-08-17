@@ -1,5 +1,6 @@
 package net.scnetwork.bus.providers.fias;
 
+import net.scnetwork.bus.clients.fias.ArrayOfDownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
@@ -10,7 +11,12 @@ import net.scnetwork.bus.providers.fias.domain.FiasOptions;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.fias.domain.ParamFias;
+import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.utils.XmlUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Обработка сервиса FIAS
@@ -61,6 +67,44 @@ public class FiasCore implements IProviders{
                         } else {
                             return XmlUtils.getError(StatusEnum.ERROR);
                         }
+                    case GET_ALL_URLS:
+                        ArrayOfDownloadFileInfo array = serviceSoap.getAllDownloadFileInfo();
+                        List<DownloadFileInfo> list = array.getDownloadFileInfo();
+                        Response response = new Response();
+                        DataRespFias dataResponse = new DataRespFias();
+                        if (list.size() > 0) {
+                            dataResponse.setStatus(StatusEnum.OK);
+                            final List<ParamFias> params = new ArrayList<>();
+                            list.forEach(e -> {
+                                ParamFias param = new ParamFias();
+                                param.setId(e.getVersionId());
+                                switch (options.getFormatEnum()){
+                                    case TEXT:
+                                        param.setUrl(e.getTextVersion());
+                                        break;
+                                    case ARJ:
+                                        param.setUrl(e.getKladr4ArjUrl());
+                                        break;
+                                    case SEVEN_Z:
+                                        param.setUrl(e.getKladr47ZUrl());
+                                        break;
+                                    case XML:
+                                        param.setUrl(e.getFiasCompleteXmlUrl());
+                                        break;
+                                    case DBF:
+                                        param.setUrl(e.getFiasCompleteDbfUrl());
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                params.add(param);
+                            });
+                            dataResponse.setParamList(params);
+                        } else {
+                            dataResponse.setStatus(StatusEnum.ERROR);
+                        }
+                        response.setData(dataResponse);
+                        return response;
                     default:
                         break;
                 }
