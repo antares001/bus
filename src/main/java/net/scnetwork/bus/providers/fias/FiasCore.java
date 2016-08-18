@@ -4,7 +4,10 @@ import net.scnetwork.bus.clients.fias.ArrayOfDownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
+import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.enums.UseEnum;
+import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.fias.domain.DataReqFias;
 import net.scnetwork.bus.providers.fias.domain.DataRespFias;
 import net.scnetwork.bus.providers.fias.domain.FiasOptions;
@@ -23,27 +26,61 @@ import java.util.List;
  */
 public class FiasCore implements IProviders{
     private DownloadServiceSoap serviceSoap;
+    private Fias fias;
 
     public FiasCore(){
         DownloadService service = new DownloadService();
         serviceSoap = service.getDownloadServiceSoap();
+        try{
+            fias = Config.getInstance().getModules().getFias();
+        } catch (NullPointerException e){
+            throw new Error(e);
+        }
     }
 
     @Override
     public Response processingXml(Data data) {
+        if (null != fias) {
+            if (fias.isUse()) {
+                UseEnum use = UseEnum.valueOf(fias.getService());
+                switch (use) {
+                    case LOCAL:
+                        return localProcessingXml(data);
+                    case REMOTE:
+                        return remoteProcessingXml(data);
+                    case NONE:
+                    default:
+                        break;
+                }
+            } else {
+                return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
+        } else {
+            return XmlUtils.getError(StatusEnum.NULL);
+        }
+        return null;
+    }
+
+    @Override
+    public ResponseJs processing(DataJs data) {
+        return null;
+    }
+
+    @Override
+    public Response localProcessingXml(Data data) {
         FiasOptions options = ((DataReqFias) data).getFiasOptions();
-        if (null != options){
+        if (null != options) {
             FiasOperation operation = options.getFiasOperation();
-            if (null != operation){
-                switch (operation){
+            if (null != operation) {
+                switch (operation) {
                     case GET_URL:
                         DownloadFileInfo fileInfo = serviceSoap.getLastDownloadFileInfo();
-                        if (null != fileInfo){
+                        if (null != fileInfo) {
                             Response response = new Response();
                             Data dataResponse = new DataRespFias();
                             dataResponse.setStatus(StatusEnum.OK);
                             dataResponse.setService(ServiceEnum.FIAS);
-                            switch (options.getFormatEnum()){
+                            switch (options.getFormatEnum()) {
                                 case DBF:
                                     dataResponse.setResult(fileInfo.getFiasCompleteDbfUrl());
                                     break;
@@ -78,7 +115,7 @@ public class FiasCore implements IProviders{
                             list.forEach(e -> {
                                 ParamFias param = new ParamFias();
                                 param.setId(e.getVersionId());
-                                switch (options.getFormatEnum()){
+                                switch (options.getFormatEnum()) {
                                     case TEXT:
                                         param.setUrl(e.getTextVersion());
                                         break;
@@ -110,17 +147,7 @@ public class FiasCore implements IProviders{
                 }
             }
         }
-        return null;
-    }
-
-    @Override
-    public ResponseJs processing(DataJs data) {
-        return null;
-    }
-
-    @Override
-    public Response localProcessingXml(Data data) {
-        return null;
+        return new Response();
     }
 
     @Override

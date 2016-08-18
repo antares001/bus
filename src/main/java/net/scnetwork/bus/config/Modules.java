@@ -1,6 +1,7 @@
 package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.providers.bpay.config.BPay;
+import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.idc.config.Idc;
 import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
@@ -23,6 +24,7 @@ public class Modules {
     private Qiwi qiwi;
     private Leader leader;
     private JposConfig jpos;
+    private Fias fias;
 
     public Modules(){}
 
@@ -72,6 +74,14 @@ public class Modules {
 
     public void setJpos(JposConfig jpos) {
         this.jpos = jpos;
+    }
+
+    public Fias getFias() {
+        return fias;
+    }
+
+    public void setFias(Fias fias) {
+        this.fias = fias;
     }
 
     public String toString(){
