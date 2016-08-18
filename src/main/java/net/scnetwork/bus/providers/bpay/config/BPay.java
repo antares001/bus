@@ -15,6 +15,7 @@ public class BPay implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private boolean soap;
     private String point;
     private String merchantId;
     private String signature;
@@ -47,6 +48,16 @@ public class BPay implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean isSoap() {
+        return soap;
+    }
+
+    @Override
+    public void setSoap(boolean soap) {
+        this.soap = soap;
     }
 
     public String getPoint() {

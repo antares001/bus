@@ -12,6 +12,7 @@ public class Print implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private boolean soap;
 
     @Override
     public boolean isUse() {
@@ -41,5 +42,15 @@ public class Print implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean isSoap() {
+        return soap;
+    }
+
+    @Override
+    public void setSoap(boolean soap) {
+        this.soap = soap;
     }
 }

@@ -2,7 +2,7 @@ package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.idc.config.Idc;
-import net.scnetwork.bus.providers.jpos.config.Jpos;
+import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
@@ -22,7 +22,7 @@ public class Modules {
     private Yandex yandex;
     private Qiwi qiwi;
     private Leader leader;
-    private Jpos jpos;
+    private JposConfig jpos;
 
     public Modules(){}
 
@@ -66,11 +66,11 @@ public class Modules {
         this.leader = leader;
     }
 
-    public Jpos getJpos() {
+    public JposConfig getJpos() {
         return jpos;
     }
 
-    public void setJpos(Jpos jpos) {
+    public void setJpos(JposConfig jpos) {
         this.jpos = jpos;
     }
 

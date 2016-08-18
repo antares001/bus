@@ -6,13 +6,13 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
-import net.scnetwork.bus.providers.jpos.config.Jpos;
+import net.scnetwork.bus.providers.jpos.config.JposConfig;
 
 /**
  * Обработка сервиса JPOS
  */
 public class JposCore implements IProviders{
-    private static final Jpos jpos = Config.getInstance().getModules().getJpos();
+    private static final JposConfig jpos = Config.getInstance().getModules().getJpos();
 
     @Override
     public Response processingXml(Data data) {
