@@ -15,6 +15,7 @@ public class Leader implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private boolean soap;
     private String point;
 
     @Override
@@ -45,6 +46,16 @@ public class Leader implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean isSoap() {
+        return soap;
+    }
+
+    @Override
+    public void setSoap(boolean soap) {
+        this.soap = soap;
     }
 
     public String getPoint() {

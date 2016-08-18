@@ -15,6 +15,7 @@ public class Yandex implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private boolean soap;
 
     public boolean isUse() {
         return use;
@@ -38,5 +39,15 @@ public class Yandex implements IModules {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean isSoap() {
+        return soap;
+    }
+
+    @Override
+    public void setSoap(boolean soap) {
+        this.soap = soap;
     }
 }

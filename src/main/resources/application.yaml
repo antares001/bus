@@ -1,9 +1,10 @@
-endpoint: http://127.0.0.1:8090/soap
+endpoint: http://0.0.0.0:8090/soap
 modules:
   bpay:
       use: yes
       service: REMOTE
       url: none
+      soap: true
       point: none
       merchantId: none
       signature: none
@@ -11,43 +12,52 @@ modules:
       use: no
       service: LOCAL
       url: none
+      soap: false
       point: none
   yandex:
       use: yes
       service: LOCAL
       url: none
+      soap: true
   qiwi:
       use: yes
       service: LOCAL
       url: none
+      soap: true
   leader:
       use: yes
       service: LOCAL
       url: none
+      soap: true
       point: none
   fias:
       use: yes
       service: LOCAL
       url: none
+      soap: true
       format: DBF
   jpos:
       use: yes
       service: BOTH
       url: none
+      soap: false
       port: 9123
       bufferSize: 2048
   mstercard:
       use: no
       service: no
       url: no
+      soap: true
   visa:
       use: no
       service: no
       url: no
+      soap: true
   print:
       use: no
       service: no
       url: no
+      soap: true
 
 dao: oracle-pool
 

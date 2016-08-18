@@ -11,10 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "jpos")
-public class Jpos implements IModules {
+public class JposConfig implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private boolean soap;
     private int port;
     private int bufferSize;
 
@@ -46,6 +47,16 @@ public class Jpos implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public boolean isSoap() {
+        return soap;
+    }
+
+    @Override
+    public void setSoap(boolean soap) {
+        this.soap = soap;
     }
 
     public int getPort() {

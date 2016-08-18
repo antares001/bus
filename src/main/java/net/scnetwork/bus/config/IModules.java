@@ -36,4 +36,16 @@ public interface IModules {
      * @param url адрес (для service: LOCAL -> usl: none)
      */
     void setUrl(String url);
+
+    /**
+     * Отдельный soap service
+     * @return true - да, false - no
+     */
+    boolean isSoap();
+
+    /**
+     * Устновка запуска отдельного сервиса
+     * @param soap true - да, false - no
+     */
+    void setSoap(boolean soap);
 }
