@@ -10,64 +10,83 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса Yandex
  */
 public class YandexCore implements IProviders{
-    private Yandex yandex = Config.getInstance().getModules().getYandex();
+    private Yandex yandex;
+
+    public YandexCore(){
+        try{
+            yandex = Config.getInstance().getModules().getYandex();
+        } catch (NullPointerException e){
+            LogBus.writeLog(e);
+        }
+    }
 
     private static final String CLIENT_ID = "";
 
     @Override
     public Response processingXml(Data data) {
-        if (yandex.isUse()) {
-            switch (UseEnum.valueOf(yandex.getService())){
-                case LOCAL:
-                    YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
-                    YandexOptions options =((DataReqYandex) data).getYandexOptions();
-                    switch (options.getOperation()) {
-                        case ACCOUNT_INFO:
-                        case OPERATION_HISTORY:
-                        case OPERATION_DETAILS:
-                        case INCOMING_TRANSFERS:
-                        case PAYMENT:
-                        case PAYMENT_SHOP:
-                        case PAYMENT_P2P:
-                        case MONEY_SOURCE:
-                        default:
-                            break;
-                    }
-                    break;
-                case REMOTE:
-                case NONE:
-                default:
-                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != yandex) {
+            if (yandex.isUse()) {
+                switch (UseEnum.valueOf(yandex.getService())) {
+                    case LOCAL:
+                        return localProcessingXml(data);
+                    case REMOTE:
+                        return remoteProcessingXml(data);
+                    case NONE:
+                    default:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
-            return null;
         } else {
-            return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (yandex.isUse()) {
-            switch (UseEnum.valueOf(yandex.getService())){
-                case LOCAL:
-                case REMOTE:
-                case NONE:
-                default:
-                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != yandex) {
+            if (yandex.isUse()) {
+                switch (UseEnum.valueOf(yandex.getService())) {
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                    default:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
     @Override
     public Response localProcessingXml(Data data) {
+        YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
+        YandexOptions options = ((DataReqYandex) data).getYandexOptions();
+        switch (options.getOperation()) {
+            case ACCOUNT_INFO:
+            case OPERATION_HISTORY:
+            case OPERATION_DETAILS:
+            case INCOMING_TRANSFERS:
+            case PAYMENT:
+            case PAYMENT_SHOP:
+            case PAYMENT_P2P:
+            case MONEY_SOURCE:
+            default:
+                break;
+        }
         return null;
     }
 

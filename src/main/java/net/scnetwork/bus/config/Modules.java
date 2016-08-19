@@ -1,7 +1,7 @@
 package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.providers.bpay.config.BPay;
-import net.scnetwork.bus.providers.idc.config.Idc;
+import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
@@ -18,11 +18,11 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "modules")
 public class Modules {
     private BPay bpay;
-    private Idc idc;
     private Yandex yandex;
     private Qiwi qiwi;
     private Leader leader;
     private JposConfig jpos;
+    private Fias fias;
 
     public Modules(){}
 
@@ -32,14 +32,6 @@ public class Modules {
 
     public void setBpay(BPay bpay) {
         this.bpay = bpay;
-    }
-
-    public Idc getIdc() {
-        return idc;
-    }
-
-    public void setIdc(Idc idc) {
-        this.idc = idc;
     }
 
     public Yandex getYandex() {
@@ -74,10 +66,17 @@ public class Modules {
         this.jpos = jpos;
     }
 
+    public Fias getFias() {
+        return fias;
+    }
+
+    public void setFias(Fias fias) {
+        this.fias = fias;
+    }
+
     public String toString(){
         return "Modules:" +
                 "{bpay:" + bpay.toString() + "}," +
-                "{idc:" + idc + "}," +
                 "{yandex:" + yandex.toString() + "}," +
                 "{qiwi:" + qiwi + "}," +
                 "{leader:" + leader + "}" +

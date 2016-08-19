@@ -10,41 +10,62 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса Qiwi
  */
 public class QiwiCore implements IProviders{
-    private Qiwi qiwi = Config.getInstance().getModules().getQiwi();
+    private Qiwi qiwi;
+
+    public QiwiCore(){
+        try {
+            qiwi = Config.getInstance().getModules().getQiwi();
+        } catch (NullPointerException e){
+            LogBus.writeLog(e);
+        }
+    }
 
     @Override
     public Response processingXml(Data data) {
-        if (qiwi.isUse()) {
-            switch (UseEnum.valueOf(qiwi.getService())){
-                case LOCAL:
-                case REMOTE:
-                case NONE:
-                default:
-                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != qiwi) {
+            if (qiwi.isUse()) {
+                switch (UseEnum.valueOf(qiwi.getService())) {
+                    case LOCAL:
+                        return localProcessingXml(data);
+                    case REMOTE:
+                        return remoteProcessingXml(data);
+                    case NONE:
+                    default:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (qiwi.isUse()) {
-            switch (UseEnum.valueOf(qiwi.getService())){
-                case LOCAL:
-                case REMOTE:
-                case NONE:
-                default:
-                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != qiwi) {
+            if (qiwi.isUse()) {
+                switch (UseEnum.valueOf(qiwi.getService())) {
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                    default:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 

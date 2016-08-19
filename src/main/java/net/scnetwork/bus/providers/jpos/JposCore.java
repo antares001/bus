@@ -7,12 +7,21 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.utils.LogBus;
 
 /**
  * Обработка сервиса JPOS
  */
 public class JposCore implements IProviders{
-    private static final JposConfig jpos = Config.getInstance().getModules().getJpos();
+    private JposConfig jpos;
+
+    public JposCore(){
+        try {
+            jpos = Config.getInstance().getModules().getJpos();
+        } catch (NullPointerException e) {
+            LogBus.writeLog(e);
+        }
+    }
 
     @Override
     public Response processingXml(Data data) {

@@ -5,7 +5,6 @@ package net.scnetwork.bus.enums;
  */
 public enum ServiceEnum {
     BPAY("bpay"),
-    IDC("idc"),
     LEADER("leader"),
     FOREX("fix"),
     QIWI("qiwi"),

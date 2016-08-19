@@ -11,7 +11,6 @@ import net.scnetwork.bus.providers.beeline.BeelineCore;
 import net.scnetwork.bus.providers.fias.FiasCore;
 import net.scnetwork.bus.providers.forex.ForexCore;
 import net.scnetwork.bus.providers.IProviders;
-import net.scnetwork.bus.providers.idc.IdcCore;
 import net.scnetwork.bus.providers.leader.LeaderCore;
 import net.scnetwork.bus.providers.megafon.MegafonCore;
 import net.scnetwork.bus.providers.mts.MtsCore;
@@ -36,9 +35,6 @@ public class Dispatcher {
         switch (service){
             case BPAY:
                 providers = new BPayCore();
-                break;
-            case IDC:
-                providers = new IdcCore();
                 break;
             case MTS:
                 providers = new MtsCore();
@@ -81,9 +77,6 @@ public class Dispatcher {
         switch (service){
             case BPAY:
                 providers = new BPayCore();
-                break;
-            case IDC:
-                providers = new IdcCore();
                 break;
             case MTS:
                 providers = new MtsCore();
