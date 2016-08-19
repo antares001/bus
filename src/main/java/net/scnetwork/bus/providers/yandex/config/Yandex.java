@@ -17,26 +17,32 @@ public class Yandex implements IModules {
     private String url;
     private boolean soap;
 
+    @Override
     public boolean isUse() {
         return use;
     }
 
+    @Override
     public void setUse(boolean use) {
         this.use = use;
     }
 
+    @Override
     public String getService() {
         return service;
     }
 
+    @Override
     public void setService(String service) {
         this.service = service;
     }
 
+    @Override
     public String getUrl() {
         return url;
     }
 
+    @Override
     public void setUrl(String url) {
         this.url = url;
     }

@@ -30,6 +30,9 @@ public class FiasCore implements IProviders{
     private DownloadServiceSoap serviceSoap;
     private Fias fias;
 
+    /**
+     * Иницмализация конфигурации и клиента
+     */
     public FiasCore(){
         DownloadService service = new DownloadService();
         serviceSoap = service.getDownloadServiceSoap();
