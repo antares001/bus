@@ -1,5 +1,8 @@
 package net.scnetwork.bus.providers.bpay.enums;
 
+/**
+ * Операции с сервисом BPay
+ */
 public enum BPayOperation {
     BILL("bill"),
     CALLBACK("callback"),
