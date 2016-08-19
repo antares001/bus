@@ -1,5 +1,8 @@
 package net.scnetwork.bus.providers.bpay;
 
+import net.scnetwork.bus.providers.bpay.enums.BPayLang;
+import net.scnetwork.bus.providers.bpay.enums.BPayMethod;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
