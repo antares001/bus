@@ -19,6 +19,9 @@ import net.scnetwork.bus.utils.XmlUtils;
 public class QiwiCore implements IProviders{
     private Qiwi qiwi;
 
+    /**
+     * Инициализация конфигурации
+     */
     public QiwiCore(){
         try {
             qiwi = Config.getInstance().getModules().getQiwi();

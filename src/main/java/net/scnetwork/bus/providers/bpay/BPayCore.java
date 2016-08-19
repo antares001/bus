@@ -31,6 +31,9 @@ import java.util.Base64;
 public class BPayCore implements IProviders{
     private BPay bPay;
 
+    /**
+     * Инициализация конфигурации
+     */
     public BPayCore(){
         try{
             bPay =  Config.getInstance().getModules().getBpay();
@@ -43,7 +46,6 @@ public class BPayCore implements IProviders{
     public Response processingXml(Data data) {
         if (null != bPay) {
             if (bPay.isUse()) {
-                Response response = null;
                 switch (UseEnum.valueOf(bPay.getService())) {
                     case LOCAL:
                         return localProcessingXml(data);
@@ -65,7 +67,6 @@ public class BPayCore implements IProviders{
     public ResponseJs processing(DataJs data) {
         if (null != bPay) {
             if (bPay.isUse()) {
-                ResponseJs response = null;
                 switch (UseEnum.valueOf(bPay.getService())) {
                     case LOCAL:
                         return localProcessingJson(data);

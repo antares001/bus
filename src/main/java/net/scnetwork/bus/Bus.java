@@ -12,10 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.xml.ws.Endpoint;
 
-@SpringBootApplication
 /**
  * Класс запуска приложения
  */
+@SpringBootApplication
 public class Bus implements CommandLineRunner{
     @Autowired
     private Global global;

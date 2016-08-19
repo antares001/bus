@@ -19,6 +19,9 @@ import net.scnetwork.bus.utils.XmlUtils;
 public class LeaderCore implements IProviders{
     private Leader leader;
 
+    /**
+     * Инициализация конфигурации
+     */
     public LeaderCore(){
         try{
             leader = Config.getInstance().getModules().getLeader();
