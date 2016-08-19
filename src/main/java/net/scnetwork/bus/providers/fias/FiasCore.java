@@ -16,6 +16,8 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.fias.domain.ParamFias;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
+import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class FiasCore implements IProviders{
         try{
             fias = Config.getInstance().getModules().getFias();
         } catch (NullPointerException e){
-            throw new Error(e);
+            LogBus.writeLog(e);
         }
     }
 
@@ -49,6 +51,7 @@ public class FiasCore implements IProviders{
                     case REMOTE:
                         return remoteProcessingXml(data);
                     case NONE:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                     default:
                         break;
                 }
@@ -63,7 +66,26 @@ public class FiasCore implements IProviders{
 
     @Override
     public ResponseJs processing(DataJs data) {
-        return null;
+        if (null != fias){
+            if (fias.isUse()){
+                UseEnum use = UseEnum.valueOf(fias.getService());
+                switch (use){
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                    default:
+                        break;
+                }
+                return null;
+            } else {
+                return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+            }
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL);
+        }
     }
 
     @Override
