@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.bpay;
+package net.scnetwork.bus.providers.bpay.enums;
 
 /**
  * Перечень языков для BPay
