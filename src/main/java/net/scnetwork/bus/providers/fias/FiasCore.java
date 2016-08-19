@@ -56,10 +56,10 @@ public class FiasCore implements IProviders{
                         break;
                 }
             } else {
-                return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return XmlUtils.getError(StatusEnum.NULL);
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
         return null;
     }
@@ -81,10 +81,10 @@ public class FiasCore implements IProviders{
                 }
                 return null;
             } else {
-                return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return JsonUtils.getError(StatusEnum.NULL);
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 

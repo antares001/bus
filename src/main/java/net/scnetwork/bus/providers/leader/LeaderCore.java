@@ -10,53 +10,62 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса Лидер
  */
 public class LeaderCore implements IProviders{
-    private Leader leader = Config.getInstance().getModules().getLeader();
+    private Leader leader;
+
+    public LeaderCore(){
+        try{
+            leader = Config.getInstance().getModules().getLeader();
+        } catch (NullPointerException e){
+            LogBus.writeLog(e);
+        }
+    }
 
     @Override
     public Response processingXml(Data data) {
-        if (leader.isUse()) {
-            switch (UseEnum.valueOf(leader.getService())){
-                case LOCAL:
-                    String point = leader.getPoint();
-                    break;
-                case REMOTE:
-                    String microserviceUrl = leader.getUrl();
-                    break;
-                case NONE:
-                    break;
-                default:
-                    return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != leader) {
+            if (leader.isUse()) {
+                switch (UseEnum.valueOf(leader.getService())) {
+                    case LOCAL:
+                        return localProcessingXml(data);
+                    case REMOTE:
+                        return remoteProcessingXml(data);
+                    case NONE:
+                    default:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
-            return null;
         } else {
-            return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (leader.isUse()) {
-            switch (UseEnum.valueOf(leader.getService())){
-                case LOCAL:
-                    String point = leader.getPoint();
-                    break;
-                case REMOTE:
-                    String microserviceUrl = leader.getUrl();
-                    break;
-                case NONE:
-                    break;
-                default:
-                    return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != leader) {
+            if (leader.isUse()) {
+                switch (UseEnum.valueOf(leader.getService())) {
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                    default:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
-            return null;
         } else {
-            return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
