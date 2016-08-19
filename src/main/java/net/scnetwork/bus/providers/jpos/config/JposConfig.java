@@ -49,12 +49,10 @@ public class JposConfig implements IModules {
         this.url = url;
     }
 
-    @Override
     public boolean isSoap() {
         return soap;
     }
 
-    @Override
     public void setSoap(boolean soap) {
         this.soap = soap;
     }
