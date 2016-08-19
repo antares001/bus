@@ -28,7 +28,15 @@ import java.util.Base64;
  * Обработка запросов сервиса BPay
  */
 public class BPayCore implements IProviders{
-    private BPay bPay = Config.getInstance().getModules().getBpay();
+    private BPay bPay;
+
+    public BPayCore(){
+        try{
+            bPay =  Config.getInstance().getModules().getBpay();
+        } catch (NullPointerException e) {
+            LogBus.writeLog(e);
+        }
+    }
 
     @Override
     public Response processingXml(Data data) {
@@ -37,44 +45,40 @@ public class BPayCore implements IProviders{
                 Response response = null;
                 switch (UseEnum.valueOf(bPay.getService())) {
                     case LOCAL:
-                        response = localProcessingXml(data);
-                        break;
+                        return localProcessingXml(data);
                     case REMOTE:
-                        response = remoteProcessingXml(data);
-                        break;
+                        return remoteProcessingXml(data);
                     case NONE:
-                        break;
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
-                return response;
             } else {
-                return XmlUtils.getError(StatusEnum.NOT_SUPPORT);
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
         } else {
-            return XmlUtils.getError(StatusEnum.NULL);
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
     @Override
     public ResponseJs processing(DataJs data) {
-        if (bPay.isUse()) {
-            ResponseJs response = null;
-            switch (UseEnum.valueOf(bPay.getService())){
-                case LOCAL:
-                    response = localProcessingJson(data);
-                    break;
-                case REMOTE:
-                    response = remoteProcessingJson(data);
-                    break;
-                case NONE:
-                    break;
-                default:
-                    JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+        if (null != bPay) {
+            if (bPay.isUse()) {
+                ResponseJs response = null;
+                switch (UseEnum.valueOf(bPay.getService())) {
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                    default:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }
-            return response;
         } else {
-            return JsonUtils.getError(StatusEnum.NOT_SUPPORT);
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
     }
 
@@ -94,9 +98,7 @@ public class BPayCore implements IProviders{
                 payment.setValute(options.getCurrency());
                 break;
             case PAY:
-                break;
             case INFO:
-                break;
             default:
                 break;
         }

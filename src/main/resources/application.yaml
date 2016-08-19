@@ -8,12 +8,6 @@ modules:
       point: none
       merchantId: none
       signature: none
-  idc:
-      use: no
-      service: LOCAL
-      url: none
-      soap: false
-      point: none
   yandex:
       use: yes
       service: LOCAL

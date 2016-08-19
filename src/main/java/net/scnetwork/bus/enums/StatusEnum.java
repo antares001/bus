@@ -10,7 +10,9 @@ public enum StatusEnum {
     NULL("request_is_null"),
     NOT_SUPPORT("service_is_not_support"),
     ERROR_CONFIG("config_error"),
-    ERROR("error");
+    ERROR("error"),
+    SERVICE_DISABLED("service_is_disabled"),
+    SERVICE_NOT_FOUND("service_is_not_found");
 
     private String name;
 
