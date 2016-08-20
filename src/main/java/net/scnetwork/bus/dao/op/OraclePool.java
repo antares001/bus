@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.oraclePool;
+package net.scnetwork.bus.dao.op;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.utils.LogBus;
@@ -43,7 +43,7 @@ public class OraclePool {
     /**
      * Подключение к базе данных Oracle.
      * @return экземпляр класса Connection - подключение к базе данных Oracle.
-     * @throws SQLException
+     * @throws SQLException исключение
      */
     public static Connection getConnection() throws SQLException {
         if(ods == null){
@@ -54,7 +54,7 @@ public class OraclePool {
 
     /**
      * Закрытие подключения.
-     * @throws SQLException
+     * @throws SQLException исключение
      */
     public static void closePooledConnections() throws SQLException {
         if(ods != null)

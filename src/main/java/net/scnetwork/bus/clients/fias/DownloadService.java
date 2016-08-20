@@ -22,8 +22,9 @@ import java.util.logging.Logger;
 @WebServiceClient(name = "DownloadService", targetNamespace = "http://fias.nalog.ru/WebServices/Public/DownloadService.asmx", wsdlLocation = "http://fias.nalog.ru/WebServices/Public/DownloadService.asmx?WSDL")
 public class DownloadService extends Service {
 
-    private final static URL DOWNLOADSERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(net.scnetwork.bus.clients.fias.DownloadService.class.getName());
+    private static final URL DOWNLOADSERVICE_WSDL_LOCATION;
+    private static final Logger logger = Logger.getLogger(net.scnetwork.bus.clients.fias.DownloadService.class.getName());
+    private static final String URL_POINT = "http://fias.nalog.ru/WebServices/Public/DownloadService.asmx";
 
     static {
         URL url = null;
@@ -61,7 +62,7 @@ public class DownloadService extends Service {
      */
     @WebEndpoint(name = "DownloadServiceSoap")
     public DownloadServiceSoap getDownloadServiceSoap() {
-        return super.getPort(new QName("http://fias.nalog.ru/WebServices/Public/DownloadService.asmx", "DownloadServiceSoap"), DownloadServiceSoap.class);
+        return super.getPort(new QName(URL_POINT, "DownloadServiceSoap"), DownloadServiceSoap.class);
     }
 
     /**
@@ -73,7 +74,7 @@ public class DownloadService extends Service {
      */
     @WebEndpoint(name = "DownloadServiceSoap")
     public DownloadServiceSoap getDownloadServiceSoap(WebServiceFeature... features) {
-        return super.getPort(new QName("http://fias.nalog.ru/WebServices/Public/DownloadService.asmx", "DownloadServiceSoap"), DownloadServiceSoap.class, features);
+        return super.getPort(new QName(URL_POINT, "DownloadServiceSoap"), DownloadServiceSoap.class, features);
     }
 
 }

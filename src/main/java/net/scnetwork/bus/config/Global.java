@@ -1,7 +1,7 @@
 package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.dao.oracle.OracleConfig;
-import net.scnetwork.bus.dao.oraclePool.OraclePoolConfig;
+import net.scnetwork.bus.dao.op.OraclePoolConfig;
 import net.scnetwork.bus.dao.postgresql.PostgreConfig;
 import net.scnetwork.bus.enums.DaoEnums;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -88,6 +88,11 @@ public class Global {
         this.gui = gui;
     }
 
+    /**
+     * Приведение объекта к строке
+     * @return строка
+     */
+    @Override
     public String toString(){
         return endpoint + " <=> " +
                 modules.toString() + "<=>" +

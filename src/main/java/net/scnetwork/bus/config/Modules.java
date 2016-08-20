@@ -28,7 +28,19 @@ public class Modules {
     private Print print;
     private Forex forex;
 
-    public Modules(){}
+    /**
+     * Инициализация
+     */
+    public Modules(){
+        bpay = new BPay();
+        yandex = new Yandex();
+        qiwi = new Qiwi();
+        leader = new Leader();
+        jpos = new JposConfig();
+        fias = new Fias();
+        print = new Print();
+        forex = new Forex();
+    }
 
     public BPay getBpay() {
         return bpay;
@@ -94,6 +106,11 @@ public class Modules {
         this.forex = forex;
     }
 
+    /**
+     * Приведение объекта к строке
+     * @return строка
+     */
+    @Override
     public String toString(){
         return "Modules:" +
                 "{bpay:" + bpay.toString() + "}," +

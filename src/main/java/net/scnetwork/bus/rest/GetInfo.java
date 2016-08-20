@@ -30,11 +30,16 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class GetInfo {
+    private static final String ECHO = "test running";
     private Dispatcher dispatcher = new Dispatcher();
 
+    /**
+     * Тест сервиса
+     * @return ответ
+     */
     @RequestMapping(value = "/rest/get/echo", method = RequestMethod.GET)
     public String echoGet(){
-        return "test running";
+        return ECHO;
     }
 
     /**
