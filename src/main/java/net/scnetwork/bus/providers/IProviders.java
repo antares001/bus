@@ -5,6 +5,9 @@ import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 
+/**
+ * Интерфейс для определения операций
+ */
 public interface IProviders {
     /**
      * Обработка запроса в формате xml

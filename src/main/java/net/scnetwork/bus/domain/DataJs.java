@@ -9,6 +9,7 @@ public class DataJs {
     private String operation;
     private Date date;
     private String account;
+    private String result;
 
     public StatusEnum getStatus() {
         return status;
@@ -40,5 +41,13 @@ public class DataJs {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }
