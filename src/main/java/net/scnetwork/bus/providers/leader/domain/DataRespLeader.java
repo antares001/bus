@@ -10,7 +10,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespLeader extends Data{
+public class DataRespLeader implements DataResp{
     public DataRespLeader(){
         setService(ServiceEnum.LEADER);
         setDate(new Date());

@@ -1,6 +1,5 @@
-package net.scnetwork.bus.providers.beeline.domain;
+package net.scnetwork.bus.domain;
 
-import net.scnetwork.bus.domain.DataResponse;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 
@@ -11,11 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
- * Формирование секции XML Data для сервиса Beeline
+ * Формирование секции Data в ответе
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespBeeline implements DataResponse {
+public class DataRespError implements DataResponse {
     @XmlElement(name = "date")
     private Date date;
 

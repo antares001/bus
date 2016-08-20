@@ -1,7 +1,7 @@
 package net.scnetwork.bus.utils;
 
 import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataResponse.DataRespError;
+import net.scnetwork.bus.domain.DataRespError;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.enums.StatusEnum;
 
