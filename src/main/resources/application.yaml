@@ -52,6 +52,10 @@ modules:
       service: no
       url: no
       soap: true
+  forex:
+      use: no
+      service: no
+      url: no
 
 dao: oracle-pool
 

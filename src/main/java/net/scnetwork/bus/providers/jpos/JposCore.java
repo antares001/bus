@@ -5,9 +5,13 @@ import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
+import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса JPOS
@@ -15,6 +19,9 @@ import net.scnetwork.bus.utils.LogBus;
 public class JposCore implements IProviders{
     private JposConfig jpos;
 
+    /**
+     * Инициализация конфигурации сервиса
+     */
     public JposCore(){
         try {
             jpos = Config.getInstance().getModules().getJpos();
@@ -25,12 +32,46 @@ public class JposCore implements IProviders{
 
     @Override
     public Response processingXml(Data data) {
-        return null;
+        if (null != jpos){
+            if (jpos.isUse()){
+                UseEnum use = UseEnum.valueOf(jpos.getService());
+                switch (use){
+                    case LOCAL:
+                        return localProcessingXml(data);
+                    case REMOTE:
+                        return remoteProcessingXml(data);
+                    case NONE:
+                    default:
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
+            }
+        } else {
+            return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
+        }
     }
 
     @Override
     public ResponseJs processing(DataJs data) {
-        return null;
+        if (null != jpos){
+            if (jpos.isUse()){
+                UseEnum use = UseEnum.valueOf(jpos.getService());
+                switch (use){
+                    case LOCAL:
+                        return localProcessingJson(data);
+                    case REMOTE:
+                        return remoteProcessingJson(data);
+                    case NONE:
+                    default:
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
+                }
+            } else {
+                return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
+            }
+        } else {
+            return JsonUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
+        }
     }
 
     @Override

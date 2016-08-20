@@ -2,6 +2,9 @@ package net.scnetwork.bus.providers.fias.domain;
 
 import javax.xml.bind.annotation.*;
 
+/**
+ * Данные от сервиса ФИАС
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "url")
 public class ParamFias {
