@@ -1,6 +1,8 @@
 
 package net.scnetwork.bus.clients.fias;
 
+import net.scnetwork.bus.utils.LogBus;
+
 import javax.xml.bind.annotation.XmlRegistry;
 
 
@@ -27,6 +29,7 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+        LogBus.info("FIAS started");
     }
 
     /**

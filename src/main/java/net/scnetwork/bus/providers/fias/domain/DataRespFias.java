@@ -11,6 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Data XML ответа сервиса bpay
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataRespFias extends DataResponse{
