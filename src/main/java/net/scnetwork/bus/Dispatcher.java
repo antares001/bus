@@ -5,6 +5,7 @@ import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.BPayCore;
 import net.scnetwork.bus.providers.beeline.BeelineCore;
+import net.scnetwork.bus.providers.epay.EPayCore;
 import net.scnetwork.bus.providers.fias.FiasCore;
 import net.scnetwork.bus.providers.forex.ForexCore;
 import net.scnetwork.bus.providers.IProviders;
@@ -58,6 +59,9 @@ public class Dispatcher {
             case FIAS:
                 providers = new FiasCore();
                 break;
+            case EPAY:
+                providers = new EPayCore();
+                break;
             default:
                 return XmlUtils.getError(StatusEnum.FORMAT_ERROR);
         }
@@ -99,6 +103,9 @@ public class Dispatcher {
                 break;
             case FIAS:
                 providers = new FiasCore();
+                break;
+            case EPAY:
+                providers = new EPayCore();
                 break;
             default:
                 return JsonUtils.getError(StatusEnum.FORMAT_ERROR);
