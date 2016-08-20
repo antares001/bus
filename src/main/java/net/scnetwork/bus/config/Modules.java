@@ -2,8 +2,10 @@ package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
+import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
+import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -23,6 +25,8 @@ public class Modules {
     private Leader leader;
     private JposConfig jpos;
     private Fias fias;
+    private Print print;
+    private Forex forex;
 
     public Modules(){}
 
@@ -72,6 +76,22 @@ public class Modules {
 
     public void setFias(Fias fias) {
         this.fias = fias;
+    }
+
+    public Print getPrint() {
+        return print;
+    }
+
+    public void setPrint(Print print) {
+        this.print = print;
+    }
+
+    public Forex getForex() {
+        return forex;
+    }
+
+    public void setForex(Forex forex) {
+        this.forex = forex;
     }
 
     public String toString(){

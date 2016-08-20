@@ -18,7 +18,11 @@ import net.scnetwork.bus.utils.XmlUtils;
  */
 public class YandexCore implements IProviders{
     private Yandex yandex;
+    private static final String CLIENT_ID = "";
 
+    /**
+     * Инициализация конфигурации сервиса
+     */
     public YandexCore(){
         try{
             yandex = Config.getInstance().getModules().getYandex();
@@ -26,8 +30,6 @@ public class YandexCore implements IProviders{
             LogBus.writeLog(e);
         }
     }
-
-    private static final String CLIENT_ID = "";
 
     @Override
     public Response processingXml(Data data) {
