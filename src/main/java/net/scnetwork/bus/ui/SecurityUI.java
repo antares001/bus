@@ -10,9 +10,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
+/**
+ * Настройка авторизации
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityUI extends WebSecurityConfigurerAdapter {
+
+    /**
+     * Конфигурация
+     * @param httpSecurity контекст
+     * @throws Exception исключение
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.csrf().disable().
@@ -22,6 +31,10 @@ public class SecurityUI extends WebSecurityConfigurerAdapter {
                 .antMatchers("/authorized", "/**").fullyAuthenticated();
     }
 
+    /**
+     * Глабальная конфигурация
+     * @param auth авторизация
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth){
         try {

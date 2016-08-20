@@ -3,6 +3,9 @@ package net.scnetwork.bus.domain;
 
 import net.scnetwork.bus.enums.OperationEnum;
 
+/**
+ * Data запроса
+ */
 public abstract class DataRequest extends Data{
     /**
      * Получение аккаунта
