@@ -8,10 +8,17 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
+/**
+ * Форма запрета
+ */
 @SpringUI(path = "/admin/accessDenied")
 @Theme(ValoTheme.THEME_NAME)
 @Title("Доступ запрещен")
 public class Denied extends UI{
+    /**
+     * Инициализация
+     * @param vaadinRequest запрос
+     */
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         setContent(new Label("Access Denied"));

@@ -12,12 +12,19 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.ui.util.ErrorsUI;
 
+/**
+ * Форма авторизации
+ */
 @SpringUI(path = "/admin/login")
 @Title("Авторизация")
 @Theme("valo")
 public class LoginController extends UI{
     public static final String PAGE = "login";
 
+    /**
+     * Инициализация формы
+     * @param vaadinRequest запрос
+     */
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         Global global = Config.getInstance();
