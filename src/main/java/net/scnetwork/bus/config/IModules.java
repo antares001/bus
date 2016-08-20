@@ -1,9 +1,12 @@
 package net.scnetwork.bus.config;
 
+/**
+ * Интерфейс настройки модулей
+ */
 public interface IModules {
     /**
      * Проверка на использование модуля
-     * @return
+     * @return значение
      */
     boolean isUse();
 

@@ -4,6 +4,9 @@ import net.scnetwork.bus.enums.StatusEnum;
 
 import java.util.Date;
 
+/**
+ * Формирование секции Data в формате JSON
+ */
 public class DataJs {
     private StatusEnum status;
     private String operation;

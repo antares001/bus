@@ -18,6 +18,11 @@ public enum DaoEnums {
         return name;
     }
 
+    /**
+     * Приведение объекта к строке
+     * @return строка
+     */
+    @Override
     public String toString(){
         return this.getName();
     }

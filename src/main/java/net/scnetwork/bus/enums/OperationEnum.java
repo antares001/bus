@@ -1,5 +1,8 @@
 package net.scnetwork.bus.enums;
 
+/**
+ * Типы операций
+ */
 public enum OperationEnum {
     CHECK("check"),
     PAY("pay");
