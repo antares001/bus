@@ -42,4 +42,12 @@ public class LogBus {
                 break;
         }
     }
+
+    /**
+     * Запись событий
+     * @param request событие
+     */
+    public static void info(String request) {
+        logger.info(request);
+    }
 }

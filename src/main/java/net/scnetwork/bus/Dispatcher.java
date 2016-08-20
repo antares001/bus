@@ -14,6 +14,7 @@ import net.scnetwork.bus.providers.mts.MtsCore;
 import net.scnetwork.bus.providers.qiwi.QiwiCore;
 import net.scnetwork.bus.providers.yandex.YandexCore;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
@@ -111,6 +112,7 @@ public class Dispatcher {
      * @return ответ
      */
     public Response restXmlDispatcher(String request){
+        LogBus.info(request);
         return new Response();
     }
 
