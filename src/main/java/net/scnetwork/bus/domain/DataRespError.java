@@ -15,6 +15,11 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataRespError implements DataResponse {
+    public DataRespError(StatusEnum status){
+        setStatus(status);
+        setDescription(status.getName());
+    }
+
     @XmlElement(name = "date")
     private Date date;
 

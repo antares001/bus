@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.op;
+package net.scnetwork.bus.dao.oraclePool;
 
 import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;

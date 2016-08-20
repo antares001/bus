@@ -102,24 +102,24 @@ public class FiasCore implements IProviders{
                         DownloadFileInfo fileInfo = serviceSoap.getLastDownloadFileInfo();
                         if (null != fileInfo) {
                             Response response = new Response();
-                            Data dataResponse = new DataRespFias();
+                            DataRespFias dataResponse = new DataRespFias();
                             dataResponse.setStatus(StatusEnum.OK);
                             dataResponse.setService(ServiceEnum.FIAS);
                             switch (options.getFormatEnum()) {
                                 case DBF:
-                                    dataResponse.setResult(fileInfo.getFiasCompleteDbfUrl());
+                                    dataResponse.setResponse(fileInfo.getFiasCompleteDbfUrl());
                                     break;
                                 case XML:
-                                    dataResponse.setResult(fileInfo.getFiasCompleteXmlUrl());
+                                    dataResponse.setResponse(fileInfo.getFiasCompleteXmlUrl());
                                     break;
                                 case SEVEN_Z:
-                                    dataResponse.setResult(fileInfo.getKladr47ZUrl());
+                                    dataResponse.setResponse(fileInfo.getKladr47ZUrl());
                                     break;
                                 case ARJ:
-                                    dataResponse.setResult(fileInfo.getKladr4ArjUrl());
+                                    dataResponse.setResponse(fileInfo.getKladr4ArjUrl());
                                     break;
                                 case TEXT:
-                                    dataResponse.setResult(fileInfo.getTextVersion());
+                                    dataResponse.setResponse(fileInfo.getTextVersion());
                                     break;
                                 default:
                                     break;

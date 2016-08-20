@@ -9,11 +9,6 @@ import net.scnetwork.bus.providers.bpay.enums.BPayMethod;
 import net.scnetwork.bus.providers.bpay.enums.BPayOperation;
 import org.junit.Test;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
-
 public class JaxbTest {
     @Test
     public void createRequestTest(){
@@ -35,15 +30,6 @@ public class JaxbTest {
 
         request.setData(data);
 
-        try {
-            JAXBContext context = JAXBContext.newInstance(Request.class);
-            Marshaller marshaller = context.createMarshaller();
-
-            StringWriter sw = new StringWriter();
-            marshaller.marshal(request, sw);
-            System.out.println(sw.toString());
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        System.out.println(request);
     }
 }
