@@ -1,5 +1,6 @@
-package net.scnetwork.bus.dao.oracle;
+package net.scnetwork.bus.dao.oraclePool;
 
+import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "oracle-pool")
-public class OraclePoolConfig {
+public class OraclePoolConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;
@@ -21,26 +22,32 @@ public class OraclePoolConfig {
     private boolean validateConnection;
     private boolean cacheEnabled;
 
+    @Override
     public String getJdbcUrl() {
         return jdbcUrl;
     }
 
+    @Override
     public void setJdbcUrl(String jdbcUrl) {
         this.jdbcUrl = jdbcUrl;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }

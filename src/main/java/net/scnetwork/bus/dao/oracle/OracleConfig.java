@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.postgresql;
+package net.scnetwork.bus.dao.oracle;
 
 import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -6,12 +6,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация подключения к БД
+ * Конфигурация подключения к БД Oracle
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "postgresql")
-public class PostgreConfig implements IConfigDao{
+@ConfigurationProperties(prefix = "oracle")
+public class OracleConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;

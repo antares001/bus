@@ -1,6 +1,7 @@
 package net.scnetwork.bus.config;
 
-import net.scnetwork.bus.dao.oracle.OraclePoolConfig;
+import net.scnetwork.bus.dao.oracle.OracleConfig;
+import net.scnetwork.bus.dao.oraclePool.OraclePoolConfig;
 import net.scnetwork.bus.dao.postgresql.PostgreConfig;
 import net.scnetwork.bus.enums.DaoEnums;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,6 +20,7 @@ public class Global {
     private DaoEnums dao;
     private OraclePoolConfig oraclePoolConfig;
     private PostgreConfig postgreConfig;
+    private OracleConfig oracleConfig;
     private LogConfig logConfig;
     private boolean gui;
 
@@ -52,6 +54,14 @@ public class Global {
 
     public void setPostgreConfig(PostgreConfig postgreConfig) {
         this.postgreConfig = postgreConfig;
+    }
+
+    public OracleConfig getOracleConfig() {
+        return oracleConfig;
+    }
+
+    public void setOracleConfig(OracleConfig oracleConfig) {
+        this.oracleConfig = oracleConfig;
     }
 
     public OraclePoolConfig getOraclePoolConfig() {

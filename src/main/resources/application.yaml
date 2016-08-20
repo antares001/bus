@@ -71,6 +71,11 @@ postgresql:
       username: user
       password: password
 
+oracle:
+    jdbcUrl: none
+    username: username
+    password: password
+
 log:
       type: LOCAL
 gui: true
