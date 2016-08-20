@@ -6,6 +6,9 @@ import net.scnetwork.bus.enums.OperationEnum;
 import javax.xml.bind.annotation.*;
 import java.util.Date;
 
+/**
+ * Data XML запроса сервиса bpay
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataReqFias extends DataRequest {

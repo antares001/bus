@@ -1,4 +1,4 @@
-package net.scnetwork.bus.providers.bpay;
+package net.scnetwork.bus.providers.bpay.domain;
 
 import net.scnetwork.bus.providers.bpay.enums.BPayLang;
 import net.scnetwork.bus.providers.bpay.enums.BPayMethod;
@@ -9,6 +9,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+/**
+ * Формирование XML к системе BPay
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "payment")
 public class Payment {

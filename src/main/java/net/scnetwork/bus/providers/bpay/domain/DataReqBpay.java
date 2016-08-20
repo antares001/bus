@@ -24,10 +24,18 @@ public class DataReqBpay extends DataRequest{
     @XmlElement(name = "bpay")
     private BPayOptions bPayOptions;
 
+    /**
+     * Получение параметров запроса bpay
+     * @return параметры
+     */
     public BPayOptions getbPayOptions(){
         return bPayOptions;
     }
 
+    /**
+     * Запись параметров
+     * @param bPayOptions параметры
+     */
     public void setbPayOptions(BPayOptions bPayOptions){
         this.bPayOptions = bPayOptions;
     }

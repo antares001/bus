@@ -8,6 +8,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.bpay.config.BPay;
+import net.scnetwork.bus.providers.bpay.domain.Payment;
 import net.scnetwork.bus.providers.bpay.enums.BPayLang;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;

@@ -8,6 +8,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Дополнительная секция
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = " fias")
 public class FiasOptions {
