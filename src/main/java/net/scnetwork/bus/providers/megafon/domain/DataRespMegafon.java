@@ -12,7 +12,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespMegafon implements DataResponse{
+public class DataRespMegafon extends DataResponse{
     @XmlElement(name = "date")
     private Date date;
 

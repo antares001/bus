@@ -5,16 +5,16 @@ import java.util.Date;
 /**
  * Секция Data XML
  */
-public interface Data {
+public abstract class Data {
     /**
      * Получение даты
      * @return дата
      */
-    Date getDate();
+    public abstract Date getDate();
 
     /**
      * Запись даты
      * @param date дата
      */
-    void setDate(Date date);
+    public abstract void setDate(Date date);
 }

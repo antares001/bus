@@ -1,11 +1,8 @@
 package net.scnetwork.bus.providers.bpay;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.providers.bpay.domain.DataReqBpay;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.bpay.domain.BPayOptions;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
@@ -43,7 +40,7 @@ public class BPayCore implements IProviders{
     }
 
     @Override
-    public Response processingXml(Data data) {
+    public Response processingXml(DataRequest data) {
         if (null != bPay) {
             if (bPay.isUse()) {
                 switch (UseEnum.valueOf(bPay.getService())) {
@@ -85,7 +82,7 @@ public class BPayCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(Data data) {
+    public Response localProcessingXml(DataRequest data) {
         BPayOptions options = ((DataReqBpay) data).getbPayOptions();
 
         Payment payment = new Payment();
@@ -129,7 +126,7 @@ public class BPayCore implements IProviders{
     }
 
     @Override
-    public Response remoteProcessingXml(Data data) {
+    public Response remoteProcessingXml(DataRequest data) {
         return null;
     }
 

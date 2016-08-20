@@ -3,10 +3,7 @@ package net.scnetwork.bus.providers.bpay.domain;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.enums.OperationEnum;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.Date;
 
 /**
@@ -14,14 +11,14 @@ import java.util.Date;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataReqBpay implements DataRequest{
-    @XmlElement(name = "account")
+public class DataReqBpay extends DataRequest{
+    @XmlAttribute(name = "account")
     private String account;
 
-    @XmlElement(name = "date")
+    @XmlAttribute(name = "date")
     private Date date;
 
-    @XmlElement(name = "operation")
+    @XmlAttribute(name = "operation")
     private OperationEnum operation;
 
     @XmlElement(name = "bpay")

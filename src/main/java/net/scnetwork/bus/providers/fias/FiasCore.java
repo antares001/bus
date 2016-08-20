@@ -44,7 +44,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public Response processingXml(Data data) {
+    public Response processingXml(DataRequest data) {
         if (null != fias) {
             if (fias.isUse()) {
                 UseEnum use = UseEnum.valueOf(fias.getService());
@@ -92,7 +92,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(Data data) {
+    public Response localProcessingXml(DataRequest data) {
         FiasOptions options = ((DataReqFias) data).getFiasOptions();
         if (null != options) {
             FiasOperation operation = options.getFiasOperation();
@@ -184,7 +184,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public Response remoteProcessingXml(Data data) {
+    public Response remoteProcessingXml(DataRequest data) {
         return null;
     }
 

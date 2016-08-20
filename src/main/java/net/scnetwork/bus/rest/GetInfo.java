@@ -1,27 +1,18 @@
 package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
-import net.scnetwork.bus.domain.Data;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.providers.beeline.BeelineCore;
-import net.scnetwork.bus.providers.beeline.domain.DataRespBeeline;
 import net.scnetwork.bus.providers.bpay.BPayCore;
-import net.scnetwork.bus.providers.bpay.domain.DataRespBpay;
 import net.scnetwork.bus.providers.forex.ForexCore;
-import net.scnetwork.bus.providers.forex.domain.DataRespForex;
 import net.scnetwork.bus.providers.leader.LeaderCore;
-import net.scnetwork.bus.providers.leader.domain.DataRespLeader;
 import net.scnetwork.bus.providers.megafon.MegafonCore;
-import net.scnetwork.bus.providers.megafon.domain.DataRespMegafon;
 import net.scnetwork.bus.providers.mts.MtsCore;
-import net.scnetwork.bus.providers.mts.domain.DataRespMts;
 import net.scnetwork.bus.providers.qiwi.QiwiCore;
-import net.scnetwork.bus.providers.qiwi.domain.DataRespQiwi;
 import net.scnetwork.bus.providers.yandex.YandexCore;
-import net.scnetwork.bus.providers.yandex.domain.DataRespYandex;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,40 +42,15 @@ public class GetInfo {
     @RequestMapping("/rest/getXml/{service}/{account}")
     public Response restGetXml(@PathVariable(value = "service") ServiceEnum service,
                                @PathVariable(value = "account") String account){
-        Data data;
         switch (service){
             case BPAY:
-                data = new DataRespBpay();
-                BPayCore artosis = new BPayCore();
-                return artosis.processingXml(data);
             case LEADER:
-                data = new DataRespLeader();
-                LeaderCore leader = new LeaderCore();
-                return leader.processingXml(data);
             case MTS:
-                data = new DataRespMts();
-                MtsCore mts = new MtsCore();
-                return mts.processingXml(data);
             case BEELINE:
-                data = new DataRespBeeline();
-                BeelineCore beeline = new BeelineCore();
-                return beeline.processingXml(data);
             case MEGAFON:
-                data = new DataRespMegafon();
-                MegafonCore megafon = new MegafonCore();
-                return megafon.processingXml(data);
             case FOREX:
-                data = new DataRespForex();
-                ForexCore fix = new ForexCore();
-                return fix.processingXml(data);
             case QIWI:
-                data = new DataRespQiwi();
-                QiwiCore qiwi = new QiwiCore();
-                return qiwi.processingXml(data);
             case YANDEX:
-                data = new DataRespYandex();
-                YandexCore yandex = new YandexCore();
-                return yandex.processingXml(data);
             default:
                 break;
         }

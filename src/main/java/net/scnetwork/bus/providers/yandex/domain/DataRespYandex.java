@@ -12,7 +12,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespYandex implements DataResponse{
+public class DataRespYandex extends DataResponse{
     @XmlElement(name = "date")
     private Date date;
 

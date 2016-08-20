@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespFias implements DataResponse{
+public class DataRespFias extends DataResponse{
 
     @XmlElement(name = "params")
     private List<ParamFias> paramList;

@@ -6,20 +6,20 @@ import net.scnetwork.bus.enums.StatusEnum;
 /**
  * Формирование Data ответа
  */
-public interface DataResponse extends Data {
-    String getResponse();
+public abstract class DataResponse extends Data {
+    public abstract String getResponse();
 
-    void setResponse(String response);
+    public abstract void setResponse(String response);
 
-    StatusEnum getStatus();
+    public abstract StatusEnum getStatus();
 
-    void setStatus(StatusEnum status);
+    public abstract void setStatus(StatusEnum status);
 
-    ServiceEnum getService();
+    public abstract ServiceEnum getService();
 
-    void setService(ServiceEnum service);
+    public abstract void setService(ServiceEnum service);
 
-    String getDescription();
+    public abstract String getDescription();
 
-    void setDescription(String description);
+    public abstract void setDescription(String description);
 }

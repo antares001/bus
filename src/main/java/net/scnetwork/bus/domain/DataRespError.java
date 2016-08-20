@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespError implements DataResponse {
+public class DataRespError extends DataResponse {
     public DataRespError(StatusEnum status){
         setStatus(status);
         setDescription(status.getName());

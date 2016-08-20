@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespBeeline implements DataResponse {
+public class DataRespBeeline extends DataResponse {
     @XmlElement(name = "date")
     private Date date;
 

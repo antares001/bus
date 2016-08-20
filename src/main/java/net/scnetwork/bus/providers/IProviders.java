@@ -1,9 +1,6 @@
 package net.scnetwork.bus.providers;
 
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.*;
 
 /**
  * Интерфейс для определения операций
@@ -14,7 +11,7 @@ public interface IProviders {
      * @param data входящие параметры
      * @return ответ шины
      */
-    Response processingXml(Data data);
+    Response processingXml(DataRequest data);
 
     /**
      * Обработка запроса в формате json
@@ -28,7 +25,7 @@ public interface IProviders {
      * @param data входящие параметры
      * @return обработка
      */
-    Response localProcessingXml(Data data);
+    Response localProcessingXml(DataRequest data);
 
     /**
      * Обработка запроса в формате json средствами шины
@@ -42,7 +39,7 @@ public interface IProviders {
      * @param data входящие параметры
      * @return обработка
      */
-    Response remoteProcessingXml(Data data);
+    Response remoteProcessingXml(DataRequest data);
 
     /**
      * Обработка запроса в формате json средствами микросервиса

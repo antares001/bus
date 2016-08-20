@@ -11,7 +11,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataReqYandex implements DataRequest {
+public class DataReqYandex extends DataRequest {
     @XmlElement(name = "yandex")
     private YandexOptions yandexOptions;
 

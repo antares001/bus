@@ -12,7 +12,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataRespQiwi implements DataResponse {
+public class DataRespQiwi extends DataResponse {
     @XmlElement(name = "date")
     private Date date;
 

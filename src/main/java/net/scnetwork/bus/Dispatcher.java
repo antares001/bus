@@ -1,9 +1,6 @@
 package net.scnetwork.bus;
 
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.BPayCore;
@@ -30,7 +27,7 @@ public class Dispatcher {
      * @param service тип сервиса
      * @return ответ
      */
-    public Response soapXmlDispatcher(Data data, ServiceEnum service){
+    public Response soapXmlDispatcher(DataRequest data, ServiceEnum service){
         IProviders providers;
         switch (service){
             case BPAY:

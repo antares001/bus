@@ -8,7 +8,7 @@ import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public class DataReqFias implements DataRequest {
+public class DataReqFias extends DataRequest {
 
     @XmlAttribute(name = "date")
     private Date date;

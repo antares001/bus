@@ -32,7 +32,7 @@ public class YandexCore implements IProviders{
     }
 
     @Override
-    public Response processingXml(Data data) {
+    public Response processingXml(DataRequest data) {
         if (null != yandex) {
             if (yandex.isUse()) {
                 switch (UseEnum.valueOf(yandex.getService())) {
@@ -74,7 +74,7 @@ public class YandexCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(Data data) {
+    public Response localProcessingXml(DataRequest data) {
         YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
         YandexOptions options = ((DataReqYandex) data).getYandexOptions();
         switch (options.getOperation()) {
@@ -98,7 +98,7 @@ public class YandexCore implements IProviders{
     }
 
     @Override
-    public Response remoteProcessingXml(Data data) {
+    public Response remoteProcessingXml(DataRequest data) {
         return null;
     }
 

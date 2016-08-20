@@ -1,9 +1,6 @@
 package net.scnetwork.bus.providers.mts;
 
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.providers.IProviders;
 
 /**
@@ -11,7 +8,7 @@ import net.scnetwork.bus.providers.IProviders;
  */
 public class MtsCore implements IProviders{
     @Override
-    public Response processingXml(Data data) {
+    public Response processingXml(DataRequest data) {
         return null;
     }
 
@@ -21,7 +18,7 @@ public class MtsCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(Data data) {
+    public Response localProcessingXml(DataRequest data) {
         return null;
     }
 
@@ -31,7 +28,7 @@ public class MtsCore implements IProviders{
     }
 
     @Override
-    public Response remoteProcessingXml(Data data) {
+    public Response remoteProcessingXml(DataRequest data) {
         return null;
     }
 

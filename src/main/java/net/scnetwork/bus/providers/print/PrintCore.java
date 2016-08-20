@@ -1,10 +1,7 @@
 package net.scnetwork.bus.providers.print;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.Data;
-import net.scnetwork.bus.domain.DataJs;
-import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.domain.ResponseJs;
+import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
@@ -31,7 +28,7 @@ public class PrintCore implements IProviders{
     }
 
     @Override
-    public Response processingXml(Data data) {
+    public Response processingXml(DataRequest data) {
         if (null != print){
             if (print.isUse()){
                 UseEnum use = UseEnum.valueOf(print.getService());
@@ -75,7 +72,7 @@ public class PrintCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(Data data) {
+    public Response localProcessingXml(DataRequest data) {
         return null;
     }
 
@@ -85,7 +82,7 @@ public class PrintCore implements IProviders{
     }
 
     @Override
-    public Response remoteProcessingXml(Data data) {
+    public Response remoteProcessingXml(DataRequest data) {
         return null;
     }
 
