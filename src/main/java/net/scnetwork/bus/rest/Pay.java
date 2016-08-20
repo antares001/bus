@@ -31,7 +31,6 @@ public class Pay {
         switch (service){
             case BPAY:
             case LEADER:
-            case IDC:
             case MTS:
             case BEELINE:
             case MEGAFON:
@@ -60,7 +59,6 @@ public class Pay {
         switch (service){
             case BPAY:
             case LEADER:
-            case IDC:
             case MTS:
             case BEELINE:
             case MEGAFON:

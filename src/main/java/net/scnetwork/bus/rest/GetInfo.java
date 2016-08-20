@@ -1,16 +1,17 @@
 package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.Data;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
+import net.scnetwork.bus.providers.beeline.BeelineCore;
 import net.scnetwork.bus.providers.beeline.domain.DataRespBeeline;
 import net.scnetwork.bus.providers.bpay.BPayCore;
-import net.scnetwork.bus.providers.beeline.BeelineCore;
 import net.scnetwork.bus.providers.bpay.domain.DataRespBpay;
 import net.scnetwork.bus.providers.forex.ForexCore;
 import net.scnetwork.bus.providers.forex.domain.DataRespForex;
-import net.scnetwork.bus.providers.idc.IdcCore;
-import net.scnetwork.bus.providers.idc.domain.DataRespIdc;
 import net.scnetwork.bus.providers.leader.LeaderCore;
 import net.scnetwork.bus.providers.leader.domain.DataRespLeader;
 import net.scnetwork.bus.providers.megafon.MegafonCore;
@@ -51,10 +52,6 @@ public class GetInfo {
                 data = new DataRespBpay();
                 BPayCore artosis = new BPayCore();
                 return artosis.processingXml(data);
-            case IDC:
-                data = new DataRespIdc();
-                IdcCore idc = new IdcCore();
-                return idc.processingXml(data);
             case LEADER:
                 data = new DataRespLeader();
                 LeaderCore leader = new LeaderCore();
@@ -104,9 +101,6 @@ public class GetInfo {
             case BPAY:
                 BPayCore artosis = new BPayCore();
                 return artosis.processing(data);
-            case IDC:
-                IdcCore idc = new IdcCore();
-                return idc.processing(data);
             case LEADER:
                 LeaderCore leader = new LeaderCore();
                 return leader.processing(data);
