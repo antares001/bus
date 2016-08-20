@@ -2,10 +2,14 @@ package net.scnetwork.bus.ui.controller;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
+import com.vaadin.event.ShortcutAction;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.ui.util.ErrorsUI;
 
 @SpringUI(path = "/admin/login")
@@ -16,25 +20,33 @@ public class LoginController extends UI{
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        if (null != Config.getInstance()) {
-            if (Config.getInstance().isGui()) {
+        Global global = Config.getInstance();
+        if (null != global) {
+            if (global.isGui()){
                 VerticalLayout layout = new VerticalLayout();
+                TextField username = new TextField("Имя пользователя");
+                PasswordField password = new PasswordField("Пароль");
+                Button login = new Button("Войти ", FontAwesome.ARROW_RIGHT);
+                Button cancel = new Button("Очистить", FontAwesome.TRASH_O);
+                CssLayout cssLayout = new CssLayout(login, cancel);
 
-                HorizontalLayout unLayout = new HorizontalLayout();
-                unLayout.addComponent(new Label("Имя пользователя"));
-                unLayout.addComponent(new TextField());
-                unLayout.setMargin(true);
-                layout.addComponent(unLayout);
+                layout.addComponents(username, password, cssLayout);
 
+                layout.setSpacing(true);
+                layout.setMargin(true);
+                cssLayout.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
+                login.setStyleName(ValoTheme.BUTTON_PRIMARY);
+                login.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
-                HorizontalLayout passLayout = new HorizontalLayout();
-                passLayout.addComponent(new Label("Пароль пользователя"));
-                passLayout.addComponent(new PasswordField());
-                passLayout.setMargin(false);
-                layout.addComponent(passLayout);
+                login.addClickListener(e -> Notification.show("login"));
+                cancel.addClickListener(e -> {
+                    username.setValue("");
+                    password.setValue("");
+                });
 
-                layout.setComponentAlignment(unLayout, Alignment.TOP_CENTER);
-                layout.setComponentAlignment(passLayout, Alignment.TOP_CENTER);
+                layout.setComponentAlignment(username, Alignment.TOP_CENTER);
+                layout.setComponentAlignment(password, Alignment.TOP_CENTER);
+                layout.setComponentAlignment(cssLayout, Alignment.TOP_CENTER);
                 setContent(layout);
             } else {
                 VerticalLayout layout = new VerticalLayout();
