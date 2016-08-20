@@ -167,6 +167,9 @@ public class FiasCore implements IProviders{
                         }
                         response.setData(dataResponse);
                         return response;
+                    case MONGODB:
+                    case REDIS:
+                    case SYNC:
                     default:
                         break;
                 }

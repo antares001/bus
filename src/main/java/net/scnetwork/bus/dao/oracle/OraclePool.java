@@ -1,7 +1,6 @@
-package net.scnetwork.bus.dao;
+package net.scnetwork.bus.dao.oracle;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.OraclePoolConfig;
 import net.scnetwork.bus.utils.LogBus;
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -13,14 +12,13 @@ import java.util.Properties;
  * Настройка пула подключений Oracle
  */
 public class OraclePool {
-    private static OraclePoolConfig poolConfig = Config.getInstance().getOraclePoolConfig();
-
     private static OracleDataSource ods = null;
-
     private static final String CACHE_NAME = "BUS";
 
     static {
         try {
+            OraclePoolConfig poolConfig = Config.getInstance().getOraclePoolConfig();
+
             ods = new OracleDataSource();
             ods.setURL(poolConfig.getJdbcUrl());
             ods.setUser(poolConfig.getUsername());
@@ -35,7 +33,7 @@ public class OraclePool {
             cacheProperties.setProperty("ValidateConnection", String.valueOf(poolConfig.isValidateConnection()));
 
             ods.setConnectionCacheProperties(cacheProperties);
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             LogBus.writeLog(e);
         }
     }

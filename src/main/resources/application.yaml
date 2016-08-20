@@ -66,6 +66,11 @@ oracle-pool:
       validateConnection: true
       cacheEnabled: true
 
+postgresql:
+      jdbcUrl: none
+      username: user
+      password: password
+
 log:
       type: LOCAL
 gui: true

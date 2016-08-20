@@ -1,4 +1,4 @@
-package net.scnetwork.bus.config;
+package net.scnetwork.bus.dao.oracle;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
