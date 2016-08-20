@@ -31,7 +31,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAllDownloadFileInfoResponse }
-     * 
+     * @return GetAllDownloadFileInfoResponse
      */
     public GetAllDownloadFileInfoResponse createGetAllDownloadFileInfoResponse() {
         return new GetAllDownloadFileInfoResponse();
@@ -39,7 +39,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetLastDownloadFileInfo }
-     * 
+     * @return GetLastDownloadFileInfo
      */
     public GetLastDownloadFileInfo createGetLastDownloadFileInfo() {
         return new GetLastDownloadFileInfo();
@@ -47,7 +47,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DownloadFileInfo }
-     * 
+     * @return DownloadFileInfo
      */
     public DownloadFileInfo createDownloadFileInfo() {
         return new DownloadFileInfo();
@@ -55,7 +55,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetLastDownloadFileInfoResponse }
-     * 
+     * @return GetLastDownloadFileInfoResponse
      */
     public GetLastDownloadFileInfoResponse createGetLastDownloadFileInfoResponse() {
         return new GetLastDownloadFileInfoResponse();
@@ -63,7 +63,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAllDownloadFileInfo }
-     * 
+     * @return createGetAllDownloadFileInfo
      */
     public GetAllDownloadFileInfo createGetAllDownloadFileInfo() {
         return new GetAllDownloadFileInfo();
@@ -71,7 +71,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ArrayOfDownloadFileInfo }
-     * 
+     * @return ArrayOfDownloadFileInfo
      */
     public ArrayOfDownloadFileInfo createArrayOfDownloadFileInfo() {
         return new ArrayOfDownloadFileInfo();
