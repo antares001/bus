@@ -8,14 +8,19 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import net.scnetwork.bus.utils.LogBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.spring.security.shared.VaadinSharedSecurity;
 
+/**
+ * Форма для авторизации
+ */
 @SpringUI(path = "/login")
 @Theme(ValoTheme.THEME_NAME)
-public class LoginUI extends UI{
+public class LoginUI extends UI {
+
     @Autowired
-    private VaadinSharedSecurity vaadinSecurity;
+    private transient VaadinSharedSecurity vaadinSecurity;
 
     private TextField userName;
     private PasswordField passwordField;
@@ -52,6 +57,7 @@ public class LoginUI extends UI{
                 userName.selectAll();
                 passwordField.setValue("");
                 loginFailed.setValue(String.format("Login failed: %s", e1.getMessage()));
+                LogBus.writeLog(e1);
                 loginFailed.setVisible(true);
 
                 if (loggedOut != null) {
@@ -74,7 +80,8 @@ public class LoginUI extends UI{
             loginLayout.setComponentAlignment(loggedOut, Alignment.BOTTOM_CENTER);
         }
 
-        loginLayout.addComponent(loginFailed = new Label());
+        loginFailed = new Label();
+        loginLayout.addComponent(loginFailed);
         loginLayout.setComponentAlignment(loginFailed, Alignment.BOTTOM_CENTER);
         loginFailed.setSizeUndefined();
         loginFailed.addStyleName(ValoTheme.LABEL_FAILURE);

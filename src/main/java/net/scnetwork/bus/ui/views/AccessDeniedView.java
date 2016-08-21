@@ -8,11 +8,17 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+/**
+ * Страница ограничения доступа
+ */
 @SpringComponent
 @UIScope
 public class AccessDeniedView extends VerticalLayout implements View{
     private Label message;
 
+    /**
+     * Инициализация страницы
+     */
     public AccessDeniedView() {
         setMargin(true);
         addComponent(message = new Label());
