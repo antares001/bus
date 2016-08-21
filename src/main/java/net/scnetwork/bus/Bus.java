@@ -51,6 +51,9 @@ public class Bus implements CommandLineRunner{
         SpringApplication.run(Bus.class, arg);
     }
 
+    /**
+     * Конифигурация авторизации
+     */
     @Configuration
     @EnableWebSecurity
     @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, proxyTargetClass = true)
@@ -88,16 +91,30 @@ public class Bus implements CommandLineRunner{
             return super.authenticationManagerBean();
         }
 
+        /**
+         * Реализация запоминания пользователя
+         * @return TokenBasedRememberMeServices
+         */
         @Bean
         public RememberMeServices rememberMeServices() {
             return new TokenBasedRememberMeServices("myAppKey", userDetailsService());
         }
 
+        /**
+         * Управление сессией
+         * @return SessionFixationProtectionStrategy
+         */
         @Bean
         public SessionAuthenticationStrategy sessionAuthenticationStrategy() {
             return new SessionFixationProtectionStrategy();
         }
 
+        /**
+         * VaadinAuthenticationSuccessHandler
+         * @param httpService сервис
+         * @param vaadinRedirectStrategy управление
+         * @return VaadinAuthenticationSuccessHandler
+         */
         @Bean(name = VaadinSharedSecurityConfiguration.VAADIN_AUTHENTICATION_SUCCESS_HANDLER_BEAN)
         VaadinAuthenticationSuccessHandler vaadinAuthenticationSuccessHandler(HttpService httpService,
                                                                               VaadinRedirectStrategy vaadinRedirectStrategy) {

@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 import org.vaadin.spring.sidebar.annotation.SideBarSection;
 import org.vaadin.spring.sidebar.annotation.SideBarSections;
 
+/**
+ * Секции основного окна SideBar
+ */
 @Component
 @SideBarSections({
         @SideBarSection(id = Section.VIEWS, caption = "Просмотр"),

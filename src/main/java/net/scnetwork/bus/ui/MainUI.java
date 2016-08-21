@@ -22,15 +22,19 @@ import org.vaadin.spring.security.util.SecurityExceptionUtils;
 import org.vaadin.spring.sidebar.components.ValoSideBar;
 import org.vaadin.spring.sidebar.security.VaadinSecurityItemFilter;
 
+/**
+ * Основная форма
+ */
 @SpringUI
 @Theme(ValoTheme.THEME_NAME)
 @Push(transport = Transport.WEBSOCKET)
-public class MainUI extends UI{
-    @Autowired
-    private ApplicationContext applicationContext;
+public class MainUI extends UI {
 
     @Autowired
-    private VaadinSecurity vaadinSecurity;
+    private transient ApplicationContext applicationContext;
+
+    @Autowired
+    private transient VaadinSecurity vaadinSecurity;
 
     @Autowired
     private SpringViewProvider springViewProvider;

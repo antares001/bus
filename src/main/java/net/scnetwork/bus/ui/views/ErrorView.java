@@ -7,10 +7,16 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+/**
+ * Страница ошибки
+ */
 public class ErrorView extends VerticalLayout implements View {
 
     private Label message;
 
+    /**
+     * Инициализация страницы
+     */
     public ErrorView() {
         setMargin(true);
         message = new Label();

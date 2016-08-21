@@ -9,13 +9,20 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.ui.Section;
+import net.scnetwork.bus.utils.LogBus;
 import org.vaadin.spring.sidebar.annotation.FontAwesomeIcon;
 import org.vaadin.spring.sidebar.annotation.SideBarItem;
 
+/**
+ * Основная страница
+ */
 @SpringView(name = "")
 @SideBarItem(sectionId = Section.VIEWS, caption = "Стартовая страница", order = 0)
 @FontAwesomeIcon(FontAwesome.HOME)
 public class HomeView extends VerticalLayout implements View {
+    /**
+     * Инициализация страницы
+     */
     public HomeView(){
         setSpacing(true);
         setMargin(true);
@@ -31,6 +38,6 @@ public class HomeView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        //
+        LogBus.info("enter to main");
     }
 }
