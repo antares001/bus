@@ -4,10 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
@@ -25,6 +22,7 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SideBarItem(sectionId = Section.VIEWS, caption = "Конфигурация шины", order = 1)
 @FontAwesomeIcon(FontAwesome.BANK)
 public class ConfigurationView extends CustomComponent implements View{
+    private TabSheet tabSheet;
 
     /**
      * Инициализация
@@ -39,8 +37,16 @@ public class ConfigurationView extends CustomComponent implements View{
                 verticalLayout.addComponent(header1);
 
                 HorizontalLayout urlLayout = new HorizontalLayout();
-                Label urlLabel = new Label(global.getEndpoint());
-                urlLayout.addComponent(urlLabel);
+
+                tabSheet = new TabSheet();
+                tabSheet.setStyleName(ValoTheme.TABSHEET_FRAMED);
+                tabSheet.setStyleName(ValoTheme.TABSHEET_PADDED_TABBAR);
+
+                createBaseOption();
+                createModules();
+                createDatabases();
+
+                urlLayout.addComponent(tabSheet);
                 verticalLayout.addComponent(urlLayout);
 
                 setCompositionRoot(verticalLayout);
@@ -53,8 +59,35 @@ public class ConfigurationView extends CustomComponent implements View{
             LogBus.writeLog(e);
         }
     }
+
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         LogBus.info("enter config");
+    }
+
+    public boolean equals(Object o){
+        return super.equals(o);
+    }
+
+    public int hashCode(){
+        return super.hashCode();
+    }
+
+    private void createBaseOption(){
+        VerticalLayout generalLayout = new VerticalLayout();
+        generalLayout.addComponent(new Label("Точка входа"));
+        tabSheet.addTab(generalLayout, "Основные настройки");
+    }
+
+    private void createModules(){
+        VerticalLayout modulesLayout = new VerticalLayout();
+        modulesLayout.addComponent(new Label("Модули"));
+        tabSheet.addTab(modulesLayout, "Модули системы");
+    }
+
+    private void createDatabases(){
+        VerticalLayout databasesLayout = new VerticalLayout();
+        databasesLayout.addComponent(new Label("Базы данных"));
+        tabSheet.addTab(databasesLayout, "Базы данных системы");
     }
 }
