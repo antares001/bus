@@ -12,11 +12,17 @@ import net.scnetwork.bus.utils.LogBus;
 import org.vaadin.spring.sidebar.annotation.FontAwesomeIcon;
 import org.vaadin.spring.sidebar.annotation.SideBarItem;
 
+/**
+ * Страница графиков
+ */
 @SpringView(name = "chart")
 @SideBarItem(sectionId = Section.VIEWS, caption = "Графики", order = 2)
 @FontAwesomeIcon(FontAwesome.BAR_CHART_O)
 public class ChartView extends CustomComponent implements View{
 
+    /**
+     * Инициализация
+     */
     public ChartView(){
         Label label = new Label("Графики");
         label.setStyleName(ValoTheme.LABEL_H1);

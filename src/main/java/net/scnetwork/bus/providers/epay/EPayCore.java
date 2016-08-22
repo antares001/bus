@@ -6,6 +6,9 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.providers.IProviders;
 
+/**
+ * Обработка запросов ePay
+ */
 public class EPayCore implements IProviders{
     @Override
     public Response processingXml(DataRequest data) {

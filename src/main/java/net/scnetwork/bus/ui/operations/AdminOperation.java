@@ -7,6 +7,9 @@ import net.scnetwork.bus.ui.Section;
 import org.vaadin.spring.sidebar.annotation.FontAwesomeIcon;
 import org.vaadin.spring.sidebar.annotation.SideBarItem;
 
+/**
+ * Операции
+ */
 @SpringComponent
 @SideBarItem(sectionId = Section.OPERATIONS, caption = "Администрирование шины", order = 0)
 @FontAwesomeIcon(FontAwesome.WRENCH)

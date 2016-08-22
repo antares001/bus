@@ -53,11 +53,10 @@ public class OraclePool {
     }
 
     /**
-     * Закрытие подключения.
-     * @throws SQLException исключение
+     * Доступ к переменной ods
+     * @return ods
      */
-    public static void closePooledConnections() throws SQLException {
-        if(ods != null)
-            ods.close();
+    public static OracleDataSource getOds(){
+        return ods;
     }
 }
