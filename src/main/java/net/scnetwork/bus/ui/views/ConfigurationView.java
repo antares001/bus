@@ -5,6 +5,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
@@ -31,9 +32,17 @@ public class ConfigurationView extends CustomComponent implements View{
         try {
             Global global = Config.getInstance();
             if (null != global) {
+                VerticalLayout verticalLayout = new VerticalLayout();
                 Label header1 = new Label("Конфигурация");
                 header1.setStyleName(ValoTheme.LABEL_H1);
-                setCompositionRoot(header1);
+                verticalLayout.addComponent(header1);
+
+                HorizontalLayout urlLayout = new HorizontalLayout();
+                Label urlLabel = new Label(global.getEndpoint());
+                urlLayout.addComponent(urlLabel);
+                verticalLayout.addComponent(urlLayout);
+
+                setCompositionRoot(verticalLayout);
             } else {
                 Label error = new Label("Ошибка конфигурации");
                 error.setStyleName(ValoTheme.NOTIFICATION_ERROR);
