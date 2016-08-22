@@ -13,10 +13,7 @@ public class LogBus {
     private static LogConfig logConfig;
     private static final Logger logger = LoggerFactory.getLogger("BUS");
 
-    /**
-     * Инициализация конфигурации
-     */
-    private LogBus(){
+    public LogBus(){
         try{
             logConfig = Config.getInstance().getLogConfig();
         } catch (NullPointerException e){
@@ -38,6 +35,23 @@ public class LogBus {
             case ORACLE:
             case SQLITE:
             case SYSLOG:
+            case LOGSTASH:
+            default:
+                break;
+        }
+    }
+
+    public void write(Exception e){
+        switch (LogEnums.valueOf(logConfig.getType())){
+            case LOCAL:
+                logger.info(e.toString());
+                break;
+            case POSTGRESQL:
+            case MYSQL:
+            case ORACLE:
+            case SQLITE:
+            case SYSLOG:
+            case LOGSTASH:
             default:
                 break;
         }
@@ -49,5 +63,9 @@ public class LogBus {
      */
     public static void info(String request) {
         logger.info(request);
+    }
+
+    public void writeString(String s) {
+        logger.info(s);
     }
 }
