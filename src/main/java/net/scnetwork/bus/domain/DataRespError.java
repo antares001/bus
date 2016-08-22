@@ -16,15 +16,6 @@ import java.util.Date;
 @XmlRootElement(name = "Data")
 public class DataRespError extends DataResponse {
 
-    /**
-     * Инициализация стандартных параметров
-     * @param status статус
-     */
-    public DataRespError(StatusEnum status){
-        setStatus(status);
-        setDescription(status.getName());
-    }
-
     @XmlElement(name = "date")
     private Date date;
 
@@ -39,6 +30,15 @@ public class DataRespError extends DataResponse {
 
     @XmlElement(name = "description")
     private String description;
+
+    /**
+     * Инициализация стандартных параметров
+     * @param status статус
+     */
+    public DataRespError(StatusEnum status){
+        setStatus(status);
+        setDescription(status.getName());
+    }
 
     @Override
     public Date getDate() {

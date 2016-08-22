@@ -1,5 +1,8 @@
 package net.scnetwork.bus.providers.yandex.enums;
 
+/**
+ * Операции стороннего сервиса Yandex
+ */
 public enum YandexOperation {
     ACCOUNT_INFO("account_info"),
     OPERATION_HISTORY("operation_history"),

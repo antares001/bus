@@ -20,7 +20,6 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SideBarItem(sectionId = Section.VIEWS, caption = "Стартовая страница", order = 0)
 @FontAwesomeIcon(FontAwesome.HOME)
 public class HomeView extends VerticalLayout implements View {
-    private LogBus log = new LogBus();
 
     /**
      * Инициализация страницы
@@ -40,6 +39,6 @@ public class HomeView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        log.writeString("enter to main");
+        LogBus.info("enter to main");
     }
 }

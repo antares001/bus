@@ -9,6 +9,9 @@ import net.scnetwork.bus.utils.XmlUtils;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+/**
+ * Единая точка входа
+ */
 @WebService(endpointInterface = "net.scnetwork.bus.service.IXmlFunction")
 public class XmlFunction implements IXmlFunction{
     private Dispatcher dispatcher = new Dispatcher();

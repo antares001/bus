@@ -13,7 +13,6 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.ui.Section;
 import net.scnetwork.bus.utils.LogBus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.vaadin.spring.sidebar.annotation.FontAwesomeIcon;
 import org.vaadin.spring.sidebar.annotation.SideBarItem;
@@ -26,8 +25,10 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SideBarItem(sectionId = Section.VIEWS, caption = "Конфигурация шины", order = 1)
 @FontAwesomeIcon(FontAwesome.BANK)
 public class ConfigurationView extends CustomComponent implements View{
-    private LogBus log = new LogBus();
 
+    /**
+     * Инициализация
+     */
     public ConfigurationView(){
         try {
             Global global = Config.getInstance();
@@ -54,6 +55,6 @@ public class ConfigurationView extends CustomComponent implements View{
     }
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        log.writeString("enter config");
+        LogBus.info("enter config");
     }
 }

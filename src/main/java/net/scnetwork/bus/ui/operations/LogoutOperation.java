@@ -8,6 +8,9 @@ import org.vaadin.spring.security.VaadinSecurity;
 import org.vaadin.spring.sidebar.annotation.FontAwesomeIcon;
 import org.vaadin.spring.sidebar.annotation.SideBarItem;
 
+/**
+ * Операция выход из системы
+ */
 @SpringComponent
 @SideBarItem(sectionId = Section.OPERATIONS, caption = "Выход")
 @FontAwesomeIcon(FontAwesome.POWER_OFF)
