@@ -5,6 +5,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.ViewScope;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
@@ -19,6 +20,7 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SpringView(name = "")
 @SideBarItem(sectionId = Section.VIEWS, caption = "Стартовая страница", order = 0)
 @FontAwesomeIcon(FontAwesome.HOME)
+@ViewScope
 public class HomeView extends VerticalLayout implements View {
 
     /**

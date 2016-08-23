@@ -4,6 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.ViewScope;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
@@ -18,6 +19,7 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SpringView(name = "chart")
 @SideBarItem(sectionId = Section.VIEWS, caption = "Графики", order = 2)
 @FontAwesomeIcon(FontAwesome.BAR_CHART_O)
+@ViewScope
 public class ChartView extends CustomComponent implements View{
 
     /**
