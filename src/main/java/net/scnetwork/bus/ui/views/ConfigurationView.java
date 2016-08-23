@@ -4,12 +4,15 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.ViewScope;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.clients.mina.MasterCardConfig;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.ServiceEnum;
+import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
@@ -32,6 +35,7 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 @SpringView(name = "config")
 @SideBarItem(sectionId = Section.VIEWS, caption = "Конфигурация шины", order = 1)
 @FontAwesomeIcon(FontAwesome.BANK)
+@ViewScope
 public class ConfigurationView extends CustomComponent implements View{
     private TabSheet tabSheet;
 
@@ -46,6 +50,7 @@ public class ConfigurationView extends CustomComponent implements View{
                 Label header1 = new Label("Конфигурация");
                 header1.setStyleName(ValoTheme.LABEL_H1);
                 verticalLayout.addComponent(header1);
+                verticalLayout.setComponentAlignment(header1, Alignment.TOP_CENTER);
 
                 HorizontalLayout urlLayout = new HorizontalLayout();
 
@@ -59,6 +64,7 @@ public class ConfigurationView extends CustomComponent implements View{
 
                 urlLayout.addComponent(tabSheet);
                 verticalLayout.addComponent(urlLayout);
+                verticalLayout.setComponentAlignment(urlLayout, Alignment.TOP_CENTER);
 
                 setCompositionRoot(verticalLayout);
             } else {
@@ -101,7 +107,6 @@ public class ConfigurationView extends CustomComponent implements View{
 
         Grid grid = new Grid();
 
-        BPay bPay = modules.getBpay();
         Yandex yandex = modules.getYandex();
         Qiwi qiwi = modules.getQiwi();
         Leader leader = modules.getLeader();
@@ -110,8 +115,22 @@ public class ConfigurationView extends CustomComponent implements View{
         Print print = modules.getPrint();
         Forex forex = modules.getForex();
 
-        modulesLayout.addComponent(grid);
+        grid.addColumn("Имя", String.class);
+        grid.addColumn("Включен", Boolean.class);
+        grid.addColumn("Тип", UseEnum.class);
+        grid.addColumn("Адрес", String.class);
+        grid.addColumn("Параметры", Object.class);
 
+/*
+        BPay bPay = modules.getBpay();
+        grid.addRow(BPay.DESCRIPTION);
+        grid.addRow(bPay.isUse());
+        grid.addRow(bPay.getService());
+        grid.addRow(bPay.getUrl());
+        grid.addRow("");
+*/
+        modulesLayout.addComponent(grid);
+        modulesLayout.setComponentAlignment(grid, Alignment.TOP_CENTER);
         tabSheet.addTab(modulesLayout, "Модули системы");
     }
 
