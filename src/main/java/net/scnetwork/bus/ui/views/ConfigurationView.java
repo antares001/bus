@@ -7,19 +7,12 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.ViewScope;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import net.scnetwork.bus.clients.mina.MasterCardConfig;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.config.Modules;
-import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
-import net.scnetwork.bus.providers.forex.config.Forex;
-import net.scnetwork.bus.providers.jpos.JposCore;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
-import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.ui.Section;
@@ -101,36 +94,41 @@ public class ConfigurationView extends CustomComponent implements View{
     private void createModules(Modules modules){
         VerticalLayout modulesLayout = new VerticalLayout();
 
-        Label head = new Label("Модули");
-        modulesLayout.addComponent(head);
-        modulesLayout.setComponentAlignment(head, Alignment.TOP_CENTER);
+        Table table = new Table("Модули");
+        table.setSelectable(true);
+        table.setWidth(600f, Unit.PIXELS);
+        table.addContainerProperty("Имя", String.class, null);
+        table.addContainerProperty("Использование", Boolean.class, null);
+        table.addContainerProperty("Тип сервиса", String.class, null);
+        table.addContainerProperty("Адрес", String.class, null);
 
-        Grid grid = new Grid();
+        BPay bPay = modules.getBpay();
+        if (null != bPay) {
+            table.addItem(new Object[]{BPay.DESCRIPTION, bPay.isUse(), bPay.getService(), bPay.getUrl()}, 0);
+        }
 
         Yandex yandex = modules.getYandex();
+        if (null != yandex) {
+            table.addItem(new Object[]{Yandex.DESCRIPTION, yandex.isUse(), yandex.getService(), yandex.getUrl()}, 1);
+        }
+
         Qiwi qiwi = modules.getQiwi();
+        if (null != qiwi) {
+            table.addItem(new Object[]{Qiwi.DESCRIPTION, qiwi.isUse(), qiwi.getService(), qiwi.getUrl()}, 2);
+        }
+
         Leader leader = modules.getLeader();
+        if (null != leader){
+            table.addItem(new Object[]{Leader.DESRIPTION, leader.isUse(), leader.getService(), leader.getUrl()}, 3);
+        }
+
         Fias fias = modules.getFias();
-        JposConfig jpos = modules.getJpos();
-        Print print = modules.getPrint();
-        Forex forex = modules.getForex();
+        if (null != fias){
+            table.addItem(new Object[]{Fias.DESRIPTION, fias.isUse(), fias.getService(), fias.getUrl()}, 4);
+        }
 
-        grid.addColumn("Имя", String.class);
-        grid.addColumn("Включен", Boolean.class);
-        grid.addColumn("Тип", UseEnum.class);
-        grid.addColumn("Адрес", String.class);
-        grid.addColumn("Параметры", Object.class);
-
-/*
-        BPay bPay = modules.getBpay();
-        grid.addRow(BPay.DESCRIPTION);
-        grid.addRow(bPay.isUse());
-        grid.addRow(bPay.getService());
-        grid.addRow(bPay.getUrl());
-        grid.addRow("");
-*/
-        modulesLayout.addComponent(grid);
-        modulesLayout.setComponentAlignment(grid, Alignment.TOP_CENTER);
+        modulesLayout.addComponent(table);
+        modulesLayout.setComponentAlignment(table, Alignment.TOP_CENTER);
         tabSheet.addTab(modulesLayout, "Модули системы");
     }
 

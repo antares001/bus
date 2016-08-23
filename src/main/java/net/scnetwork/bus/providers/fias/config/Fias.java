@@ -18,6 +18,8 @@ public class Fias implements IModules {
     private boolean soap;
     private String format;
 
+    public static final String DESRIPTION = "ФИАС";
+
     @Override
     public boolean isUse() {
         return use;

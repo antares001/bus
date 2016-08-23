@@ -18,6 +18,8 @@ public class Leader implements IModules {
     private boolean soap;
     private String point;
 
+    public static final String DESRIPTION = "Лидер";
+
     @Override
     public boolean isUse() {
         return use;

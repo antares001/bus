@@ -17,6 +17,8 @@ public class Qiwi implements IModules {
     private String url;
     private boolean soap;
 
+    public static final String DESCRIPTION = "Qiwi";
+
     @Override
     public boolean isUse() {
         return use;
@@ -33,7 +35,7 @@ public class Qiwi implements IModules {
     }
 
     @Override
-    public void setService(String useEnum) {
+    public void setService(String service) {
         this.service = service;
     }
 

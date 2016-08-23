@@ -82,4 +82,5 @@ oracle:
 
 log:
       type: LOCAL
+      level: 1
 gui: true

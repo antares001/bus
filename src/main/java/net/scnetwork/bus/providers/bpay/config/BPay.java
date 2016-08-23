@@ -20,7 +20,7 @@ public class BPay implements IModules {
     private String merchantId;
     private String signature;
 
-    public static final String DESCRIPTION = "";
+    public static final String DESCRIPTION = "BPay";
 
     @Override
     public boolean isUse() {

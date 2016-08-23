@@ -17,6 +17,8 @@ public class Yandex implements IModules {
     private String url;
     private boolean soap;
 
+    public static final String DESCRIPTION = "Yandex";
+
     @Override
     public boolean isUse() {
         return use;
