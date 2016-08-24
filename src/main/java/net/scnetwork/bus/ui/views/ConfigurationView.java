@@ -10,6 +10,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.DaoEnums;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
@@ -182,7 +183,13 @@ public class ConfigurationView extends CustomComponent implements View{
 
     private void createDatabases(Global global){
         VerticalLayout databasesLayout = new VerticalLayout();
-        databasesLayout.addComponent(new Label("Базы данных"));
+
+        DaoEnums dao = global.getDao();
+        if (null != dao){
+            databasesLayout.addComponent(new Label(dao.getName()));
+        } else {
+            databasesLayout.addComponent(new Label("Не определена БД"));
+        }
         tabSheet.addTab(databasesLayout, "Базы данных системы");
     }
 }
