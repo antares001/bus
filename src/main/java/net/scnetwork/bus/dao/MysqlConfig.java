@@ -1,17 +1,16 @@
-package net.scnetwork.bus.dao.oracle;
+package net.scnetwork.bus.dao;
 
-import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация подключения к БД Oracle
+ * Конфигурация настройки MySql
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "oracle")
-public class OracleConfig implements IConfigDao{
+@ConfigurationProperties(prefix = "mysql")
+public class MysqlConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;

@@ -1,17 +1,16 @@
-package net.scnetwork.bus.dao.mysql;
+package net.scnetwork.bus.dao;
 
-import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Конфигурация настройки MySql
+ * Конфигурация подключения к БД
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "mysql")
-public class MysqlConfig implements IConfigDao{
+@ConfigurationProperties(prefix = "postgresql")
+public class PostgreConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;
