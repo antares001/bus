@@ -1,23 +1,19 @@
-package net.scnetwork.bus.dao.mysqlPool;
+package net.scnetwork.bus.dao;
 
-
-import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Настройка пула подключений к MySql
+ * Конфигурация настройки MySql
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "mysql-pool")
-public class MysqlPoolConfig implements IConfigDao{
+@ConfigurationProperties(prefix = "mysql")
+public class MysqlConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;
-    private int initialLimit;
-    private int maxLimit;
 
     @Override
     public String getJdbcUrl() {
@@ -47,21 +43,5 @@ public class MysqlPoolConfig implements IConfigDao{
     @Override
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getInitialLimit() {
-        return initialLimit;
-    }
-
-    public void setInitialLimit(int initialLimit) {
-        this.initialLimit = initialLimit;
-    }
-
-    public int getMaxLimit() {
-        return maxLimit;
-    }
-
-    public void setMaxLimit(int maxLimit) {
-        this.maxLimit = maxLimit;
     }
 }

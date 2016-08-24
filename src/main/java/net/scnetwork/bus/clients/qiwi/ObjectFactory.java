@@ -26,22 +26,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
     private static final String URL = "http://server.ishop.mw.ru/";
-    private final  QName _CheckBill_QNAME = new QName(URL, "checkBill");
-    private final  QName _CreateBill_QNAME = new QName(URL, "createBill");
-    private final  QName _CreateBillResponse_QNAME = new QName(URL, "createBillResponse");
-    private final  QName _CancelBillResponse_QNAME = new QName(URL, "cancelBillResponse");
-    private final  QName _CreateBillCcyResponse_QNAME = new QName(URL, "createBillCcyResponse");
-    private final  QName _CreateBillExtResponse_QNAME = new QName(URL, "createBillExtResponse");
-    private final  QName _GetBillListResponse_QNAME = new QName(URL, "getBillListResponse");
-    private final  QName _GetBillList_QNAME = new QName(URL, "getBillList");
-    private final  QName _CancelBillPayedAmountResponse_QNAME = new QName(URL, "cancelBillPayedAmountResponse");
-    private final  QName _CreateBillExt_QNAME = new QName(URL, "createBillExt");
-    private final  QName _CheckBillResponse_QNAME = new QName(URL, "checkBillResponse");
-    private final  QName _CheckRefund_QNAME = new QName(URL, "checkRefund");
-    private final  QName _CheckRefundResponse_QNAME = new QName(URL, "checkRefundResponse");
-    private final  QName _CancelBillPayedAmount_QNAME = new QName(URL, "cancelBillPayedAmount");
-    private final  QName _CreateBillCcy_QNAME = new QName(URL, "createBillCcy");
-    private final  QName _CancelBill_QNAME = new QName(URL, "cancelBill");
+    private static final QName checkBill = new QName(URL, "checkBill");
+    private static final QName createBill = new QName(URL, "createBill");
+    private static final QName createBillResponse = new QName(URL, "createBillResponse");
+    private static final QName cancelBillResponse = new QName(URL, "cancelBillResponse");
+    private static final QName createBillCcyResponse = new QName(URL, "createBillCcyResponse");
+    private static final QName createBillExtResponse = new QName(URL, "createBillExtResponse");
+    private static final QName getBillListResponse = new QName(URL, "getBillListResponse");
+    private static final QName getBillList = new QName(URL, "getBillList");
+    private static final QName cancelBillPayedAmountResponse = new QName(URL, "cancelBillPayedAmountResponse");
+    private static final QName createBillExt = new QName(URL, "createBillExt");
+    private static final QName checkBillResponse = new QName(URL, "checkBillResponse");
+    private static final QName checkRefund = new QName(URL, "checkRefund");
+    private static final QName checkRefundResponse = new QName(URL, "checkRefundResponse");
+    private static final QName cancelBillPayedAmount = new QName(URL, "cancelBillPayedAmount");
+    private static final QName createBillCcy = new QName(URL, "createBillCcy");
+    private static final QName cancelBill = new QName(URL, "cancelBill");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: net.scnetwork.bus.clients.qiwi
@@ -186,7 +186,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "checkBill")
     public JAXBElement<CheckBill> createCheckBill(CheckBill value) {
-        return new JAXBElement<>(_CheckBill_QNAME, CheckBill.class, null, value);
+        return new JAXBElement<>(checkBill, CheckBill.class, null, value);
     }
 
     /**
@@ -196,7 +196,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBill")
     public JAXBElement<CreateBill> createCreateBill(CreateBill value) {
-        return new JAXBElement<>(_CreateBill_QNAME, CreateBill.class, null, value);
+        return new JAXBElement<>(createBill, CreateBill.class, null, value);
     }
 
     /**
@@ -206,7 +206,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBillResponse")
     public JAXBElement<CreateBillResponse> createCreateBillResponse(CreateBillResponse value) {
-        return new JAXBElement<>(_CreateBillResponse_QNAME, CreateBillResponse.class, null, value);
+        return new JAXBElement<>(createBillResponse, CreateBillResponse.class, null, value);
     }
 
     /**
@@ -216,7 +216,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "cancelBillResponse")
     public JAXBElement<CancelBillResponse> createCancelBillResponse(CancelBillResponse value) {
-        return new JAXBElement<>(_CancelBillResponse_QNAME, CancelBillResponse.class, null, value);
+        return new JAXBElement<>(cancelBillResponse, CancelBillResponse.class, null, value);
     }
 
     /**
@@ -226,7 +226,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBillCcyResponse")
     public JAXBElement<CreateBillCcyResponse> createCreateBillCcyResponse(CreateBillCcyResponse value) {
-        return new JAXBElement<>(_CreateBillCcyResponse_QNAME, CreateBillCcyResponse.class, null, value);
+        return new JAXBElement<>(createBillCcyResponse, CreateBillCcyResponse.class, null, value);
     }
 
     /**
@@ -236,7 +236,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBillExtResponse")
     public JAXBElement<CreateBillExtResponse> createCreateBillExtResponse(CreateBillExtResponse value) {
-        return new JAXBElement<>(_CreateBillExtResponse_QNAME, CreateBillExtResponse.class, null, value);
+        return new JAXBElement<>(createBillExtResponse, CreateBillExtResponse.class, null, value);
     }
 
     /**
@@ -246,7 +246,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "getBillListResponse")
     public JAXBElement<GetBillListResponse> createGetBillListResponse(GetBillListResponse value) {
-        return new JAXBElement<>(_GetBillListResponse_QNAME, GetBillListResponse.class, null, value);
+        return new JAXBElement<>(getBillListResponse, GetBillListResponse.class, null, value);
     }
 
     /**
@@ -256,7 +256,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "getBillList")
     public JAXBElement<GetBillList> createGetBillList(GetBillList value) {
-        return new JAXBElement<>(_GetBillList_QNAME, GetBillList.class, null, value);
+        return new JAXBElement<>(getBillList, GetBillList.class, null, value);
     }
 
     /**
@@ -266,7 +266,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "cancelBillPayedAmountResponse")
     public JAXBElement<CancelBillPayedAmountResponse> createCancelBillPayedAmountResponse(CancelBillPayedAmountResponse value) {
-        return new JAXBElement<>(_CancelBillPayedAmountResponse_QNAME, CancelBillPayedAmountResponse.class, null, value);
+        return new JAXBElement<>(cancelBillPayedAmountResponse, CancelBillPayedAmountResponse.class, null, value);
     }
 
     /**
@@ -276,7 +276,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBillExt")
     public JAXBElement<CreateBillExt> createCreateBillExt(CreateBillExt value) {
-        return new JAXBElement<>(_CreateBillExt_QNAME, CreateBillExt.class, null, value);
+        return new JAXBElement<>(createBillExt, CreateBillExt.class, null, value);
     }
 
     /**
@@ -286,7 +286,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "checkBillResponse")
     public JAXBElement<CheckBillResponse> createCheckBillResponse(CheckBillResponse value) {
-        return new JAXBElement<>(_CheckBillResponse_QNAME, CheckBillResponse.class, null, value);
+        return new JAXBElement<>(checkBillResponse, CheckBillResponse.class, null, value);
     }
 
     /**
@@ -296,7 +296,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "checkRefund")
     public JAXBElement<CheckRefund> createCheckRefund(CheckRefund value) {
-        return new JAXBElement<>(_CheckRefund_QNAME, CheckRefund.class, null, value);
+        return new JAXBElement<>(checkRefund, CheckRefund.class, null, value);
     }
 
     /**
@@ -306,7 +306,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "checkRefundResponse")
     public JAXBElement<CheckRefundResponse> createCheckRefundResponse(CheckRefundResponse value) {
-        return new JAXBElement<>(_CheckRefundResponse_QNAME, CheckRefundResponse.class, null, value);
+        return new JAXBElement<>(checkRefundResponse, CheckRefundResponse.class, null, value);
     }
 
     /**
@@ -316,7 +316,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "cancelBillPayedAmount")
     public JAXBElement<CancelBillPayedAmount> createCancelBillPayedAmount(CancelBillPayedAmount value) {
-        return new JAXBElement<>(_CancelBillPayedAmount_QNAME, CancelBillPayedAmount.class, null, value);
+        return new JAXBElement<>(cancelBillPayedAmount, CancelBillPayedAmount.class, null, value);
     }
 
     /**
@@ -326,7 +326,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "createBillCcy")
     public JAXBElement<CreateBillCcy> createCreateBillCcy(CreateBillCcy value) {
-        return new JAXBElement<>(_CreateBillCcy_QNAME, CreateBillCcy.class, null, value);
+        return new JAXBElement<>(createBillCcy, CreateBillCcy.class, null, value);
     }
 
     /**
@@ -336,7 +336,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://server.ishop.mw.ru/", name = "cancelBill")
     public JAXBElement<CancelBill> createCancelBill(CancelBill value) {
-        return new JAXBElement<>(_CancelBill_QNAME, CancelBill.class, null, value);
+        return new JAXBElement<>(cancelBill, CancelBill.class, null, value);
     }
 
 }

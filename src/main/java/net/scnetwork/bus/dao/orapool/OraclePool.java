@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.oraclePool;
+package net.scnetwork.bus.dao.orapool;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.utils.LogBus;

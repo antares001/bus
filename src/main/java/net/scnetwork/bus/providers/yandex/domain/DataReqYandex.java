@@ -9,6 +9,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+/**
+ * XML Data запроса
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataReqYandex extends DataRequest {

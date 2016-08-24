@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.mysqlPool;
+package net.scnetwork.bus.dao.postgrepool;
 
 
 import net.scnetwork.bus.config.Config;
@@ -10,19 +10,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Инициализация пула подключений к Mysql
+ * Инициализация пула подключений к PostgreSQL
  */
-public class MysqlPool {
+public class PgPool {
     private static BasicDataSource dataSource;
 
     static {
-        dataSource = new BasicDataSource();
-
         Global global = Config.getInstance();
-        if (null != global){
-            MysqlPoolConfig config = global.getMysqlPoolConfig();
-            if (null != config){
-                dataSource.setDriverClassName("com.mysql.Driver");
+        if (null != global) {
+            PgPoolConfig config = global.getPgPoolConfig();
+
+            if (null != config) {
+                dataSource = new BasicDataSource();
+                dataSource.setDriverClassName("org.postgresql.Driver");
                 dataSource.setUrl(config.getJdbcUrl());
                 dataSource.setUsername(config.getUsername());
                 dataSource.setPassword(config.getPassword());
@@ -32,7 +32,7 @@ public class MysqlPool {
         }
     }
 
-    private MysqlPool(){}
+    private PgPool(){}
 
     /**
      * Получение подключения
@@ -41,7 +41,7 @@ public class MysqlPool {
      */
     public static Connection getConnection() throws SQLException {
         if (null == dataSource){
-            throw new SQLException("MysqlPool not initialised");
+            throw new SQLException("PostgresqlPool not initialised");
         }
         return dataSource.getConnection();
     }
