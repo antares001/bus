@@ -54,7 +54,7 @@ public class OraclePool {
 
     /**
      * Доступ к переменной ods
-     * @return ods
+     * @return
      */
     public static OracleDataSource getOds(){
         return ods;

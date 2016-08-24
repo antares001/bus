@@ -79,6 +79,8 @@ postgresql-pool:
     jdbcUrl: none
     username: none
     password: none
+    initialLimit: 5
+    maxLimit: 30
 
 oracle:
     jdbcUrl: none
@@ -94,6 +96,8 @@ mysql-pool:
     jdbcUrl: none
     username: none
     password: none
+    initialLimit: 5
+    maxLimit: 30
 
 log:
     type: LOCAL
