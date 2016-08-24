@@ -16,6 +16,8 @@ public class MysqlPoolConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;
+    private int initialLimit;
+    private int maxLimit;
 
     @Override
     public String getJdbcUrl() {
@@ -45,5 +47,21 @@ public class MysqlPoolConfig implements IConfigDao{
     @Override
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getInitialLimit() {
+        return initialLimit;
+    }
+
+    public void setInitialLimit(int initialLimit) {
+        this.initialLimit = initialLimit;
+    }
+
+    public int getMaxLimit() {
+        return maxLimit;
+    }
+
+    public void setMaxLimit(int maxLimit) {
+        this.maxLimit = maxLimit;
     }
 }

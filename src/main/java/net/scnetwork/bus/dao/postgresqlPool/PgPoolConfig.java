@@ -1,4 +1,4 @@
-package net.scnetwork.bus.dao.pgPool;
+package net.scnetwork.bus.dao.postgresqlPool;
 
 import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -15,6 +15,8 @@ public class PgPoolConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;
+    private int initialLimit;
+    private int maxLimit;
 
     @Override
     public String getJdbcUrl() {
@@ -44,5 +46,21 @@ public class PgPoolConfig implements IConfigDao{
     @Override
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getInitialLimit() {
+        return initialLimit;
+    }
+
+    public void setInitialLimit(int initialLimit) {
+        this.initialLimit = initialLimit;
+    }
+
+    public int getMaxLimit() {
+        return maxLimit;
+    }
+
+    public void setMaxLimit(int maxLimit) {
+        this.maxLimit = maxLimit;
     }
 }

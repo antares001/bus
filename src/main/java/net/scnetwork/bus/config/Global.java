@@ -1,7 +1,10 @@
 package net.scnetwork.bus.config;
 
+import net.scnetwork.bus.dao.mysql.MysqlConfig;
+import net.scnetwork.bus.dao.mysqlPool.MysqlPoolConfig;
 import net.scnetwork.bus.dao.oracle.OracleConfig;
 import net.scnetwork.bus.dao.oraclePool.OraclePoolConfig;
+import net.scnetwork.bus.dao.postgresqlPool.PgPoolConfig;
 import net.scnetwork.bus.dao.postgresql.PostgreConfig;
 import net.scnetwork.bus.enums.DaoEnums;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,8 +22,11 @@ public class Global {
     private Modules modules;
     private DaoEnums dao;
     private OraclePoolConfig oraclePoolConfig;
-    private PostgreConfig postgreConfig;
     private OracleConfig oracleConfig;
+    private PgPoolConfig pgPoolConfig;
+    private PostgreConfig postgreConfig;
+    private MysqlConfig mysqlConfig;
+    private MysqlPoolConfig mysqlPoolConfig;
     private LogConfig logConfig;
     private boolean gui;
 
@@ -48,6 +54,14 @@ public class Global {
         this.dao = dao;
     }
 
+    public PgPoolConfig getPgPoolConfig() {
+        return pgPoolConfig;
+    }
+
+    public void setPgPoolConfig(PgPoolConfig pgPoolConfig) {
+        this.pgPoolConfig = pgPoolConfig;
+    }
+
     public PostgreConfig getPostgreConfig() {
         return postgreConfig;
     }
@@ -70,6 +84,22 @@ public class Global {
 
     public void setOraclePoolConfig(OraclePoolConfig oraclePoolConfig) {
         this.oraclePoolConfig = oraclePoolConfig;
+    }
+
+    public MysqlConfig getMysqlConfig() {
+        return mysqlConfig;
+    }
+
+    public void setMysqlConfig(MysqlConfig mysqlConfig) {
+        this.mysqlConfig = mysqlConfig;
+    }
+
+    public MysqlPoolConfig getMysqlPoolConfig() {
+        return mysqlPoolConfig;
+    }
+
+    public void setMysqlPoolConfig(MysqlPoolConfig mysqlPoolConfig) {
+        this.mysqlPoolConfig = mysqlPoolConfig;
     }
 
     public LogConfig getLogConfig() {
