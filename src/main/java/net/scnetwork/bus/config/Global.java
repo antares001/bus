@@ -1,10 +1,10 @@
 package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.dao.mysql.MysqlConfig;
-import net.scnetwork.bus.dao.mysqlPool.MysqlPoolConfig;
+import net.scnetwork.bus.dao.mysqlpool.MysqlPoolConfig;
 import net.scnetwork.bus.dao.oracle.OracleConfig;
-import net.scnetwork.bus.dao.oraclePool.OraclePoolConfig;
-import net.scnetwork.bus.dao.postgresqlPool.PgPoolConfig;
+import net.scnetwork.bus.dao.orapool.OraclePoolConfig;
+import net.scnetwork.bus.dao.postgrepool.PgPoolConfig;
 import net.scnetwork.bus.dao.postgresql.PostgreConfig;
 import net.scnetwork.bus.enums.DaoEnums;
 import org.springframework.boot.context.properties.ConfigurationProperties;

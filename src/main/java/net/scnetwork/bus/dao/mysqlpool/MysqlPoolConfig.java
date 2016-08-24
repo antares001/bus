@@ -1,4 +1,5 @@
-package net.scnetwork.bus.dao.postgresqlPool;
+package net.scnetwork.bus.dao.mysqlpool;
+
 
 import net.scnetwork.bus.dao.IConfigDao;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -6,12 +7,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Настройки пула подключений для PostgreSQL
+ * Настройка пула подключений к MySql
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "postgresql-pool")
-public class PgPoolConfig implements IConfigDao{
+@ConfigurationProperties(prefix = "mysql-pool")
+public class MysqlPoolConfig implements IConfigDao{
     private String jdbcUrl;
     private String username;
     private String password;

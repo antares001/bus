@@ -17,6 +17,10 @@ import org.vaadin.spring.sidebar.annotation.SideBarItem;
 public class LogoutOperation implements Runnable{
     private final VaadinSecurity vaadinSecurity;
 
+    /**
+     * Получение контекста авторизации Vaadin
+     * @param vaadinSecurity
+     */
     @Autowired
     public LogoutOperation(VaadinSecurity vaadinSecurity){
         this.vaadinSecurity = vaadinSecurity;
