@@ -10,8 +10,11 @@ import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.DaoEnums;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
+import net.scnetwork.bus.providers.forex.config.Forex;
+import net.scnetwork.bus.providers.jpos.config.JposConfig;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
@@ -127,14 +130,66 @@ public class ConfigurationView extends CustomComponent implements View{
             table.addItem(new Object[]{Fias.DESRIPTION, fias.isUse(), fias.getService(), fias.getUrl()}, 4);
         }
 
+        JposConfig jpos = modules.getJpos();
+        if (null != jpos){
+            table.addItem(new Object[]{JposConfig.DESCRIPTION, jpos.isUse(), jpos.getService(), jpos.getUrl()}, 5);
+        }
+
+        Forex forex = modules.getForex();
+        if (null != forex){
+            table.addItem(new Object[]{Forex.DESCRIPTION, forex.isUse(), forex.getService(), forex.getUrl()}, 6);
+        }
+
         modulesLayout.addComponent(table);
         modulesLayout.setComponentAlignment(table, Alignment.TOP_CENTER);
+
+        HorizontalLayout buttonLayout = new HorizontalLayout();
+        Button edit = new Button("Редактировать");
+        edit.setEnabled(false);
+        edit.addClickListener(e -> {
+            Notification.show("Edit click");
+        });
+
+        Button view = new Button("Просмотр");
+        view.setEnabled(false);
+        view.addClickListener(e -> {
+            Notification.show("View click");
+        });
+
+        Button disable = new Button("Отключить");
+        disable.setEnabled(false);
+        disable.addClickListener(e -> {
+            Notification.show("Disable click");
+        });
+
+        table.addItemSetChangeListener(e -> {
+            edit.setEnabled(true);
+            view.setEnabled(true);
+            disable.setEnabled(true);
+        });
+
+        buttonLayout.setSpacing(true);
+        buttonLayout.setMargin(true);
+
+        buttonLayout.addComponent(edit);
+        buttonLayout.addComponent(view);
+        buttonLayout.addComponent(disable);
+
+        modulesLayout.addComponent(buttonLayout);
+        modulesLayout.setComponentAlignment(buttonLayout, Alignment.TOP_CENTER);
+
         tabSheet.addTab(modulesLayout, "Модули системы");
     }
 
     private void createDatabases(Global global){
         VerticalLayout databasesLayout = new VerticalLayout();
-        databasesLayout.addComponent(new Label("Базы данных"));
+
+        DaoEnums dao = global.getDao();
+        if (null != dao){
+            databasesLayout.addComponent(new Label(dao.getName()));
+        } else {
+            databasesLayout.addComponent(new Label("Не определена БД"));
+        }
         tabSheet.addTab(databasesLayout, "Базы данных системы");
     }
 }

@@ -1,86 +1,101 @@
 endpoint: http://0.0.0.0:8090/soap
 modules:
   bpay:
-      use: yes
-      service: REMOTE
-      url: none
-      soap: true
-      point: none
-      merchantId: none
-      signature: none
+    use: yes
+    service: REMOTE
+    url: none
+    soap: true
+    point: none
+    merchantId: none
+    signature: none
   yandex:
-      use: yes
-      service: LOCAL
-      url: none
-      soap: true
+    use: yes
+    service: LOCAL
+    url: none
+    soap: true
   qiwi:
-      use: yes
-      service: LOCAL
-      url: none
-      soap: true
+    use: yes
+    service: LOCAL
+    url: none
+    soap: true
   leader:
-      use: yes
-      service: LOCAL
-      url: none
-      soap: true
-      point: none
+    use: yes
+    service: LOCAL
+    url: none
+    soap: true
+    point: none
   fias:
-      use: yes
-      service: LOCAL
-      url: none
-      soap: true
-      format: DBF
+    use: yes
+    service: LOCAL
+    url: none
+    soap: true
+    format: DBF
   jpos:
-      use: yes
-      service: BOTH
-      url: none
-      soap: false
-      port: 9123
-      bufferSize: 2048
+    use: yes
+    service: BOTH
+    url: none
+    soap: false
+    port: 9123
+    bufferSize: 2048
   mstercard:
-      use: no
-      service: no
-      url: no
-      soap: true
+    use: no
+    service: no
+    url: no
+    soap: true
   visa:
-      use: no
-      service: no
-      url: no
-      soap: true
+    use: no
+    service: no
+    url: no
+    soap: true
   print:
-      use: no
-      service: no
-      url: no
-      soap: true
+    use: no
+    service: no
+    url: no
+    soap: true
   forex:
-      use: no
-      service: no
-      url: no
+    use: no
+    service: no
+    url: no
 
 dao: oracle-pool
 
 oracle-pool:
-      jdbcUrl: none
-      username: user
-      password: password
-      minLimit: 5
-      maxLimit: 50
-      initialLimit: 5
-      connectionTimeout: 30
-      validateConnection: true
-      cacheEnabled: true
+    jdbcUrl: none
+    username: user
+    password: password
+    minLimit: 5
+    maxLimit: 50
+    initialLimit: 5
+    connectionTimeout: 30
+    validateConnection: true
+    cacheEnabled: true
 
 postgresql:
-      jdbcUrl: none
-      username: user
-      password: password
+    jdbcUrl: none
+    username: user
+    password: password
+
+postgresql-pool:
+    jdbcUrl: none
+    username: none
+    password: none
 
 oracle:
     jdbcUrl: none
     username: username
     password: password
 
+mysql:
+    jdbcUrl: none
+    username: none
+    password: none
+
+mysql-pool:
+    jdbcUrl: none
+    username: none
+    password: none
+
 log:
-      type: LOCAL
-      level: 1
+    type: LOCAL
+    level: 1
 gui: true

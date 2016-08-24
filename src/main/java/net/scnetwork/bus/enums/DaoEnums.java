@@ -6,7 +6,10 @@ package net.scnetwork.bus.enums;
 public enum DaoEnums {
     ORACLE("oracle"),
     ORACLE_POOL("oracle_pool"),
-    POSTGRESQL("postgresql");
+    POSTGRESQL("postgresql"),
+    POSTGRESQL_POOL("postgresql_pool"),
+    MYSQL("mysql"),
+    MYSQL_POOL("mysql_pool");
 
     private String name;
 

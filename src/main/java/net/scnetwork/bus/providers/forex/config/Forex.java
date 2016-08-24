@@ -16,6 +16,8 @@ public class Forex implements IModules{
     private String service;
     private String url;
 
+    public static final String DESCRIPTION = "Forex";
+
     @Override
     public boolean isUse() {
         return use;
