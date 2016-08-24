@@ -19,6 +19,8 @@ public class JposConfig implements IModules {
     private int port;
     private int bufferSize;
 
+    public static final String DESCRIPTION = "JPOS";
+
     @Override
     public boolean isUse() {
         return use;

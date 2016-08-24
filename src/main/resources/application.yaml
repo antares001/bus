@@ -75,10 +75,25 @@ postgresql:
       username: user
       password: password
 
+postgresql-pool:
+      jdbcUrl: none
+      username: none
+      password: none
+
 oracle:
     jdbcUrl: none
     username: username
     password: password
+
+mysql:
+    jdbcUrl: none
+    username: none
+    password: none
+
+mysql-pool:
+    jdbcUrl: none
+    username: none
+    password: none
 
 log:
       type: LOCAL
