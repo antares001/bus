@@ -7,6 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Структура запроса для сервиса yandex
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Request")
 public class RequestYandex extends Request{
@@ -18,6 +21,10 @@ public class RequestYandex extends Request{
         return data;
     }
 
+    /**
+     * Запись структуры Data для сервиса yandex
+     * @param data структура Data
+     */
     public void setData(DataReqYandex data) {
         this.data = data;
     }

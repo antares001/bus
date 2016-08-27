@@ -21,6 +21,10 @@ public class RequestFias extends Request{
         return data;
     }
 
+    /**
+     * Запись структуры Data для сервиса ФИАС
+     * @param data структура ФИАС
+     */
     public void setData(DataReqFias data) {
         this.data = data;
     }
