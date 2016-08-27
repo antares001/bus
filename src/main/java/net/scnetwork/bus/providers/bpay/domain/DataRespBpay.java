@@ -1,14 +1,11 @@
 package net.scnetwork.bus.providers.bpay.domain;
 
 import net.scnetwork.bus.domain.DataResponse;
-import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.enums.StatusEnum;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
 
 /**
  * Формирование секции Data ответа сервиса BPay
@@ -16,68 +13,23 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
 public class DataRespBpay extends DataResponse{
-    @XmlElement(name = "date")
-    private Date date;
+    @XmlAttribute(name = "bpay_response")
+    private String bpayResponse;
 
-    @XmlElement(name = "response")
-    private String response;
-
-    @XmlElement(name = "status")
-    private StatusEnum status;
-
-    @XmlElement(name = "service")
-    private ServiceEnum service;
-
-    @XmlElement(name = "description")
-    private String description;
-
-    @Override
-    public Date getDate() {
-        return date;
+    /**
+     * Ответ от bpay
+     * @return ответ
+     */
+    public String getBpayResponse() {
+        return bpayResponse;
     }
 
-    @Override
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
-    @Override
-    public String getResponse() {
-        return response;
-    }
-
-    @Override
-    public void setResponse(String response) {
-        this.response = response;
-    }
-
-    @Override
-    public StatusEnum getStatus() {
-        return status;
-    }
-
-    @Override
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    @Override
-    public ServiceEnum getService() {
-        return service;
-    }
-
-    @Override
-    public void setService(ServiceEnum service) {
-        this.service = service;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
+    /**
+     * Запись ответа от bpay
+     * @param bpayResponse ответ
+     */
+    public void setBpayResponse(String bpayResponse) {
+        this.bpayResponse = bpayResponse;
     }
 }
