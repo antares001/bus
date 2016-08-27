@@ -1,6 +1,6 @@
 package net.scnetwork.bus.dao.postgrepool;
 
-import net.scnetwork.bus.dao.IConfigDao;
+import net.scnetwork.bus.dao.IConfigDaoPool;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "postgresql-pool")
-public class PgPoolConfig implements IConfigDao{
+public class PgPoolConfig implements IConfigDaoPool{
     private String jdbcUrl;
     private String username;
     private String password;

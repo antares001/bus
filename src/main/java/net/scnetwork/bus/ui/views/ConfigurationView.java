@@ -184,11 +184,9 @@ public class ConfigurationView extends CustomComponent implements View{
     private void createDatabases(Global global){
         VerticalLayout databasesLayout = new VerticalLayout();
 
-        DaoEnums dao = global.getDao();
-        if (null != dao){
-            databasesLayout.addComponent(new Label(dao.getName()));
-        } else {
-            databasesLayout.addComponent(new Label("Не определена БД"));
+        if (null != global){
+            DaoEnums dao = global.getDao();
+            LogBus.info(dao.getName());
         }
         tabSheet.addTab(databasesLayout, "Базы данных системы");
     }

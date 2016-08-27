@@ -57,7 +57,7 @@ modules:
     service: no
     url: no
 
-dao: oracle-pool
+dao: ORACLE_POOL
 
 oracle-pool:
     jdbcUrl: none
