@@ -12,7 +12,13 @@ import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
 import java.util.Date;
 
+/**
+ * Тестирование сервиса QIWI
+ */
 public class QiwiTest {
+    /**
+     * Тестирование входящего запроса
+     */
     @Test
     public void RequestTest(){
         RequestQiwi request = new RequestQiwi();

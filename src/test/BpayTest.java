@@ -1,10 +1,10 @@
 import net.scnetwork.bus.domain.Auth;
 import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
-import net.scnetwork.bus.providers.yandex.domain.RequestYandex;
-import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
-import net.scnetwork.bus.providers.yandex.enums.YandexOperation;
+import net.scnetwork.bus.providers.bpay.domain.BPayOptions;
+import net.scnetwork.bus.providers.bpay.domain.DataReqBpay;
+import net.scnetwork.bus.providers.bpay.domain.RequestBpay;
+import net.scnetwork.bus.providers.bpay.enums.BPayOperation;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
@@ -14,36 +14,37 @@ import java.io.StringWriter;
 import java.util.Date;
 
 /**
- * Тестирование сервиса Yandex
+ * Тестирование сервиса Bpay
  */
-public class YandexTest {
+public class BpayTest {
     /**
      * Тестирование структуры входящего запроса
      */
     @Test
     public void RequestTest(){
-        RequestYandex request = new RequestYandex();
+        RequestBpay request = new RequestBpay();
 
         Auth auth = new Auth();
-        auth.setService(ServiceEnum.YANDEX);
+        auth.setService(ServiceEnum.BPAY);
         auth.setLogin("login");
         auth.setPass("password");
         request.setAuth(auth);
 
-        DataReqYandex data = new DataReqYandex();
+        DataReqBpay data = new DataReqBpay();
 
-        data.setAccount("antares001");
+        data.setAccount("+37369324680");
         data.setDate(new Date());
         data.setOperation(OperationEnum.CHECK);
 
-        YandexOptions options = new YandexOptions();
-        options.setOperation(YandexOperation.OPERATION_DETAILS);
-        data.setYandexOptions(options);
+        BPayOptions options = new BPayOptions();
+        options.setOperation(BPayOperation.INFO);
+        options.setCurrency(498);
+        data.setbPayOptions(options);
 
         request.setData(data);
 
         try {
-            JAXBContext context = JAXBContext.newInstance(RequestYandex.class);
+            JAXBContext context = JAXBContext.newInstance(RequestBpay.class);
             Marshaller marshaller = context.createMarshaller();
 
             StringWriter sw = new StringWriter();
