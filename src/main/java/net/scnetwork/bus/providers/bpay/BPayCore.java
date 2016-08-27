@@ -1,6 +1,7 @@
 package net.scnetwork.bus.providers.bpay;
 
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.providers.bpay.domain.DataReqBpay;
 import net.scnetwork.bus.providers.bpay.domain.BPayOptions;
@@ -34,7 +35,10 @@ public class BPayCore implements IProviders{
      */
     public BPayCore(){
         try{
-            bPay =  Config.getInstance().getModules().getBpay();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                bPay = modules.getBpay();
+            }
         } catch (NullPointerException e) {
             LogBus.writeLog(e);
         }
@@ -49,7 +53,6 @@ public class BPayCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -70,7 +73,6 @@ public class BPayCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -114,7 +116,6 @@ public class BPayCore implements IProviders{
             String xmlData = Base64.getEncoder().encodeToString(xml.getBytes("UTF-8"));
 
             MessageDigest md = MessageDigest.getInstance("MD5");
-            //TODO: make md5(md5(xmlData) + md5(signature))
         } catch (JAXBException | UnsupportedEncodingException | NoSuchAlgorithmException e) {
             LogBus.writeLog(e);
         }

@@ -120,7 +120,7 @@ public class Dispatcher {
      */
     public Response restXmlDispatcher(String request){
         LogBus.info(request);
-        return new Response();
+        return null;
     }
 
     /**
