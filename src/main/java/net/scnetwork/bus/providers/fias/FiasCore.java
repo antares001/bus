@@ -8,13 +8,10 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
-import net.scnetwork.bus.providers.fias.domain.DataReqFias;
-import net.scnetwork.bus.providers.fias.domain.DataRespFias;
-import net.scnetwork.bus.providers.fias.domain.FiasOptions;
+import net.scnetwork.bus.providers.fias.domain.*;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.IProviders;
-import net.scnetwork.bus.providers.fias.domain.ParamFias;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
@@ -101,7 +98,7 @@ public class FiasCore implements IProviders{
                     case GET_URL:
                         DownloadFileInfo fileInfo = serviceSoap.getLastDownloadFileInfo();
                         if (null != fileInfo) {
-                            Response response = new Response();
+                            ResponseFias response = new ResponseFias();
                             DataRespFias dataResponse = new DataRespFias();
                             dataResponse.setStatus(StatusEnum.OK);
                             dataResponse.setService(ServiceEnum.FIAS);
@@ -132,7 +129,7 @@ public class FiasCore implements IProviders{
                     case GET_ALL_URLS:
                         ArrayOfDownloadFileInfo array = serviceSoap.getAllDownloadFileInfo();
                         List<DownloadFileInfo> list = array.getDownloadFileInfo();
-                        Response response = new Response();
+                        ResponseFias response = new ResponseFias();
                         DataRespFias dataResponse = new DataRespFias();
                         if (list.size() > 0) {
                             dataResponse.setStatus(StatusEnum.OK);
@@ -175,7 +172,7 @@ public class FiasCore implements IProviders{
                 }
             }
         }
-        return new Response();
+        return new ResponseFias();
     }
 
     @Override

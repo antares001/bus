@@ -15,4 +15,6 @@ import org.vaadin.spring.sidebar.annotation.SideBarSections;
 public class Section {
     public static final String VIEWS = "views";
     public static final String OPERATIONS = "operations";
+
+    private Section(){}
 }

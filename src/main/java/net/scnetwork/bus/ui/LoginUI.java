@@ -96,4 +96,16 @@ public class LoginUI extends UI {
         setContent(rootLayout);
         setSizeFull();
     }
+
+    @Override
+    public boolean equals(Object o){
+        LogBus.info("");
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode(){
+        LogBus.info("");
+        return super.hashCode();
+    }
 }

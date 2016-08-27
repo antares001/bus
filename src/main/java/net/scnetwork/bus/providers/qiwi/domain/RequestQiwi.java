@@ -16,6 +16,7 @@ public class RequestQiwi extends Request{
     @XmlElement(name = "Data")
     private DataReqQiwi data;
 
+    @Override
     public DataReqQiwi getData() {
         return data;
     }
