@@ -1,7 +1,6 @@
 package net.scnetwork.bus.dao.mysqlpool;
 
-
-import net.scnetwork.bus.dao.IConfigDao;
+import net.scnetwork.bus.dao.IConfigDaoPool;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "mysql-pool")
-public class MysqlPoolConfig implements IConfigDao{
+public class MysqlPoolConfig implements IConfigDaoPool{
     private String jdbcUrl;
     private String username;
     private String password;
