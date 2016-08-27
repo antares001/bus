@@ -35,4 +35,16 @@ public class ChartView extends CustomComponent implements View{
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         LogBus.info("chart");
     }
+
+    @Override
+    public boolean equals(Object o){
+        LogBus.info("");
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode(){
+        LogBus.info("");
+        return super.hashCode();
+    }
 }

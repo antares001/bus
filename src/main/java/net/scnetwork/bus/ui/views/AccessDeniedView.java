@@ -7,6 +7,7 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import net.scnetwork.bus.utils.LogBus;
 
 /**
  * Страница ограничения доступа
@@ -21,7 +22,8 @@ public class AccessDeniedView extends VerticalLayout implements View{
      */
     public AccessDeniedView() {
         setMargin(true);
-        addComponent(message = new Label());
+        message = new Label();
+        addComponent(message);
         message.setSizeUndefined();
         message.addStyleName(ValoTheme.LABEL_FAILURE);
     }
@@ -29,5 +31,17 @@ public class AccessDeniedView extends VerticalLayout implements View{
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         message.setValue(String.format("You do not have access to this view: %s", viewChangeEvent.getViewName()));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        LogBus.info("");
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode(){
+        LogBus.info("");
+        return super.hashCode();
     }
 }
