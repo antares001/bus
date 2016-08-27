@@ -15,6 +15,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 import net.scnetwork.bus.ui.views.AccessDeniedView;
 import net.scnetwork.bus.ui.views.ErrorView;
+import net.scnetwork.bus.utils.LogBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.security.VaadinSecurity;
@@ -75,5 +76,17 @@ public class MainUI extends UI {
         navigator.navigateTo(navigator.getState());
 
         setContent(layout);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        LogBus.info("");
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode(){
+        LogBus.info("");
+        return super.hashCode();
     }
 }

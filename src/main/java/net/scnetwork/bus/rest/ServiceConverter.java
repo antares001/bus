@@ -12,6 +12,7 @@ public class ServiceConverter extends PropertyEditorSupport {
      * String => enum
      * @param text строка
      */
+    @Override
     public void setAsText(String text){
         ServiceEnum service = ServiceEnum.valueOf(text.toUpperCase());
         setValue(service);

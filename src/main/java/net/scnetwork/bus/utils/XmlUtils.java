@@ -2,6 +2,7 @@ package net.scnetwork.bus.utils;
 
 import net.scnetwork.bus.domain.DataRespError;
 import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseError;
 import net.scnetwork.bus.enums.StatusEnum;
 
 /**
@@ -19,7 +20,7 @@ public class XmlUtils {
      * @return XML сообщение
      */
     public static Response getError(StatusEnum status){
-        Response response = new Response();
+        ResponseError response = new ResponseError();
         response.setType(0);
 
         DataRespError data = new DataRespError(status);

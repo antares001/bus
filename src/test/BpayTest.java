@@ -1,9 +1,8 @@
 import net.scnetwork.bus.domain.Auth;
 import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
-import net.scnetwork.bus.providers.bpay.domain.BPayOptions;
-import net.scnetwork.bus.providers.bpay.domain.DataReqBpay;
-import net.scnetwork.bus.providers.bpay.domain.RequestBpay;
+import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.providers.bpay.domain.*;
 import net.scnetwork.bus.providers.bpay.enums.BPayOperation;
 import org.junit.Test;
 
@@ -49,6 +48,34 @@ public class BpayTest {
 
             StringWriter sw = new StringWriter();
             marshaller.marshal(request, sw);
+            System.out.println(sw.toString());
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Тестирование структуры ответа
+     */
+    @Test
+    public void ResponseTest(){
+        ResponseBpay response = new ResponseBpay();
+        DataRespBpay data = new DataRespBpay();
+
+        data.setResponse("OK");
+        data.setDate(new Date());
+        data.setDescription("Good response");
+        data.setService(ServiceEnum.BPAY);
+        data.setStatus(StatusEnum.OK);
+        data.setBpayResponse("response_bpay");
+
+        response.setData(data);
+        try {
+            JAXBContext context = JAXBContext.newInstance(ResponseBpay.class);
+            Marshaller marshaller = context.createMarshaller();
+
+            StringWriter sw = new StringWriter();
+            marshaller.marshal(response, sw);
             System.out.println(sw.toString());
         } catch (JAXBException e) {
             e.printStackTrace();

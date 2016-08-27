@@ -48,18 +48,22 @@ public class MysqlPoolConfig implements IConfigDaoPool{
         this.password = password;
     }
 
+    @Override
     public int getInitialLimit() {
         return initialLimit;
     }
 
+    @Override
     public void setInitialLimit(int initialLimit) {
         this.initialLimit = initialLimit;
     }
 
+    @Override
     public int getMaxLimit() {
         return maxLimit;
     }
 
+    @Override
     public void setMaxLimit(int maxLimit) {
         this.maxLimit = maxLimit;
     }

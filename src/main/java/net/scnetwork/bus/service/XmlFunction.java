@@ -25,8 +25,6 @@ public class XmlFunction implements IXmlFunction{
             if (null == auth){
                 return XmlUtils.getError(StatusEnum.NOT_AUTH);
             } else {
-                //TODO: проверка авторизации пользователя
-
                 Data data = request.getData();
                 if (null == data){
                     return XmlUtils.getError(StatusEnum.FORMAT_ERROR);

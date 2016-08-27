@@ -90,6 +90,7 @@ public class ConfigurationView extends CustomComponent implements View{
 
     private void createBaseOption(Global global){
         VerticalLayout generalLayout = new VerticalLayout();
+        LogBus.info(global.toString());
         generalLayout.addComponent(new Label("Точка входа"));
         tabSheet.addTab(generalLayout, "Основные настройки");
     }
