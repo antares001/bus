@@ -8,6 +8,10 @@ public class Config {
 
     private Config(){}
 
+    /**
+     * Получение эксземляра конфигурации
+     * @return конфигурация
+     */
     public static Global getInstance(){
         if (null == global){
             return null;
@@ -15,7 +19,23 @@ public class Config {
         return global;
     }
 
+    /**
+     * Запись конфигурации
+     * @param arg конфигурация
+     */
     public static void setInstance(Global arg){
         global = arg;
+    }
+
+    /**
+     * Получение списка модулей
+     * @return список модулей
+     */
+    public static Modules getModules(){
+        if (null == global){
+            return null;
+        } else {
+            return global.getModules();
+        }
     }
 }
