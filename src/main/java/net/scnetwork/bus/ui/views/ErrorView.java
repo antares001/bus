@@ -6,6 +6,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import net.scnetwork.bus.utils.LogBus;
 
 /**
  * Страница ошибки
@@ -28,5 +29,17 @@ public class ErrorView extends VerticalLayout implements View {
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         message.setValue(String.format("No such view: %s", event.getViewName()));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        LogBus.info("");
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode(){
+        LogBus.info("");
+        return super.hashCode();
     }
 }
