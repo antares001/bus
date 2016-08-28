@@ -103,3 +103,12 @@ log:
     type: LOCAL
     level: 1
 gui: true
+
+tracking:
+    use: no
+    otrs:
+      use: no
+    redmine:
+      use: no
+    jira:
+      use: no

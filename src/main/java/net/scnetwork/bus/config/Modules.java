@@ -42,66 +42,130 @@ public class Modules {
         forex = new Forex();
     }
 
+    /**
+     * Получение настроек bpay
+     * @return настройки
+     */
     public BPay getBpay() {
         return bpay;
     }
 
+    /**
+     * Запись настроек bpay
+     * @param bpay настройки
+     */
     public void setBpay(BPay bpay) {
         this.bpay = bpay;
     }
 
+    /**
+     * Получение настроек yandex
+     * @return настройки
+     */
     public Yandex getYandex() {
         return yandex;
     }
 
+    /**
+     * Запись настроек yandex
+     * @param yandex настройки
+     */
     public void setYandex(Yandex yandex) {
         this.yandex = yandex;
     }
 
+    /**
+     * Получение настроек qiwi
+     * @return настройки
+     */
     public Qiwi getQiwi() {
         return qiwi;
     }
 
+    /**
+     * Запись настроек qiwi
+     * @param qiwi настройки
+     */
     public void setQiwi(Qiwi qiwi) {
         this.qiwi = qiwi;
     }
 
+    /**
+     * Получение настроек Лидер
+     * @return настройки
+     */
     public Leader getLeader() {
         return leader;
     }
 
+    /**
+     * Запись настроек Лидер
+     * @param leader настройки
+     */
     public void setLeader(Leader leader) {
         this.leader = leader;
     }
 
+    /**
+     * Получение настроек jpos
+     * @return настройки
+     */
     public JposConfig getJpos() {
         return jpos;
     }
 
+    /**
+     * Запись настроек jpos
+     * @param jpos настройки
+     */
     public void setJpos(JposConfig jpos) {
         this.jpos = jpos;
     }
 
+    /**
+     * Получение настроек ФИАС
+     * @return настройки
+     */
     public Fias getFias() {
         return fias;
     }
 
+    /**
+     * Запись настроек ФИАС
+     * @param fias настройки
+     */
     public void setFias(Fias fias) {
         this.fias = fias;
     }
 
+    /**
+     * Получение настроек генерации pdf
+     * @return настройки
+     */
     public Print getPrint() {
         return print;
     }
 
+    /**
+     * Запись настроек генерации pdf
+     * @param print настройки
+     */
     public void setPrint(Print print) {
         this.print = print;
     }
 
+    /**
+     * Получение настроек Forex
+     * @return настройки
+     */
     public Forex getForex() {
         return forex;
     }
 
+    /**
+     * Получение настроек Forex
+     * @param forex настройки
+     */
     public void setForex(Forex forex) {
         this.forex = forex;
     }
