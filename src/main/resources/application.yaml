@@ -63,12 +63,9 @@ oracle-pool:
     jdbcUrl: none
     username: user
     password: password
-    minLimit: 5
     maxLimit: 50
     initialLimit: 5
     connectionTimeout: 30
-    validateConnection: true
-    cacheEnabled: true
 
 postgresql:
     jdbcUrl: none
@@ -81,6 +78,7 @@ postgresql-pool:
     password: none
     initialLimit: 5
     maxLimit: 30
+    connectionTimeout: 30
 
 oracle:
     jdbcUrl: none
@@ -98,6 +96,7 @@ mysql-pool:
     password: none
     initialLimit: 5
     maxLimit: 30
+    connectionTimeout: 30
 
 log:
     type: LOCAL

@@ -1,7 +1,11 @@
 package net.scnetwork.bus.providers.jpos;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
@@ -21,7 +25,10 @@ public class JposCore implements IProviders{
      */
     public JposCore(){
         try {
-            jpos = Config.getInstance().getModules().getJpos();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                jpos = modules.getJpos();
+            }
         } catch (NullPointerException e) {
             LogBus.writeLog(e);
         }
@@ -37,7 +44,6 @@ public class JposCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -59,7 +65,6 @@ public class JposCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }

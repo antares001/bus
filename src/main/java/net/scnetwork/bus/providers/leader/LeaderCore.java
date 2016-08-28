@@ -1,6 +1,7 @@
 package net.scnetwork.bus.providers.leader;
 
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
@@ -21,7 +22,10 @@ public class LeaderCore implements IProviders{
      */
     public LeaderCore(){
         try{
-            leader = Config.getInstance().getModules().getLeader();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                leader = modules.getLeader();
+            }
         } catch (NullPointerException e){
             LogBus.writeLog(e);
         }
@@ -36,7 +40,6 @@ public class LeaderCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -57,7 +60,6 @@ public class LeaderCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }

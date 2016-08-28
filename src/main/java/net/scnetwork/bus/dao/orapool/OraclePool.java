@@ -1,39 +1,37 @@
 package net.scnetwork.bus.dao.orapool;
 
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Global;
 import net.scnetwork.bus.utils.LogBus;
-import oracle.jdbc.pool.OracleDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Properties;
 
 /**
  * Настройка пула подключений Oracle
  */
 public class OraclePool {
-    private static OracleDataSource ods = null;
-    private static final String CACHE_NAME = "BUS";
+    private static BasicDataSource dataSource;
 
     static {
         try {
-            OraclePoolConfig poolConfig = Config.getInstance().getOraclePoolConfig();
+            Global global = Config.getInstance();
+            if (null != global) {
+                OraclePoolConfig poolConfig = global.getOraclePoolConfig();
 
-            ods = new OracleDataSource();
-            ods.setURL(poolConfig.getJdbcUrl());
-            ods.setUser(poolConfig.getUsername());
-            ods.setPassword(poolConfig.getPassword());
-            ods.setConnectionCachingEnabled(poolConfig.isCacheEnabled());
-            ods.setConnectionCacheName(CACHE_NAME);
-            Properties cacheProperties = new Properties();
-            cacheProperties.setProperty("MinLimit", String.valueOf(poolConfig.getMaxLimit()));
-            cacheProperties.setProperty("MaxLimit", String.valueOf(poolConfig.getMinLimit()));
-            cacheProperties.setProperty("InitialLimit", String.valueOf(poolConfig.getInitialLimit()));
-            cacheProperties.setProperty("ConnectionWaitTimeout", String.valueOf(poolConfig.getConnectionTimeout()));
-            cacheProperties.setProperty("ValidateConnection", String.valueOf(poolConfig.isValidateConnection()));
-
-            ods.setConnectionCacheProperties(cacheProperties);
-        } catch (SQLException | NullPointerException e) {
+                if (null != poolConfig) {
+                    dataSource = new BasicDataSource();
+                    dataSource.setDriverClassName("org.oracle.Driver");
+                    dataSource.setUrl(poolConfig.getJdbcUrl());
+                    dataSource.setUsername(poolConfig.getUsername());
+                    dataSource.setPassword(poolConfig.getPassword());
+                    dataSource.setInitialSize(poolConfig.getInitialLimit());
+                    dataSource.setMaxTotal(poolConfig.getMaxLimit());
+                    dataSource.setDefaultQueryTimeout(poolConfig.getConnectionTimeout());
+                }
+            }
+        } catch (NullPointerException e) {
             LogBus.writeLog(e);
         }
     }
@@ -46,17 +44,17 @@ public class OraclePool {
      * @throws SQLException исключение
      */
     public static Connection getConnection() throws SQLException {
-        if(ods == null){
+        if(dataSource == null){
             throw new SQLException("OracleDataSource is null.");
         }
-        return ods.getConnection();
+        return dataSource.getConnection();
     }
 
     /**
      * Доступ к переменной ods
-     * @return
+     * @return datasource
      */
-    public static OracleDataSource getOds(){
-        return ods;
+    public static BasicDataSource getOds(){
+        return dataSource;
     }
 }

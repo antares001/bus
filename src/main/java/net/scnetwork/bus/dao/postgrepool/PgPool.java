@@ -28,6 +28,7 @@ public class PgPool {
                 dataSource.setPassword(config.getPassword());
                 dataSource.setInitialSize(config.getInitialLimit());
                 dataSource.setMaxTotal(config.getMaxLimit());
+                dataSource.setDefaultQueryTimeout(config.getConnectionTimeout());
             }
         }
     }
