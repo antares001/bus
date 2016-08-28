@@ -50,10 +50,8 @@ public class FiasCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
-                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                     default:
-                        break;
+                        return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
             } else {
                 return XmlUtils.getError(StatusEnum.SERVICE_DISABLED);
@@ -61,7 +59,6 @@ public class FiasCore implements IProviders{
         } else {
             return XmlUtils.getError(StatusEnum.SERVICE_NOT_FOUND);
         }
-        return null;
     }
 
     @Override
@@ -74,12 +71,9 @@ public class FiasCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
-                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                     default:
-                        break;
+                        return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
-                return null;
             } else {
                 return JsonUtils.getError(StatusEnum.SERVICE_DISABLED);
             }

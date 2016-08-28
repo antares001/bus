@@ -17,6 +17,7 @@ public class MysqlPoolConfig implements IConfigDaoPool{
     private String password;
     private int initialLimit;
     private int maxLimit;
+    private int connectionTimeout;
 
     @Override
     public String getJdbcUrl() {
@@ -66,5 +67,15 @@ public class MysqlPoolConfig implements IConfigDaoPool{
     @Override
     public void setMaxLimit(int maxLimit) {
         this.maxLimit = maxLimit;
+    }
+
+    @Override
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    @Override
+    public void setConnectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
     }
 }

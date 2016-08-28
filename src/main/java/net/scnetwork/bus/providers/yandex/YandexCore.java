@@ -1,14 +1,17 @@
 package net.scnetwork.bus.providers.yandex;
 
-import com.yandex.money.api.YandexMoney;
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.*;
-import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
-import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
+import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
+import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
+import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
@@ -18,14 +21,16 @@ import net.scnetwork.bus.utils.XmlUtils;
  */
 public class YandexCore implements IProviders{
     private Yandex yandex;
-    private static final String CLIENT_ID = "";
 
     /**
      * Инициализация конфигурации сервиса
      */
     public YandexCore(){
         try{
-            yandex = Config.getInstance().getModules().getYandex();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                yandex = modules.getYandex();
+            }
         } catch (NullPointerException e){
             LogBus.writeLog(e);
         }
@@ -40,7 +45,6 @@ public class YandexCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -61,7 +65,6 @@ public class YandexCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -75,7 +78,6 @@ public class YandexCore implements IProviders{
 
     @Override
     public Response localProcessingXml(DataRequest data) {
-        YandexMoney yandexMoney = new YandexMoney(CLIENT_ID);
         YandexOptions options = ((DataReqYandex) data).getYandexOptions();
         switch (options.getOperation()) {
             case ACCOUNT_INFO:

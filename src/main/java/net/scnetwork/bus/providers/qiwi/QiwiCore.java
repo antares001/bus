@@ -1,6 +1,7 @@
 package net.scnetwork.bus.providers.qiwi;
 
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
@@ -21,7 +22,10 @@ public class QiwiCore implements IProviders{
      */
     public QiwiCore(){
         try {
-            qiwi = Config.getInstance().getModules().getQiwi();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                qiwi = modules.getQiwi();
+            }
         } catch (NullPointerException e){
             LogBus.writeLog(e);
         }
@@ -36,7 +40,6 @@ public class QiwiCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -57,7 +60,6 @@ public class QiwiCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
