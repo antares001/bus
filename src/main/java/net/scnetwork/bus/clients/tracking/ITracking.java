@@ -5,7 +5,7 @@ package net.scnetwork.bus.clients.tracking;
  */
 public interface ITracking {
     /**
-     * Получение информации
+     * Получение информации issue
      */
     void getInfo();
 

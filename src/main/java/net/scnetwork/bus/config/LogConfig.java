@@ -14,18 +14,34 @@ public class LogConfig {
     private String type;
     private int level;
 
+    /**
+     * Тип хранилища логов
+     * @return тип
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Запись типа хранилища логов
+     * @param type тип
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * Уровень логирования
+     * @return уровень
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Запись уровня логирования
+     * @param level уровень
+     */
     public void setLevel(int level) {
         this.level = level;
     }
