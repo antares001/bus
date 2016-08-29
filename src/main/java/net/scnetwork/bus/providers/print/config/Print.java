@@ -17,6 +17,8 @@ public class Print implements IModules {
     private String url;
     private boolean soap;
 
+    public static final String DESCRIPTION = "Print";
+
     @Override
     public boolean isUse() {
         return use;
