@@ -176,11 +176,14 @@ public class Modules {
      */
     @Override
     public String toString(){
-        return "Modules:" +
-                "{bpay:" + bpay.toString() + "}," +
-                "{yandex:" + yandex.toString() + "}," +
-                "{qiwi:" + qiwi + "}," +
-                "{leader:" + leader + "}" +
-                "{jpos:" + jpos + "}";
+        return "Modules:{" +
+                "bpay:{" + bpay.toString() +
+                "},yandex{:" + yandex.toString() +
+                "},qiwi:{" + qiwi.toString() +
+                "},leader:{" + leader.toString() +
+                "},jpos:{" + jpos.toString() +
+                "},fias:{" + fias.toString() +
+                "},print:{" + print.toString()+
+                "},forex:{" + forex.toString() + "}}";
     }
 }
