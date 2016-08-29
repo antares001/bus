@@ -1,56 +1,60 @@
 package net.scnetwork.bus.domain;
 
-import net.scnetwork.bus.enums.StatusEnum;
-
 import java.util.Date;
 
 /**
  * Формирование секции Data в формате JSON
  */
-public class DataJs {
-    private StatusEnum status;
+public abstract class DataJs {
     private String operation;
     private Date date;
     private String account;
-    private String result;
 
-    public StatusEnum getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
+    /**
+     * Тип операции
+      * @return тип
+     */
     public String getOperation() {
         return operation;
     }
 
+    /**
+     * Запись типа операции
+     * @param operation тип
+     */
     public void setOperation(String operation) {
         this.operation = operation;
     }
 
+    /**
+     * Дата
+     * @return дата
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Запись даты
+     * @param date дата
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     * Аккаунт
+     * @return аккаунт
+     */
     public String getAccount() {
         return account;
     }
 
+    /**
+     * Запись аккаунта
+     * @param account аккаунт
+     */
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
     }
 }
