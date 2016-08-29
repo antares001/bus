@@ -212,8 +212,17 @@ public class Global {
      */
     @Override
     public String toString(){
-        return endpoint + " <=> " +
-                modules.toString() + "<=>" +
-                dao.toString();
+        return "Config: {" +
+                "endopoint:" + endpoint +
+                ",modules:{" + modules.toString() +
+                "},dao: " + dao.getName() + "" +
+                ",PotsgrePoolConfig:{" + pgPoolConfig.toString()  +
+                "},PostgreConfig:{" + postgreConfig.toString() +
+                "},OraclePoolConfig:{" + oraclePoolConfig.toString() +
+                "}, OracleConfig:{" + oracleConfig.toString() +
+                "},MysqlPoolConfig:{" + mysqlPoolConfig.toString() +
+                "},MysqlConfig:{" + mysqlConfig.toString() +
+                "},LogConfig:{" + logConfig.toString() +
+                "},GUI:" + gui + "}";
     }
 }

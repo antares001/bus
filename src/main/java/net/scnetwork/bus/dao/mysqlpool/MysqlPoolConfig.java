@@ -67,4 +67,13 @@ public class MysqlPoolConfig implements IConfigDaoPool{
     public void setMaxLimit(int maxLimit) {
         this.maxLimit = maxLimit;
     }
+
+    @Override
+    public String toString(){
+        return "url: " + jdbcUrl +
+                ",username: " + username +
+                ",password: " + password +
+                ",initialLimit: " + initialLimit +
+                ",maxLimit: " + maxLimit;
+    }
 }
