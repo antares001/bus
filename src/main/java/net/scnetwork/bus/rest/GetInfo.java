@@ -2,6 +2,7 @@ package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.Dispatcher;
 import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataJsResponse;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
@@ -66,7 +67,7 @@ public class GetInfo {
     @RequestMapping(value = "/rest/getJson/{service}", method = RequestMethod.GET)
     public ResponseJs restGetJson(@PathVariable(value = "service") ServiceEnum service,
                                   @RequestParam(value = "account") String account){
-        DataJs data = new DataJs();
+        DataJs data = new DataJsResponse();
         data.setAccount(account);
         switch (service){
             case BPAY:
