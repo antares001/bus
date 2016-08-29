@@ -38,4 +38,14 @@ public class Config {
             return global.getModules();
         }
     }
+
+    /**
+     * Запись модулей
+     * @param modules модули
+     */
+    public static void setModules(Modules modules){
+        if (null != modules){
+            global.setModules(modules);
+        }
+    }
 }
