@@ -5,8 +5,7 @@ package net.scnetwork.bus.enums;
  */
 public enum UseEnum {
     LOCAL("local"),
-    REMOTE("remote"),
-    NONE("none");
+    REMOTE("remote");
 
     private String name;
 

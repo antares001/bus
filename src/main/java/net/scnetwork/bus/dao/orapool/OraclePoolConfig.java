@@ -1,6 +1,6 @@
 package net.scnetwork.bus.dao.orapool;
 
-import net.scnetwork.bus.dao.IConfigDao;
+import net.scnetwork.bus.dao.IConfigDaoPool;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,16 +11,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "oracle-pool")
-public class OraclePoolConfig implements IConfigDao{
+public class OraclePoolConfig implements IConfigDaoPool{
     private String jdbcUrl;
     private String username;
     private String password;
-    private int minLimit;
     private int maxLimit;
     private int initialLimit;
     private int connectionTimeout;
-    private boolean validateConnection;
-    private boolean cacheEnabled;
 
     @Override
     public String getJdbcUrl() {
@@ -52,51 +49,33 @@ public class OraclePoolConfig implements IConfigDao{
         this.password = password;
     }
 
-    public int getMinLimit() {
-        return minLimit;
-    }
-
-    public void setMinLimit(int minLimit) {
-        this.minLimit = minLimit;
-    }
-
+    @Override
     public int getMaxLimit() {
         return maxLimit;
     }
 
+    @Override
     public void setMaxLimit(int maxLimit) {
         this.maxLimit = maxLimit;
     }
 
+    @Override
     public int getInitialLimit() {
         return initialLimit;
     }
 
+    @Override
     public void setInitialLimit(int initialLimit) {
         this.initialLimit = initialLimit;
     }
 
+    @Override
     public int getConnectionTimeout() {
         return connectionTimeout;
     }
 
+    @Override
     public void setConnectionTimeout(int connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
-    }
-
-    public boolean isValidateConnection() {
-        return validateConnection;
-    }
-
-    public void setValidateConnection(boolean validateConnection) {
-        this.validateConnection = validateConnection;
-    }
-
-    public boolean isCacheEnabled() {
-        return cacheEnabled;
-    }
-
-    public void setCacheEnabled(boolean cacheEnabled) {
-        this.cacheEnabled = cacheEnabled;
     }
 }

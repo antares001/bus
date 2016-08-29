@@ -37,7 +37,6 @@ public class ForexCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -59,7 +58,6 @@ public class ForexCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }

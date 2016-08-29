@@ -17,6 +17,7 @@ public class PgPoolConfig implements IConfigDaoPool{
     private String password;
     private int initialLimit;
     private int maxLimit;
+    private int connectionTimeout;
 
     @Override
     public String getJdbcUrl() {
@@ -69,11 +70,21 @@ public class PgPoolConfig implements IConfigDaoPool{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "url: " + jdbcUrl +
                 ",username: " + username +
                 ",password: " + password +
                 ",initialLimit: " + initialLimit +
                 ",maxLimit: " + maxLimit;
+    }
+
+    @Override
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    @Override
+    public void setConnectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
     }
 }

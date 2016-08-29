@@ -28,4 +28,16 @@ public interface IConfigDaoPool extends IConfigDao{
      * @param maxLimit максимальное количество подключений
      */
     void setMaxLimit(int maxLimit);
+
+    /**
+     * Таймаут подключения
+     * @return таймаут
+     */
+    int getConnectionTimeout();
+
+    /**
+     * Запись таймаута подключения
+     * @param connectionTimeout таймаут
+     */
+    void setConnectionTimeout(int connectionTimeout);
 }

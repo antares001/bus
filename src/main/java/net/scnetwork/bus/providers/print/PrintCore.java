@@ -1,6 +1,7 @@
 package net.scnetwork.bus.providers.print;
 
 import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
@@ -21,7 +22,10 @@ public class PrintCore implements IProviders{
      */
     public PrintCore(){
         try{
-            print = Config.getInstance().getModules().getPrint();
+            Modules modules = Config.getModules();
+            if (null != modules) {
+                print = modules.getPrint();
+            }
         } catch (NullPointerException e){
             LogBus.writeLog(e);
         }
@@ -37,7 +41,6 @@ public class PrintCore implements IProviders{
                         return localProcessingXml(data);
                     case REMOTE:
                         return remoteProcessingXml(data);
-                    case NONE:
                     default:
                         return XmlUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
@@ -59,7 +62,6 @@ public class PrintCore implements IProviders{
                         return localProcessingJson(data);
                     case REMOTE:
                         return remoteProcessingJson(data);
-                    case NONE:
                     default:
                         return JsonUtils.getError(StatusEnum.ERROR_CONFIG);
                 }
