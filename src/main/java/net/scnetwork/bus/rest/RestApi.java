@@ -22,4 +22,17 @@ public interface RestApi {
      * @return результат операции
      */
     boolean setConfig(Boolean use, String service, String url);
+
+    /**
+     * Получение признака
+     * @return признак
+     */
+    boolean getUse();
+
+    /**
+     * Установка признака
+     * @param use признак
+     * @return успешность операции
+     */
+    boolean setUse(boolean use);
 }
