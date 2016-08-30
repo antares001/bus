@@ -31,6 +31,19 @@ public class JposRestApi implements RestApi{
     public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                jpos.setUse(use);
+                jpos.setService(service.toUpperCase());
+                jpos.setUrl(url);
+
+                modules.setJpos(jpos);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,6 +63,16 @@ public class JposRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/jpos/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                jpos.setUse(use);
+                modules.setJpos(jpos);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

@@ -1,5 +1,7 @@
 package net.scnetwork.bus.config;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Singleton для хранения конфигурации
  */
@@ -43,9 +45,7 @@ public class Config {
      * Запись модулей
      * @param modules модули
      */
-    public static void setModules(Modules modules){
-        if (null != modules){
-            global.setModules(modules);
-        }
+    public static void setModules(@NotNull  Modules modules){
+        global.setModules(modules);
     }
 }

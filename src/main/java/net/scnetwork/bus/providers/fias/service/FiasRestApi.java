@@ -59,6 +59,16 @@ public class FiasRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/fias/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                fias.setUse(use);
+                modules.setFias(fias);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

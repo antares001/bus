@@ -31,6 +31,19 @@ public class LeaderRestApi implements RestApi{
     public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                leader.setUse(use);
+                leader.setService(service.toUpperCase());
+                leader.setUrl(url);
+
+                modules.setLeader(leader);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,6 +63,16 @@ public class LeaderRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/leader/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                leader.setUse(use);
+                modules.setLeader(leader);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

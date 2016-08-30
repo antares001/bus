@@ -31,6 +31,19 @@ public class YandexRestApi implements RestApi{
     public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setUse(use);
+                yandex.setService(service.toUpperCase());
+                yandex.setUrl(url);
+
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,6 +63,16 @@ public class YandexRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/yandex/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setUse(use);
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

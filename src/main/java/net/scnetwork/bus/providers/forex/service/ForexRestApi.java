@@ -31,6 +31,19 @@ public class ForexRestApi implements RestApi{
     public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull  String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setUse(use);
+                forex.setService(service.toUpperCase());
+                forex.setUrl(url);
+
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,6 +63,16 @@ public class ForexRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/forex/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setUse(use);
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

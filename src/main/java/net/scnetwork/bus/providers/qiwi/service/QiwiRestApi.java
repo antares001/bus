@@ -31,6 +31,19 @@ public class QiwiRestApi implements RestApi{
     public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                qiwi.setUse(use);
+                qiwi.setService(service.toUpperCase());
+                qiwi.setUrl(url);
+
+                modules.setQiwi(qiwi);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,6 +63,16 @@ public class QiwiRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/qiwi/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                qiwi.setUse(use);
+                modules.setQiwi(qiwi);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }

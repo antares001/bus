@@ -63,6 +63,16 @@ public class BpayApiRest implements RestApi{
     @RequestMapping(value = "/rest/api/modules/bpay/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                bPay.setUse(use);
+                modules.setBpay(bPay);
+                Config.setModules(modules);
+                return true;
+            }
+        }
         return false;
     }
 }
