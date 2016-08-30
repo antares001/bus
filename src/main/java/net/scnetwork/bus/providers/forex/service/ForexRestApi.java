@@ -7,6 +7,8 @@ import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Настройка модуля Forex
  */
@@ -26,21 +28,28 @@ public class ForexRestApi implements RestApi{
 
     @RequestMapping(value = "/rest/api/modules/forex/set/info")
     @Override
-    public boolean setConfig(@RequestParam(value = "use") Boolean use,
-                             @RequestParam(value = "service") String service,
-                             @RequestParam(value = "url") String url) {
+    public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
+                             @RequestParam(value = "service") @NotNull String service,
+                             @RequestParam(value = "url") @NotNull  String url) {
         return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/forex/get/use")
     @Override
     public boolean getUse() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                return forex.isUse();
+            }
+        }
         return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/forex/set/use")
     @Override
-    public boolean setUse(@RequestParam(value = "use") boolean use) {
+    public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         return false;
     }
 }

@@ -34,5 +34,5 @@ public interface RestApi {
      * @param use признак
      * @return успешность операции
      */
-    boolean setUse(boolean use);
+    boolean setUse(Boolean use);
 }

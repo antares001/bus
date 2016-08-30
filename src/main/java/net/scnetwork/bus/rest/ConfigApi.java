@@ -1,4 +1,4 @@
-package net.scnetwork.bus.rest.api;
+package net.scnetwork.bus.rest;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;

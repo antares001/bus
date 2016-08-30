@@ -7,6 +7,8 @@ import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Настройка модуля ФИАС
  */
@@ -26,21 +28,37 @@ public class FiasRestApi implements RestApi{
 
     @RequestMapping(value = "/rest/api/modules/fias/set/info")
     @Override
-    public boolean setConfig(@RequestParam(value = "use") Boolean use,
-                             @RequestParam(value = "service") String service,
-                             @RequestParam(value = "url") String url) {
+    public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
+                             @RequestParam(value = "service") @NotNull String service,
+                             @RequestParam(value = "url") @NotNull String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                fias.setUse(use);
+                fias.setService(service.toUpperCase());
+                fias.setUrl(url);
+            }
+        }
         return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/get/use")
     @Override
     public boolean getUse() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                return fias.isUse();
+            }
+        }
         return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/use")
     @Override
-    public boolean setUse(@RequestParam(value = "use") boolean use) {
+    public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         return false;
     }
 }
