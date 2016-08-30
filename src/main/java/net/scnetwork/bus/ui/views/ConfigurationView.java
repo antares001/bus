@@ -80,12 +80,16 @@ public class ConfigurationView extends CustomComponent implements View{
 
     @Override
     public boolean equals(Object o){
+        LogBus.info("ViewConfig=>equals");
         return super.equals(o);
     }
 
     @Override
     public int hashCode(){
-        return super.hashCode();
+        int hash = 37;
+        hash = hash*17 + tabSheet.hashCode();
+
+        return hash;
     }
 
     private void createBaseOption(Global global){
