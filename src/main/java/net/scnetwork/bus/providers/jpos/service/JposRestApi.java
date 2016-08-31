@@ -106,4 +106,33 @@ public class JposRestApi implements RestApi{
         }
         return false;
     }
+
+    @RequestMapping(value = "/rest/api/modules/jpos/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                return jpos.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/jpos/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                jpos.setUrl(url);
+                modules.setJpos(jpos);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

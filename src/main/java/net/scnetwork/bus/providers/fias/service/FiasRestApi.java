@@ -102,4 +102,33 @@ public class FiasRestApi implements RestApi{
         }
         return false;
     }
+
+    @RequestMapping(value = "/rest/api/modules/fias/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                return fias.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/fias/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                fias.setUrl(url);
+                modules.setFias(fias);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -106,4 +106,33 @@ public class YandexRestApi implements RestApi{
         }
         return false;
     }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                return yandex.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setUrl(url);
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

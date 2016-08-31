@@ -44,4 +44,17 @@ public interface RestApi {
      * @return результат выполнения
      */
     boolean setService(String service);
+
+    /**
+     * Адрес микросервиса
+     * @return адрес
+     */
+    String getUrl();
+
+    /**
+     * Запись адреса микросервиса
+     * @param url адрес
+     * @return результат выполнения операции
+     */
+    boolean setUrl(String url);
 }

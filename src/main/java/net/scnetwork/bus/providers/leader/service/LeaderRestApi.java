@@ -106,4 +106,33 @@ public class LeaderRestApi implements RestApi{
         }
         return false;
     }
+
+    @RequestMapping(value = "/rest/api/modules/leader/get/service")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                return leader.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/leader/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                leader.setUrl(url);
+                modules.setLeader(leader);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

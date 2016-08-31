@@ -106,4 +106,33 @@ public class ForexRestApi implements RestApi{
         }
         return false;
     }
+
+    @RequestMapping(value = "/rest/api/modules/forex/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                return forex.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/forex/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setUrl(url);
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }
