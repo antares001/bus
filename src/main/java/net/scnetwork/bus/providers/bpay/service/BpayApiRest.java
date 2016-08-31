@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * REST API для настройки сервиса bpay
  */
+@RestController
 public class BpayApiRest implements RestApi{
     @RequestMapping(value = "/rest/api/modules/bpay/get/info")
     @Override
@@ -68,6 +70,64 @@ public class BpayApiRest implements RestApi{
             BPay bPay = modules.getBpay();
             if (null != bPay){
                 bPay.setUse(use);
+                modules.setBpay(bPay);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/bpay/get/service")
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getService();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/bpay/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                bPay.setService(service.toUpperCase());
+                modules.setBpay(bPay);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/bpay/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/module/bpay/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                bPay.setUrl(url);
                 modules.setBpay(bPay);
                 Config.setModules(modules);
                 return true;

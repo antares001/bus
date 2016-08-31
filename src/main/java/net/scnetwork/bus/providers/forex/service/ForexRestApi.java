@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля Forex
  */
+@RestController
 public class ForexRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/forex/get/info")
     @Override
@@ -68,6 +70,64 @@ public class ForexRestApi implements RestApi{
             Forex forex = modules.getForex();
             if (null != forex){
                 forex.setUse(use);
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/forex/get/service")
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                return forex.getService();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/forex/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setService(service.toUpperCase());
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/forex/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                return forex.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/forex/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setUrl(url);
                 modules.setForex(forex);
                 Config.setModules(modules);
                 return true;

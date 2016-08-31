@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля qiwi
  */
+@RestController
 public class QiwiRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/qiwi/get/info")
     @Override
@@ -68,6 +70,64 @@ public class QiwiRestApi implements RestApi{
             Qiwi qiwi = modules.getQiwi();
             if (null != qiwi){
                 qiwi.setUse(use);
+                modules.setQiwi(qiwi);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/qiwi/get/service")
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                return qiwi.getService();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/qiwi/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                qiwi.setService(service.toUpperCase());
+                modules.setQiwi(qiwi);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/qiwi/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                return qiwi.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/qiwi/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                qiwi.setUrl(url);
                 modules.setQiwi(qiwi);
                 Config.setModules(modules);
                 return true;

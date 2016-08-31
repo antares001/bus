@@ -1,12 +1,8 @@
 package net.scnetwork.bus.rest;
 
-
-import org.springframework.web.bind.annotation.RestController;
-
 /**
  * Настройка модулей
  */
-@RestController
 public interface RestApi {
     /**
      * Получение информации по конфигурации
@@ -35,4 +31,30 @@ public interface RestApi {
      * @return успешность операции
      */
     boolean setUse(Boolean use);
+
+    /**
+     * Тип сервиса
+     * @return тип
+     */
+    String getService();
+
+    /**
+     * Запись типа сервиса
+     * @param service тип
+     * @return результат выполнения
+     */
+    boolean setService(String service);
+
+    /**
+     * Адрес микросервиса
+     * @return адрес
+     */
+    String getUrl();
+
+    /**
+     * Запись адреса микросервиса
+     * @param url адрес
+     * @return результат выполнения операции
+     */
+    boolean setUrl(String url);
 }

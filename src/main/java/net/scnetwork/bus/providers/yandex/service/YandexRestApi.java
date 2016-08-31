@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля yandex
  */
+@RestController
 public class YandexRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/yandex/get/info")
     @Override
@@ -68,6 +70,64 @@ public class YandexRestApi implements RestApi{
             Yandex yandex = modules.getYandex();
             if (null != yandex){
                 yandex.setUse(use);
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/get/service")
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                return yandex.getService();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setService(service.toUpperCase());
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/get/url")
+    @Override
+    public String getUrl() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                return yandex.getUrl();
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/set/url")
+    @Override
+    public boolean setUrl(@RequestParam(value = "url") String url) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setUrl(url);
                 modules.setYandex(yandex);
                 Config.setModules(modules);
                 return true;
