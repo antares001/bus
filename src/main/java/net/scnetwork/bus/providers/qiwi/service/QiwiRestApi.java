@@ -90,4 +90,20 @@ public class QiwiRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/qiwi/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                qiwi.setService(service.toUpperCase());
+                modules.setQiwi(qiwi);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

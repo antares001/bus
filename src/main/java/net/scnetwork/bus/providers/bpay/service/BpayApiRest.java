@@ -90,4 +90,20 @@ public class BpayApiRest implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/bpay/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                bPay.setService(service.toUpperCase());
+                modules.setBpay(bPay);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

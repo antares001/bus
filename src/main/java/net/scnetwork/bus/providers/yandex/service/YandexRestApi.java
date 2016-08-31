@@ -90,4 +90,20 @@ public class YandexRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/yandex/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                yandex.setService(service.toUpperCase());
+                modules.setYandex(yandex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

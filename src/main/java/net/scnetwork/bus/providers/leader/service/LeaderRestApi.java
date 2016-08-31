@@ -90,4 +90,20 @@ public class LeaderRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/leader/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                leader.setService(service.toUpperCase());
+                modules.setLeader(leader);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

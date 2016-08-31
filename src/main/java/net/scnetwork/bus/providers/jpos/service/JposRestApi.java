@@ -90,4 +90,20 @@ public class JposRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/jpos/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                jpos.setService(service.toUpperCase());
+                modules.setJpos(jpos);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -86,4 +86,20 @@ public class FiasRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/fias/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                fias.setService(service.toUpperCase());
+                modules.setFias(fias);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

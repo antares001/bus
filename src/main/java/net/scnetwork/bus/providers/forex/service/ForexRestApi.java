@@ -90,4 +90,20 @@ public class ForexRestApi implements RestApi{
         }
         return null;
     }
+
+    @RequestMapping(value = "/rest/api/modules/forex/set/service")
+    @Override
+    public boolean setService(@RequestParam(value = "service") String service) {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                forex.setService(service.toUpperCase());
+                modules.setForex(forex);
+                Config.setModules(modules);
+                return true;
+            }
+        }
+        return false;
+    }
 }

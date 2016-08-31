@@ -37,4 +37,11 @@ public interface RestApi {
      * @return тип
      */
     String getService();
+
+    /**
+     * Запись типа сервиса
+     * @param service тип
+     * @return результат выполнения
+     */
+    boolean setService(String service);
 }
