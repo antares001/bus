@@ -75,4 +75,16 @@ public class JposRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            JposConfig jpos = modules.getJpos();
+            if (null != jpos){
+                return jpos.getService();
+            }
+        }
+        return null;
+    }
 }

@@ -75,4 +75,16 @@ public class LeaderRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Leader leader = modules.getLeader();
+            if (null != leader){
+                return leader.getService();
+            }
+        }
+        return null;
+    }
 }

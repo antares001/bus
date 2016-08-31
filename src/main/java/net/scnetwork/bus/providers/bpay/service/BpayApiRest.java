@@ -75,4 +75,16 @@ public class BpayApiRest implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getService();
+            }
+        }
+        return null;
+    }
 }

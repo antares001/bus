@@ -75,4 +75,16 @@ public class ForexRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Forex forex = modules.getForex();
+            if (null != forex){
+                return forex.getService();
+            }
+        }
+        return null;
+    }
 }

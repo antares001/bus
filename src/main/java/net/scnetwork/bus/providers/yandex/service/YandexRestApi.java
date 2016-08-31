@@ -75,4 +75,16 @@ public class YandexRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Yandex yandex = modules.getYandex();
+            if (null != yandex){
+                return yandex.getService();
+            }
+        }
+        return null;
+    }
 }

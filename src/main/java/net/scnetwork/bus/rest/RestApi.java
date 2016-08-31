@@ -35,4 +35,10 @@ public interface RestApi {
      * @return успешность операции
      */
     boolean setUse(Boolean use);
+
+    /**
+     * Тип сервиса
+     * @return тип
+     */
+    String getService();
 }

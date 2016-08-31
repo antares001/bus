@@ -71,4 +71,16 @@ public class FiasRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Fias fias = modules.getFias();
+            if (null != fias){
+                return fias.getService();
+            }
+        }
+        return null;
+    }
 }

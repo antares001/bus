@@ -75,4 +75,16 @@ public class QiwiRestApi implements RestApi{
         }
         return false;
     }
+
+    @Override
+    public String getService() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            Qiwi qiwi = modules.getQiwi();
+            if (null != qiwi){
+                return qiwi.getService();
+            }
+        }
+        return null;
+    }
 }
