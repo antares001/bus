@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля ФИАС
  */
+@RestController
 public class FiasRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/fias/get/info")
     @Override
@@ -72,6 +74,7 @@ public class FiasRestApi implements RestApi{
         return false;
     }
 
+    @RequestMapping(value = "/rest/api/modules/fias/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();

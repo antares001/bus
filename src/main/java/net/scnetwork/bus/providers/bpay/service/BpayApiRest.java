@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * REST API для настройки сервиса bpay
  */
+@RestController
 public class BpayApiRest implements RestApi{
     @RequestMapping(value = "/rest/api/modules/bpay/get/info")
     @Override
@@ -76,6 +78,7 @@ public class BpayApiRest implements RestApi{
         return false;
     }
 
+    @RequestMapping(value = "/rest/api/modules/bpay/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();

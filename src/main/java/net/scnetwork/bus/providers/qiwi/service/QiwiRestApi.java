@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля qiwi
  */
+@RestController
 public class QiwiRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/qiwi/get/info")
     @Override
@@ -76,6 +78,7 @@ public class QiwiRestApi implements RestApi{
         return false;
     }
 
+    @RequestMapping(value = "/rest/api/modules/qiwi/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();

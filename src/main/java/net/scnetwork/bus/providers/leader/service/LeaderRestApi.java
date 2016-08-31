@@ -6,12 +6,14 @@ import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 
 /**
  * Настройка модуля Лидер
  */
+@RestController
 public class LeaderRestApi implements RestApi{
     @RequestMapping(value = "/rest/api/modules/leader/get/info")
     @Override
@@ -76,6 +78,7 @@ public class LeaderRestApi implements RestApi{
         return false;
     }
 
+    @RequestMapping(value = "/rest/api/modules/leader/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();
