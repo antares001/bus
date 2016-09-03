@@ -125,7 +125,7 @@ public class FiasCore implements IProviders{
                         List<DownloadFileInfo> list = array.getDownloadFileInfo();
                         ResponseFias response = new ResponseFias();
                         DataRespFias dataResponse = new DataRespFias();
-                        if (list.size() > 0) {
+                        if (!list.isEmpty()) {
                             dataResponse.setStatus(StatusEnum.OK);
                             final List<ParamFias> params = new ArrayList<>();
                             list.forEach(e -> {

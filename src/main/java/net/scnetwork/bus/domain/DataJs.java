@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Формирование секции Data в формате JSON
  */
-public abstract class DataJs {
+public class DataJs {
     private String operation;
     private Date date;
     private String account;
@@ -56,5 +56,12 @@ public abstract class DataJs {
      */
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    @Override
+    public String toString(){
+        return "{operation:" + operation + "," +
+                "date:" + date.toString() + "," +
+                "account:" + account + "}";
     }
 }

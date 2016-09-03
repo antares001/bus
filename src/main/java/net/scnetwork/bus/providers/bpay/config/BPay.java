@@ -52,34 +52,66 @@ public class BPay implements IModules {
         this.url = url;
     }
 
+    /**
+     * Использование отдельного сервиса
+     * @return признак
+     */
     public boolean isSoap() {
         return soap;
     }
 
+    /**
+     * Запись признака отдельного сервиса
+     * @param soap признак
+     */
     public void setSoap(boolean soap) {
         this.soap = soap;
     }
 
+    /**
+     * Точка подключения к удаленному сервису
+     * @return точка
+     */
     public String getPoint() {
         return point;
     }
 
+    /**
+     * Запись подключения к удаленному сервису
+     * @param point точка
+     */
     public void setPoint(String point) {
         this.point = point;
     }
 
+    /**
+     * Идентификатор мерчанта
+     * @return идентификатор
+     */
     public String getMerchantId() {
         return merchantId;
     }
 
+    /**
+     * Запись идентификатора мерчанта
+     * @param merchantId идентификатор
+     */
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
 
+    /**
+     * Подпись
+     * @return подпись
+     */
     public String getSignature() {
         return signature;
     }
 
+    /**
+     * Запись подписи
+     * @param signature подпись
+     */
     public void setSignature(String signature) {
         this.signature = signature;
     }

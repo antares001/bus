@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "mastercard")
-public class MasterCardConfig implements IModules{
+public class MasterCardConfig implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
 
     @Override
     public boolean isUse() {
@@ -45,13 +44,5 @@ public class MasterCardConfig implements IModules{
     @Override
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
     }
 }

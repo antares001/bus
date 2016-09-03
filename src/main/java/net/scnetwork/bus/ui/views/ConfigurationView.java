@@ -151,21 +151,15 @@ public class ConfigurationView extends CustomComponent implements View{
         HorizontalLayout buttonLayout = new HorizontalLayout();
         Button edit = new Button("Редактировать");
         edit.setEnabled(false);
-        edit.addClickListener(e -> {
-            Notification.show("Edit click");
-        });
+        edit.addClickListener(e -> Notification.show("Edit click"));
 
         Button view = new Button("Просмотр");
         view.setEnabled(false);
-        view.addClickListener(e -> {
-            Notification.show("View click");
-        });
+        view.addClickListener(e -> Notification.show("View click"));
 
         Button disable = new Button("Отключить");
         disable.setEnabled(false);
-        disable.addClickListener(e -> {
-            Notification.show("Disable click");
-        });
+        disable.addClickListener(e -> Notification.show("Disable click"));
 
         table.addItemSetChangeListener(e -> {
             edit.setEnabled(true);

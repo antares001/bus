@@ -15,7 +15,6 @@ public class VisaConfig implements IModules{
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
 
     @Override
     public boolean isUse() {
@@ -45,13 +44,5 @@ public class VisaConfig implements IModules{
     @Override
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
     }
 }

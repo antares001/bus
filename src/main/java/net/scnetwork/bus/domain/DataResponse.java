@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public abstract class DataResponse extends Data {
+public class DataResponse extends Data {
     @XmlAttribute(name = "response")
     private String response;
 
