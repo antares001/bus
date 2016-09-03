@@ -15,7 +15,6 @@ public class Qiwi implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
 
     public static final String DESCRIPTION = "Qiwi";
 
@@ -49,11 +48,8 @@ public class Qiwi implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
+    @Override
+    public String toString(){
+        return "Qiwi:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

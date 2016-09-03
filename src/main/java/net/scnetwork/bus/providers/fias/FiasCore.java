@@ -17,6 +17,7 @@ import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public Response processingXml(DataRequest data) {
+    public Response processingXml(@NotNull DataRequest data) {
         if (null != fias) {
             if (fias.isUse()) {
                 UseEnum use = UseEnum.valueOf(fias.getService());
@@ -62,7 +63,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public ResponseJs processing(DataJs data) {
+    public ResponseJs processing(@NotNull DataJs data) {
         if (null != fias){
             if (fias.isUse()){
                 UseEnum use = UseEnum.valueOf(fias.getService());
@@ -83,7 +84,7 @@ public class FiasCore implements IProviders{
     }
 
     @Override
-    public Response localProcessingXml(DataRequest data) {
+    public Response localProcessingXml(@NotNull DataRequest data) {
         FiasOptions options = ((DataReqFias) data).getFiasOptions();
         if (null != options) {
             FiasOperation operation = options.getFiasOperation();
@@ -129,27 +130,7 @@ public class FiasCore implements IProviders{
                             dataResponse.setStatus(StatusEnum.OK);
                             final List<ParamFias> params = new ArrayList<>();
                             list.forEach(e -> {
-                                ParamFias param = new ParamFias();
-                                param.setId(e.getVersionId());
-                                switch (options.getFormatEnum()) {
-                                    case TEXT:
-                                        param.setUrl(e.getTextVersion());
-                                        break;
-                                    case ARJ:
-                                        param.setUrl(e.getKladr4ArjUrl());
-                                        break;
-                                    case SEVEN_Z:
-                                        param.setUrl(e.getKladr47ZUrl());
-                                        break;
-                                    case XML:
-                                        param.setUrl(e.getFiasCompleteXmlUrl());
-                                        break;
-                                    case DBF:
-                                        param.setUrl(e.getFiasCompleteDbfUrl());
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                ParamFias param = getMultiplyINfo(e, options);
                                 params.add(param);
                             });
                             dataResponse.setParamList(params);
@@ -182,5 +163,30 @@ public class FiasCore implements IProviders{
     @Override
     public ResponseJs remoteProcessingJson(DataJs data) {
         return null;
+    }
+
+    private ParamFias getMultiplyINfo(DownloadFileInfo info, FiasOptions options){
+        ParamFias param = new ParamFias();
+        param.setId(info.getVersionId());
+        switch (options.getFormatEnum()) {
+            case TEXT:
+                param.setUrl(info.getTextVersion());
+                break;
+            case ARJ:
+                param.setUrl(info.getKladr4ArjUrl());
+                break;
+            case SEVEN_Z:
+                param.setUrl(info.getKladr47ZUrl());
+                break;
+            case XML:
+                param.setUrl(info.getFiasCompleteXmlUrl());
+                break;
+            case DBF:
+                param.setUrl(info.getFiasCompleteDbfUrl());
+                break;
+            default:
+                break;
+        }
+        return param;
     }
 }

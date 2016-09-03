@@ -15,7 +15,6 @@ public class Print implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
 
     public static final String DESCRIPTION = "Print";
 
@@ -49,11 +48,8 @@ public class Print implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
+    @Override
+    public String toString(){
+        return "Print:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

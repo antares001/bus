@@ -15,7 +15,6 @@ public class BPay implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
     private String point;
     private String merchantId;
     private String signature;
@@ -50,22 +49,6 @@ public class BPay implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    /**
-     * Использование отдельного сервиса
-     * @return признак
-     */
-    public boolean isSoap() {
-        return soap;
-    }
-
-    /**
-     * Запись признака отдельного сервиса
-     * @param soap признак
-     */
-    public void setSoap(boolean soap) {
-        this.soap = soap;
     }
 
     /**
@@ -114,5 +97,10 @@ public class BPay implements IModules {
      */
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    @Override
+    public String toString(){
+        return "Bpay:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

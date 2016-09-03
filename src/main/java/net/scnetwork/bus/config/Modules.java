@@ -3,7 +3,7 @@ package net.scnetwork.bus.config;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
@@ -23,7 +23,7 @@ public class Modules {
     private Yandex yandex;
     private Qiwi qiwi;
     private Leader leader;
-    private JposConfig jpos;
+    private Jpos jpos;
     private Fias fias;
     private Print print;
     private Forex forex;
@@ -36,7 +36,7 @@ public class Modules {
         yandex = new Yandex();
         qiwi = new Qiwi();
         leader = new Leader();
-        jpos = new JposConfig();
+        jpos = new Jpos();
         fias = new Fias();
         print = new Print();
         forex = new Forex();
@@ -110,7 +110,7 @@ public class Modules {
      * Получение настроек jpos
      * @return настройки
      */
-    public JposConfig getJpos() {
+    public Jpos getJpos() {
         return jpos;
     }
 
@@ -118,7 +118,7 @@ public class Modules {
      * Запись настроек jpos
      * @param jpos настройки
      */
-    public void setJpos(JposConfig jpos) {
+    public void setJpos(Jpos jpos) {
         this.jpos = jpos;
     }
 

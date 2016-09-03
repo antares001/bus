@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "jpos")
-public class JposConfig implements IModules {
+public class Jpos implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
     private int port;
     private int bufferSize;
 
@@ -51,27 +50,40 @@ public class JposConfig implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
-    }
-
+    /**
+     * Порт сервиса
+     * @return порт
+     */
     public int getPort() {
         return port;
     }
 
+    /**
+     * Запись порта сервиса
+     * @param port порт
+     */
     public void setPort(int port) {
         this.port = port;
     }
 
+    /**
+     * Размер буфера
+     * @return размер
+     */
     public int getBufferSize() {
         return bufferSize;
     }
 
+    /**
+     * Запись размера буферв
+     * @param bufferSize размер
+     */
     public void setBufferSize(int bufferSize) {
         this.bufferSize = bufferSize;
+    }
+
+    @Override
+    public String toString(){
+        return "Jpos:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

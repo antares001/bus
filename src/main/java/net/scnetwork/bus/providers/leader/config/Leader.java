@@ -15,7 +15,6 @@ public class Leader implements IModules {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
     private String point;
 
     public static final String DESRIPTION = "Лидер";
@@ -50,19 +49,16 @@ public class Leader implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
-    }
-
     public String getPoint() {
         return point;
     }
 
     public void setPoint(String point) {
         this.point = point;
+    }
+
+    @Override
+    public String toString(){
+        return "Leader:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

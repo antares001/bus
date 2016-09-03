@@ -47,4 +47,9 @@ public class Forex implements IModules{
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString(){
+        return "Forex:{use:" + use + ",service:" + service + ",url:" + url + "}";
+    }
 }

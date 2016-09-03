@@ -2,7 +2,7 @@ package net.scnetwork.bus.providers.jpos.service;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.rest.RestApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +20,7 @@ public class JposRestApi implements RestApi{
     public String getConfig() {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 return jpos.toString();
             }
@@ -35,7 +35,7 @@ public class JposRestApi implements RestApi{
                              @RequestParam(value = "url") @NotNull String url) {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 jpos.setUse(use);
                 jpos.setService(service.toUpperCase());
@@ -54,7 +54,7 @@ public class JposRestApi implements RestApi{
     public boolean getUse() {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 return jpos.isUse();
             }
@@ -67,7 +67,7 @@ public class JposRestApi implements RestApi{
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 jpos.setUse(use);
                 modules.setJpos(jpos);
@@ -83,7 +83,7 @@ public class JposRestApi implements RestApi{
     public String getService() {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 return jpos.getService();
             }
@@ -96,7 +96,7 @@ public class JposRestApi implements RestApi{
     public boolean setService(@RequestParam(value = "service") String service) {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 jpos.setService(service.toUpperCase());
                 modules.setJpos(jpos);
@@ -112,7 +112,7 @@ public class JposRestApi implements RestApi{
     public String getUrl() {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 return jpos.getUrl();
             }
@@ -125,7 +125,7 @@ public class JposRestApi implements RestApi{
     public boolean setUrl(@RequestParam(value = "url") String url) {
         Modules modules = Config.getModules();
         if (null != modules){
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             if (null != jpos){
                 jpos.setUrl(url);
                 modules.setJpos(jpos);
