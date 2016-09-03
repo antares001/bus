@@ -129,10 +129,7 @@ public class Dispatcher {
      * @return ответ
      */
     public ResponseJs restJsDispatcher(String request){
-        ResponseJs response = new ResponseJs();
-        DataJs data = new DataJs();
-        data.setOperation(request);
-        response.setData(data);
-        return response;
+        LogBus.info(request);
+        return new ResponseJs();
     }
 }
