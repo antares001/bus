@@ -1,6 +1,5 @@
 package net.scnetwork.bus.utils;
 
-import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataJsError;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
  * Настройка модуля Лидер
  */
 @RestController
-public class LeaderRestApi implements RestApi{
+public class LeaderRestApi implements RestApi {
     @RequestMapping(value = "/rest/api/modules/leader/get/info")
     @Override
     public String getConfig() {
@@ -107,7 +107,7 @@ public class LeaderRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/leader/get/service")
+    @RequestMapping(value = "/rest/api/modules/leader/get/url")
     @Override
     public String getUrl() {
         Modules modules = Config.getModules();

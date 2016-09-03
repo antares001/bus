@@ -1,7 +1,7 @@
 endpoint: http://0.0.0.0:8090/soap
 modules:
   bpay:
-    use: yes
+    use: true
     service: REMOTE
     url: none
     soap: true
