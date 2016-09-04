@@ -2,20 +2,40 @@ package net.scnetwork.bus.providers.leader.service;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * Настройка модуля Лидер
  */
 @RestController
 public class LeaderRestApi implements RestApi {
-    @RequestMapping(value = "/rest/api/modules/leader/get/info")
+    @RequestMapping(value = "/rest/modules/leader/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
+        switch (parameter){
+            case "info":
+                return getConfig();
+            case "service":
+                return getService();
+            case "use":
+                return String.valueOf(getUse());
+            case "url":
+                return getUrl();
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
         Modules modules = Config.getModules();
@@ -25,7 +45,7 @@ public class LeaderRestApi implements RestApi {
                 return leader.toString();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/info")
@@ -49,7 +69,6 @@ public class LeaderRestApi implements RestApi {
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/leader/get/use")
     @Override
     public boolean getUse() {
         Modules modules = Config.getModules();
@@ -78,7 +97,6 @@ public class LeaderRestApi implements RestApi {
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/leader/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();
@@ -88,7 +106,7 @@ public class LeaderRestApi implements RestApi {
                 return leader.getService();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/service")
@@ -107,7 +125,6 @@ public class LeaderRestApi implements RestApi {
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/leader/get/url")
     @Override
     public String getUrl() {
         Modules modules = Config.getModules();
@@ -117,7 +134,7 @@ public class LeaderRestApi implements RestApi {
                 return leader.getUrl();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/url")

@@ -2,20 +2,40 @@ package net.scnetwork.bus.providers.forex.service;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * Настройка модуля Forex
  */
 @RestController
 public class ForexRestApi implements RestApi{
-    @RequestMapping(value = "/rest/api/modules/forex/get/info")
+    @RequestMapping(value = "/rest/modules/forex/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
+        switch (parameter){
+            case "info":
+                return getConfig();
+            case "service":
+                return getService();
+            case "use":
+                return String.valueOf(getUse());
+            case "url":
+                return getUrl();
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
         Modules modules = Config.getModules();
@@ -25,7 +45,7 @@ public class ForexRestApi implements RestApi{
                 return forex.toString();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/forex/set/info")
@@ -88,7 +108,7 @@ public class ForexRestApi implements RestApi{
                 return forex.getService();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/forex/set/service")
@@ -117,7 +137,7 @@ public class ForexRestApi implements RestApi{
                 return forex.getUrl();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/forex/set/url")

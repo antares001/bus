@@ -2,20 +2,40 @@ package net.scnetwork.bus.providers.fias.service;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * Настройка модуля ФИАС
  */
 @RestController
 public class FiasRestApi implements RestApi{
-    @RequestMapping(value = "/rest/api/modules/fias/get/info")
+    @RequestMapping(value = "/rest/modules/fias/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter/") @NotNull String parameter) {
+        switch (parameter){
+            case "info":
+                return getConfig();
+            case "service":
+                return getService();
+            case "use":
+                return String.valueOf(getUse());
+            case "url":
+                return getUrl();
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
         Modules modules = Config.getModules();
@@ -25,7 +45,7 @@ public class FiasRestApi implements RestApi{
                 return fias.toString();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/info")
@@ -45,7 +65,6 @@ public class FiasRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/fias/get/use")
     @Override
     public boolean getUse() {
         Modules modules = Config.getModules();
@@ -74,7 +93,6 @@ public class FiasRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/fias/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();
@@ -84,7 +102,7 @@ public class FiasRestApi implements RestApi{
                 return fias.getService();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/service")
@@ -103,7 +121,6 @@ public class FiasRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/fias/get/url")
     @Override
     public String getUrl() {
         Modules modules = Config.getModules();
@@ -113,7 +130,7 @@ public class FiasRestApi implements RestApi{
                 return fias.getUrl();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/url")

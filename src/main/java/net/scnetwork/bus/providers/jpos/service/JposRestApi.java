@@ -2,20 +2,40 @@ package net.scnetwork.bus.providers.jpos.service;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * Настройка модуля Jpos
  */
 @RestController
 public class JposRestApi implements RestApi{
-    @RequestMapping(value = "/rest/api/modules/jpos/get/info")
+    @RequestMapping(value = "/rest/api/modules/jpos/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
+        switch (parameter){
+            case "info":
+                return getConfig();
+            case "server":
+                return getService();
+            case "url":
+                return getUrl();
+            case "use":
+                return String.valueOf(getUse());
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
         Modules modules = Config.getModules();
@@ -25,7 +45,7 @@ public class JposRestApi implements RestApi{
                 return jpos.toString();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/jpos/set/info")
@@ -49,7 +69,6 @@ public class JposRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/jpos/get/use")
     @Override
     public boolean getUse() {
         Modules modules = Config.getModules();
@@ -78,7 +97,6 @@ public class JposRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/jpos/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();
@@ -88,7 +106,7 @@ public class JposRestApi implements RestApi{
                 return jpos.getService();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/jpos/set/service")
@@ -107,7 +125,6 @@ public class JposRestApi implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/jpos/get/url")
     @Override
     public String getUrl() {
         Modules modules = Config.getModules();
@@ -117,7 +134,7 @@ public class JposRestApi implements RestApi{
                 return jpos.getUrl();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/jpos/set/url")

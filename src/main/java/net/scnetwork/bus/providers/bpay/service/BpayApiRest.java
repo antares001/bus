@@ -11,13 +11,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * REST API для настройки сервиса bpay
  */
 @RestController
 public class BpayApiRest implements RestApi{
-    @RequestMapping(value = "/rest/api/modules/bpay/get/info")
+
+    @RequestMapping(value = "/rest/modules/bpay/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter){
+        switch (parameter){
+            case "info":
+                return getConfig();
+            case "service":
+                return getService();
+            case "url":
+                return getUrl();
+            case "use":
+                return String.valueOf(getUse());
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
         Modules modules = Config.getModules();
@@ -51,7 +70,6 @@ public class BpayApiRest implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/bpay/get/use")
     @Override
     public boolean getUse() {
         Modules modules = Config.getModules();
@@ -80,7 +98,6 @@ public class BpayApiRest implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/bpay/get/service")
     @Override
     public String getService() {
         Modules modules = Config.getModules();
@@ -90,7 +107,7 @@ public class BpayApiRest implements RestApi{
                 return bPay.getService();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/bpay/set/service")
@@ -109,7 +126,6 @@ public class BpayApiRest implements RestApi{
         return false;
     }
 
-    @RequestMapping(value = "/rest/api/modules/bpay/get/url")
     @Override
     public String getUrl() {
         Modules modules = Config.getModules();
@@ -119,7 +135,7 @@ public class BpayApiRest implements RestApi{
                 return bPay.getUrl();
             }
         }
-        return null;
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/module/bpay/set/url")
