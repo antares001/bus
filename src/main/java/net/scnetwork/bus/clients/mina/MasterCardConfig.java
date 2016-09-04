@@ -15,6 +15,7 @@ public class MasterCardConfig implements IModules {
     private boolean use;
     private String service;
     private String url;
+    private String point;
 
     @Override
     public boolean isUse() {
@@ -44,5 +45,21 @@ public class MasterCardConfig implements IModules {
     @Override
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    /**
+     * Адрес сервиса
+     * @return адрес
+     */
+    public String getPoint() {
+        return point;
+    }
+
+    /**
+     * Запись адреса сервиса
+     * @param point адрес
+     */
+    public void setPoint(String point) {
+        this.point = point;
     }
 }

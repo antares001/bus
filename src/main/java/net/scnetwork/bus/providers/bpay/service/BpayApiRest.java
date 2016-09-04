@@ -21,8 +21,8 @@ public class BpayApiRest implements RestApi{
 
     @RequestMapping(value = "/rest/modules/bpay/get/{parameter}")
     @Override
-    public String getApi(@PathParam(value = "parameter") @NotNull String parameter){
-        switch (parameter){
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
+        switch (parameter) {
             case "info":
                 return getConfig();
             case "service":
@@ -31,6 +31,12 @@ public class BpayApiRest implements RestApi{
                 return getUrl();
             case "use":
                 return String.valueOf(getUse());
+            case "point":
+                return getPoint();
+            case "merchant":
+                return getMerchant();
+            case "signature":
+                return getSignature();
             default:
                 break;
         }
@@ -152,5 +158,51 @@ public class BpayApiRest implements RestApi{
             }
         }
         return false;
+    }
+
+    /**
+     * Адрес стороннего сервиса
+     * @return адрес
+     */
+    public String getPoint() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getPoint();
+            }
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
+
+    /**
+     * Идентификатор мерчанта
+     * @return идентификатор
+     */
+    public String getMerchant() {
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getMerchantId();
+            }
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
+    /**
+     * Подпись
+     * @return подпись
+     */
+    public String getSignature(){
+        Modules modules = Config.getModules();
+        if (null != modules){
+            BPay bPay = modules.getBpay();
+            if (null != bPay){
+                return bPay.getSignature();
+            }
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 }

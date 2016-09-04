@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "oracle-pool")
+@ConfigurationProperties(prefix = "oraclePool")
 public class OraclePoolConfig implements IConfigDaoPool{
     private String jdbcUrl;
     private String username;

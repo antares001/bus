@@ -59,7 +59,7 @@ modules:
 
 dao: ORACLE_POOL
 
-oracle-pool:
+oraclePool:
     jdbcUrl: none
     username: user
     password: password
