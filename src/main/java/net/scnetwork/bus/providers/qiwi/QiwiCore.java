@@ -2,10 +2,13 @@ package net.scnetwork.bus.providers.qiwi;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
@@ -14,7 +17,7 @@ import net.scnetwork.bus.utils.XmlUtils;
 /**
  * Обработка сервиса Qiwi
  */
-public class QiwiCore implements IProviders{
+public class QiwiCore implements IProvidersStadard{
     private Qiwi qiwi;
 
     /**

@@ -8,7 +8,7 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
@@ -17,7 +17,7 @@ import net.scnetwork.bus.utils.XmlUtils;
 /**
  * Обработка сервиса JPOS
  */
-public class JposCore implements IProviders{
+public class JposCore implements IProvidersStadard{
     private Jpos jpos;
 
     /**

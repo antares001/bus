@@ -4,7 +4,7 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
-import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +17,7 @@ import javax.ws.rs.PathParam;
  * Настройка модуля yandex
  */
 @RestController
-public class YandexRestApi implements RestApi{
+public class YandexRestApi implements RestApiStandard{
     @RequestMapping(value = "/rest/api/modules/yandex/get/{parameter}")
     @Override
     public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {

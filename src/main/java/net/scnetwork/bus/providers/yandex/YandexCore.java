@@ -8,7 +8,7 @@ import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
 import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
@@ -19,7 +19,7 @@ import net.scnetwork.bus.utils.XmlUtils;
 /**
  * Обработка сервиса Yandex
  */
-public class YandexCore implements IProviders{
+public class YandexCore implements IProvidersStadard{
     private Yandex yandex;
 
     /**

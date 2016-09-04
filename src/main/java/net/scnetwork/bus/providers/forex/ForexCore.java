@@ -1,10 +1,13 @@
 package net.scnetwork.bus.providers.forex;
 
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
@@ -13,7 +16,7 @@ import net.scnetwork.bus.utils.XmlUtils;
 /**
  * Обработка сервиса FOREX
  */
-public class ForexCore implements IProviders{
+public class ForexCore implements IProvidersStadard{
     private Forex forex;
 
     /**

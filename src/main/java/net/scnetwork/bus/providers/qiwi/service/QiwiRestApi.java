@@ -4,7 +4,7 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
-import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +17,7 @@ import javax.ws.rs.PathParam;
  * Настройка модуля qiwi
  */
 @RestController
-public class QiwiRestApi implements RestApi{
+public class QiwiRestApi implements RestApiStandard{
     @RequestMapping(value = "/rest/api/modules/qiwi/get/{parameter}")
     @Override
     public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {

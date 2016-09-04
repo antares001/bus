@@ -4,7 +4,7 @@ import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.config.BPay;
-import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +17,7 @@ import javax.ws.rs.PathParam;
  * REST API для настройки сервиса bpay
  */
 @RestController
-public class BpayApiRest implements RestApi{
+public class BpayApiRest implements RestApiStandard{
 
     @RequestMapping(value = "/rest/modules/bpay/get/{parameter}")
     @Override

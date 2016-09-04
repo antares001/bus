@@ -19,28 +19,4 @@ public class BeelineCore implements IProviders{
         LogBus.info("Beeline.processing");
         return null;
     }
-
-    @Override
-    public Response localProcessingXml(DataRequest data) {
-        LogBus.info("Beeline.localProcessingXml");
-        return null;
-    }
-
-    @Override
-    public ResponseJs localProcessingJson(DataJs data) {
-        LogBus.info("Beeline.localProcessingJson");
-        return null;
-    }
-
-    @Override
-    public Response remoteProcessingXml(DataRequest data) {
-        LogBus.info("Beeline.remoteProcessingXml");
-        return null;
-    }
-
-    @Override
-    public ResponseJs remoteProcessingJson(DataJs data) {
-        LogBus.info("Beeline.remoteProcessingJson");
-        return null;
-    }
 }

@@ -13,9 +13,6 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "mastercard")
 public class MasterCardConfig implements IModules {
     private boolean use;
-    private String service;
-    private String url;
-    private String point;
 
     @Override
     public boolean isUse() {
@@ -25,41 +22,5 @@ public class MasterCardConfig implements IModules {
     @Override
     public void setUse(boolean use) {
         this.use = use;
-    }
-
-    @Override
-    public String getService() {
-        return service;
-    }
-
-    @Override
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    @Override
-    public String getUrl() {
-        return url;
-    }
-
-    @Override
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
-     * Адрес сервиса
-     * @return адрес
-     */
-    public String getPoint() {
-        return point;
-    }
-
-    /**
-     * Запись адреса сервиса
-     * @param point адрес
-     */
-    public void setPoint(String point) {
-        this.point = point;
     }
 }

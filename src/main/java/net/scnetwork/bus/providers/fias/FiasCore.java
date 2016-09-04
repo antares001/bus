@@ -5,13 +5,16 @@ import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
 import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.domain.*;
-import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.fias.config.Fias;
-import net.scnetwork.bus.providers.fias.domain.*;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.enums.UseEnum;
+import net.scnetwork.bus.providers.IProvidersStadard;
+import net.scnetwork.bus.providers.fias.config.Fias;
+import net.scnetwork.bus.providers.fias.domain.*;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.utils.JsonUtils;
 import net.scnetwork.bus.utils.LogBus;
@@ -24,7 +27,7 @@ import java.util.List;
 /**
  * Обработка сервиса FIAS
  */
-public class FiasCore implements IProviders{
+public class FiasCore implements IProvidersStadard{
     private DownloadServiceSoap serviceSoap;
     private Fias fias;
 

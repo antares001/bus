@@ -39,19 +39,12 @@ modules:
     bufferSize: 2048
   mstercard:
     use: no
-    service: no
-    url: no
-    soap: true
   visa:
     use: no
-    service: no
-    url: no
-    soap: true
   print:
     use: no
     service: no
     url: no
-    soap: true
   forex:
     use: no
     service: no

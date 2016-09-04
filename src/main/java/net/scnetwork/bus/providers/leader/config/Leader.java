@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.leader.config;
 
-import net.scnetwork.bus.config.IModules;
+import net.scnetwork.bus.config.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "leader")
-public class Leader implements IModules {
+public class Leader implements IModulesStandard {
     private boolean use;
     private String service;
     private String url;

@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.yandex.config;
 
-import net.scnetwork.bus.config.IModules;
+import net.scnetwork.bus.config.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "yandex")
-public class Yandex implements IModules {
+public class Yandex implements IModulesStandard {
     private boolean use;
     private String service;
     private String url;
