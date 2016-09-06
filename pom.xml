@@ -30,6 +30,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-ws</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.vaadin.spring.extensions/vaadin-spring-ext-core -->
         <dependency>
             <groupId>org.vaadin.spring.extensions</groupId>
