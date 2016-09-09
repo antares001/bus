@@ -6,11 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bus" />
+        <module name="bus-interfaces" />
+        <module name="bus-plugin-beeline" />
+        <module name="bus-plugin-print" />
+        <module name="bus-plugins-bpay" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bus" target="1.8" />
+      <module name="bus-interfaces" target="1.8" />
+      <module name="bus-plugin-beeline" target="1.8" />
+      <module name="bus-plugin-print" target="1.8" />
+      <module name="bus-plugins-bpay" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,7 +4,6 @@ import net.scnetwork.bus.domain.*;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.BPayCore;
-import net.scnetwork.bus.providers.beeline.BeelineCore;
 import net.scnetwork.bus.providers.epay.EPayCore;
 import net.scnetwork.bus.providers.fias.FiasCore;
 import net.scnetwork.bus.providers.forex.ForexCore;
@@ -37,9 +36,6 @@ public class Dispatcher {
                 break;
             case MTS:
                 providers = new MtsCore();
-                break;
-            case BEELINE:
-                providers = new BeelineCore();
                 break;
             case MEGAFON:
                 providers = new MegafonCore();
@@ -91,9 +87,6 @@ public class Dispatcher {
                 break;
             case FOREX:
                 providers = new ForexCore();
-                break;
-            case BEELINE:
-                providers = new BeelineCore();
                 break;
             case MEGAFON:
                 providers = new MegafonCore();

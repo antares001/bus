@@ -1,22 +1,17 @@
-package net.scnetwork.bus.providers.print.config;
+package net.scnetwork.bus.plugins.beeline;
 
-import net.scnetwork.bus.config.IModulesStandard;
+import net.scnetwork.bus.interfaces.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Конфигурация сервиса печати
- */
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "print")
-public class Print implements IModulesStandard {
+@ConfigurationProperties(prefix = "beeline")
+public class BeelineConfig implements IModulesStandard{
     private boolean use;
     private String service;
     private String url;
-
-    public static final String DESCRIPTION = "Print";
 
     @Override
     public boolean isUse() {
@@ -46,10 +41,5 @@ public class Print implements IModulesStandard {
     @Override
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @Override
-    public String toString(){
-        return "Print:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }
