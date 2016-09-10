@@ -6,7 +6,14 @@
 
     <groupId>net.scnetwork.bus</groupId>
     <artifactId>bus</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>bus-plugin-print</module>
+        <module>bus-interfaces</module>
+        <module>bus-plugin-beeline</module>
+        <module>bus-plugins-bpay</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <vaadin.spring>0.0.7.RELEASE</vaadin.spring>
@@ -157,11 +164,6 @@
             <version>2.6.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/jasperreports/jasperreports -->
-        <dependency>
-            <groupId>jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>3.5.3</version>
-        </dependency>
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
