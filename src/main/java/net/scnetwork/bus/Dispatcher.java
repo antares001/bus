@@ -21,7 +21,6 @@ import net.scnetwork.bus.utils.XmlUtils;
  * Класс-маршрутизатор вызовов
  */
 public class Dispatcher {
-
     /**
      * Формирование soap ответа в виде xml
      * @param data входящие данные
