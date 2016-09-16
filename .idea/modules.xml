@@ -4,9 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bus.iml" filepath="$PROJECT_DIR$/bus.iml" />
       <module fileurl="file://$PROJECT_DIR$/bus-interfaces/bus-interfaces.iml" filepath="$PROJECT_DIR$/bus-interfaces/bus-interfaces.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bus-plugin-beeline/bus-plugin-beeline.iml" filepath="$PROJECT_DIR$/bus-plugin-beeline/bus-plugin-beeline.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bus-plugin-print/bus-plugin-print.iml" filepath="$PROJECT_DIR$/bus-plugin-print/bus-plugin-print.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bus-plugins-bpay/bus-plugins-bpay.iml" filepath="$PROJECT_DIR$/bus-plugins-bpay/bus-plugins-bpay.iml" />
     </modules>
   </component>
 </project>
