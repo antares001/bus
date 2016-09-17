@@ -5,7 +5,6 @@ import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.providers.leader.config.Leader;
-import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -25,7 +24,6 @@ public class Modules {
     private Leader leader;
     private Jpos jpos;
     private Fias fias;
-    private Print print;
     private Forex forex;
 
     /**
@@ -38,7 +36,6 @@ public class Modules {
         leader = new Leader();
         jpos = new Jpos();
         fias = new Fias();
-        print = new Print();
         forex = new Forex();
     }
 
@@ -139,22 +136,6 @@ public class Modules {
     }
 
     /**
-     * Получение настроек генерации pdf
-     * @return настройки
-     */
-    public Print getPrint() {
-        return print;
-    }
-
-    /**
-     * Запись настроек генерации pdf
-     * @param print настройки
-     */
-    public void setPrint(Print print) {
-        this.print = print;
-    }
-
-    /**
      * Получение настроек Forex
      * @return настройки
      */
@@ -183,7 +164,6 @@ public class Modules {
                 "},leader:{" + leader.toString() +
                 "},jpos:{" + jpos.toString() +
                 "},fias:{" + fias.toString() +
-                "},print:{" + print.toString()+
                 "},forex:{" + forex.toString() + "}}";
     }
 }

@@ -9,7 +9,6 @@ import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.providers.leader.config.Leader;
-import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.utils.LogBus;
@@ -123,7 +122,6 @@ public class ConfigApi {
             Leader leader = modules.getLeader();
             Jpos jpos = modules.getJpos();
             Fias fias = modules.getFias();
-            Print print = modules.getPrint();
             Forex forex = modules.getForex();
 
             if (null != bPay && bPay.isUse())
@@ -143,9 +141,6 @@ public class ConfigApi {
 
             if (null != fias && fias.isUse())
                 result.add(Fias.DESRIPTION);
-
-            if (null != print && print.isUse())
-                result.add(Print.DESCRIPTION);
 
             if (null != forex && forex.isUse())
                 result.add(Forex.DESCRIPTION);

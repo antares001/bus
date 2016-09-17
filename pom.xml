@@ -6,14 +6,7 @@
 
     <groupId>net.scnetwork.bus</groupId>
     <artifactId>bus</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>bus-plugin-print</module>
-        <module>bus-interfaces</module>
-        <module>bus-plugin-beeline</module>
-        <module>bus-plugins-bpay</module>
-    </modules>
     <properties>
         <java.version>1.8</java.version>
         <vaadin.spring>0.0.7.RELEASE</vaadin.spring>
