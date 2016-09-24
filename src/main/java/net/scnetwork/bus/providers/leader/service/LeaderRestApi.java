@@ -6,6 +6,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +19,13 @@ import javax.ws.rs.PathParam;
  */
 @RestController
 public class LeaderRestApi implements RestApiStandard {
+    @Autowired
+    private Leader leader;
+
     @RequestMapping(value = "/rest/modules/leader/get/{parameter}")
     @Override
     public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
-        switch (parameter){
+        switch (parameter) {
             case "info":
                 return getConfig();
             case "service":
@@ -38,14 +42,11 @@ public class LeaderRestApi implements RestApiStandard {
 
     @Override
     public String getConfig() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Leader leader = modules.getLeader();
-            if (null != leader){
-                return leader.toString();
-            }
+        if (null != leader) {
+            return leader.toString();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/info")
@@ -54,9 +55,9 @@ public class LeaderRestApi implements RestApiStandard {
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Leader leader = modules.getLeader();
-            if (null != leader){
+            if (null != leader) {
                 leader.setUse(use);
                 leader.setService(service.toUpperCase());
                 leader.setUrl(url);
@@ -71,23 +72,20 @@ public class LeaderRestApi implements RestApiStandard {
 
     @Override
     public boolean getUse() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Leader leader = modules.getLeader();
-            if (null != leader){
-                return leader.isUse();
-            }
+        if (null != leader) {
+            return leader.isUse();
+        } else {
+            return false;
         }
-        return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Leader leader = modules.getLeader();
-            if (null != leader){
+            if (null != leader) {
                 leader.setUse(use);
                 modules.setLeader(leader);
                 Config.setModules(modules);
@@ -99,23 +97,20 @@ public class LeaderRestApi implements RestApiStandard {
 
     @Override
     public String getService() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Leader leader = modules.getLeader();
-            if (null != leader){
-                return leader.getService();
-            }
+        if (null != leader) {
+            return leader.getService();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/service")
     @Override
     public boolean setService(@RequestParam(value = "service") String service) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Leader leader = modules.getLeader();
-            if (null != leader){
+            if (null != leader) {
                 leader.setService(service.toUpperCase());
                 modules.setLeader(leader);
                 Config.setModules(modules);
@@ -127,23 +122,20 @@ public class LeaderRestApi implements RestApiStandard {
 
     @Override
     public String getUrl() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Leader leader = modules.getLeader();
-            if (null != leader){
-                return leader.getUrl();
-            }
+        if (null != leader) {
+            return leader.getUrl();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/leader/set/url")
     @Override
     public boolean setUrl(@RequestParam(value = "url") String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Leader leader = modules.getLeader();
-            if (null != leader){
+            if (null != leader) {
                 leader.setUrl(url);
                 modules.setLeader(leader);
                 Config.setModules(modules);

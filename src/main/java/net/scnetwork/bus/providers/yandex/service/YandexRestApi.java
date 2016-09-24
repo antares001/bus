@@ -6,6 +6,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,14 @@ import javax.ws.rs.PathParam;
  * Настройка модуля yandex
  */
 @RestController
-public class YandexRestApi implements RestApiStandard{
+public class YandexRestApi implements RestApiStandard {
+    @Autowired
+    private Yandex yandex;
+
     @RequestMapping(value = "/rest/api/modules/yandex/get/{parameter}")
     @Override
     public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
-        switch (parameter){
+        switch (parameter) {
             case "info":
                 return getConfig();
             case "service":
@@ -39,14 +43,11 @@ public class YandexRestApi implements RestApiStandard{
     @RequestMapping(value = "/rest/api/modules/yandex/get/info")
     @Override
     public String getConfig() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Yandex yandex = modules.getYandex();
-            if (null != yandex) {
-                return yandex.toString();
-            }
+        if (null != yandex) {
+            return yandex.toString();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @Override
@@ -54,9 +55,9 @@ public class YandexRestApi implements RestApiStandard{
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Yandex yandex = modules.getYandex();
-            if (null != yandex){
+            if (null != yandex) {
                 yandex.setUse(use);
                 yandex.setService(service.toUpperCase());
                 yandex.setUrl(url);
@@ -71,23 +72,20 @@ public class YandexRestApi implements RestApiStandard{
 
     @Override
     public boolean getUse() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Yandex yandex = modules.getYandex();
-            if (null != yandex){
-                return yandex.isUse();
-            }
+        if (null != yandex) {
+            return yandex.isUse();
+        } else {
+            return false;
         }
-        return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/yandex/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Yandex yandex = modules.getYandex();
-            if (null != yandex){
+            if (null != yandex) {
                 yandex.setUse(use);
                 modules.setYandex(yandex);
                 Config.setModules(modules);
@@ -99,23 +97,20 @@ public class YandexRestApi implements RestApiStandard{
 
     @Override
     public String getService() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Yandex yandex = modules.getYandex();
-            if (null != yandex){
-                return yandex.getService();
-            }
+        if (null != yandex) {
+            return yandex.getService();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/yandex/set/service")
     @Override
     public boolean setService(@RequestParam(value = "service") String service) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Yandex yandex = modules.getYandex();
-            if (null != yandex){
+            if (null != yandex) {
                 yandex.setService(service.toUpperCase());
                 modules.setYandex(yandex);
                 Config.setModules(modules);
@@ -127,23 +122,20 @@ public class YandexRestApi implements RestApiStandard{
 
     @Override
     public String getUrl() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Yandex yandex = modules.getYandex();
-            if (null != yandex){
-                return yandex.getUrl();
-            }
+        if (null != yandex) {
+            return yandex.getUrl();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/yandex/set/url")
     @Override
     public boolean setUrl(@RequestParam(value = "url") String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Yandex yandex = modules.getYandex();
-            if (null != yandex){
+            if (null != yandex) {
                 yandex.setUrl(url);
                 modules.setYandex(yandex);
                 Config.setModules(modules);
