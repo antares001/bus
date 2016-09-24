@@ -14,9 +14,12 @@ public class Config {
      * Получение эксземляра конфигурации
      * @return конфигурация
      */
-    public synchronized static Global getInstance(){
+    public static Global getInstance(){
         if (null == global){
-            return null;
+            synchronized (Global.class){
+                if (null == global)
+                    return null;
+            }
         }
         return global;
     }

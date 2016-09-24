@@ -1,12 +1,7 @@
 package net.scnetwork.bus;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Global;
-import net.scnetwork.bus.service.XmlFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,16 +26,11 @@ import org.vaadin.spring.security.shared.VaadinSessionClosingLogoutHandler;
 import org.vaadin.spring.security.shared.VaadinUrlAuthenticationSuccessHandler;
 import org.vaadin.spring.security.web.VaadinRedirectStrategy;
 
-import javax.xml.ws.Endpoint;
-
 /**
  * Класс запуска приложения
  */
 @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
-public class Bus implements CommandLineRunner{
-    @Autowired
-    private Global global;
-
+public class Bus {
     private static final Logger log = LoggerFactory.getLogger(Bus.class);
 
     /**
@@ -121,7 +111,7 @@ public class Bus implements CommandLineRunner{
             return new VaadinUrlAuthenticationSuccessHandler(httpService, vaadinRedirectStrategy, "/");
         }
     }
-
+/*
     @Override
     public void run(String... strings) throws Exception {
         Endpoint.publish(global.getEndpoint(), new XmlFunction());
@@ -129,4 +119,5 @@ public class Bus implements CommandLineRunner{
         Config.setInstance(global);
         log.info(global.getModules().getBpay().getService());
     }
+    */
 }

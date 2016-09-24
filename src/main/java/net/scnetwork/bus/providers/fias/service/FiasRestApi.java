@@ -6,6 +6,7 @@ import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,14 @@ import javax.ws.rs.PathParam;
  * Настройка модуля ФИАС
  */
 @RestController
-public class FiasRestApi implements RestApiStandard{
+public class FiasRestApi implements RestApiStandard {
+    @Autowired
+    private Fias fias;
+
     @RequestMapping(value = "/rest/modules/fias/get/{parameter}")
     @Override
     public String getApi(@PathParam(value = "parameter/") @NotNull String parameter) {
-        switch (parameter){
+        switch (parameter) {
             case "info":
                 return getConfig();
             case "service":
@@ -38,14 +42,11 @@ public class FiasRestApi implements RestApiStandard{
 
     @Override
     public String getConfig() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Fias fias = modules.getFias();
-            if (null != fias){
-                return fias.toString();
-            }
+        if (null != fias) {
+            return fias.toString();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/info")
@@ -54,9 +55,9 @@ public class FiasRestApi implements RestApiStandard{
                              @RequestParam(value = "service") @NotNull String service,
                              @RequestParam(value = "url") @NotNull String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Fias fias = modules.getFias();
-            if (null != fias){
+            if (null != fias) {
                 fias.setUse(use);
                 fias.setService(service.toUpperCase());
                 fias.setUrl(url);
@@ -67,23 +68,20 @@ public class FiasRestApi implements RestApiStandard{
 
     @Override
     public boolean getUse() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Fias fias = modules.getFias();
-            if (null != fias){
-                return fias.isUse();
-            }
+        if (null != fias) {
+            return fias.isUse();
+        } else {
+            return false;
         }
-        return false;
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/use")
     @Override
     public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Fias fias = modules.getFias();
-            if (null != fias){
+            if (null != fias) {
                 fias.setUse(use);
                 modules.setFias(fias);
                 Config.setModules(modules);
@@ -95,23 +93,20 @@ public class FiasRestApi implements RestApiStandard{
 
     @Override
     public String getService() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Fias fias = modules.getFias();
-            if (null != fias){
-                return fias.getService();
-            }
+        if (null != fias) {
+            return fias.getService();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/service")
     @Override
     public boolean setService(@RequestParam(value = "service") String service) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Fias fias = modules.getFias();
-            if (null != fias){
+            if (null != fias) {
                 fias.setService(service.toUpperCase());
                 modules.setFias(fias);
                 Config.setModules(modules);
@@ -123,23 +118,20 @@ public class FiasRestApi implements RestApiStandard{
 
     @Override
     public String getUrl() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            Fias fias = modules.getFias();
-            if (null != fias){
-                return fias.getUrl();
-            }
+        if (null != fias) {
+            return fias.getUrl();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return JsonUtils.getError(StatusEnum.NULL).toString();
     }
 
     @RequestMapping(value = "/rest/api/modules/fias/set/url")
     @Override
     public boolean setUrl(@RequestParam(value = "url") String url) {
         Modules modules = Config.getModules();
-        if (null != modules){
+        if (null != modules) {
             Fias fias = modules.getFias();
-            if (null != fias){
+            if (null != fias) {
                 fias.setUrl(url);
                 modules.setFias(fias);
                 Config.setModules(modules);
