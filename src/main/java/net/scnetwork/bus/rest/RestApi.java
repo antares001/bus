@@ -23,11 +23,4 @@ public interface RestApi {
      * @return признак
      */
     boolean getUse();
-
-    /**
-     * Установка признака
-     * @param use признак
-     * @return успешность операции
-     */
-    boolean setUse(Boolean use);
 }
