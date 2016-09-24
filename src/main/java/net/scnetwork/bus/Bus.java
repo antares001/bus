@@ -1,7 +1,5 @@
 package net.scnetwork.bus;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,8 +29,6 @@ import org.vaadin.spring.security.web.VaadinRedirectStrategy;
  */
 @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
 public class Bus {
-    private static final Logger log = LoggerFactory.getLogger(Bus.class);
-
     /**
      * Точка запуска приложения spring boot
      * @param arg входящие параметры
@@ -111,13 +107,4 @@ public class Bus {
             return new VaadinUrlAuthenticationSuccessHandler(httpService, vaadinRedirectStrategy, "/");
         }
     }
-/*
-    @Override
-    public void run(String... strings) throws Exception {
-        Endpoint.publish(global.getEndpoint(), new XmlFunction());
-
-        Config.setInstance(global);
-        log.info(global.getModules().getBpay().getService());
-    }
-    */
 }
