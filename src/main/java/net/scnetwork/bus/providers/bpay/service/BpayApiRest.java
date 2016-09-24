@@ -1,7 +1,5 @@
 package net.scnetwork.bus.providers.bpay.service;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.rest.RestApiStandard;
@@ -19,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @RestController
 public class BpayApiRest implements RestApiStandard {
     @Autowired
-    private BPay bPay;
+    private BPay config;
 
     @RequestMapping(value = "/rest/modules/bpay/get")
     @Override
@@ -47,107 +45,34 @@ public class BpayApiRest implements RestApiStandard {
 
     @Override
     public String getConfig() {
-        if (null != bPay) {
-            return bPay.toString();
+        if (null != config) {
+            return config.toString();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-    }
-
-    @RequestMapping(value = "/rest/api/modules/bpay/set/info")
-    @Override
-    public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
-                             @RequestParam(value = "service") @NotNull String service,
-                             @RequestParam(value = "url") @NotNull String url) {
-        Modules modules = Config.getModules();
-        if (null != modules) {
-            BPay bPay = modules.getBpay();
-            if (null != bPay) {
-                bPay.setUse(use);
-                bPay.setService(service.toUpperCase());
-                bPay.setUrl(url);
-
-                modules.setBpay(bPay);
-                Config.setModules(modules);
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
     public boolean getUse() {
-        if (null != bPay) {
-            return bPay.isUse();
-        } else {
-            return false;
-        }
-    }
-
-    @RequestMapping(value = "/rest/api/modules/bpay/set/use")
-    @Override
-    public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
-        Modules modules = Config.getModules();
-        if (null != modules) {
-            BPay bPay = modules.getBpay();
-            if (null != bPay) {
-                bPay.setUse(use);
-                modules.setBpay(bPay);
-                Config.setModules(modules);
-                return true;
-            }
-        }
-        return false;
+        return null != config && config.isUse();
     }
 
     @Override
     public String getService() {
-        if (null != bPay) {
-            return bPay.getService();
+        if (null != config) {
+            return config.getService();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-    }
-
-    @RequestMapping(value = "/rest/api/modules/bpay/set/service")
-    @Override
-    public boolean setService(@RequestParam(value = "service") String service) {
-        Modules modules = Config.getModules();
-        if (null != modules) {
-            BPay bPay = modules.getBpay();
-            if (null != bPay) {
-                bPay.setService(service.toUpperCase());
-                modules.setBpay(bPay);
-                Config.setModules(modules);
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
     public String getUrl() {
-        if (null != bPay) {
-            return bPay.getUrl();
+        if (null != config) {
+            return config.getUrl();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-    }
-
-    @RequestMapping(value = "/rest/api/module/bpay/set/url")
-    @Override
-    public boolean setUrl(@RequestParam(value = "url") String url) {
-        Modules modules = Config.getModules();
-        if (null != modules) {
-            BPay bPay = modules.getBpay();
-            if (null != bPay) {
-                bPay.setUrl(url);
-                modules.setBpay(bPay);
-                Config.setModules(modules);
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -156,8 +81,8 @@ public class BpayApiRest implements RestApiStandard {
      * @return адрес
      */
     public String getPoint() {
-        if (null != bPay) {
-            return bPay.getPoint();
+        if (null != config) {
+            return config.getPoint();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
@@ -170,8 +95,8 @@ public class BpayApiRest implements RestApiStandard {
      * @return идентификатор
      */
     public String getMerchant() {
-        if (null != bPay) {
-            return bPay.getMerchantId();
+        if (null != config) {
+            return config.getMerchantId();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
@@ -183,8 +108,8 @@ public class BpayApiRest implements RestApiStandard {
      * @return подпись
      */
     public String getSignature() {
-        if (null != bPay) {
-            return bPay.getSignature();
+        if (null != config) {
+            return config.getSignature();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
