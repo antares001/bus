@@ -30,7 +30,8 @@ public class FiasCore implements IProvidersStadard{
     private Fias fias;
 
     /**
-     * Иницмализация конфигурации и клиента
+     * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
     public FiasCore(Fias config){
         DownloadService service = new DownloadService();

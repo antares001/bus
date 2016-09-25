@@ -29,6 +29,8 @@ import org.vaadin.spring.security.web.VaadinRedirectStrategy;
  */
 @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
 public class Bus {
+    private Bus(){}
+
     /**
      * Точка запуска приложения spring boot
      * @param arg входящие параметры

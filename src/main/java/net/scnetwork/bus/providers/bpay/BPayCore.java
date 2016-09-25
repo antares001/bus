@@ -33,6 +33,7 @@ public class BPayCore implements IProvidersStadard{
 
     /**
      * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
     public BPayCore(BPay config){
         this.bPay = config;

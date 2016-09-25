@@ -18,7 +18,8 @@ public class ForexCore implements IProvidersStadard{
     private Forex forex;
 
     /**
-     * Иницализация конфигурации сервиса
+     * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
     public ForexCore(Forex config){
         this.forex = config;

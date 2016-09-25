@@ -20,7 +20,8 @@ public class YandexCore implements IProvidersStadard{
     private Yandex yandex;
 
     /**
-     * Инициализация конфигурации сервиса
+     * Инициализация конфигурации
+     * @param yandex - конфигурация сервиса
      */
     public YandexCore(Yandex yandex){
         this.yandex = yandex;

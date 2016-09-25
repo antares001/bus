@@ -19,6 +19,7 @@ public class LeaderCore implements IProvidersStadard{
 
     /**
      * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
     public LeaderCore(Leader config){
         this.leader = config;

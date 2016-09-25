@@ -18,7 +18,8 @@ public class JposCore implements IProvidersStadard{
     private Jpos jpos;
 
     /**
-     * Инициализация конфигурации сервиса
+     * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
     public JposCore(Jpos config){
         this.jpos = config;
