@@ -1,7 +1,5 @@
 package net.scnetwork.bus.providers.bpay;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
@@ -36,15 +34,8 @@ public class BPayCore implements IProvidersStadard{
     /**
      * Инициализация конфигурации
      */
-    public BPayCore(){
-        try{
-            Modules modules = Config.getModules();
-            if (null != modules) {
-                bPay = modules.getBpay();
-            }
-        } catch (NullPointerException e) {
-            LogBus.writeLog(e);
-        }
+    public BPayCore(BPay config){
+        this.bPay = config;
     }
 
     @Override

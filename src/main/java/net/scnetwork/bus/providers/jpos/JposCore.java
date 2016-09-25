@@ -1,7 +1,5 @@
 package net.scnetwork.bus.providers.jpos;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
@@ -11,7 +9,6 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
@@ -23,15 +20,8 @@ public class JposCore implements IProvidersStadard{
     /**
      * Инициализация конфигурации сервиса
      */
-    public JposCore(){
-        try {
-            Modules modules = Config.getModules();
-            if (null != modules) {
-                jpos = modules.getJpos();
-            }
-        } catch (NullPointerException e) {
-            LogBus.writeLog(e);
-        }
+    public JposCore(Jpos config){
+        this.jpos = config;
     }
 
     @Override

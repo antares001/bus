@@ -1,6 +1,5 @@
 package net.scnetwork.bus.providers.forex;
 
-import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
@@ -10,7 +9,6 @@ import net.scnetwork.bus.enums.UseEnum;
 import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.forex.config.Forex;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
@@ -22,12 +20,8 @@ public class ForexCore implements IProvidersStadard{
     /**
      * Иницализация конфигурации сервиса
      */
-    public ForexCore(){
-        try{
-            forex = Config.getInstance().getModules().getForex();
-        } catch (NullPointerException e){
-            LogBus.writeLog(e);
-        }
+    public ForexCore(Forex config){
+        this.forex = config;
     }
 
     @Override

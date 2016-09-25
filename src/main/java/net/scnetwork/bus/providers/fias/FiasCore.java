@@ -4,7 +4,6 @@ import net.scnetwork.bus.clients.fias.ArrayOfDownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
-import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
@@ -17,7 +16,6 @@ import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.fias.domain.*;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 import javax.validation.constraints.NotNull;
@@ -34,14 +32,10 @@ public class FiasCore implements IProvidersStadard{
     /**
      * Иницмализация конфигурации и клиента
      */
-    public FiasCore(){
+    public FiasCore(Fias config){
         DownloadService service = new DownloadService();
         serviceSoap = service.getDownloadServiceSoap();
-        try{
-            fias = Config.getInstance().getModules().getFias();
-        } catch (NullPointerException e){
-            LogBus.writeLog(e);
-        }
+        fias = config;
     }
 
     @Override

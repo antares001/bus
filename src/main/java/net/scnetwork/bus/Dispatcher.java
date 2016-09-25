@@ -1,16 +1,17 @@
 package net.scnetwork.bus;
 
-import net.scnetwork.bus.domain.*;
+import net.scnetwork.bus.domain.DataJs;
+import net.scnetwork.bus.domain.DataRequest;
+import net.scnetwork.bus.domain.Response;
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.bpay.BPayCore;
 import net.scnetwork.bus.providers.epay.EPayCore;
 import net.scnetwork.bus.providers.fias.FiasCore;
 import net.scnetwork.bus.providers.forex.ForexCore;
-import net.scnetwork.bus.providers.IProviders;
 import net.scnetwork.bus.providers.leader.LeaderCore;
-import net.scnetwork.bus.providers.megafon.MegafonCore;
-import net.scnetwork.bus.providers.mts.MtsCore;
 import net.scnetwork.bus.providers.qiwi.QiwiCore;
 import net.scnetwork.bus.providers.yandex.YandexCore;
 import net.scnetwork.bus.utils.JsonUtils;
@@ -31,28 +32,22 @@ public class Dispatcher {
         IProviders providers;
         switch (service){
             case BPAY:
-                providers = new BPayCore();
-                break;
-            case MTS:
-                providers = new MtsCore();
-                break;
-            case MEGAFON:
-                providers = new MegafonCore();
+                providers = new BPayCore(null);
                 break;
             case LEADER:
-                providers = new LeaderCore();
+                providers = new LeaderCore(null);
                 break;
             case QIWI:
-                providers = new QiwiCore();
+                providers = new QiwiCore(null);
                 break;
             case FOREX:
-                providers = new ForexCore();
+                providers = new ForexCore(null);
                 break;
             case YANDEX:
-                providers = new YandexCore();
+                providers = new YandexCore(null);
                 break;
             case FIAS:
-                providers = new FiasCore();
+                providers = new FiasCore(null);
                 break;
             case EPAY:
                 providers = new EPayCore();
@@ -73,28 +68,22 @@ public class Dispatcher {
         IProviders providers;
         switch (service){
             case BPAY:
-                providers = new BPayCore();
-                break;
-            case MTS:
-                providers = new MtsCore();
+                providers = new BPayCore(null);
                 break;
             case QIWI:
-                providers = new QiwiCore();
+                providers = new QiwiCore(null);
                 break;
             case LEADER:
-                providers = new LeaderCore();
+                providers = new LeaderCore(null);
                 break;
             case FOREX:
-                providers = new ForexCore();
-                break;
-            case MEGAFON:
-                providers = new MegafonCore();
+                providers = new ForexCore(null);
                 break;
             case YANDEX:
-                providers = new YandexCore();
+                providers = new YandexCore(null);
                 break;
             case FIAS:
-                providers = new FiasCore();
+                providers = new FiasCore(null);
                 break;
             case EPAY:
                 providers = new EPayCore();
