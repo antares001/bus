@@ -1,5 +1,6 @@
 package net.scnetwork.bus.providers.bpay.service;
 
+import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.rest.RestApiStandard;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.QueryParam;
 
 /**
  * REST API для настройки сервиса bpay
@@ -19,7 +21,12 @@ public class BpayApiRest implements RestApiStandard {
     @Autowired
     private BPay config;
 
-    @RequestMapping(value = "/rest/modules/bpay/get")
+    @RequestMapping(value = "/rest/modules/bpay/operation")
+    public ResponseJs operation(@QueryParam(value = "type") String type){
+        return JsonUtils.getError(StatusEnum.ERROR);
+    }
+
+    @RequestMapping(value = "/rest/modules/bpay/config")
     @Override
     public String getApi(@RequestParam(value = "parameter") @NotNull String parameter) {
         switch (parameter) {
