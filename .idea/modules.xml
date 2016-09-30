@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bus.iml" filepath="$PROJECT_DIR$/bus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bus-interfaces/bus-interfaces.iml" filepath="$PROJECT_DIR$/bus-interfaces/bus-interfaces.iml" />
     </modules>
   </component>
 </project>
