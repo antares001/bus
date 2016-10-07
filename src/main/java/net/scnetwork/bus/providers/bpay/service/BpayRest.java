@@ -17,7 +17,7 @@ import javax.ws.rs.QueryParam;
  * REST API для настройки сервиса bpay
  */
 @RestController
-public class BpayApiRest implements RestApiStandard {
+public class BpayRest implements RestApiStandard {
     @Autowired
     private BPay config;
 
@@ -26,7 +26,7 @@ public class BpayApiRest implements RestApiStandard {
         return JsonUtils.getError(StatusEnum.ERROR);
     }
 
-    @RequestMapping(value = "/rest/modules/bpay/config")
+    @RequestMapping(value = "/rest/modules/bpay/api")
     @Override
     public String getApi(@RequestParam(value = "parameter") @NotNull String parameter) {
         switch (parameter) {

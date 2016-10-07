@@ -11,10 +11,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bus" target="1.8" />
-      <module name="bus-interfaces" target="1.8" />
-      <module name="bus-plugin-beeline" target="1.8" />
-      <module name="bus-plugin-print" target="1.8" />
-      <module name="bus-plugins-bpay" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

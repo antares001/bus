@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 /**
  * Настройка модуля ФИАС
@@ -18,6 +19,11 @@ import javax.ws.rs.PathParam;
 public class FiasRestApi implements RestApiStandard {
     @Autowired
     private Fias config;
+
+    @RequestMapping(value = "/rest/modules/fias/operation")
+    public String operation(@QueryParam(value = "type") String type){
+        return type;
+    }
 
     @RequestMapping(value = "/rest/modules/fias/get/{parameter}")
     @Override
