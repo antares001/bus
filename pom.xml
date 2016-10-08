@@ -11,6 +11,8 @@
         <java.version>1.8</java.version>
         <vaadin.spring>0.0.7.RELEASE</vaadin.spring>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <httpasyncclient.version>4.0-beta3-atlassian-1</httpasyncclient.version>
+        <httpclient.version>4.2.1-atlassian-2</httpclient.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
