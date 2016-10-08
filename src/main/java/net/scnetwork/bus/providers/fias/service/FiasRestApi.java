@@ -1,5 +1,25 @@
 package net.scnetwork.bus.providers.fias.service;
 
+import net.scnetwork.bus.rest.RestApi;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;<<<<<<< HEAD
+import net.scnetwork.bus.clients.fias.DownloadFileInfo;
+import net.scnetwork.bus.clients.fias.DownloadService;
+import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
+import net.scnetwork.bus.config.Config;
+import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.providers.fias.config.Fias;
+import net.scnetwork.bus.providers.fias.enums.FiasFormatEnum;
+import net.scnetwork.bus.providers.fias.enums.FiasOperation;
+import net.scnetwork.bus.rest.RestApi;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.constraints.NotNull;
+=======
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.rest.RestApiStandard;
@@ -16,19 +36,51 @@ import javax.ws.rs.QueryParam;
  * Настройка модуля ФИАС
  */
 @RestController
-public class FiasRestApi implements RestApiStandard {
+public class FiasRestApi implements RestApi {
     @Autowired
-    private Fias config;
+    private Fias fias;
 
     /**
-     * Операция
+     * Операции fias
      * @param type тип операции
-     * @return результат операции
+     * @return данные
      */
-    @RequestMapping(value = "/rest/modules/fias/operation")
-    public String operation(@QueryParam(value = "type") String type){
+    @RequestMapping(value = "/rest/modules/operation/{type}")
+    public String operation(@PathVariable(value = "type") String type, @QueryParam(value = "format") String format){
+        DownloadService service = new DownloadService();
+        DownloadServiceSoap serviceSoap = service.getDownloadServiceSoap();
+        switch (FiasOperation.valueOf(type)){
+            case GET_URL:
+                DownloadFileInfo fileInfo = serviceSoap.getLastDownloadFileInfo();
+                switch (FiasFormatEnum.valueOf(format)){
+                    case ARJ:
+                        return fileInfo.getKladr4ArjUrl();
+                    case DBF:
+                        return fileInfo.getFiasDeltaDbfUrl();
+                    case SEVEN_Z:
+                        return fileInfo.getKladr47ZUrl();
+                    case TEXT:
+                        return fileInfo.getTextVersion();
+                    case XML:
+                        return fileInfo.getFiasDeltaXmlUrl();
+                    default:
+                        break;
+                }
+                break;
+            case GET_ALL_URLS:
+                break;
+            case SYNC:
+                break;
+            case MONGODB:
+                break;
+            case REDIS:
+                break;
+            default:
+                break;
+        }
         return type;
     }
+
 
     @RequestMapping(value = "/rest/modules/fias/get/{parameter}")
     @Override
@@ -50,8 +102,8 @@ public class FiasRestApi implements RestApiStandard {
 
     @Override
     public String getConfig() {
-        if (null != config) {
-            return config.toString();
+        if (null != fias) {
+            return fias.toString();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
@@ -59,13 +111,13 @@ public class FiasRestApi implements RestApiStandard {
 
     @Override
     public boolean getUse() {
-        return null != config && config.isUse();
+        return null != fias && fias.isUse();
     }
 
     @Override
     public String getService() {
-        if (null != config) {
-            return config.getService();
+        if (null != fias) {
+            return fias.getService();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
@@ -73,8 +125,8 @@ public class FiasRestApi implements RestApiStandard {
 
     @Override
     public String getUrl() {
-        if (null != config) {
-            return config.getUrl();
+        if (null != fias) {
+            return fias.getUrl();
         } else {
             return JsonUtils.getError(StatusEnum.NULL).toString();
         }
