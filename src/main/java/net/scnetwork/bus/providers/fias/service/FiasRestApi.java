@@ -20,6 +20,11 @@ public class FiasRestApi implements RestApiStandard {
     @Autowired
     private Fias config;
 
+    /**
+     * Операция
+     * @param type тип операции
+     * @return результат операции
+     */
     @RequestMapping(value = "/rest/modules/fias/operation")
     public String operation(@QueryParam(value = "type") String type){
         return type;
