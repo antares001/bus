@@ -1,30 +1,16 @@
 package net.scnetwork.bus.providers.fias.service;
 
-import net.scnetwork.bus.rest.RestApi;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;<<<<<<< HEAD
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
+import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.fias.enums.FiasFormatEnum;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.rest.RestApi;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.constraints.NotNull;
-=======
-import net.scnetwork.bus.enums.StatusEnum;
-import net.scnetwork.bus.providers.fias.config.Fias;
-import net.scnetwork.bus.rest.RestApiStandard;
 import net.scnetwork.bus.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -114,7 +100,6 @@ public class FiasRestApi implements RestApi {
         return null != fias && fias.isUse();
     }
 
-    @Override
     public String getService() {
         if (null != fias) {
             return fias.getService();
@@ -123,7 +108,6 @@ public class FiasRestApi implements RestApi {
         }
     }
 
-    @Override
     public String getUrl() {
         if (null != fias) {
             return fias.getUrl();
