@@ -1,5 +1,7 @@
+import com.atlassian.jira.rest.client.api.domain.Comment;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.ServerInfo;
+import com.google.common.collect.Iterables;
 import net.scnetwork.bus.clients.tracking.jira.JiraConfig;
 import net.scnetwork.bus.clients.tracking.jira.JiraRestImpl;
 import org.junit.Before;
@@ -34,5 +36,19 @@ public class JiraRestTest {
     public void getIssueInfoTest(){
         Issue issue = jiraRest.getIssue(KEY);
         System.out.println(issue.toString());
+    }
+
+    @Test
+    public void getCommentsTest(){
+        try {
+            Iterable<Comment> comments = jiraRest.getComment(KEY);
+            if (Iterables.size(comments) != 0){
+                comments.forEach(e -> System.out.println(e.toString()));
+            } else {
+                System.out.println("Size is 0");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
