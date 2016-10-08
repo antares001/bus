@@ -1,7 +1,6 @@
 package net.scnetwork.bus.providers.bpay.domain;
 
 import net.scnetwork.bus.domain.Response;
-import net.scnetwork.bus.providers.beeline.domain.DataRespBeeline;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,10 +14,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Response")
 public class ResponseBpay  extends Response{
     @XmlElement(name = "Data")
-    private DataRespBeeline data;
+    private DataRespBpay data;
 
     @Override
-    public DataRespBeeline getData() {
+    public DataRespBpay getData() {
         return data;
     }
 
@@ -26,7 +25,7 @@ public class ResponseBpay  extends Response{
      * Запись Data для ответа сервиса Bpay
      * @param data структура Data
      */
-    public void setData(DataRespBeeline data) {
+    public void setData(DataRespBpay data) {
         this.data = data;
     }
 }

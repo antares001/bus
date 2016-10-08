@@ -16,7 +16,10 @@ public class Config {
      */
     public static Global getInstance(){
         if (null == global){
-            return null;
+            synchronized (Global.class){
+                if (null == global)
+                    return null;
+            }
         }
         return global;
     }

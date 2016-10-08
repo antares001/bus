@@ -1,78 +1,71 @@
 package net.scnetwork.bus.providers.jpos.service;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
-import net.scnetwork.bus.rest.RestApi;
+import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
+import net.scnetwork.bus.rest.RestApiStandard;
+import net.scnetwork.bus.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.PathParam;
 
 /**
  * Настройка модуля Jpos
  */
-public class JposRestApi implements RestApi{
-    @RequestMapping(value = "/rest/api/modules/jpos/get/info")
+@RestController
+public class JposRestApi implements RestApiStandard {
+    @Autowired
+    private Jpos config;
+
+    @RequestMapping(value = "/rest/api/modules/jpos/get/{parameter}")
+    @Override
+    public String getApi(@PathParam(value = "parameter") @NotNull String parameter) {
+        switch (parameter) {
+            case "info":
+                return getConfig();
+            case "server":
+                return getService();
+            case "url":
+                return getUrl();
+            case "use":
+                return String.valueOf(getUse());
+            default:
+                break;
+        }
+        return JsonUtils.getError(StatusEnum.NULL).toString();
+    }
+
     @Override
     public String getConfig() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            JposConfig jpos = modules.getJpos();
-            if (null != jpos){
-                return jpos.toString();
-            }
+        if (null != config) {
+            return config.toString();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return null;
     }
 
-    @RequestMapping(value = "/rest/api/modules/jpos/set/info")
-    @Override
-    public boolean setConfig(@RequestParam(value = "use") @NotNull Boolean use,
-                             @RequestParam(value = "service") @NotNull String service,
-                             @RequestParam(value = "url") @NotNull String url) {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            JposConfig jpos = modules.getJpos();
-            if (null != jpos){
-                jpos.setUse(use);
-                jpos.setService(service.toUpperCase());
-                jpos.setUrl(url);
-
-                modules.setJpos(jpos);
-                Config.setModules(modules);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @RequestMapping(value = "/rest/api/modules/jpos/get/use")
     @Override
     public boolean getUse() {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            JposConfig jpos = modules.getJpos();
-            if (null != jpos){
-                return jpos.isUse();
-            }
-        }
-        return false;
+        return null != config && config.isUse();
     }
 
-    @RequestMapping(value = "/rest/api/modules/jpos/set/use")
     @Override
-    public boolean setUse(@RequestParam(value = "use") @NotNull Boolean use) {
-        Modules modules = Config.getModules();
-        if (null != modules){
-            JposConfig jpos = modules.getJpos();
-            if (null != jpos){
-                jpos.setUse(use);
-                modules.setJpos(jpos);
-                Config.setModules(modules);
-                return true;
-            }
+    public String getService() {
+        if (null != config) {
+            return config.getService();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
         }
-        return false;
+    }
+
+    @Override
+    public String getUrl() {
+        if (null != config) {
+            return config.getUrl();
+        } else {
+            return JsonUtils.getError(StatusEnum.NULL).toString();
+        }
     }
 }

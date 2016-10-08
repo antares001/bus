@@ -1,39 +1,30 @@
 package net.scnetwork.bus.providers.yandex;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
+import net.scnetwork.bus.providers.IProvidersStadard;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.providers.yandex.domain.DataReqYandex;
 import net.scnetwork.bus.providers.yandex.domain.YandexOptions;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса Yandex
  */
-public class YandexCore implements IProviders{
+public class YandexCore implements IProvidersStadard{
     private Yandex yandex;
 
     /**
-     * Инициализация конфигурации сервиса
+     * Инициализация конфигурации
+     * @param yandex - конфигурация сервиса
      */
-    public YandexCore(){
-        try{
-            Modules modules = Config.getModules();
-            if (null != modules) {
-                yandex = modules.getYandex();
-            }
-        } catch (NullPointerException e){
-            LogBus.writeLog(e);
-        }
+    public YandexCore(Yandex yandex){
+        this.yandex = yandex;
     }
 
     @Override

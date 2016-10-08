@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.qiwi.config;
 
-import net.scnetwork.bus.config.IModules;
+import net.scnetwork.bus.config.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "qiwi")
-public class Qiwi implements IModules {
+public class Qiwi implements IModulesStandard {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
 
     public static final String DESCRIPTION = "Qiwi";
 
@@ -49,11 +48,8 @@ public class Qiwi implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
+    @Override
+    public String toString(){
+        return "Qiwi:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

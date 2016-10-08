@@ -14,7 +14,7 @@ import net.scnetwork.bus.enums.DaoEnums;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.providers.leader.config.Leader;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
@@ -135,9 +135,9 @@ public class ConfigurationView extends CustomComponent implements View{
             table.addItem(new Object[]{Fias.DESRIPTION, fias.isUse(), fias.getService(), fias.getUrl()}, 4);
         }
 
-        JposConfig jpos = modules.getJpos();
+        Jpos jpos = modules.getJpos();
         if (null != jpos){
-            table.addItem(new Object[]{JposConfig.DESCRIPTION, jpos.isUse(), jpos.getService(), jpos.getUrl()}, 5);
+            table.addItem(new Object[]{Jpos.DESCRIPTION, jpos.isUse(), jpos.getService(), jpos.getUrl()}, 5);
         }
 
         Forex forex = modules.getForex();
@@ -151,21 +151,15 @@ public class ConfigurationView extends CustomComponent implements View{
         HorizontalLayout buttonLayout = new HorizontalLayout();
         Button edit = new Button("Редактировать");
         edit.setEnabled(false);
-        edit.addClickListener(e -> {
-            Notification.show("Edit click");
-        });
+        edit.addClickListener(e -> Notification.show("Edit click"));
 
         Button view = new Button("Просмотр");
         view.setEnabled(false);
-        view.addClickListener(e -> {
-            Notification.show("View click");
-        });
+        view.addClickListener(e -> Notification.show("View click"));
 
         Button disable = new Button("Отключить");
         disable.setEnabled(false);
-        disable.addClickListener(e -> {
-            Notification.show("Disable click");
-        });
+        disable.addClickListener(e -> Notification.show("Disable click"));
 
         table.addItemSetChangeListener(e -> {
             edit.setEnabled(true);

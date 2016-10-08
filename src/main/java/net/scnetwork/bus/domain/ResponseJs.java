@@ -4,14 +4,14 @@ package net.scnetwork.bus.domain;
  * Ответ JSON
  */
 public class ResponseJs {
-    private int type;
+    private Integer type;
     private DataJs data;
 
     /**
      * Получение типа ответа
      * @return тип
      */
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
@@ -19,7 +19,7 @@ public class ResponseJs {
      * Запись типа ответа
      * @param type тип
      */
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -37,5 +37,12 @@ public class ResponseJs {
      */
     public void setData(DataJs data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString(){
+        return "{" +
+                "type:" + type + "," +
+                "data:" + data.toString() + ",";
     }
 }

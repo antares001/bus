@@ -1,37 +1,28 @@
 package net.scnetwork.bus.providers.jpos;
 
-import net.scnetwork.bus.config.Config;
-import net.scnetwork.bus.config.Modules;
 import net.scnetwork.bus.domain.DataJs;
 import net.scnetwork.bus.domain.DataRequest;
 import net.scnetwork.bus.domain.Response;
 import net.scnetwork.bus.domain.ResponseJs;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.enums.UseEnum;
-import net.scnetwork.bus.providers.IProviders;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.IProvidersStadard;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import net.scnetwork.bus.utils.XmlUtils;
 
 /**
  * Обработка сервиса JPOS
  */
-public class JposCore implements IProviders{
-    private JposConfig jpos;
+public class JposCore implements IProvidersStadard{
+    private Jpos jpos;
 
     /**
-     * Инициализация конфигурации сервиса
+     * Инициализация конфигурации
+     * @param config - конфигурация сервиса
      */
-    public JposCore(){
-        try {
-            Modules modules = Config.getModules();
-            if (null != modules) {
-                jpos = modules.getJpos();
-            }
-        } catch (NullPointerException e) {
-            LogBus.writeLog(e);
-        }
+    public JposCore(Jpos config){
+        this.jpos = config;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class Global {
     private String endpoint;
     private Modules modules;
     private DaoEnums dao;
-    private OraclePoolConfig oraclePoolConfig;
+    private OraclePoolConfig oraclePool;
     private OracleConfig oracleConfig;
     private PgPoolConfig pgPoolConfig;
     private PostgreConfig postgreConfig;
@@ -130,16 +130,16 @@ public class Global {
      * Получение настроек подключения пула к oracle
      * @return настройки
      */
-    public OraclePoolConfig getOraclePoolConfig() {
-        return oraclePoolConfig;
+    public OraclePoolConfig getOraclePool() {
+        return oraclePool;
     }
 
     /**
      * Запись подключения пула к oracle
-     * @param oraclePoolConfig настройки
+     * @param oraclePool настройки
      */
-    public void setOraclePoolConfig(OraclePoolConfig oraclePoolConfig) {
-        this.oraclePoolConfig = oraclePoolConfig;
+    public void setOraclePool(OraclePoolConfig oraclePool) {
+        this.oraclePool = oraclePool;
     }
 
     /**
@@ -218,7 +218,7 @@ public class Global {
                 "},dao: " + dao.getName() + "" +
                 ",PotsgrePoolConfig:{" + pgPoolConfig.toString()  +
                 "},PostgreConfig:{" + postgreConfig.toString() +
-                "},OraclePoolConfig:{" + oraclePoolConfig.toString() +
+                "},OraclePoolConfig:{" + oraclePool.toString() +
                 "}, OracleConfig:{" + oracleConfig.toString() +
                 "},MysqlPoolConfig:{" + mysqlPoolConfig.toString() +
                 "},MysqlConfig:{" + mysqlConfig.toString() +

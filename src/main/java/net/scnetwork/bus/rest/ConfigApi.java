@@ -7,9 +7,8 @@ import net.scnetwork.bus.enums.DaoEnums;
 import net.scnetwork.bus.providers.bpay.config.BPay;
 import net.scnetwork.bus.providers.fias.config.Fias;
 import net.scnetwork.bus.providers.forex.config.Forex;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.providers.leader.config.Leader;
-import net.scnetwork.bus.providers.print.config.Print;
 import net.scnetwork.bus.providers.qiwi.config.Qiwi;
 import net.scnetwork.bus.providers.yandex.config.Yandex;
 import net.scnetwork.bus.utils.LogBus;
@@ -121,9 +120,8 @@ public class ConfigApi {
             Yandex yandex = modules.getYandex();
             Qiwi qiwi = modules.getQiwi();
             Leader leader = modules.getLeader();
-            JposConfig jpos = modules.getJpos();
+            Jpos jpos = modules.getJpos();
             Fias fias = modules.getFias();
-            Print print = modules.getPrint();
             Forex forex = modules.getForex();
 
             if (null != bPay && bPay.isUse())
@@ -139,13 +137,10 @@ public class ConfigApi {
                 result.add(Leader.DESRIPTION);
 
             if (null != jpos && jpos.isUse())
-                result.add(JposConfig.DESCRIPTION);
+                result.add(Jpos.DESCRIPTION);
 
             if (null != fias && fias.isUse())
                 result.add(Fias.DESRIPTION);
-
-            if (null != print && print.isUse())
-                result.add(Print.DESCRIPTION);
 
             if (null != forex && forex.isUse())
                 result.add(Forex.DESCRIPTION);

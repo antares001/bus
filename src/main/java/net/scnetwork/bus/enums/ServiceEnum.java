@@ -9,9 +9,6 @@ public enum ServiceEnum {
     LEADER("leader"),
     FOREX("fix"),
     QIWI("qiwi"),
-    MTS("mts"),
-    BEELINE("beeline"),
-    MEGAFON("megafon"),
     YANDEX("yandex"),
     FIAS("fias");
 

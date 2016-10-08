@@ -1,7 +1,8 @@
+server.port: 9000
 endpoint: http://0.0.0.0:8090/soap
 modules:
   bpay:
-    use: yes
+    use: true
     service: REMOTE
     url: none
     soap: true
@@ -39,19 +40,12 @@ modules:
     bufferSize: 2048
   mstercard:
     use: no
-    service: no
-    url: no
-    soap: true
   visa:
     use: no
-    service: no
-    url: no
-    soap: true
   print:
     use: no
     service: no
     url: no
-    soap: true
   forex:
     use: no
     service: no
@@ -59,7 +53,7 @@ modules:
 
 dao: ORACLE_POOL
 
-oracle-pool:
+oraclePool:
     jdbcUrl: none
     username: user
     password: password
@@ -110,4 +104,7 @@ tracking:
     redmine:
       use: no
     jira:
-      use: no
+      use: yes
+      url: "http://192.168.0.20:8080"
+      username: "username"
+      password: "password"

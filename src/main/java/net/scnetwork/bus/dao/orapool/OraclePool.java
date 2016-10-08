@@ -18,7 +18,7 @@ public class OraclePool {
         try {
             Global global = Config.getInstance();
             if (null != global) {
-                OraclePoolConfig poolConfig = global.getOraclePoolConfig();
+                OraclePoolConfig poolConfig = global.getOraclePool();
 
                 if (null != poolConfig) {
                     dataSource = new BasicDataSource();

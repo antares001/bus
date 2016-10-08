@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.bpay.config;
 
-import net.scnetwork.bus.config.IModules;
+import net.scnetwork.bus.config.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "bpay")
-public class BPay implements IModules {
+public class BPay implements IModulesStandard {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
     private String point;
     private String merchantId;
     private String signature;
@@ -52,35 +51,56 @@ public class BPay implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
-    }
-
+    /**
+     * Точка подключения к удаленному сервису
+     * @return точка
+     */
     public String getPoint() {
         return point;
     }
 
+    /**
+     * Запись подключения к удаленному сервису
+     * @param point точка
+     */
     public void setPoint(String point) {
         this.point = point;
     }
 
+    /**
+     * Идентификатор мерчанта
+     * @return идентификатор
+     */
     public String getMerchantId() {
         return merchantId;
     }
 
+    /**
+     * Запись идентификатора мерчанта
+     * @param merchantId идентификатор
+     */
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
 
+    /**
+     * Подпись
+     * @return подпись
+     */
     public String getSignature() {
         return signature;
     }
 
+    /**
+     * Запись подписи
+     * @param signature подпись
+     */
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    @Override
+    public String toString(){
+        return "Bpay:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

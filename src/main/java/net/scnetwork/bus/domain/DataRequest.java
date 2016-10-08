@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public abstract class DataRequest extends Data{
+public class DataRequest extends Data{
     @XmlAttribute(name = "account")
     private String account;
 

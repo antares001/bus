@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Request")
-public abstract class Request {
+public class Request {
     @XmlAttribute(name = "type")
     private int type;
 

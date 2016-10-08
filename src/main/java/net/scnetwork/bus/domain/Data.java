@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Data")
-public abstract class Data {
+public class Data {
     @XmlAttribute(name = "date")
     private Date date;
 

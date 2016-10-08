@@ -1,6 +1,6 @@
 package net.scnetwork.bus.providers.fias.config;
 
-import net.scnetwork.bus.config.IModules;
+import net.scnetwork.bus.config.IModulesStandard;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "fias")
-public class Fias implements IModules {
+public class Fias implements IModulesStandard {
     private boolean use;
     private String service;
     private String url;
-    private boolean soap;
     private String format;
 
     public static final String DESRIPTION = "ФИАС";
@@ -50,19 +49,16 @@ public class Fias implements IModules {
         this.url = url;
     }
 
-    public boolean isSoap() {
-        return soap;
-    }
-
-    public void setSoap(boolean soap) {
-        this.soap = soap;
-    }
-
     public String getFormat() {
         return format;
     }
 
     public void setFormat(String format) {
         this.format = format;
+    }
+
+    @Override
+    public String toString(){
+        return "FIAS:{use:" + use + ",service:" + service + ",url:" + url + "}";
     }
 }

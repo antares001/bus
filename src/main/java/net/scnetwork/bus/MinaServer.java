@@ -2,7 +2,7 @@ package net.scnetwork.bus;
 
 import net.scnetwork.bus.clients.mina.handlers.IsoHandler;
 import net.scnetwork.bus.config.Global;
-import net.scnetwork.bus.providers.jpos.config.JposConfig;
+import net.scnetwork.bus.providers.jpos.config.Jpos;
 import net.scnetwork.bus.utils.LogBus;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
@@ -31,7 +31,7 @@ public class MinaServer {
      */
     @PostConstruct
     public void init(){
-        JposConfig jpos = global.getModules().getJpos();
+        Jpos jpos = global.getModules().getJpos();
 
         if (jpos.isUse()) {
             IoAcceptor acceptor = new NioSocketAcceptor();
