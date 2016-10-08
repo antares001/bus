@@ -1,6 +1,8 @@
 package net.scnetwork.bus.clients.tracking.jira;
 
+import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.ServerInfo;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import net.scnetwork.bus.clients.tracking.ITracking;
@@ -29,6 +31,20 @@ public class JiraRestImpl implements ITracking{
      */
     public ServerInfo infoServer(){
         return restClient.getMetadataClient().getServerInfo().claim();
+    }
+
+    /**
+     * Получение данных по задаче
+     * @param key ключ или id
+     * @return данные
+     */
+    public Issue getIssue(String key){
+        IssueRestClient issueRestClient = restClient.getIssueClient();
+        if (null != issueRestClient){
+            return issueRestClient.getIssue(key).claim();
+        } else {
+            return null;
+        }
     }
 
     @Override
