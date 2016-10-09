@@ -1,3 +1,4 @@
+import com.atlassian.jira.rest.client.api.domain.Attachment;
 import com.atlassian.jira.rest.client.api.domain.Comment;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.ServerInfo;
@@ -7,6 +8,9 @@ import net.scnetwork.bus.clients.tracking.jira.JiraRestImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Тест интеграции с Jira
+ */
 public class JiraRestTest {
     private JiraRestImpl jiraRest;
 
@@ -40,15 +44,21 @@ public class JiraRestTest {
 
     @Test
     public void getCommentsTest(){
-        try {
-            Iterable<Comment> comments = jiraRest.getComment(KEY);
-            if (Iterables.size(comments) != 0){
-                comments.forEach(e -> System.out.println(e.toString()));
-            } else {
-                System.out.println("Size is 0");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        Iterable<Comment> comments = jiraRest.getComment(KEY);
+        if (Iterables.size(comments) != 0){
+            comments.forEach(e -> System.out.println(e.toString()));
+        } else {
+            System.out.println("Size is 0");
+        }
+    }
+
+    @Test
+    public void getAttachmentsTest(){
+        Iterable<Attachment> attachments = jiraRest.getAttachment(KEY);
+        if (Iterables.size(attachments) != 0){
+            attachments.forEach(e -> System.out.println(e.toString()));
+        } else {
+            System.out.println("Size is 0");
         }
     }
 }

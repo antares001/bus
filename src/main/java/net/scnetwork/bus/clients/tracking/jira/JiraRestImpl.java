@@ -2,6 +2,7 @@ package net.scnetwork.bus.clients.tracking.jira;
 
 import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.domain.Attachment;
 import com.atlassian.jira.rest.client.api.domain.Comment;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.ServerInfo;
@@ -52,20 +53,32 @@ public class JiraRestImpl implements ITracking{
      * Получение списка комментариев
      * @param key ключ или id задачи
      * @return список сомментариев
-     * @throws Exception не найден key
      */
-    public Iterable<Comment> getComment(String key) throws Exception {
+    public Iterable<Comment> getComment(String key) {
         IssueRestClient issueRestClient = restClient.getIssueClient();
         if (null != issueRestClient){
             Issue issue = issueRestClient.getIssue(key).claim();
             if (null != issue) {
                 return issue.getComments();
-            } else {
-                throw new Exception("Not found issue " + key);
             }
-        } else {
-            return null;
         }
+        return null;
+    }
+
+    /**
+     * Получение списка вложений
+     * @param key ключ или id
+     * @return список вложений
+     */
+    public Iterable<Attachment> getAttachment(String key){
+        IssueRestClient issueRestClient = restClient.getIssueClient();
+        if (null != issueRestClient){
+            Issue issue = issueRestClient.getIssue(key).claim();
+            if (null != issue){
+                return issue.getAttachments();
+            }
+        }
+        return null;
     }
 
     @Override
