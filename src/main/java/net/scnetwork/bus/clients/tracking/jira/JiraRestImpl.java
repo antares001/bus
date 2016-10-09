@@ -2,10 +2,7 @@ package net.scnetwork.bus.clients.tracking.jira;
 
 import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
-import com.atlassian.jira.rest.client.api.domain.Attachment;
-import com.atlassian.jira.rest.client.api.domain.Comment;
-import com.atlassian.jira.rest.client.api.domain.Issue;
-import com.atlassian.jira.rest.client.api.domain.ServerInfo;
+import com.atlassian.jira.rest.client.api.domain.*;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import net.scnetwork.bus.clients.tracking.ITracking;
 import net.scnetwork.bus.utils.LogBus;
@@ -76,6 +73,22 @@ public class JiraRestImpl implements ITracking{
             Issue issue = issueRestClient.getIssue(key).claim();
             if (null != issue){
                 return issue.getAttachments();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Получение списка переходов
+     * @param key ключ или id задачи
+     * @return список
+     */
+    public Iterable<Transition> getTransitions(String key){
+        IssueRestClient issueRestClient = restClient.getIssueClient();
+        if (null != issueRestClient){
+            Issue issue = issueRestClient.getIssue(key).claim();
+            if (null != issue) {
+                return issueRestClient.getTransitions(issue).claim();
             }
         }
         return null;

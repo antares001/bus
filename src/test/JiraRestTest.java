@@ -1,7 +1,4 @@
-import com.atlassian.jira.rest.client.api.domain.Attachment;
-import com.atlassian.jira.rest.client.api.domain.Comment;
-import com.atlassian.jira.rest.client.api.domain.Issue;
-import com.atlassian.jira.rest.client.api.domain.ServerInfo;
+import com.atlassian.jira.rest.client.api.domain.*;
 import com.google.common.collect.Iterables;
 import net.scnetwork.bus.clients.tracking.jira.JiraConfig;
 import net.scnetwork.bus.clients.tracking.jira.JiraRestImpl;
@@ -18,6 +15,8 @@ public class JiraRestTest {
     private static final String USERNAME = "user";
     private static final String PASSWORD = "password";
     private static final String KEY = "BUS-1";
+
+    private static final String SIZE_NULL = "Size is 0";
 
     @Before
     public void startTestJira(){
@@ -48,7 +47,7 @@ public class JiraRestTest {
         if (Iterables.size(comments) != 0){
             comments.forEach(e -> System.out.println(e.toString()));
         } else {
-            System.out.println("Size is 0");
+            System.out.println(SIZE_NULL);
         }
     }
 
@@ -58,7 +57,17 @@ public class JiraRestTest {
         if (Iterables.size(attachments) != 0){
             attachments.forEach(e -> System.out.println(e.toString()));
         } else {
-            System.out.println("Size is 0");
+            System.out.println(SIZE_NULL);
+        }
+    }
+
+    @Test
+    public void getTransitions(){
+        Iterable<Transition> transitions = jiraRest.getTransitions(KEY);
+        if (Iterables.size(transitions) != 0){
+            transitions.forEach(e -> System.out.println(e.toString()));
+        } else {
+            System.out.println(SIZE_NULL);
         }
     }
 }
