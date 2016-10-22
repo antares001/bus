@@ -1,8 +1,6 @@
 package net.scnetwork.bus.config;
 
-import net.scnetwork.bus.dao.MysqlConfig;
-import net.scnetwork.bus.dao.OracleConfig;
-import net.scnetwork.bus.dao.PostgreConfig;
+import net.scnetwork.bus.dao.ConnectionSingle;
 import net.scnetwork.bus.dao.mysqlpool.MysqlPoolConfig;
 import net.scnetwork.bus.dao.orapool.OraclePoolConfig;
 import net.scnetwork.bus.dao.postgrepool.PgPoolConfig;
@@ -22,11 +20,9 @@ public class Global {
     private Modules modules;
     private DaoEnums dao;
     private OraclePoolConfig oraclePool;
-    private OracleConfig oracleConfig;
     private PgPoolConfig pgPoolConfig;
-    private PostgreConfig postgreConfig;
-    private MysqlConfig mysqlConfig;
     private MysqlPoolConfig mysqlPoolConfig;
+    private ConnectionSingle connection;
     private LogConfig logConfig;
     private boolean gui;
 
@@ -95,38 +91,6 @@ public class Global {
     }
 
     /**
-     * Получение настроек подключения к postgre
-     * @return настройки
-     */
-    public PostgreConfig getPostgreConfig() {
-        return postgreConfig;
-    }
-
-    /**
-     * Запись подключения к postgre
-     * @param postgreConfig настройки
-     */
-    public void setPostgreConfig(PostgreConfig postgreConfig) {
-        this.postgreConfig = postgreConfig;
-    }
-
-    /**
-     * Получения настроек подключения к oracle
-     * @return настройки
-     */
-    public OracleConfig getOracleConfig() {
-        return oracleConfig;
-    }
-
-    /**
-     * Запись настроек подключения к oracle
-     * @param oracleConfig настройки
-     */
-    public void setOracleConfig(OracleConfig oracleConfig) {
-        this.oracleConfig = oracleConfig;
-    }
-
-    /**
      * Получение настроек подключения пула к oracle
      * @return настройки
      */
@@ -140,22 +104,6 @@ public class Global {
      */
     public void setOraclePool(OraclePoolConfig oraclePool) {
         this.oraclePool = oraclePool;
-    }
-
-    /**
-     * Получение настроек подключения к mysql
-     * @return настройки
-     */
-    public MysqlConfig getMysqlConfig() {
-        return mysqlConfig;
-    }
-
-    /**
-     * Запись настроек подклчения к mysql
-     * @param mysqlConfig настройки
-     */
-    public void setMysqlConfig(MysqlConfig mysqlConfig) {
-        this.mysqlConfig = mysqlConfig;
     }
 
     /**
@@ -206,6 +154,14 @@ public class Global {
         this.gui = gui;
     }
 
+    public ConnectionSingle getConnection() {
+        return connection;
+    }
+
+    public void setConnection(ConnectionSingle connection) {
+        this.connection = connection;
+    }
+
     /**
      * Приведение объекта к строке
      * @return строка
@@ -217,11 +173,8 @@ public class Global {
                 ",modules:{" + modules.toString() +
                 "},dao: " + dao.getName() + "" +
                 ",PotsgrePoolConfig:{" + pgPoolConfig.toString()  +
-                "},PostgreConfig:{" + postgreConfig.toString() +
                 "},OraclePoolConfig:{" + oraclePool.toString() +
-                "}, OracleConfig:{" + oracleConfig.toString() +
                 "},MysqlPoolConfig:{" + mysqlPoolConfig.toString() +
-                "},MysqlConfig:{" + mysqlConfig.toString() +
                 "},LogConfig:{" + logConfig.toString() +
                 "},GUI:" + gui + "}";
     }

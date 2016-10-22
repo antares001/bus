@@ -61,7 +61,8 @@ oraclePool:
     initialLimit: 5
     connectionTimeout: 30
 
-postgresql:
+connection:
+    driver: com.mysql.Driver
     jdbcUrl: none
     username: user
     password: password
@@ -73,16 +74,6 @@ postgresql-pool:
     initialLimit: 5
     maxLimit: 30
     connectionTimeout: 30
-
-oracle:
-    jdbcUrl: none
-    username: username
-    password: password
-
-mysql:
-    jdbcUrl: none
-    username: none
-    password: none
 
 mysql-pool:
     jdbcUrl: none
