@@ -1,3 +1,4 @@
+import net.scnetwork.bus.Bus;
 import net.scnetwork.bus.clients.fias.ArrayOfDownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
@@ -10,6 +11,10 @@ import net.scnetwork.bus.providers.fias.domain.FiasOptions;
 import net.scnetwork.bus.providers.fias.domain.RequestFias;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -21,6 +26,9 @@ import java.util.List;
 /**
  * Тестирование модуля ФИАС
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Bus.class)
+@WebAppConfiguration
 public class FiasTest {
     /**
      * Тестирование структуры входящего запроса
