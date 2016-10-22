@@ -2,11 +2,8 @@ package net.scnetwork.bus.dao;
 
 import net.scnetwork.bus.config.Config;
 import net.scnetwork.bus.config.Global;
-import net.scnetwork.bus.enums.DaoEnums;
-import net.scnetwork.bus.utils.LogBus;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -14,69 +11,17 @@ import java.sql.SQLException;
  */
 public class SingleConnection {
     private static Connection connection = null;
+    private static final String MYSQL = "com.mysql.Driver";
+    private static final String POSTGRE = "com.postgresql.Driver";
+    private static final String ORACLE = "com.oracle.Driver";
 
     /**
-     * Определение подключения
-     * @param enums тип подключения
+     * Определение
      */
-    public static void setConnection(DaoEnums enums) {
-        switch (enums){
-            case MYSQL:
-                singleMysql();
-                break;
-            case ORACLE:
-                singleOracle();
-                break;
-            case POSTGRESQL:
-                singlePostgresql();
-                break;
-            default:
-                break;
-        }
-    }
-
-    private static void singlePostgresql(){
-        try{
-            Global global = Config.getInstance();
-            if (null != global) {
-                PostgreConfig config = global.getPostgreConfig();
-                if (null != config) {
-                    Class.forName("com.postgresql.Driver");
-                    connection = DriverManager.getConnection(config.getJdbcUrl(), config.getUsername(), config.getPassword());
-                }
-            }
-        } catch (NullPointerException | ClassNotFoundException | SQLException e){
-            LogBus.writeLog(e);
-        }
-    }
-
-    private static void singleOracle(){
-        try{
-            Global global = Config.getInstance();
-            if (null != global) {
-                OracleConfig config = global.getOracleConfig();
-                if (null != config) {
-                    Class.forName("com.oracle.Driver");
-                    connection = DriverManager.getConnection(config.getJdbcUrl(), config.getUsername(), config.getPassword());
-                }
-            }
-        } catch (NullPointerException | ClassNotFoundException | SQLException e){
-            LogBus.writeLog(e);
-        }
-    }
-
-    private static void singleMysql(){
-        try{
-            Global global = Config.getInstance();
-            if (null != global) {
-                OracleConfig config = global.getOracleConfig();
-                if (null != config) {
-                    Class.forName("com.mysql.Driver");
-                    connection = DriverManager.getConnection(config.getJdbcUrl(), config.getUsername(), config.getPassword());
-                }
-            }
-        } catch (NullPointerException | ClassNotFoundException | SQLException e){
-            LogBus.writeLog(e);
+    public static void setConnection() {
+        Global global = Config.getInstance();
+        if (null != global) {
+            ConnectionSingle single = global.getConnection();
         }
     }
 
