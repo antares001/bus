@@ -97,6 +97,8 @@ tracking:
       uri: "http://192.168.0.20:3000"
       tokenTracker: "WxO0LZ44ju0tzdrF6KIM"
       tokenVcs: "A0sAyBqgk5yAeMapAdCL"
+      username: "bus"
+      password: "Id37sdP"
     jira:
       use: yes
       url: "http://192.168.0.20:8080"
