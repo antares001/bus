@@ -181,6 +181,16 @@
             <artifactId>spring-security-config</artifactId>
             <version>4.0.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.taskadapter</groupId>
+            <artifactId>redmine-java-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
