@@ -90,8 +90,6 @@ gui: true
 
 tracking:
     use: no
-    otrs:
-      use: no
     redmine:
       use: yes
       uri: "http://192.168.0.20:3000"
