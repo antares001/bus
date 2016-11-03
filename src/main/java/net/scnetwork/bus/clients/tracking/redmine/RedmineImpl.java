@@ -21,8 +21,8 @@ public class RedmineImpl implements ITracking{
     }
 
     @Override
-    public void getInfo() {
-        LogBus.info("otrs");
+    public String getInfo() {
+        return null;
     }
 
     @Override

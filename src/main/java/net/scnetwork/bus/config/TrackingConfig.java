@@ -1,7 +1,6 @@
 package net.scnetwork.bus.config;
 
 import net.scnetwork.bus.clients.tracking.jira.JiraConfig;
-import net.scnetwork.bus.clients.tracking.otrs.OtrsConfig;
 import net.scnetwork.bus.clients.tracking.redmine.RedmineConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 public class TrackingConfig {
     private boolean use;
     private JiraConfig jira;
-    private OtrsConfig otrs;
     private RedmineConfig redmine;
 
     /**
@@ -49,22 +47,6 @@ public class TrackingConfig {
      */
     public void setJira(JiraConfig jira) {
         this.jira = jira;
-    }
-
-    /**
-     * Получение настроек otrs
-     * @return настройки
-     */
-    public OtrsConfig getOtrs() {
-        return otrs;
-    }
-
-    /**
-     * Запись настроек otrs
-     * @param otrs настройки
-     */
-    public void setOtrs(OtrsConfig otrs) {
-        this.otrs = otrs;
     }
 
     /**
