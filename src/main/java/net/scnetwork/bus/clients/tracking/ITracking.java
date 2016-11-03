@@ -7,7 +7,7 @@ public interface ITracking {
     /**
      * Получение информации issue
      */
-    void getInfo();
+    String getInfo();
 
     /**
      * Запись информации

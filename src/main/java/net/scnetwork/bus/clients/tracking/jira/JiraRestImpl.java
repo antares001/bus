@@ -95,8 +95,8 @@ public class JiraRestImpl implements ITracking{
     }
 
     @Override
-    public void getInfo() {
-        LogBus.info("jira");
+    public String getInfo() {
+        return null;
     }
 
     @Override
