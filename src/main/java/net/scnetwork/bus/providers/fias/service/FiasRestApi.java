@@ -1,5 +1,6 @@
 package net.scnetwork.bus.providers.fias.service;
 
+import net.scnetwork.bus.clients.fias.ArrayOfDownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadFileInfo;
 import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
@@ -9,7 +10,6 @@ import net.scnetwork.bus.providers.fias.enums.FiasFormatEnum;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.rest.RestApi;
 import net.scnetwork.bus.utils.JsonUtils;
-import net.scnetwork.bus.utils.LogBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import java.util.List;
 
 /**
  * Настройка модуля ФИАС
@@ -55,10 +56,17 @@ public class FiasRestApi implements RestApi {
                 }
                 break;
             case GET_ALL_URLS:
+                ArrayOfDownloadFileInfo downloadFileInfo = serviceSoap.getAllDownloadFileInfo();
+                List<DownloadFileInfo> list = downloadFileInfo.getDownloadFileInfo();
+                break;
             case SYNC:
+                //TODO: make sync local db
+                break;
             case MONGODB:
+                //TODO: get from mongodb
+                break;
             case REDIS:
-                LogBus.info(type);
+                //TODO: get from redis
                 break;
             default:
                 break;

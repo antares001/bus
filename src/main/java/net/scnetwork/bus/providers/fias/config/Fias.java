@@ -16,6 +16,7 @@ public class Fias implements IModulesStandard {
     private String service;
     private String url;
     private String format;
+    private MongoConfig mongoconfig;
 
     public static final String DESRIPTION = "ФИАС";
 
@@ -55,6 +56,14 @@ public class Fias implements IModulesStandard {
 
     public void setFormat(String format) {
         this.format = format;
+    }
+
+    public MongoConfig getMongoconfig() {
+        return mongoconfig;
+    }
+
+    public void setMongoconfig(MongoConfig mongoconfig) {
+        this.mongoconfig = mongoconfig;
     }
 
     @Override
