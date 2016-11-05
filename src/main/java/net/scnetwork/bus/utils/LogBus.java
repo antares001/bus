@@ -20,8 +20,6 @@ public class LogBus {
             Global instance = Config.getInstance();
             if (null != instance) {
                 logConfig = instance.getLogConfig();
-            } else {
-                throw new Exception("Error in config file");
             }
         } catch (Exception e){
             writeLog(e);

@@ -8,6 +8,7 @@ import com.taskadapter.redmineapi.bean.Project;
 import net.scnetwork.bus.clients.tracking.ITracking;
 import net.scnetwork.bus.utils.LogBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,10 @@ import java.util.List;
 public class RedmineImpl implements ITracking{
     private RedmineManager manager;
 
+    /**
+     * Коснтруктор
+     * @param config конфигурация сервиса
+     */
     public RedmineImpl(RedmineConfig config){
         manager = RedmineManagerFactory.createWithUserAuth(config.getUri(), config.getUsername(), config.getPassword());
     }
@@ -30,11 +35,16 @@ public class RedmineImpl implements ITracking{
         LogBus.info("otrs");
     }
 
+    /**
+     * Получение списка проектов
+     * @return список проектов
+     * @throws RedmineException исключение системы Redmine
+     */
     public List<Project> getProgects() throws RedmineException {
         ProjectManager projectManager = manager.getProjectManager();
         if (null != projectManager) {
             return projectManager.getProjects();
         }
-        return null;
+        return new ArrayList<>();
     }
 }

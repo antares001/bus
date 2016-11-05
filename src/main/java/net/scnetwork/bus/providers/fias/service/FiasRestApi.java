@@ -9,6 +9,7 @@ import net.scnetwork.bus.providers.fias.enums.FiasFormatEnum;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.rest.RestApi;
 import net.scnetwork.bus.utils.JsonUtils;
+import net.scnetwork.bus.utils.LogBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,7 @@ public class FiasRestApi implements RestApi {
      * @return данные
      */
     @RequestMapping(value = "/rest/modules/operation/{type}")
-    public String operation(@PathVariable(value = "type") String type, @QueryParam(value = "format") String format){
+    public String FiasOperation(@PathVariable(value = "type") String type, @QueryParam(value = "format") String format){
         DownloadService service = new DownloadService();
         DownloadServiceSoap serviceSoap = service.getDownloadServiceSoap();
         switch (FiasOperation.valueOf(type)){
@@ -54,12 +55,10 @@ public class FiasRestApi implements RestApi {
                 }
                 break;
             case GET_ALL_URLS:
-                break;
             case SYNC:
-                break;
             case MONGODB:
-                break;
             case REDIS:
+                LogBus.info(type);
                 break;
             default:
                 break;
