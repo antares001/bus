@@ -6,6 +6,8 @@ import net.scnetwork.bus.clients.fias.DownloadService;
 import net.scnetwork.bus.clients.fias.DownloadServiceSoap;
 import net.scnetwork.bus.enums.StatusEnum;
 import net.scnetwork.bus.providers.fias.config.Fias;
+import net.scnetwork.bus.providers.fias.config.MongoConfig;
+import net.scnetwork.bus.providers.fias.config.RedisConfig;
 import net.scnetwork.bus.providers.fias.enums.FiasFormatEnum;
 import net.scnetwork.bus.providers.fias.enums.FiasOperation;
 import net.scnetwork.bus.rest.RestApi;
@@ -63,10 +65,16 @@ public class FiasRestApi implements RestApi {
                 //TODO: make sync local db
                 break;
             case MONGODB:
-                //TODO: get from mongodb
+                MongoConfig mongoConfig = fias.getMongoconfig();
+                if (null != mongoConfig && mongoConfig.isUse()){
+                    //TODO: connection to mongodb
+                }
                 break;
             case REDIS:
-                //TODO: get from redis
+                RedisConfig redisConfig = fias.getRedisconfig();
+                if (null != redisConfig && redisConfig.isUse()){
+                    //TODO: connection to redis
+                }
                 break;
             default:
                 break;

@@ -17,6 +17,7 @@ public class Fias implements IModulesStandard {
     private String url;
     private String format;
     private MongoConfig mongoconfig;
+    private RedisConfig redisconfig;
 
     public static final String DESRIPTION = "ФИАС";
 
@@ -64,6 +65,14 @@ public class Fias implements IModulesStandard {
 
     public void setMongoconfig(MongoConfig mongoconfig) {
         this.mongoconfig = mongoconfig;
+    }
+
+    public RedisConfig getRedisconfig() {
+        return redisconfig;
+    }
+
+    public void setRedisconfig(RedisConfig redisconfig) {
+        this.redisconfig = redisconfig;
     }
 
     @Override

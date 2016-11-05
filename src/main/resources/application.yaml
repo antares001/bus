@@ -37,6 +37,12 @@ modules:
       port: 0
       username: username
       password: password
+    redisconfig:
+      use: no
+      hostname: no
+      port: 0
+      username: username
+      password: password
   jpos:
     use: yes
     service: BOTH
