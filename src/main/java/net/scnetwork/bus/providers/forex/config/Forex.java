@@ -15,6 +15,9 @@ public class Forex implements IModulesStandard{
     private boolean use;
     private String service;
     private String url;
+    private String point;
+    private String client;
+    private int timeout;
 
     public static final String DESCRIPTION = "Forex";
 
@@ -48,8 +51,37 @@ public class Forex implements IModulesStandard{
         this.url = url;
     }
 
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        this.timeout = timeout;
+    }
+
     @Override
     public String toString(){
-        return "Forex:{use:" + use + ",service:" + service + ",url:" + url + "}";
+        return "Forex:{use:" + use +
+                ",service:" + service +
+                ",url:" + url +
+                ", point:" + point +
+                ", client:" + client +
+                ", timeout:" + timeout + "}";
     }
 }

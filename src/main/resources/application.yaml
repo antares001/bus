@@ -50,6 +50,9 @@ modules:
     use: no
     service: no
     url: no
+    point: none
+    client: none
+    timeout: 100
 
 dao: ORACLE_POOL
 
@@ -90,8 +93,6 @@ gui: true
 
 tracking:
     use: no
-    otrs:
-      use: no
     redmine:
       use: yes
       uri: "http://192.168.0.20:3000"

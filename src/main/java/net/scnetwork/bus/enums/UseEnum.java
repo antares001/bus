@@ -1,7 +1,11 @@
 package net.scnetwork.bus.enums;
 
 /**
- * Тип обработки сервисов
+ * Тип обработки сервисов:
+ * <ol>
+ *     <li>LOCAL - внутренняя реализация</li>
+ *     <li>REMOTE - использование внешнего микросервиса</li>
+ * </ol>
  */
 public enum UseEnum {
     LOCAL("local"),
