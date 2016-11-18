@@ -3,6 +3,7 @@ import net.scnetwork.bus.domain.Auth;
 import net.scnetwork.bus.enums.OperationEnum;
 import net.scnetwork.bus.enums.ServiceEnum;
 import net.scnetwork.bus.enums.StatusEnum;
+import net.scnetwork.bus.providers.bpay.domain.*;
 import net.scnetwork.bus.providers.bpay.enums.BPayOperation;
 import org.junit.Test;
 import org.junit.runner.RunWith;
