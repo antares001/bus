@@ -50,6 +50,9 @@ modules:
     use: no
     service: no
     url: no
+    point: none
+    client: none
+    timeout: 100
 
 dao: ORACLE_POOL
 
